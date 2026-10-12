@@ -5,7 +5,7 @@ Message Bus (bpy.msgbus)
 
 
 The message bus system can be used to receive notifications when properties of
-Blender data-blocks are changed via the data API.
+Blender datablocks are changed via the data API.
 
 
 Limitations
@@ -57,13 +57,10 @@ certain type:
 
    Clear all subscribers using this owner.
 
-   :param owner: The owner handle passed to :func:`subscribe_rna`.
-   :type owner: Any
 
+.. function:: publish_rna(key)
 
-.. function:: publish_rna(*, key)
-
-   :param key: Represents the type of data being subscribed to
+   :arg key: Represents the type of data being subscribed to
 
       Arguments include
       - A property instance.
@@ -76,29 +73,25 @@ certain type:
    In some cases it may be useful to publish changes explicitly using more general keys.
 
 
-.. function:: subscribe_rna(*, key, owner, args, notify, options=set())
+.. function:: subscribe_rna(key, owner, args, notify, options=set())
 
    Register a message bus subscription. It will be cleared when another blend file is
    loaded, or can be cleared explicitly via :func:`bpy.msgbus.clear_by_owner`.
 
-   :param key: Represents the type of data being subscribed to
+   :arg key: Represents the type of data being subscribed to
 
       Arguments include
       - A property instance.
       - A struct type.
       - A tuple representing a (struct, property name) pair.
    :type key: :class:`bpy.types.Property` | :class:`bpy.types.Struct` | tuple[:class:`bpy.types.Struct`, str]
-   :param owner: Handle for this subscription (compared by identity).
+   :arg owner: Handle for this subscription (compared by identity).
    :type owner: Any
-   :param args: Arguments passed to the callback.
-   :type args: tuple
-   :param notify: The callback function.
-   :type notify: Callable[..., None]
-   :param options: Change the behavior of the subscriber.
+   :arg options: Change the behavior of the subscriber.
 
       - ``PERSISTENT`` when set, the subscriber will be kept when remapping ID data.
 
-   :type options: set[Literal['PERSISTENT']]
+   :type options: set[str]
 
 .. note::
 

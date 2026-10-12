@@ -1,3 +1,4 @@
+.. _render-output-postprocess:
 
 ***************
 Post Processing
@@ -14,19 +15,23 @@ The Post Processing panel is used to control different options used to process y
 
    Post Processing panel.
 
-.. _bpy.types.RenderSettings.use_compositing:
+Pipeline
 
-Pipeline -- Compositing
-   Renders the output from the compositing node setup,
-   and then applies the Composite node tree on all images,
-   displaying the image inputted in the Group Output node.
+.. todo:: Add this information.
 
-.. _bpy.types.RenderSettings.use_sequencer:
+   .. _bpy.types.RenderSettings.use_compositing:
 
-Pipeline -- Sequencer
-   Renders the output of the Video Sequence editor, instead of the view from the 3D scene's active camera.
-   If the sequence contains Scene strips, these will also be rendered as part of the pipeline.
-   If *Compositing* is also enabled, the Scene strip will be the output of the Compositor.
+   Compositing
+      Renders the output from the compositing node setup,
+      and then applies the Composite node tree on all images,
+      displaying the image inputted in the Composite Output node.
+
+   .. _bpy.types.RenderSettings.use_sequencer:
+
+   Sequencer
+      Renders the output of the Video Sequence editor, instead of the view from the 3D scene's active camera.
+      If the sequence contains Scene strips, these will also be rendered as part of the pipeline.
+      If *Compositing* is also enabled, the Scene strip will be the output of the Compositor.
 
 .. _bpy.types.RenderSettings.dither_intensity:
 

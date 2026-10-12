@@ -5,13 +5,15 @@
 Transform Cache Constraint
 **************************
 
-The *Transform Cache Constraint* streams an animation from an
+The *Transform Cache Constraint* is used to stream animations from
 :doc:`Alembic </files/import_export/alembic>` or :doc:`USD </files/import_export/usd>`
-file. For example, it can apply a baked rigid body simulation to an object.
+made at the transformation matrix level (for example rigid bodies, or camera movements).
 
-The constraint is automatically added when importing such a file. However, it only applies
-to transforms (location/rotation/scale of the whole object). For animations that cause
-deformation, the :doc:`/modeling/modifiers/modify/mesh_sequence_cache` is used instead.
+When importing an :doc:`Alembic </files/import_export/alembic>` or
+:doc:`USD </files/import_export/usd>` file,
+Transform Cache constraints are automatically added to objects with animated transforms.
+For time-varying meshes (so deforming animations),
+the :doc:`Mesh Sequence Cache modifier </modeling/modifiers/modify/mesh_sequence_cache>` is used.
 
 
 Options
@@ -53,9 +55,9 @@ Velocity Attribute
 Velocity Unit
    Defines how the velocity vectors are interpreted with regard to time.
 
-   :Frame:
+   Frame
       The velocity unit was encoded in frames and does not need to be scaled by scene FPS.
-   :Second:
+   Second
       The velocity unit was encoded in seconds and needs to be scaled by the scene FPS (1 / FPS).
 
    .. note:: The *Velocity Unit* option is currently for Alembic files only.
@@ -63,5 +65,6 @@ Velocity Unit
 Object Path
    The path to the Alembic or USD object inside the archive or stage.
 
-:ref:`bpy.types.constraint.influence`
-   How strongly the constraint affects the object.
+Influence
+   Controls the percentage of affect the constraint has on the object.
+   See :ref:`common constraint properties <bpy.types.constraint.influence>` for more information.

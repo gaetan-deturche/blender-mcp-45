@@ -5,19 +5,16 @@
 Armature Constraint
 *******************
 
-The *Armature* constraint transforms an "owner" object or bone based on the
-weighted pose transformations of one or more "target" bones. It's similar to the
-:doc:`/modeling/modifiers/deform/armature`, which performs this operation for
-every vertex in a mesh.
+*Armature* is the constraint version of the :ref:`Armature Modifier <bpy.types.ArmatureModifier>`,
+exactly reproducing the weight-blended bone transformations and applying it to its owner orientation.
+It can be used like a variant of the :ref:`Child Of <bpy.types.ChildOfConstraint>` constraint
+that can handle multiple parents at once, but requires all of them to be bones.
 
-Unlike the modifier, the constraint also uses bones whose
-:doc:`Deform </animation/armatures/bones/properties/deform>` option is disabled.
+.. note::
 
-.. seealso::
-
-   The :doc:`/animation/constraints/relationship/child_of` is an alternative if
-   there's only one parent. Unlike with the *Armature* constraint, this parent
-   can also be an object.
+   Unlike the Armature modifier, the constraint does not take
+   the :doc:`Deform </animation/armatures/bones/properties/deform>` checkbox
+   of bones into account, and can use any bone as target.
 
 
 Options
@@ -28,54 +25,56 @@ Options
    Armature constraint.
 
 Preserve Volume
-   Prevents the owner from shrinking when the target bones rotate relative to each other.
+   Like the matching option of the modifier, it enables the use of quaternions
+   for preserving the volume of the object during deformation.
 
 Use Envelopes
-   Uses :ref:`Envelopes <armature-bones-envelope>` to weaken the influence of
-   target bones that are further away. For best results, set the *Weight*
-   of all bones to 1.0.
+   To approximate envelope-only behavior of the modifier,
+   add all relevant bones with weight 1.0 and enable this option.
 
    .. note::
 
-      Unlike the modifier, the constraint does not automatically detect nearby bones.
-      Every bone has to be added manually.
+      Unlike the modifier, the constraint always requires explicitly listing all
+      of its target bones with associated weights. This option merely enables
+      envelopes for all bones, as if they had :ref:`Envelope Multiply <armature-bones-envelope>` enabled.
 
-Use Current Location :guilabel:`Bone constraint only`
-   By default, the constraint uses the rest location of the owner bone to
-   find nearby envelopes and :doc:`B-Bone </animation/armatures/bones/properties/bendy_bones>`
-   segments. This option uses the bone's current location instead (so including
-   the pose transformation and prior constraints).
+Use Current Location
+   Only for constraints on bones: Instead of using the rest location,
+   use the current location of the owner bone to compute envelope weights or
+   binding to B-Bone segments.
 
-   Objects don't have a rest location, so for them, the constraint always uses
-   the current location.
+   With envelope weights, this can be used to change the active "parent" bone
+   of the owner bone dependent on its location. For non-bones this mode is always active,
+   because they don't have a rest location.
 
 Add Target Bone
-   Adds a new entry to the *Bones* list.
+   This button adds a new empty entry at the end of the target list.
 
 Normalize Weights
-   Normalizes the *Weights* in the *Bones* list so they add up to 1.0.
+   This button normalizes all weight values in the target list so that they add up to 1.0.
 
-:ref:`bpy.types.constraint.influence`
-   How strongly the constraint affects the owner.
+Influence
+   Controls the percentage of affect the constraint has on the object.
+   See :ref:`common constraint properties <bpy.types.constraint.influence>` for more information.
 
 
 Bones
 -----
 
-The list of target bones used to transform the owner.
+This specifies the list of bones used by the constraint to deform its owner.
+Each target bone has the following input fields and controls:
 
-:ref:`Target <rigging-constraints-interface-common-target>`
-   The armature object containing the bone. Unlike the modifier, the constraint can use bones
-   from different armatures.
+Target
+   Unlike the modifier, the constraint can use bones coming from different armatures at the same time.
+   See :ref:`common constraint properties <rigging-constraints-interface-common-target>` for more information.
 
-Sub-Target
-   The name of the bone.
+Sub-target
+   Name of the target bone.
 
 .. _bpy.ops.constraint.remove_target:
 
 :bl-icon:`x` (Remove Target)
-   Removes the entry from the list.
+   Removes the entry from the target list.
 
 Weight
-   Weight associated with the bone. With the modifier, this weight would come from a vertex
-   group instead.
+   Weight associated with the bone, equivalent to vertex groups in the modifier.

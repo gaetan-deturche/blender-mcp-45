@@ -1,5 +1,6 @@
 .. index:: Geometry Nodes; Scene Time
 .. _bpy.types.GeometryNodeInputSceneTime:
+
 .. --- copy below this line ---
 
 ***************
@@ -17,6 +18,12 @@ Inputs
 ======
 
 This node has no inputs.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs

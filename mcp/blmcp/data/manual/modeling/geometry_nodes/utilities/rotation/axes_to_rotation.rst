@@ -1,6 +1,5 @@
 .. index:: Geometry Nodes; Axis to Rotation
 .. _bpy.types.FunctionNodeAxesToRotation:
-.. --- copy below this line ---
 
 *********************
 Axes to Rotation Node

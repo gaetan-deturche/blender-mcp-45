@@ -19,9 +19,6 @@ Property Subtype Items
 :PIXEL: Pixel.
 
    A distance on screen.
-:PIXEL_DIAMETER: Pixel.
-
-   A distance on screen, specifically representing a diameter value.
 :UNSIGNED: Unsigned.
 
 :PERCENTAGE: Percentage.
@@ -30,9 +27,6 @@ Property Subtype Items
 :FACTOR: Factor.
 
    A factor between 0.0 and 1.0.
-:MASS: Mass.
-
-   A mass, based on scene unit settings.
 :ANGLE: Angle.
 
    A rotational value specified in radians.
@@ -45,9 +39,6 @@ Property Subtype Items
 :DISTANCE: Distance.
 
    A distance between two points.
-:DISTANCE_DIAMETER: Distance.
-
-   A distance between two points, specifically representing a diameter value.
 :DISTANCE_CAMERA: Camera Distance.
 
 :POWER: Power.
@@ -62,9 +53,10 @@ Property Subtype Items
 
 :COLOR: Linear Color.
 
-   Color in the scene linear working color space.
+   Color in the linear space.
 :TRANSLATION: Translation.
 
+   Color in the gamma corrected space.
 :DIRECTION: Direction.
 
 :VELOCITY: Velocity.
@@ -86,9 +78,8 @@ Property Subtype Items
 
 :XYZ_LENGTH: XYZ Length.
 
-:COLOR_GAMMA: sRGB Color.
+:COLOR_GAMMA: Gamma-Corrected Color.
 
-   Color in sRGB color space (mainly for user interface colors).
 :COORDINATES: Coordinates.
 
 :LAYER: Layer.

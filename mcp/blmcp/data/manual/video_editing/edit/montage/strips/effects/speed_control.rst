@@ -1,4 +1,4 @@
-.. _bpy.types.SpeedControlStrip:
+.. _bpy.types.SpeedControlSequence:
 
 *******************
 Speed Control Strip

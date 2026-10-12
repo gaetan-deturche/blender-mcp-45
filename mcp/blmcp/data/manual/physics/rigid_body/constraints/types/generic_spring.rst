@@ -23,10 +23,12 @@ leading to strange behavior. If your springs are acting weird, check the damping
 Options
 =======
 
-.. figure:: /images/physics_rigid-body_constraints_types_generic-spring_panel.png
-   :align: right
+.. todo:: Update image
 
-   *Generic Spring* constraint options.
+   .. figure:: /images/physics_rigid-body_constraints_types_generic-spring_panel.png
+      :align: right
+
+      *Generic Spring* constraint options.
 
 Limits
    X/Y/Z Axis

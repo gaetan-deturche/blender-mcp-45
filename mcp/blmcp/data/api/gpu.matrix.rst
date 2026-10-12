@@ -38,7 +38,7 @@ This module provides access to the matrix stack.
 
    Load a matrix into the stack.
 
-   :param matrix: A 4x4 matrix.
+   :arg matrix: A 4x4 matrix.
    :type matrix: :class:`mathutils.Matrix`
 
 
@@ -46,7 +46,7 @@ This module provides access to the matrix stack.
 
    Load a projection matrix into the stack.
 
-   :param matrix: A 4x4 matrix.
+   :arg matrix: A 4x4 matrix.
    :type matrix: :class:`mathutils.Matrix`
 
 
@@ -54,7 +54,7 @@ This module provides access to the matrix stack.
 
    Multiply the current stack matrix.
 
-   :param matrix: A 4x4 matrix.
+   :arg matrix: A 4x4 matrix.
    :type matrix: :class:`mathutils.Matrix`
 
 
@@ -77,16 +77,10 @@ This module provides access to the matrix stack.
 
    Context manager to ensure balanced push/pop calls, even in the case of an error.
 
-   :return: The context manager.
-   :rtype: :class:`gpu.types.MatrixStackContext`
-
 
 .. function:: push_pop_projection()
 
    Context manager to ensure balanced push/pop calls, even in the case of an error.
-
-   :return: The context manager.
-   :rtype: :class:`gpu.types.MatrixStackContext`
 
 
 .. function:: push_projection()
@@ -103,23 +97,21 @@ This module provides access to the matrix stack.
 
    Scale the current stack matrix.
 
-   :param scale: Scale the current stack matrix with 2 or 3 floats.
+   :arg scale: Scale the current stack matrix with 2 or 3 floats.
    :type scale: Sequence[float]
 
 
 .. function:: scale_uniform(scale)
 
-   Scale the current stack matrix uniformly.
-
-   :param scale: Uniform scale factor.
+   :arg scale: Scale the current stack matrix.
    :type scale: float
 
 
 .. function:: translate(offset)
 
-   Translate the current stack matrix.
+   Scale the current stack matrix.
 
-   :param offset: Translate the current stack matrix with 2 or 3 floats.
+   :arg offset: Translate the current stack matrix with 2 or 3 floats.
    :type offset: Sequence[float]
 
 

@@ -11,11 +11,7 @@ This module provides access to GPUShader internal functions.
 
 All built-in shaders have the ``mat4 ModelViewProjectionMatrix`` uniform.
 
-Its value must be modified using the :mod:`gpu.matrix` module.
-
-.. important::
-
-   Shader uniforms must be explicitly initialized to avoid retaining values from previous executions.
+Its value must be modified using the :class:`gpu.matrix` module.
 
 ``FLAT_COLOR``
    :Attributes: vec3 pos, vec4 color
@@ -23,17 +19,9 @@ Its value must be modified using the :mod:`gpu.matrix` module.
 ``IMAGE``
    :Attributes: vec3 pos, vec2 texCoord
    :Uniforms: sampler2D image
-``IMAGE_SCENE_LINEAR_TO_REC709_SRGB``
-   :Attributes: vec3 pos, vec2 texCoord
-   :Uniforms: sampler2D image
-   :Note: Expect texture to be in scene linear color space
 ``IMAGE_COLOR``
    :Attributes: vec3 pos, vec2 texCoord
    :Uniforms: sampler2D image, vec4 color
-``IMAGE_COLOR_SCENE_LINEAR_TO_REC709_SRGB``
-   :Attributes: vec3 pos, vec2 texCoord
-   :Uniforms: sampler2D image, vec4 color
-   :Note: Expect texture to be in scene linear color space
 ``SMOOTH_COLOR``
    :Attributes: vec3 pos, vec4 color
    :Uniforms: none
@@ -48,7 +36,7 @@ Its value must be modified using the :mod:`gpu.matrix` module.
    :Uniforms: vec2 viewportSize, float lineWidth
 ``POLYLINE_UNIFORM_COLOR``
    :Attributes: vec3 pos
-   :Uniforms: vec2 viewportSize, float lineWidth, vec4 color
+   :Uniforms: vec2 viewportSize, float lineWidth
 ``POINT_FLAT_COLOR``
    :Attributes: vec3 pos, vec4 color
    :Uniforms: float size
@@ -60,23 +48,23 @@ Its value must be modified using the :mod:`gpu.matrix` module.
 
    Create shader from a GPUShaderCreateInfo.
 
-   :param shader_info: GPUShaderCreateInfo
+   :arg shader_info: GPUShaderCreateInfo
    :type shader_info: :class:`gpu.types.GPUShaderCreateInfo`
-   :return: Shader object corresponding to the given shader info.
+   :return: Shader object corresponding to the given name.
    :rtype: :class:`gpu.types.GPUShader`
 
 
-.. function:: from_builtin(shader_name, *, config='DEFAULT')
+.. function:: from_builtin(shader_name, config='DEFAULT')
 
-   Shaders that are embedded in the Blender internal code (see :ref:`built-in-shaders`).
+   Shaders that are embedded in the blender internal code (see :ref:`built-in-shaders`).
    They all read the uniform ``mat4 ModelViewProjectionMatrix``,
    which can be edited by the :mod:`gpu.matrix` module.
 
    You can also choose a shader configuration that uses clip_planes by setting the ``CLIPPED`` value to the config parameter. Note that in this case you also need to manually set the value of ``mat4 ModelMatrix``.
 
-   :param shader_name: One of the builtin shader names.
+   :arg shader_name: One of the builtin shader names.
    :type shader_name: str
-   :param config: One of these types of shader configuration:
+   :arg config: One of these types of shader configuration:
 
       - ``DEFAULT``
       - ``CLIPPED``

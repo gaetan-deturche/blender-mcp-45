@@ -28,6 +28,12 @@ Path
    The path to the `.ply` file to be imported.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

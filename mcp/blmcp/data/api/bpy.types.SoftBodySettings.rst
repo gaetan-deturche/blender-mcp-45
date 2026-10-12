@@ -5,307 +5,300 @@ SoftBodySettings(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: SoftBodySettings(bpy_struct)
 
    Soft body simulation settings for an object
 
    .. attribute:: aero
 
-      Make edges 'sail' (in [0, 30000], default 0)
+      Make edges 'sail'
 
-      :type: int
+      :type: int in [0, 30000], default 0
 
    .. attribute:: aerodynamics_type
 
-      Method of calculating aerodynamic interaction (default ``'SIMPLE'``)
+      Method of calculating aerodynamic interaction
 
-      - ``SIMPLE``
+      * ``SIMPLE``
         Simple -- Edges receive a drag force from surrounding media.
-      - ``LIFT_FORCE``
+      * ``LIFT_FORCE``
         Lift Force -- Edges receive a lift force when passing through surrounding media.
 
-      :type: Literal['SIMPLE', 'LIFT_FORCE']
+      :type: enum in [``'SIMPLE'``, ``'LIFT_FORCE'``], default ``'SIMPLE'``
 
    .. attribute:: ball_damp
 
-      Blending to inelastic collision (in [0.001, 1], default 0.0)
+      Blending to inelastic collision
 
-      :type: float
+      :type: float in [0.001, 1], default 0.0
 
    .. attribute:: ball_size
 
-      Absolute ball size or factor if not manually adjusted (in [-10, 10], default 0.0)
+      Absolute ball size or factor if not manually adjusted
 
-      :type: float
+      :type: float in [-10, 10], default 0.0
 
    .. attribute:: ball_stiff
 
-      Ball inflating pressure (in [0.001, 100], default 0.0)
+      Ball inflating pressure
 
-      :type: float
+      :type: float in [0.001, 100], default 0.0
 
    .. attribute:: bend
 
-      Bending Stiffness (in [0, 10], default 0.0)
+      Bending Stiffness
 
-      :type: float
+      :type: float in [0, 10], default 0.0
 
    .. attribute:: choke
 
-      'Viscosity' inside collision target (in [0, 100], default 0)
+      'Viscosity' inside collision target
 
-      :type: int
+      :type: int in [0, 100], default 0
 
    .. attribute:: collision_collection
 
       Limit colliders to this collection
 
-      :type: :class:`Collection` | None
+      :type: :class:`Collection`
 
    .. attribute:: collision_type
 
-      Choose Collision Type (default ``'MANUAL'``)
+      Choose Collision Type
 
-      - ``MANUAL``
+      * ``MANUAL``
         Manual -- Manual adjust.
-      - ``AVERAGE``
+      * ``AVERAGE``
         Average -- Average Spring length \* Ball Size.
-      - ``MINIMAL``
+      * ``MINIMAL``
         Minimal -- Minimal Spring length \* Ball Size.
-      - ``MAXIMAL``
+      * ``MAXIMAL``
         Maximal -- Maximal Spring length \* Ball Size.
-      - ``MINMAX``
+      * ``MINMAX``
         AvMinMax -- (Min+Max)/2 \* Ball Size.
 
-      :type: Literal['MANUAL', 'AVERAGE', 'MINIMAL', 'MAXIMAL', 'MINMAX']
+      :type: enum in [``'MANUAL'``, ``'AVERAGE'``, ``'MINIMAL'``, ``'MAXIMAL'``, ``'MINMAX'``], default ``'MANUAL'``
 
    .. attribute:: damping
 
-      Edge spring friction (in [0, 50], default 0.0)
+      Edge spring friction
 
-      :type: float
+      :type: float in [0, 50], default 0.0
 
    .. data:: effector_weights
 
-      (readonly)
-
-      :type: :class:`EffectorWeights` | None
+      :type: :class:`EffectorWeights`, (readonly)
 
    .. attribute:: error_threshold
 
-      The Runge-Kutta ODE solver error limit, low value gives more precision, high values speed (in [0.001, 10], default 0.0)
+      The Runge-Kutta ODE solver error limit, low value gives more precision, high values speed
 
-      :type: float
+      :type: float in [0.001, 10], default 0.0
 
    .. attribute:: friction
 
-      General media friction for point movements (in [0, 50], default 0.0)
+      General media friction for point movements
 
-      :type: float
+      :type: float in [0, 50], default 0.0
 
    .. attribute:: fuzzy
 
-      Fuzziness while on collision, high values make collision handling faster but less stable (in [1, 100], default 0)
+      Fuzziness while on collision, high values make collision handling faster but less stable
 
-      :type: int
+      :type: int in [1, 100], default 0
 
    .. attribute:: goal_default
 
-      Default Goal (vertex target position) value (in [0, 1], default 0.0)
+      Default Goal (vertex target position) value
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: goal_friction
 
-      Goal (vertex target position) friction (in [0, 50], default 0.0)
+      Goal (vertex target position) friction
 
-      :type: float
+      :type: float in [0, 50], default 0.0
 
    .. attribute:: goal_max
 
-      Goal maximum, vertex weights are scaled to match this range (in [0, 1], default 0.0)
+      Goal maximum, vertex weights are scaled to match this range
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: goal_min
 
-      Goal minimum, vertex weights are scaled to match this range (in [0, 1], default 0.0)
+      Goal minimum, vertex weights are scaled to match this range
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: goal_spring
 
-      Goal (vertex target position) spring stiffness (in [0, 0.999], default 0.0)
+      Goal (vertex target position) spring stiffness
 
-      :type: float
+      :type: float in [0, 0.999], default 0.0
 
    .. attribute:: gravity
 
-      Apply gravitation to point movement (in [-10, 10], default 0.0)
+      Apply gravitation to point movement
 
-      :type: float
+      :type: float in [-10, 10], default 0.0
 
    .. attribute:: location_mass_center
 
-      Location of center of mass (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0))
+      Location of center of mass
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)
 
    .. attribute:: mass
 
-      General Mass value (in [0, 50000], default 0.0)
+      General Mass value
 
-      :type: float
+      :type: float in [0, 50000], default 0.0
 
    .. attribute:: plastic
 
-      Permanent deform (in [0, 100], default 0)
+      Permanent deform
 
-      :type: int
+      :type: int in [0, 100], default 0
 
    .. attribute:: pull
 
-      Edge spring stiffness when longer than rest length (in [0, 0.999], default 0.0)
+      Edge spring stiffness when longer than rest length
 
-      :type: float
+      :type: float in [0, 0.999], default 0.0
 
    .. attribute:: push
 
-      Edge spring stiffness when shorter than rest length (in [0, 0.999], default 0.0)
+      Edge spring stiffness when shorter than rest length
 
-      :type: float
+      :type: float in [0, 0.999], default 0.0
 
    .. attribute:: rotation_estimate
 
-      Estimated rotation matrix (multi-dimensional array of 3 * 3 items, in [-inf, inf], default ((0.0, 0.0, 0.0), (0.0, 0.0, 0.0), (0.0, 0.0, 0.0)))
+      Estimated rotation matrix
 
-      :type: :class:`mathutils.Matrix`
+      :type: :class:`mathutils.Matrix` of 3 * 3 items in [-inf, inf], default ((0.0, 0.0, 0.0), (0.0, 0.0, 0.0), (0.0, 0.0, 0.0))
 
    .. attribute:: scale_estimate
 
-      Estimated scale matrix (multi-dimensional array of 3 * 3 items, in [-inf, inf], default ((0.0, 0.0, 0.0), (0.0, 0.0, 0.0), (0.0, 0.0, 0.0)))
+      Estimated scale matrix
 
-      :type: :class:`mathutils.Matrix`
+      :type: :class:`mathutils.Matrix` of 3 * 3 items in [-inf, inf], default ((0.0, 0.0, 0.0), (0.0, 0.0, 0.0), (0.0, 0.0, 0.0))
 
    .. attribute:: shear
 
-      Shear Stiffness (in [0, 1], default 0.0)
+      Shear Stiffness
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: speed
 
-      Tweak timing for physics to control frequency and speed (in [0.01, 100], default 0.0)
+      Tweak timing for physics to control frequency and speed
 
-      :type: float
+      :type: float in [0.01, 100], default 0.0
 
    .. attribute:: spring_length
 
-      Alter spring length to shrink/blow up (unit %) 0 to disable (in [0, 200], default 0)
+      Alter spring length to shrink/blow up (unit %) 0 to disable
 
-      :type: int
+      :type: int in [0, 200], default 0
 
    .. attribute:: step_max
 
-      Maximal # solver steps/frame (in [0, 30000], default 0)
+      Maximal # solver steps/frame
 
-      :type: int
+      :type: int in [0, 30000], default 0
 
    .. attribute:: step_min
 
-      Minimal # solver steps/frame (in [0, 30000], default 0)
+      Minimal # solver steps/frame
 
-      :type: int
+      :type: int in [0, 30000], default 0
 
    .. attribute:: use_auto_step
 
-      Use velocities for automagic step sizes (default False)
+      Use velocities for automagic step sizes
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_diagnose
 
-      Turn on SB diagnose console prints (default False)
+      Turn on SB diagnose console prints
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_edge_collision
 
-      Edges collide too (default False)
+      Edges collide too
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_edges
 
-      Use Edges as springs (default False)
+      Use Edges as springs
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_estimate_matrix
 
-      Store the estimated transforms in the soft body settings (default False)
+      Store the estimated transforms in the soft body settings
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_face_collision
 
-      Faces collide too, can be very slow (default False)
+      Faces collide too, can be very slow
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_goal
 
-      Define forces for vertices to stick to animated position (default False)
+      Define forces for vertices to stick to animated position
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_self_collision
 
-      Enable naive vertex ball self collision (default False)
+      Enable naive vertex ball self collision
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_stiff_quads
 
-      Add diagonal springs on 4-gons (default False)
+      Add diagonal springs on 4-gons
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: vertex_group_goal
 
-      Control point weight values (default "", never None)
+      Control point weight values
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: vertex_group_mass
 
-      Control point mass values (default "", never None)
+      Control point mass values
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: vertex_group_spring
 
-      Control point spring strength values (default "", never None)
+      Control point spring strength values
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -316,7 +309,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -324,30 +317,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -355,6 +347,6 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`Object.soft_body`
-   - :class:`SoftBodyModifier.settings`
+   * :class:`Object.soft_body`
+   * :class:`SoftBodyModifier.settings`
 

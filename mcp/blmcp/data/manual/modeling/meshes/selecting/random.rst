@@ -11,9 +11,6 @@ Select Random
 
 Adds random items to the selection.
 
-Options
-=======
-
 Ratio
    The ratio of items that should end up selected, e.g. 0.5 to select half of all items
    (that are not :doc:`hidden </scene_layout/object/editing/show_hide>`).

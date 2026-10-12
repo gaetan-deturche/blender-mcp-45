@@ -1,7 +1,17 @@
+.. _bpy.ops.mesh.face_shading:
 
 *******************
 Shade Smooth & Flat
 *******************
+
+The appearance of the mesh edges are determined to be evened out or well defined within the 3D Viewport and render.
+In Edit Mode, individual faces can be selected to determine which faces are smoothed or flattened.
+
+.. note::
+
+   Both :doc:`Shade Smooth and Flat </scene_layout/object/editing/shading>`
+   are also available in Object Mode and function the same way.
+
 
 .. _bpy.ops.mesh.faces_shade_smooth:
 
@@ -13,19 +23,8 @@ Shade Smooth
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Face --> Shade Smooth`
 
-Marks the selected faces for smooth shading so that the boundaries between them become blurred
-and hard to see. This is useful for rounded and organic surfaces.
+Using interpolated vertex normals, the mesh faces will blur at the edges and appear smooth.
 
-More specifically, this makes the face corner normals at each vertex all point in the same direction
-(namely the average of the face normals).
-
-.. tip::
-
-   After using *Shade Smooth* on a mesh and blurring all its edges, you can use
-   :ref:`Mark Sharp <bpy.ops.mesh.mark_sharp>` to selectively make some edges sharp again.
-
-   Alternatively, use :ref:`bpy.ops.object.shade_auto_smooth` to automatically apply smooth
-   shading to flattish areas while keeping corners sharp.
 
 .. _bpy.ops.mesh.faces_shade_flat:
 
@@ -37,11 +36,10 @@ Shade Flat
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Face --> Shade Flat`
 
-Marks the selected faces for flat shading so that the boundaries between them become sharp and
-clearly visible. This is useful for machines, crystals, etc.
+Face normals are displayed evenly, because of this all the edges of the selected mesh will be easily visible.
 
-More specifically, this makes each face corner normal match the corresponding face normal.
+.. tip::
 
-.. seealso::
-
-   :doc:`/scene_layout/object/editing/shading`
+   Use the :doc:`Edge Split </modeling/modifiers/generate/edge_split>`
+   modifier and :ref:`Smooth by Angle Smooth <bpy.ops.object.shade_auto_smooth>`
+   to balance between smooth surfaces and sharp edges.

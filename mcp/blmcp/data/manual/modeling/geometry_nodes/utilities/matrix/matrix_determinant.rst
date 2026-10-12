@@ -1,6 +1,5 @@
 .. index:: Geometry Nodes; Matrix Determinant
 .. _bpy.types.FunctionNodeMatrixDeterminant:
-.. --- copy below this line ---
 
 ***********************
 Matrix Determinant Node
@@ -19,6 +18,12 @@ Inputs
 
 Matrix
    The matrix to compute the determinant of.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs

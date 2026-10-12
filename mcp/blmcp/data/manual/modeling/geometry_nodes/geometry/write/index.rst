@@ -6,7 +6,6 @@
 .. toctree::
    :maxdepth: 1
 
-   set_geometry_bundle.rst
    set_geometry_name.rst
    set_id.rst
    set_position.rst

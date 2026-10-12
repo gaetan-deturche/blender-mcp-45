@@ -5,105 +5,96 @@ Window(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: Window(bpy_struct)
 
    Open window
 
    .. data:: height
 
-      Window height (in [0, 32767], default 0, readonly)
+      Window height
 
-      :type: int
+      :type: int in [0, 32767], default 0, (readonly)
 
    .. data:: modal_operators
 
-      A list of currently running modal operators (default None, readonly)
+      A list of currently running modal operators
 
-      :type: :class:`bpy_prop_collection`\ [:class:`Operator`]
+      :type: :class:`bpy_prop_collection` of :class:`Operator`, (readonly)
 
    .. data:: parent
 
-      Active workspace and scene follow this window (readonly)
+      Active workspace and scene follow this window
 
-      :type: :class:`Window` | None
+      :type: :class:`Window`, (readonly)
 
    .. attribute:: scene
 
-      Active scene to be edited in the window (never None)
+      Active scene to be edited in the window
 
-      :type: :class:`Scene`
+      :type: :class:`Scene`, (never None)
 
    .. attribute:: screen
 
-      Active workspace screen showing in the window (never None)
+      Active workspace screen showing in the window
 
-      :type: :class:`Screen`
+      :type: :class:`Screen`, (never None)
 
    .. data:: stereo_3d_display
 
-      Settings for stereo 3D display (readonly, never None)
+      Settings for stereo 3D display
 
-      :type: :class:`Stereo3dDisplay`
-
-   .. data:: support_hdr_color
-
-      The window has a HDR graphics buffer that wide gamut and high dynamic range colors can be written to, in extended sRGB color space. (default False, readonly)
-
-      :type: bool
+      :type: :class:`Stereo3dDisplay`, (readonly, never None)
 
    .. attribute:: view_layer
 
-      The active workspace view layer showing in the window (never None)
+      The active workspace view layer showing in the window
 
-      :type: :class:`ViewLayer`
+      :type: :class:`ViewLayer`, (never None)
 
    .. data:: width
 
-      Window width (in [0, 32767], default 0, readonly)
+      Window width
 
-      :type: int
+      :type: int in [0, 32767], default 0, (readonly)
 
    .. attribute:: workspace
 
-      Active workspace showing in the window (never None)
+      Active workspace showing in the window
 
-      :type: :class:`WorkSpace`
+      :type: :class:`WorkSpace`, (never None)
 
    .. data:: x
 
-      Horizontal location of the window (in [-32768, 32767], default 0, readonly)
+      Horizontal location of the window
 
-      :type: int
+      :type: int in [-32768, 32767], default 0, (readonly)
 
    .. data:: y
 
-      Vertical location of the window (in [-32768, 32767], default 0, readonly)
+      Vertical location of the window
 
-      :type: int
+      :type: int in [-32768, 32767], default 0, (readonly)
 
    .. method:: cursor_warp(x, y)
 
       Set the cursor position
 
-      :param x: (in [-inf, inf])
-      :type x: int
-      :param y: (in [-inf, inf])
-      :type y: int
+      :type x: int in [-inf, inf]
+      :type y: int in [-inf, inf]
 
    .. method:: cursor_set(cursor)
 
       Set the cursor
 
-      :param cursor: cursor
-      :type cursor: Literal[:ref:`rna_enum_window_cursor_items`]
+      :arg cursor: cursor
+      :type cursor: enum in :ref:`rna_enum_window_cursor_items`
 
    .. method:: cursor_modal_set(cursor)
 
       Set the cursor, so the previous cursor can be restored
 
-      :param cursor: cursor
-      :type cursor: Literal[:ref:`rna_enum_window_cursor_items`]
+      :arg cursor: cursor
+      :type cursor: enum in :ref:`rna_enum_window_cursor_items`
 
    .. method:: cursor_modal_restore()
 
@@ -114,78 +105,40 @@ base class --- :class:`bpy_struct`
 
       event_simulate
 
-      :param type: Type
-      :type type: Literal[:ref:`rna_enum_event_type_items`]
-      :param value: Value
-      :type value: Literal[:ref:`rna_enum_event_value_items`]
-      :param unicode: (optional)
-      :type unicode: str
-      :param x: (in [-inf, inf], optional)
-      :type x: int
-      :param y: (in [-inf, inf], optional)
-      :type y: int
-      :param shift: Shift, (optional)
-      :type shift: bool
-      :param ctrl: Ctrl, (optional)
-      :type ctrl: bool
-      :param alt: Alt, (optional)
-      :type alt: bool
-      :param oskey: OS Key, (optional)
-      :type oskey: bool
-      :param hyper: Hyper, (optional)
-      :type hyper: bool
+      :arg type: Type
+      :type type: enum in :ref:`rna_enum_event_type_items`
+      :arg value: Value
+      :type value: enum in :ref:`rna_enum_event_value_items`
+      :type unicode: string, (optional)
+      :type x: int in [-inf, inf], (optional)
+      :type y: int in [-inf, inf], (optional)
+      :arg shift: Shift
+      :type shift: boolean, (optional)
+      :arg ctrl: Ctrl
+      :type ctrl: boolean, (optional)
+      :arg alt: Alt
+      :type alt: boolean, (optional)
+      :arg oskey: OS Key
+      :type oskey: boolean, (optional)
+      :arg hyper: Hyper
+      :type hyper: boolean, (optional)
       :return: Item, Added key map item
       :rtype: :class:`Event`
 
-   .. method:: find_playing_scene(*, scrub=False)
-
-      find_playing_scene
-
-      :param scrub: Scrubbing, Check if time in the scene is being scrubbed (optional)
-      :type scrub: bool
-      :return: Scene, Scene that is currently playing
-      :rtype: :class:`Scene`
-
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
-
-
-   .. method:: screenshot(*, region=None, use_alpha=False)
-   
-      Capture the windows pixel data.
-   
-      :param region: The region to capture, or ``None`` to capture all.
-         Each int pair represents a pixel coordinate (the end value is not inclusive, matching Python slicing): ((min_x, min_y), (max_x, max_y))
-      :type region: tuple[tuple[int, int], tuple[int, int]] | None
-      :param use_alpha: When false the alpha channel is fully opaque. Otherwise alpha values from the window's frame-buffer are returned as-is.
-      :type use_alpha: bool
-      :return: A read-only :class:`memoryview` of shape ``(height, width, 4)`` and format ``'B'``, viewing the captured RGBA pixels (rows ordered from bottom to top).
-      :rtype: memoryview
-
-
-      **Save 3D Viewport to a PNG**
-
-      Capture the 3D viewport's main region from the current window
-      and write it to a PNG file using :mod:`imbuf`.
-
-      .. literalinclude:: ./examples/bpy.types.Window.screenshot.0.py
-         :lines: 8-
 
 
 Inherited Properties
@@ -194,7 +147,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -202,30 +155,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -233,9 +185,8 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`Context.window`
-   - :class:`Window.parent`
-   - :class:`WindowManager.event_timer_add`
-   - :class:`WindowManager.windows`
-   - :class:`Windows.find_playing`
+   * :class:`Context.window`
+   * :class:`Window.parent`
+   * :class:`WindowManager.event_timer_add`
+   * :class:`WindowManager.windows`
 

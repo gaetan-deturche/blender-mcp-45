@@ -4,7 +4,7 @@
   Troubleshooting Graphics Hardware
 #####################################
 
-.. include:: _common/introduction.rst
+.. include:: common/introduction.rst
    :start-line: 1
 
 .. toctree::

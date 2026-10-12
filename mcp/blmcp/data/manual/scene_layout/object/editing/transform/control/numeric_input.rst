@@ -35,7 +35,8 @@ You can see the numbers you enter in the 3D Viewport footer.
 Simple Mode
 ===========
 
-Blender has two "modes" a simple and an advanced one. Simple mode only accepts simple numbers.
+Blender has two "modes" a simple and an advanced one. Simple mode only accepts
+simple numbers. You can use basic :ref:`text editing <ui-text-editing>` except selection.
 
 Decimals :kbd:`Period`
    Decimals can be entered by pressing :kbd:`Period`.

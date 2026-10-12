@@ -5,99 +5,86 @@ CastModifier(Modifier)
 
 base classes --- :class:`bpy_struct`, :class:`Modifier`
 
-
 .. class:: CastModifier(Modifier)
 
    Modifier to cast to other shapes
 
    .. attribute:: cast_type
 
-      Target object shape (default ``'SPHERE'``)
+      Target object shape
 
-      :type: Literal['SPHERE', 'CYLINDER', 'CUBOID']
+      :type: enum in [``'SPHERE'``, ``'CYLINDER'``, ``'CUBOID'``], default ``'SPHERE'``
 
    .. attribute:: factor
 
-      (in [-inf, inf], default 0.5)
-
-      :type: float
+      :type: float in [-inf, inf], default 0.5
 
    .. attribute:: invert_vertex_group
 
-      Invert vertex group influence (default False)
+      Invert vertex group influence
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: object
 
       Control object: if available, its location determines the center of the effect
 
-      :type: :class:`Object` | None
+      :type: :class:`Object`
 
    .. attribute:: radius
 
-      Only deform vertices within this distance from the center of the effect (leave as 0 for infinite.) (in [0, inf], default 0.0)
+      Only deform vertices within this distance from the center of the effect (leave as 0 for infinite.)
 
-      :type: float
+      :type: float in [0, inf], default 0.0
 
    .. attribute:: size
 
-      Size of projection shape (leave as 0 for auto) (in [0, inf], default 0.0)
+      Size of projection shape (leave as 0 for auto)
 
-      :type: float
+      :type: float in [0, inf], default 0.0
 
    .. attribute:: use_radius_as_size
 
-      Use radius as size of projection shape (0 = auto) (default True)
+      Use radius as size of projection shape (0 = auto)
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_transform
 
-      Use object transform to control projection shape (default False)
+      Use object transform to control projection shape
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_x
 
-      (default True)
-
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_y
 
-      (default True)
-
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_z
 
-      (default True)
-
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: vertex_group
 
-      Vertex group name (default "", never None)
+      Vertex group name
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -108,20 +95,20 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
-   - :class:`Modifier.name`
-   - :class:`Modifier.type`
-   - :class:`Modifier.show_viewport`
-   - :class:`Modifier.show_render`
-   - :class:`Modifier.show_in_editmode`
-   - :class:`Modifier.show_on_cage`
-   - :class:`Modifier.show_expanded`
-   - :class:`Modifier.is_active`
-   - :class:`Modifier.use_pin_to_last`
-   - :class:`Modifier.is_override_data`
-   - :class:`Modifier.use_apply_on_spline`
-   - :class:`Modifier.execution_time`
-   - :class:`Modifier.persistent_uid`
+   * :class:`bpy_struct.id_data`
+   * :class:`Modifier.name`
+   * :class:`Modifier.type`
+   * :class:`Modifier.show_viewport`
+   * :class:`Modifier.show_render`
+   * :class:`Modifier.show_in_editmode`
+   * :class:`Modifier.show_on_cage`
+   * :class:`Modifier.show_expanded`
+   * :class:`Modifier.is_active`
+   * :class:`Modifier.use_pin_to_last`
+   * :class:`Modifier.is_override_data`
+   * :class:`Modifier.use_apply_on_spline`
+   * :class:`Modifier.execution_time`
+   * :class:`Modifier.persistent_uid`
 
 Inherited Functions
 -------------------
@@ -129,30 +116,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
-   - :class:`Modifier.bl_rna_get_subclass`
-   - :class:`Modifier.bl_rna_get_subclass_py`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
+   * :class:`Modifier.bl_rna_get_subclass`
+   * :class:`Modifier.bl_rna_get_subclass_py`
 

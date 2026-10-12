@@ -1,6 +1,5 @@
 .. index:: Geometry Nodes; Align Rotation to Vector
 .. _bpy.types.FunctionNodeAlignRotationToVector:
-.. --- copy below this line ---
 
 *****************************
 Align Rotation to Vector Node

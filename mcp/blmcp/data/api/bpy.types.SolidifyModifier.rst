@@ -5,196 +5,191 @@ SolidifyModifier(Modifier)
 
 base classes --- :class:`bpy_struct`, :class:`Modifier`
 
-
 .. class:: SolidifyModifier(Modifier)
 
    Create a solid skin, compensating for sharp angles
 
    .. attribute:: bevel_convex
 
-      Edge bevel weight to be added to outside edges (in [-1, 1], default 0.0)
+      Edge bevel weight to be added to outside edges
 
-      :type: float
+      :type: float in [-1, 1], default 0.0
 
    .. attribute:: edge_crease_inner
 
-      Assign a crease to inner edges (in [0, 1], default 0.0)
+      Assign a crease to inner edges
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: edge_crease_outer
 
-      Assign a crease to outer edges (in [0, 1], default 0.0)
+      Assign a crease to outer edges
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: edge_crease_rim
 
-      Assign a crease to the edges making up the rim (in [0, 1], default 0.0)
+      Assign a crease to the edges making up the rim
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: invert_vertex_group
 
-      Invert the vertex group influence (default False)
+      Invert the vertex group influence
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: material_offset
 
-      Offset material index of generated faces (in [-32768, 32767], default 0)
+      Offset material index of generated faces
 
-      :type: int
+      :type: int in [-32768, 32767], default 0
 
    .. attribute:: material_offset_rim
 
-      Offset material index of generated rim faces (in [-32768, 32767], default 0)
+      Offset material index of generated rim faces
 
-      :type: int
+      :type: int in [-32768, 32767], default 0
 
    .. attribute:: nonmanifold_boundary_mode
 
-      Selects the boundary adjustment algorithm (default ``'NONE'``)
+      Selects the boundary adjustment algorithm
 
-      - ``NONE``
+      * ``NONE``
         None -- No shape correction.
-      - ``ROUND``
+      * ``ROUND``
         Round -- Round open perimeter shape.
-      - ``FLAT``
+      * ``FLAT``
         Flat -- Flat open perimeter shape.
 
-      :type: Literal['NONE', 'ROUND', 'FLAT']
+      :type: enum in [``'NONE'``, ``'ROUND'``, ``'FLAT'``], default ``'NONE'``
 
    .. attribute:: nonmanifold_merge_threshold
 
-      Distance within which degenerated geometry is merged (in [0, 1], default 0.0001)
+      Distance within which degenerated geometry is merged
 
-      :type: float
+      :type: float in [0, 1], default 0.0001
 
    .. attribute:: nonmanifold_thickness_mode
 
-      Selects the used thickness algorithm (default ``'CONSTRAINTS'``)
+      Selects the used thickness algorithm
 
-      - ``FIXED``
+      * ``FIXED``
         Fixed -- Most basic thickness calculation.
-      - ``EVEN``
+      * ``EVEN``
         Even -- Even thickness calculation which takes the angle between faces into account.
-      - ``CONSTRAINTS``
+      * ``CONSTRAINTS``
         Constraints -- Thickness calculation using constraints, most advanced.
 
-      :type: Literal['FIXED', 'EVEN', 'CONSTRAINTS']
+      :type: enum in [``'FIXED'``, ``'EVEN'``, ``'CONSTRAINTS'``], default ``'CONSTRAINTS'``
 
    .. attribute:: offset
 
-      Offset the thickness from the center (in [-inf, inf], default -1.0)
+      Offset the thickness from the center
 
-      :type: float
+      :type: float in [-inf, inf], default -1.0
 
    .. attribute:: rim_vertex_group
 
-      Vertex group that the generated rim geometry will be weighted to (default "", never None)
+      Vertex group that the generated rim geometry will be weighted to
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: shell_vertex_group
 
-      Vertex group that the generated shell geometry will be weighted to (default "", never None)
+      Vertex group that the generated shell geometry will be weighted to
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: solidify_mode
 
-      Selects the used algorithm (default ``'EXTRUDE'``)
+      Selects the used algorithm
 
-      - ``EXTRUDE``
+      * ``EXTRUDE``
         Simple -- Output a solidified version of a mesh by simple extrusion.
-      - ``NON_MANIFOLD``
+      * ``NON_MANIFOLD``
         Complex -- Output a manifold mesh even if the base mesh is non-manifold, where edges have 3 or more connecting faces. This method is slower..
 
-      :type: Literal['EXTRUDE', 'NON_MANIFOLD']
+      :type: enum in [``'EXTRUDE'``, ``'NON_MANIFOLD'``], default ``'EXTRUDE'``
 
    .. attribute:: thickness
 
-      Thickness of the shell (in [-inf, inf], default 0.01)
+      Thickness of the shell
 
-      :type: float
+      :type: float in [-inf, inf], default 0.01
 
    .. attribute:: thickness_clamp
 
-      Offset clamp based on geometry scale (in [0, 100], default 0.0)
+      Offset clamp based on geometry scale
 
-      :type: float
+      :type: float in [0, 100], default 0.0
 
    .. attribute:: thickness_vertex_group
 
-      Thickness factor to use for zero vertex group influence (in [0, 1], default 0.0)
+      Thickness factor to use for zero vertex group influence
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: use_even_offset
 
-      Maintain thickness by adjusting for sharp corners (slow, disable when not needed) (default False)
+      Maintain thickness by adjusting for sharp corners (slow, disable when not needed)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_flat_faces
 
-      Make faces use the minimal vertex weight assigned to their vertices (ensures new faces remain parallel to their original ones, slow, disable when not needed) (default False)
+      Make faces use the minimal vertex weight assigned to their vertices (ensures new faces remain parallel to their original ones, slow, disable when not needed)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_flip_normals
 
-      Invert the face direction (default False)
+      Invert the face direction
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_quality_normals
 
-      Calculate normals which result in more even thickness (slow, disable when not needed) (default False)
+      Calculate normals which result in more even thickness (slow, disable when not needed)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_rim
 
-      Create edge loops between the inner and outer surfaces on face edges (slow, disable when not needed) (default True)
+      Create edge loops between the inner and outer surfaces on face edges (slow, disable when not needed)
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_rim_only
 
-      Only add the rim to the original data (default False)
+      Only add the rim to the original data
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_thickness_angle_clamp
 
-      Clamp thickness based on angles (default False)
+      Clamp thickness based on angles
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: vertex_group
 
-      Vertex group name (default "", never None)
+      Vertex group name
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -205,20 +200,20 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
-   - :class:`Modifier.name`
-   - :class:`Modifier.type`
-   - :class:`Modifier.show_viewport`
-   - :class:`Modifier.show_render`
-   - :class:`Modifier.show_in_editmode`
-   - :class:`Modifier.show_on_cage`
-   - :class:`Modifier.show_expanded`
-   - :class:`Modifier.is_active`
-   - :class:`Modifier.use_pin_to_last`
-   - :class:`Modifier.is_override_data`
-   - :class:`Modifier.use_apply_on_spline`
-   - :class:`Modifier.execution_time`
-   - :class:`Modifier.persistent_uid`
+   * :class:`bpy_struct.id_data`
+   * :class:`Modifier.name`
+   * :class:`Modifier.type`
+   * :class:`Modifier.show_viewport`
+   * :class:`Modifier.show_render`
+   * :class:`Modifier.show_in_editmode`
+   * :class:`Modifier.show_on_cage`
+   * :class:`Modifier.show_expanded`
+   * :class:`Modifier.is_active`
+   * :class:`Modifier.use_pin_to_last`
+   * :class:`Modifier.is_override_data`
+   * :class:`Modifier.use_apply_on_spline`
+   * :class:`Modifier.execution_time`
+   * :class:`Modifier.persistent_uid`
 
 Inherited Functions
 -------------------
@@ -226,30 +221,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
-   - :class:`Modifier.bl_rna_get_subclass`
-   - :class:`Modifier.bl_rna_get_subclass_py`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
+   * :class:`Modifier.bl_rna_get_subclass`
+   * :class:`Modifier.bl_rna_get_subclass_py`
 

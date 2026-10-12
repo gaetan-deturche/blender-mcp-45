@@ -9,13 +9,17 @@ By Attribute
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Select --> By Attribute`
 
-Selects the vertices, edges, or faces for which the currently active
-:doc:`attribute </modeling/geometry_nodes/attributes_reference>` has a value of True.
+Selects vertices, edges, or faces based on the :term:`Active`
+:doc:`Attribute </modeling/geometry_nodes/attributes_reference>`.
 
-The active attribute is the one which is currently selected in the
-:ref:`Attributes list <bpy.types.AttributeGroup>` of the :doc:`/editors/properties_editor`.
+
+Usage
+=====
 
 .. note::
 
-   The attribute must have a :ref:`domain <attribute-domains>` of Vertex, Edge, or Face,
-   and a :ref:`type <attribute-data-types>` of Boolean.
+   - The active attribute must have a boolean :ref:`type <attribute-data-types>`.
+   - The active attribute must be on the vertex, edge, or face :ref:`domain <attribute-domains>`.
+
+#. Select the desired attribute from the :ref:`Attribute List <bpy.types.AttributeGroup>`.
+#. Execute the *By Attribute* operator.

@@ -1,4 +1,3 @@
-.. _bpy.ops.mesh.select_axis:
 
 **************
 Side of Active
@@ -9,30 +8,30 @@ Side of Active
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Select --> Side of Active`
 
-Selects all the vertices that are (for example) to the right of the active vertex.
-
-Options
-=======
+With an active vertex, this tool will select all vertices in a specified direction.
+It is similarly to the *Loop Inner-Region* tool in that it will fill select faces within its perimeters,
+however, it is determined by direction and not by a closed loop.
 
 Axis Mode
-   The :doc:`transform orientation </editors/3dview/controls/orientation>` from which to take the *Axis*.
+   Determines the behavior of the selection.
+   More information on this can be found in :doc:`Transform Orientations </editors/3dview/controls/orientation>`.
 
 Axis Sign
-   Select the vertices whose *Axis* coordinate is...
+   Positive/Negative Axis
+      Depending on which *Axis* is chosen, the selection will encompass the positive or negative axis
+      starting from the active vertex outward.
 
-   Positive Axis
-      ...greater than or equal to that of the active vertex.
-   Negative Axis
-      ...less than or equal to that of the active vertex.
    Aligned Axis
-      ...equal to that of the active vertex.
+      Where *Positive and Negative Axis* select all vertices in a given direction,
+      *Aligned Axis* will only select the vertices that are in-line with the active vertex.
 
 .. figure:: /images/modeling_meshes_selecting_side-of-active_sign.png
 
-   From left to right: initial selection, Positive, Negative, Aligned.
+   While following along the X axis: (from left to right) active vertex, Aligned, Positive, and Negative.
 
 Axis
-   The axis along which to compare coordinates.
+   Chooses the direction of the selection.
 
 Threshold
-   Tolerance for vertices that are slightly outside of the coordinate range.
+   The amount of influence the selection has outside the original perimeters.
+   The higher the *Threshold* the more vertices will be selected.

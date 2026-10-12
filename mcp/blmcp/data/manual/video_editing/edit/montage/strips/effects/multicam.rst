@@ -1,4 +1,4 @@
-.. _bpy.types.MulticamStrip:
+.. _bpy.types.MulticamSequence:
 
 ***********************
 Multicam Selector Strip

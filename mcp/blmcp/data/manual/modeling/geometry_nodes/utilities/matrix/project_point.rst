@@ -1,6 +1,5 @@
 .. index:: Geometry Nodes; Project Point
 .. _bpy.types.FunctionNodeProjectPoint:
-.. --- copy below this line ---
 
 ******************
 Project Point Node
@@ -25,6 +24,12 @@ Vector
    The position vector to project.
 Transformation
    The projection matrix.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs

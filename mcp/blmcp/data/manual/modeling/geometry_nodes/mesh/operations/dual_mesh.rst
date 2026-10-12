@@ -30,6 +30,12 @@ Keep Boundaries
    extra geometry, and avoiding the dual mesh transformation there.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Output
 ======
 

@@ -1,16 +1,14 @@
 GeometrySet
 ===========
 
-.. currentmodule:: bpy.types
-
 
 Accessing Evaluated Geometry
 ++++++++++++++++++++++++++++
 
-.. literalinclude:: ./examples/bpy.types.GeometrySet.0.py
+.. literalinclude:: ./examples/bpy.types.GeometrySet.py
    :lines: 5-
 
-.. class:: GeometrySet
+.. class:: bpy.types.GeometrySet
 
    Stores potentially multiple geometry components of different types.
    For example, it might contain a mesh, curves and nested instances.
@@ -48,7 +46,7 @@ Accessing Evaluated Geometry
 
       The Grease Pencil data-block in the geometry set.
       
-      :type: :class:`bpy.types.GreasePencil`
+      :type: :class:`bpy.types.GreasePencilv3`
 
 
    .. attribute:: mesh
@@ -91,14 +89,8 @@ Accessing Evaluated Geometry
       Create a geometry set from the evaluated geometry of an evaluated object.
       Typically, it's more convenient to use :func:`bpy.types.Object.evaluated_geometry`.
    
-      :param evaluated_object: The evaluated object to create a geometry set from.
+      :arg evaluated_object: The evaluated object to create a geometry set from.
       :type evaluated_object: bpy.types.Object
-
-   .. details:: Special Methods
-
-      .. method:: __repr__()
-
-         :rtype: str
 
 
 

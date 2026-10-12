@@ -11,9 +11,7 @@ Smooth Vertices
    :Menu:      :menuselection:`Vertex --> Smooth Vertices`,
                :menuselection:`Context Menu --> Smooth Vertices`
 
-Moves the selected vertices so that the surface around them becomes more smooth and rounded.
-
-The following options are available in the :ref:`bpy.ops.screen.redo_last` panel:
+This operator smooths the selected vertices by averaging the angles between the faces.
 
 Smoothing
    Smoothing factor.
@@ -41,19 +39,10 @@ Axes
 
 .. tip::
 
-   If the mesh has insufficient geometry density and would still look blocky after smoothing,
-   you can :doc:`subdivide </modeling/meshes/editing/edge/subdivide>` it first.
+   Using the Smooth tool after :doc:`subdividing </modeling/meshes/editing/edge/subdivide>`
+   can help create a more organic shape.
 
-   Alternatively, use the :doc:`/modeling/modifiers/generate/subdivision_surface` to subdivide
-   and smooth the mesh in one go. This uses a more complex smoothing algorithm, however,
-   so the result won't be quite the same.
+.. seealso:: Smooth Modifier
 
-.. seealso::
-
-   The :doc:`/modeling/modifiers/deform/smooth` performs this operation non-destructively.
-
-.. note::
-
-   The :ref:`Smooth Faces <modeling-meshes-editing-normals-shading>` operator sounds similar to this one
-   but is unrelated. It's called *Shade Smooth* in other parts of the UI and merely changes the vertex normals
-   to make the mesh *appear* more smooth. It doesn't smooth out vertex positions like *Smooth Vertices* does.
+   The :doc:`Smooth Modifier </modeling/modifiers/deform/smooth>`, which can be limited to a *Vertex Group*,
+   is a non-destructive alternative to the Smooth operator.

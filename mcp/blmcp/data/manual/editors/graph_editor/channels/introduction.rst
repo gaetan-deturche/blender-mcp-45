@@ -12,8 +12,8 @@ Channels Region
 
    The Channels region.
 
-This region is found on the left side of time-based editors like
-the :doc:`Dope Sheet Editor </editors/dope_sheet/introduction>` and the Graph Editor.
+This region is found on the left side of time-based editors like the :doc:`/editors/timeline`,
+the :doc:`Dope Sheet Editor </editors/dope_sheet/introduction>`, and the Graph Editor.
 It shows a tree of items (objects, bones...) and their animated properties,
 with the latter also being called "channels." Each channel has an associated F-curve
 describing how its value changes over time.
@@ -33,21 +33,20 @@ Search :kbd:`Ctrl-F`
    show channels that *don't* include the search text.
 
 
-Channels
+Controls
 --------
 
 The headers contain the following toggle buttons:
 
-:bl-icon:`unpinned` / :bl-icon:`pinned` Pin
+Pin (pin icon)
    Keep the row and its children visible even when selecting a different object.
-:bl-icon:`hide_off` / :bl-icon:`hide_on` Hide
+Hide (eye icon)
    Hides the keyframes and curve associated with the channel.
-   Use :kbd:`Ctrl-LMB` to solo the selected channel.
-:bl-icon:`modifier_on` / :bl-icon:`modifier_off` Modifiers
+Modifiers (wrench icon)
    Deactivates the modifiers of the curve.
-:bl-icon:`checkbox_hlt` / :bl-icon:`checkbox_dehlt` Mute
+Mute (checkbox)
    Deactivates the curve, making the animation behave as though it doesn't exist.
-:bl-icon:`unlock` / :bl-icon:`locked` Lock :kbd:`Tab`
+Lock :kbd:`Tab` (padlock icon)
    Prevent the curve from being edited.
 
    .. note::

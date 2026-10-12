@@ -21,9 +21,11 @@ or kinks in particle hair.
 Options
 =======
 
-.. figure:: /images/physics_forces_force-fields_types_vortex_panel.png
+.. todo:: Update image
 
-   UI for a Vortex force field.
+   .. figure:: /images/physics_forces_force-fields_types_vortex_panel.png
+
+      UI for a Vortex force field.
 
 Inflow
    Inwards component of the vortex force.

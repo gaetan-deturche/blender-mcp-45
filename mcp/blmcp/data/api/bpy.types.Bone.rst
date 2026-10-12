@@ -5,375 +5,380 @@ Bone(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: Bone(bpy_struct)
 
    Bone in an Armature data-block
 
    .. attribute:: bbone_curveinx
 
-      X-axis handle offset for start of the B-Bone's curve, adjusts curvature (in [-inf, inf], default 0.0)
+      X-axis handle offset for start of the B-Bone's curve, adjusts curvature
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_curveinz
 
-      Z-axis handle offset for start of the B-Bone's curve, adjusts curvature (in [-inf, inf], default 0.0)
+      Z-axis handle offset for start of the B-Bone's curve, adjusts curvature
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_curveoutx
 
-      X-axis handle offset for end of the B-Bone's curve, adjusts curvature (in [-inf, inf], default 0.0)
+      X-axis handle offset for end of the B-Bone's curve, adjusts curvature
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_curveoutz
 
-      Z-axis handle offset for end of the B-Bone's curve, adjusts curvature (in [-inf, inf], default 0.0)
+      Z-axis handle offset for end of the B-Bone's curve, adjusts curvature
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_custom_handle_end
 
       Bone that serves as the end handle for the B-Bone curve
 
-      :type: :class:`Bone` | None
+      :type: :class:`Bone`
 
    .. attribute:: bbone_custom_handle_start
 
       Bone that serves as the start handle for the B-Bone curve
 
-      :type: :class:`Bone` | None
+      :type: :class:`Bone`
 
    .. attribute:: bbone_easein
 
-      Length of first Bézier Handle (for B-Bones only) (in [-inf, inf], default 1.0)
+      Length of first Bézier Handle (for B-Bones only)
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: bbone_easeout
 
-      Length of second Bézier Handle (for B-Bones only) (in [-inf, inf], default 1.0)
+      Length of second Bézier Handle (for B-Bones only)
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: bbone_handle_type_end
 
-      Selects how the end handle of the B-Bone is computed (default ``'AUTO'``)
+      Selects how the end handle of the B-Bone is computed
 
-      - ``AUTO``
+      * ``AUTO``
         Automatic -- Use connected parent and children to compute the handle.
-      - ``ABSOLUTE``
+      * ``ABSOLUTE``
         Absolute -- Use the position of the specified bone to compute the handle.
-      - ``RELATIVE``
+      * ``RELATIVE``
         Relative -- Use the offset of the specified bone from rest pose to compute the handle.
-      - ``TANGENT``
+      * ``TANGENT``
         Tangent -- Use the orientation of the specified bone to compute the handle, ignoring the location.
 
-      :type: Literal['AUTO', 'ABSOLUTE', 'RELATIVE', 'TANGENT']
+      :type: enum in [``'AUTO'``, ``'ABSOLUTE'``, ``'RELATIVE'``, ``'TANGENT'``], default ``'AUTO'``
 
    .. attribute:: bbone_handle_type_start
 
-      Selects how the start handle of the B-Bone is computed (default ``'AUTO'``)
+      Selects how the start handle of the B-Bone is computed
 
-      - ``AUTO``
+      * ``AUTO``
         Automatic -- Use connected parent and children to compute the handle.
-      - ``ABSOLUTE``
+      * ``ABSOLUTE``
         Absolute -- Use the position of the specified bone to compute the handle.
-      - ``RELATIVE``
+      * ``RELATIVE``
         Relative -- Use the offset of the specified bone from rest pose to compute the handle.
-      - ``TANGENT``
+      * ``TANGENT``
         Tangent -- Use the orientation of the specified bone to compute the handle, ignoring the location.
 
-      :type: Literal['AUTO', 'ABSOLUTE', 'RELATIVE', 'TANGENT']
+      :type: enum in [``'AUTO'``, ``'ABSOLUTE'``, ``'RELATIVE'``, ``'TANGENT'``], default ``'AUTO'``
 
    .. attribute:: bbone_handle_use_ease_end
 
-      Multiply the B-Bone Ease Out channel by the local Y scale value of the end handle. This is done after the Scale Easing option and isn't affected by it. (default False)
+      Multiply the B-Bone Ease Out channel by the local Y scale value of the end handle. This is done after the Scale Easing option and isn't affected by it.
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: bbone_handle_use_ease_start
 
-      Multiply the B-Bone Ease In channel by the local Y scale value of the start handle. This is done after the Scale Easing option and isn't affected by it. (default False)
+      Multiply the B-Bone Ease In channel by the local Y scale value of the start handle. This is done after the Scale Easing option and isn't affected by it.
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: bbone_handle_use_scale_end
 
-      Multiply B-Bone Scale Out channels by the local scale values of the end handle. This is done after the Scale Easing option and isn't affected by it. (array of 3 items, default (False, False, False))
+      Multiply B-Bone Scale Out channels by the local scale values of the end handle. This is done after the Scale Easing option and isn't affected by it.
 
-      :type: :class:`bpy_prop_array`\ [bool]
+      :type: boolean array of 3 items, default (False, False, False)
 
    .. attribute:: bbone_handle_use_scale_start
 
-      Multiply B-Bone Scale In channels by the local scale values of the start handle. This is done after the Scale Easing option and isn't affected by it. (array of 3 items, default (False, False, False))
+      Multiply B-Bone Scale In channels by the local scale values of the start handle. This is done after the Scale Easing option and isn't affected by it.
 
-      :type: :class:`bpy_prop_array`\ [bool]
+      :type: boolean array of 3 items, default (False, False, False)
 
    .. attribute:: bbone_mapping_mode
 
-      Selects how the vertices are mapped to B-Bone segments based on their position (default ``'STRAIGHT'``)
+      Selects how the vertices are mapped to B-Bone segments based on their position
 
-      - ``STRAIGHT``
+      * ``STRAIGHT``
         Straight -- Fast mapping that is good for most situations, but ignores the rest pose curvature of the B-Bone.
-      - ``CURVED``
+      * ``CURVED``
         Curved -- Slower mapping that gives better deformation for B-Bones that are sharply curved in rest pose.
 
-      :type: Literal['STRAIGHT', 'CURVED']
+      :type: enum in [``'STRAIGHT'``, ``'CURVED'``], default ``'STRAIGHT'``
 
    .. attribute:: bbone_rollin
 
-      Roll offset for the start of the B-Bone, adjusts twist (in [-inf, inf], default 0.0)
+      Roll offset for the start of the B-Bone, adjusts twist
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_rollout
 
-      Roll offset for the end of the B-Bone, adjusts twist (in [-inf, inf], default 0.0)
+      Roll offset for the end of the B-Bone, adjusts twist
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_scalein
 
-      Scale factors for the start of the B-Bone, adjusts thickness (for tapering effects) (array of 3 items, in [-inf, inf], default (1.0, 1.0, 1.0))
+      Scale factors for the start of the B-Bone, adjusts thickness (for tapering effects)
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (1.0, 1.0, 1.0)
 
    .. attribute:: bbone_scaleout
 
-      Scale factors for the end of the B-Bone, adjusts thickness (for tapering effects) (array of 3 items, in [-inf, inf], default (1.0, 1.0, 1.0))
+      Scale factors for the end of the B-Bone, adjusts thickness (for tapering effects)
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (1.0, 1.0, 1.0)
 
    .. attribute:: bbone_segments
 
-      Number of subdivisions of bone (for B-Bones only) (in [1, 32], default 0)
+      Number of subdivisions of bone (for B-Bones only)
 
-      :type: int
+      :type: int in [1, 32], default 0
 
    .. attribute:: bbone_x
 
-      B-Bone X size (in [-inf, inf], default 0.0)
+      B-Bone X size
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_z
 
-      B-Bone Z size (in [-inf, inf], default 0.0)
+      B-Bone Z size
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. data:: children
 
-      Bones which are children of this bone (default None, readonly)
+      Bones which are children of this bone
 
-      :type: :class:`bpy_prop_collection`\ [:class:`Bone`]
+      :type: :class:`bpy_prop_collection` of :class:`Bone`, (readonly)
 
    .. data:: collections
 
-      Bone Collections that contain this bone (default None, readonly)
+      Bone Collections that contain this bone
 
-      :type: :class:`BoneCollectionMemberships`\ [:class:`BoneCollection`]
+      :type: :class:`BoneCollectionMemberships` :class:`bpy_prop_collection` of :class:`BoneCollection`, (readonly)
 
    .. data:: color
 
-      (readonly)
-
-      :type: :class:`BoneColor` | None
+      :type: :class:`BoneColor`, (readonly)
 
    .. attribute:: display_type
 
-      (default ``'OCTAHEDRAL'``)
-
-      - ``ARMATURE_DEFINED``
+      * ``ARMATURE_DEFINED``
         Armature Defined -- Use display mode from armature (default).
-      - ``OCTAHEDRAL``
+      * ``OCTAHEDRAL``
         Octahedral -- Display bones as octahedral shape.
-      - ``STICK``
+      * ``STICK``
         Stick -- Display bones as simple 2D lines with dots.
-      - ``BBONE``
+      * ``BBONE``
         B-Bone -- Display bones as boxes, showing subdivision and B-Splines.
-      - ``ENVELOPE``
+      * ``ENVELOPE``
         Envelope -- Display bones as extruded spheres, showing deformation influence volume.
-      - ``WIRE``
+      * ``WIRE``
         Wire -- Display bones as thin wires, showing subdivision and B-Splines.
 
-      :type: Literal['ARMATURE_DEFINED', 'OCTAHEDRAL', 'STICK', 'BBONE', 'ENVELOPE', 'WIRE']
+      :type: enum in [``'ARMATURE_DEFINED'``, ``'OCTAHEDRAL'``, ``'STICK'``, ``'BBONE'``, ``'ENVELOPE'``, ``'WIRE'``], default ``'OCTAHEDRAL'``
 
    .. attribute:: envelope_distance
 
-      Bone deformation distance (for Envelope deform only) (in [0, 1000], default 0.0)
+      Bone deformation distance (for Envelope deform only)
 
-      :type: float
+      :type: float in [0, 1000], default 0.0
 
    .. attribute:: envelope_weight
 
-      Bone deformation weight (for Envelope deform only) (in [0, 1000], default 0.0)
+      Bone deformation weight (for Envelope deform only)
 
-      :type: float
+      :type: float in [0, 1000], default 0.0
 
    .. data:: head
 
-      Location of head end of the bone relative to its parent (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0), readonly)
+      Location of head end of the bone relative to its parent
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (0.0, 0.0, 0.0), (readonly)
 
    .. data:: head_local
 
-      Location of head end of the bone relative to armature (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0), readonly)
+      Location of head end of the bone relative to armature
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (0.0, 0.0, 0.0), (readonly)
 
    .. attribute:: head_radius
 
-      Radius of head of bone (for Envelope deform only) (in [-inf, inf], default 0.0)
+      Radius of head of bone (for Envelope deform only)
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: hide
 
-      Bone is not visible when it is in Edit Mode (default False)
+      Bone is not visible when it is not in Edit Mode (i.e. in Object or Pose Modes)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: hide_select
 
-      Bone is able to be selected (default False)
+      Bone is able to be selected
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: inherit_scale
 
-      Specifies how the bone inherits scaling from the parent bone (default ``'FULL'``)
+      Specifies how the bone inherits scaling from the parent bone
 
-      - ``FULL``
+      * ``FULL``
         Full -- Inherit all effects of parent scaling.
-      - ``FIX_SHEAR``
+      * ``FIX_SHEAR``
         Fix Shear -- Inherit scaling, but remove shearing of the child in the rest orientation.
-      - ``ALIGNED``
+      * ``ALIGNED``
         Aligned -- Rotate non-uniform parent scaling to align with the child, applying parent X scale to child X axis, and so forth.
-      - ``AVERAGE``
+      * ``AVERAGE``
         Average -- Inherit uniform scaling representing the overall change in the volume of the parent.
-      - ``NONE``
+      * ``NONE``
         None -- Completely ignore parent scaling.
-      - ``NONE_LEGACY``
+      * ``NONE_LEGACY``
         None (Legacy) -- Ignore parent scaling without compensating for parent shear. Replicates the effect of disabling the original Inherit Scale checkbox..
 
-      :type: Literal['FULL', 'FIX_SHEAR', 'ALIGNED', 'AVERAGE', 'NONE', 'NONE_LEGACY']
+      :type: enum in [``'FULL'``, ``'FIX_SHEAR'``, ``'ALIGNED'``, ``'AVERAGE'``, ``'NONE'``, ``'NONE_LEGACY'``], default ``'FULL'``
 
    .. data:: length
 
-      Length of the bone (in [-inf, inf], default 0.0, readonly)
+      Length of the bone
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0, (readonly)
 
    .. data:: matrix
 
-      3×3 bone matrix (multi-dimensional array of 3 * 3 items, in [-inf, inf], default ((0.0, 0.0, 0.0), (0.0, 0.0, 0.0), (0.0, 0.0, 0.0)), readonly)
+      3×3 bone matrix
 
-      :type: :class:`mathutils.Matrix`
+      :type: :class:`mathutils.Matrix` of 3 * 3 items in [-inf, inf], default ((0.0, 0.0, 0.0), (0.0, 0.0, 0.0), (0.0, 0.0, 0.0)), (readonly)
 
    .. data:: matrix_local
 
-      4×4 bone matrix relative to armature (multi-dimensional array of 4 * 4 items, in [-inf, inf], default ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)), readonly)
+      4×4 bone matrix relative to armature
 
-      :type: :class:`mathutils.Matrix`
+      :type: :class:`mathutils.Matrix` of 4 * 4 items in [-inf, inf], default ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)), (readonly)
 
    .. attribute:: name
 
-      (default "", never None)
-
-      :type: str
+      :type: string, default "", (never None)
 
    .. data:: parent
 
-      Parent bone (in same Armature) (readonly)
+      Parent bone (in same Armature)
 
-      :type: :class:`Bone` | None
+      :type: :class:`Bone`, (readonly)
+
+   .. attribute:: select
+
+      :type: boolean, default False
+
+   .. attribute:: select_head
+
+      :type: boolean, default False
+
+   .. attribute:: select_tail
+
+      :type: boolean, default False
 
    .. attribute:: show_wire
 
-      Bone is always displayed in wireframe regardless of viewport shading mode (useful for non-obstructive custom bone shapes) (default False)
+      Bone is always displayed in wireframe regardless of viewport shading mode (useful for non-obstructive custom bone shapes)
 
-      :type: bool
+      :type: boolean, default False
 
    .. data:: tail
 
-      Location of tail end of the bone relative to its parent (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0), readonly)
+      Location of tail end of the bone relative to its parent
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (0.0, 0.0, 0.0), (readonly)
 
    .. data:: tail_local
 
-      Location of tail end of the bone relative to armature (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0), readonly)
+      Location of tail end of the bone relative to armature
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (0.0, 0.0, 0.0), (readonly)
 
    .. attribute:: tail_radius
 
-      Radius of tail of bone (for Envelope deform only) (in [-inf, inf], default 0.0)
+      Radius of tail of bone (for Envelope deform only)
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. data:: use_connect
 
-      When bone has a parent, bone's head is stuck to the parent's tail (default False, readonly)
+      When bone has a parent, bone's head is stuck to the parent's tail
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. attribute:: use_cyclic_offset
 
-      When bone does not have a parent, it receives cyclic offset effects (Deprecated) (default True)
+      When bone doesn't have a parent, it receives cyclic offset effects (Deprecated)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_deform
 
-      Enable Bone to deform geometry (default True)
+      Enable Bone to deform geometry
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_endroll_as_inroll
 
-      Add Roll Out of the Start Handle bone to the Roll In value (default False)
+      Add Roll Out of the Start Handle bone to the Roll In value
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_envelope_multiply
 
-      When deforming bone, multiply effects of Vertex Group weights with Envelope influence (default False)
+      When deforming bone, multiply effects of Vertex Group weights with Envelope influence
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_inherit_rotation
 
-      Bone inherits rotation or scale from parent bone (default True)
+      Bone inherits rotation or scale from parent bone
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_local_location
 
-      Bone location is set in local space (default True)
+      Bone location is set in local space
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_relative_parent
 
-      Object children will use relative transform, like deform (default False)
+      Object children will use relative transform, like deform
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_scale_easing
 
-      Multiply the final easing values by the Scale In/Out Y factors (default False)
+      Multiply the final easing values by the Scale In/Out Y factors
 
-      :type: bool
+      :type: boolean, default False
 
    .. data:: basename
 
-      The name of this bone before any ``.`` character.
+      The name of this bone before any '.' character
 
       (readonly)
 
@@ -387,7 +392,7 @@ base class --- :class:`bpy_struct`
 
       A list of all children from this bone.
       
-      .. note:: Takes ``O(len(bones)**2)`` time.
+              .. note:: Takes ``O(len(bones)**2)`` time.
 
       (readonly)
 
@@ -404,7 +409,7 @@ base class --- :class:`bpy_struct`
 
    .. data:: parent_recursive
 
-      A list of parents, starting with the immediate parent.
+      A list of parents, starting with the immediate parent
 
       (readonly)
 
@@ -433,46 +438,37 @@ base class --- :class:`bpy_struct`
 
       (readonly)
 
-   .. method:: bl_system_properties_get(*, do_create=False)
-
-      DEBUG ONLY. Internal access to runtime-defined RNA data storage, intended solely for testing and debugging purposes. Do not access it in regular scripting work, and in particular, do not assume that it contains writable data
-
-      :param do_create: Ensure that system properties are created if they do not exist yet (optional)
-      :type do_create: bool
-      :return: The system properties root container, or None if there are no system properties stored in this data yet, and its creation was not requested
-      :rtype: :class:`PropertyGroup`
-
    .. method:: evaluate_envelope(point)
 
       Calculate bone envelope at given point
 
-      :param point: Point, Position in 3d space to evaluate (array of 3 items, in [-inf, inf])
-      :type point: :class:`mathutils.Vector` | Sequence[float]
-      :return: Factor, Envelope factor (in [-inf, inf])
-      :rtype: float
+      :arg point: Point, Position in 3d space to evaluate
+      :type point: :class:`mathutils.Vector` of 3 items in [-inf, inf]
+      :return: Factor, Envelope factor
+      :rtype: float in [-inf, inf]
 
    .. method:: convert_local_to_pose(matrix, matrix_local, *, parent_matrix=((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)), parent_matrix_local=((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)), invert=False)
 
       Transform a matrix from Local to Pose space (or back), taking into account options like Inherit Scale and Local Location. Unlike Object.convert_space, this uses custom rest and pose matrices provided by the caller. If the parent matrices are omitted, the bone is assumed to have no parent.
 
-      :param matrix: The matrix to transform (multi-dimensional array of 4 * 4 items, in [-inf, inf])
-      :type matrix: :class:`mathutils.Matrix` | Sequence[Sequence[float]]
-      :param matrix_local: The custom rest matrix of this bone (Bone.matrix_local) (multi-dimensional array of 4 * 4 items, in [-inf, inf])
-      :type matrix_local: :class:`mathutils.Matrix` | Sequence[Sequence[float]]
-      :param parent_matrix: The custom pose matrix of the parent bone (PoseBone.matrix) (multi-dimensional array of 4 * 4 items, in [-inf, inf], optional)
-      :type parent_matrix: :class:`mathutils.Matrix` | Sequence[Sequence[float]]
-      :param parent_matrix_local: The custom rest matrix of the parent bone (Bone.matrix_local) (multi-dimensional array of 4 * 4 items, in [-inf, inf], optional)
-      :type parent_matrix_local: :class:`mathutils.Matrix` | Sequence[Sequence[float]]
-      :param invert: Convert from Pose to Local space (optional)
-      :type invert: bool
-      :return: The transformed matrix (multi-dimensional array of 4 * 4 items, in [-inf, inf])
-      :rtype: :class:`mathutils.Matrix`
+      :arg matrix: The matrix to transform
+      :type matrix: :class:`mathutils.Matrix` of 4 * 4 items in [-inf, inf]
+      :arg matrix_local: The custom rest matrix of this bone (Bone.matrix_local)
+      :type matrix_local: :class:`mathutils.Matrix` of 4 * 4 items in [-inf, inf]
+      :arg parent_matrix: The custom pose matrix of the parent bone (PoseBone.matrix)
+      :type parent_matrix: :class:`mathutils.Matrix` of 4 * 4 items in [-inf, inf], (optional)
+      :arg parent_matrix_local: The custom rest matrix of the parent bone (Bone.matrix_local)
+      :type parent_matrix_local: :class:`mathutils.Matrix` of 4 * 4 items in [-inf, inf], (optional)
+      :arg invert: Convert from Pose to Local space
+      :type invert: boolean, (optional)
+      :return: The transformed matrix
+      :rtype: :class:`mathutils.Matrix` of 4 * 4 items in [-inf, inf]
 
       This method enables conversions between Local and Pose space for bones in
       the middle of updating the armature without having to update dependencies
       after each change, by manually carrying updated matrices in a recursive walk.
 
-      .. literalinclude:: ./examples/bpy.types.Bone.convert_local_to_pose.0.py
+      .. literalinclude:: ./examples/bpy.types.Bone.convert_local_to_pose.py
          :lines: 8-
 
 
@@ -480,61 +476,49 @@ base class --- :class:`bpy_struct`
 
       Convert the axis + roll representation to a matrix
 
-      :param axis: The main axis of the bone (tail - head) (array of 3 items, in [-inf, inf], never None)
-      :type axis: :class:`mathutils.Vector` | Sequence[float]
-      :param roll: The roll of the bone (in [-inf, inf])
-      :type roll: float
-      :return: The resulting orientation matrix (multi-dimensional array of 3 * 3 items, in [-inf, inf])
-      :rtype: :class:`mathutils.Matrix`
+      :arg axis: The main axis of the bone (tail - head)
+      :type axis: :class:`mathutils.Vector` of 3 items in [-inf, inf], (never None)
+      :arg roll: The roll of the bone
+      :type roll: float in [-inf, inf]
+      :return: The resulting orientation matrix
+      :rtype: :class:`mathutils.Matrix` of 3 * 3 items in [-inf, inf]
 
    .. classmethod:: AxisRollFromMatrix(matrix, *, axis=(0.0, 0.0, 0.0))
 
       Convert a rotational matrix to the axis + roll representation. Note that the resulting value of the roll may not be as expected if the matrix has shear or negative determinant.
 
-      :param matrix: The orientation matrix of the bone (multi-dimensional array of 3 * 3 items, in [-inf, inf], never None)
-      :type matrix: :class:`mathutils.Matrix` | Sequence[Sequence[float]]
-      :param axis: The optional override for the axis (finds closest approximation for the matrix) (array of 3 items, in [-inf, inf], optional)
-      :type axis: Sequence[float]
+      :arg matrix: The orientation matrix of the bone
+      :type matrix: :class:`mathutils.Matrix` of 3 * 3 items in [-inf, inf], (never None)
+      :arg axis: The optional override for the axis (finds closest approximation for the matrix)
+      :type axis: float array of 3 items in [-inf, inf], (optional)
       :return:
-         ``result_axis``, The main axis of the bone, :class:`mathutils.Vector`
+         `result_axis`, The main axis of the bone, :class:`mathutils.Vector` of 3 items in [-inf, inf]
 
-         ``result_roll``, The roll of the bone, float
+         `result_roll`, The roll of the bone, float in [-inf, inf]
 
-      :rtype: tuple[:class:`mathutils.Vector`, float]
+      :rtype: (:class:`mathutils.Vector` of 3 items in [-inf, inf], float in [-inf, inf])
 
    .. method:: parent_index(parent_test)
 
       The same as 'bone in other_bone.parent_recursive'
       but saved generating a list.
-      
-      :param parent_test: Bone to search for among this bone's ancestors.
-      :type parent_test: Self
-      :return: 1-based depth of *parent_test* in the parent chain, or 0 if not found.
-      :rtype: int
 
    .. method:: translate(vec)
 
-      Utility function to add *vec* to the head and tail of this bone.
-      
-      :param vec: Translation vector.
-      :type vec: :class:`mathutils.Vector`
+      Utility function to add *vec* to the head and tail of this bone
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -545,7 +529,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -553,30 +537,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -584,14 +567,14 @@ References
 .. hlist::
    :columns: 2
 
-   - :mod:`bpy.context.active_bone`
-   - :mod:`bpy.context.bone`
-   - :class:`Armature.bones`
-   - :class:`ArmatureBones.active`
-   - :class:`Bone.bbone_custom_handle_end`
-   - :class:`Bone.bbone_custom_handle_start`
-   - :class:`Bone.children`
-   - :class:`Bone.parent`
-   - :class:`BoneCollection.bones`
-   - :class:`PoseBone.bone`
+   * :mod:`bpy.context.active_bone`
+   * :mod:`bpy.context.bone`
+   * :class:`Armature.bones`
+   * :class:`ArmatureBones.active`
+   * :class:`Bone.bbone_custom_handle_end`
+   * :class:`Bone.bbone_custom_handle_start`
+   * :class:`Bone.children`
+   * :class:`Bone.parent`
+   * :class:`BoneCollection.bones`
+   * :class:`PoseBone.bone`
 

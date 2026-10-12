@@ -1,6 +1,5 @@
 .. index:: Geometry Nodes; Camera Info
-.. _bpy.types.GeometryNodeCameraInfo:
-.. --- copy below this line ---
+.. _bpy.types.GeometryNodeCameraInfoGeometryNodeCameraInfo:
 
 ****************
 Camera Info Node
@@ -23,6 +22,12 @@ Camera
    The camera object to retrieve information from.
 
    To get the active camera, use the :doc:`/modeling/geometry_nodes/input/scene/active_camera`.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs

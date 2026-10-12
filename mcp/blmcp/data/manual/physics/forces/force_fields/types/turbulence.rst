@@ -16,9 +16,11 @@ similar to jets of water or geysers under the ocean.
 Options
 =======
 
-.. figure:: /images/physics_forces_force-fields_types_turbulence_panel.png
+.. todo:: Update image
 
-   UI for a Turbulence force field.
+   .. figure:: /images/physics_forces_force-fields_types_turbulence_panel.png
+
+      UI for a Turbulence force field.
 
 .. _bpy.types.FieldSettings.size:
 

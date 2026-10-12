@@ -32,6 +32,15 @@ Support for Wayland is a more recent addition, so there may be configurations th
 Blender has been tested with Gnome-Shell (mutter), KDE (plasma) & SWAY (wlroots) based compositors.
 
 
+Requirements
+------------
+
+Gnome-Shell
+   Under Gnome-Shell the ``libdecor`` library is required. This is available as a package on most Linux distribution.
+
+   If the library isn't found X11 will be used as a fallback.
+
+
 Troubleshooting
 ---------------
 
@@ -52,6 +61,13 @@ Disable Wayland (forcing X11)
    .. code-block:: sh
 
       WAYLAND_DISPLAY="" blender
+
+Disable ``libdecor`` (forcing borderless windows under Gnome-Shell)
+   Uninstall ``libdecor``, then run Blender with an empty X11 display variable.
+
+   .. code-block:: sh
+
+      DISPLAY="" blender
 
 
 Environment Variables

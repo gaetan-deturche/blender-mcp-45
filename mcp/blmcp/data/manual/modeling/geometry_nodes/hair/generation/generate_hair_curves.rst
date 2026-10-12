@@ -4,15 +4,14 @@
 Generate Hair Curves
 ********************
 
-The *Generate Hair Curves* node procedurally creates new hair curves on the surface of a mesh.
-It generates curves from scratch at sampled point locations rather than using existing hair data.
-For cases where curves should interpolate or follow existing guides, use the
-:doc:`Interpolate Hair Curves </modeling/geometry_nodes/hair/generation/interpolate_hair_curves>` node instead.
+Generates new hair curves on a surface mesh.
+The curves are generated from scratch at point locations; if creating curves that depend on
+existing curves is desired, the :doc:`/modeling/geometry_nodes/hair/generation/interpolate_hair_curves`
+is a better choice.
 
 .. note::
 
-   This node or modifier requires valid *Surface* geometry or object inputs,
-   along with a *Surface UV Map*, to function properly.
+   This node/modifier will not function without the *Surface* geometry/object and *Surface UV Map* inputs.
 
 .. peertube:: nkB43evNMakLmvuoExgKuF
 
@@ -20,97 +19,76 @@ For cases where curves should interpolate or follow existing guides, use the
 Inputs
 ======
 
-Hair Surface
-   Surface geometry or hair geometry with existing surface attachment for reference.
-
-Surface Input Type
-   Determines how the surface data is provided for interpolation.
-
-   :Attached:
-      Use the attached surface of the incoming hair geometry.
-   :Input:
-      Use a geometry input directly connected to the surface mesh.
-   :Object:
-      Use an object reference to provide the surface.
+Surface
+   Surface geometry for generation. This input takes priority over the corresponding object input if both are
+   provided.
 
 Surface
-   The surface object used for generation.
-   Its transforms must match those of the modifier object to ensure correct placement.
+   Surface object for generation (The transforms of this object must match the modifier object).
 
 Surface UV Map
-   The UV map used to determine the root positions of the hair curves on the surface mesh.
+   Surface UV map stored on the mesh used for finding curve attachment locations.
 
-Resting Surface
-   When enabled, sets the surface mesh to its rest position before generating the hair curves.
-   This ensures consistent attachment locations when deforming the surface later.
+Surface Rest Position
+   Set the surface mesh into its rest position before attachment.
 
    .. tip::
 
-      When combining this node with :doc:`Deform Curves on Surface
-      </modeling/geometry_nodes/curve/operations/deform_curves_on_surface>`,
-      enable *Surface Rest Position* if the deformation node follows this one in the modifier stack,
-      so the generation uses pre-deformed surface positions.
+      In a typical hair generation setup, this node or modifier will be
+      combined with the :doc:`/modeling/geometry_nodes/curve/operations/deform_curves_on_surface`.
+      If that operation comes after this one, it makes sense to turn this option on so the
+      position used is the pre-deformed position consistent with the expectations for the
+      deformation's input.
 
 Hair Length
-   The length of the generated hair curves.
+   Length of the generated hair curves.
 
 Hair Material
-   The material assigned to the generated hair curves.
+   Material of the generated hair curves.
 
 Control Points
-   The number of control points used for each generated curve.
-   More points allow smoother deformations and finer control.
+   Amount of control points of the generated hair curves.
 
-
-Distribution
-------------
-
-Distribution Method
-   Determines how the root points are distributed across the surface.
-
-   :Random:
-      Places points randomly on the surface.
-   :Poisson Disk:
-      Uses a Poisson disk distribution to ensure a minimum spacing between points.
-      See :doc:`Distribute Points on Faces </modeling/geometry_nodes/point/distribute_points_on_faces>` for more
-      details.
+Poisson Disk Distribution
+   Use poisson disk distribution method to keep a minimum distance.
+   See the :doc:`/modeling/geometry_nodes/point/distribute_points_on_faces` for more information.
 
 Density
-   Controls the number of generated hair curves per surface area.
-   Higher values produce denser hair coverage.
+   Surface density of generated hair curves.
 
 Density Mask
-   A scalar factor that modulates the density across the surface.
-   This allows certain regions to have more or fewer generated curves.
+   Factor applied on the density for curve distribution.
 
 Mask Texture
-   An image texture used to discard curves based on pixel values sampled with the *Surface UV Map* input.
-   White areas retain curves, while black areas remove them.
+   Discard points based on an mask texture after distribution.
+   The image is sampled with the *Surface UV Map* input.
 
    .. tip::
 
-      The accuracy of the *Mask Texture* is independent of the mesh vertex density,
-      since it is evaluated after the root points are distributed.
-      However, using the *Density Mask* input instead can improve performance,
-      and combining both provides flexibility and efficiency.
+      The accuracy of sampling the image doesn't depend on the density of the surface mesh's vertices
+      because it is sampled after the curve root points are generated, the accuracy . However, using
+      the *Density Mask* input instead can give better performance. Using them in combination can
+      give the benefits of both methods.
 
 Viewport Amount
-   A factor applied to reduce curve density in the viewport for better performance,
-   without affecting the final render.
+   Factor applied on the density for the viewport.
 
 Seed
-   Sets the random seed for the distribution process.
-   Changing this value alters the pattern of generated curves while maintaining the same parameters.
+   Random seed for the operation.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs
 =======
 
-Geometry
-   The output geometry containing the generated hair curves.
+**Geometry**
 
-Curves
-   A separate output of the generated curve data for further processing or inspection.
+**Curves**
 
 Surface Normal
-   The surface normal direction at each curve's attachment point.
+   Normal direction of the surface mesh at the attachment point.

@@ -5,405 +5,362 @@ ThemeView3D(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: ThemeView3D(bpy_struct)
 
    Theme settings for the 3D viewport
 
+   .. attribute:: act_spline
+
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
+
    .. attribute:: after_current_frame
 
-      The color for things after the current frame (for onion skinning, motion paths, etc.) (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+      The color for things after the current frame (for onion skinning, motion paths, etc.)
 
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
+
+   .. data:: asset_shelf
+
+      Settings for asset shelf
+
+      :type: :class:`ThemeAssetShelf`, (readonly, never None)
 
    .. attribute:: before_current_frame
 
-      The color for things before the current frame (for onion skinning, motion paths, etc.) (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+      The color for things before the current frame (for onion skinning, motion paths, etc.)
 
-      :type: :class:`mathutils.Color`
-
-   .. attribute:: bevel
-
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: bone_locked_weight
 
-      Shade for bones corresponding to a locked weight group during painting (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
+      Shade for bones corresponding to a locked weight group during painting
 
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: bone_pose
 
-      Outline color of selected pose bones (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+      Outline color of selected pose bones
 
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: bone_pose_active
 
-      Outline color of active pose bones (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+      Outline color of active pose bones
 
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: bone_solid
 
-      Default color of the solid shapes of bones (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+      Default color of the solid shapes of bones
 
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: bundle_solid
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: camera
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: camera_passepartout
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: camera_path
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: clipping_border_3d
 
-      (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
-      :type: :class:`bpy_prop_array`\ [float]
+   .. attribute:: edge_bevel
 
-   .. attribute:: crease
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+   .. attribute:: edge_crease
 
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
+
+   .. attribute:: edge_facesel
+
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: edge_mode_select
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
-      :type: :class:`mathutils.Color`
+   .. attribute:: edge_seam
+
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: edge_select
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
-      :type: :class:`mathutils.Color`
+   .. attribute:: edge_sharp
+
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: edge_width
 
-      (in [1, 32], default 0)
-
-      :type: int
+      :type: int in [1, 32], default 0
 
    .. attribute:: editmesh_active
 
-      (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
-
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: empty
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: extra_edge_angle
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: extra_edge_len
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: extra_face_angle
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: extra_face_area
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: face
 
-      (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
-
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: face_back
 
-      (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
-      :type: :class:`bpy_prop_array`\ [float]
+   .. attribute:: face_dot
+
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: face_front
 
-      (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
-
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: face_mode_select
 
-      (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
-
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: face_retopology
 
-      (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
-
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: face_select
 
-      (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
-
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: facedot_size
 
-      (in [1, 10], default 0)
+      :type: int in [1, 10], default 0
 
-      :type: int
+   .. attribute:: frame_current
 
-   .. attribute:: freestyle
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
-      (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
+   .. attribute:: freestyle_edge_mark
 
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
+
+   .. attribute:: freestyle_face_mark
+
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: gp_vertex
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: gp_vertex_select
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: gp_vertex_size
 
-      (in [1, 10], default 0)
-
-      :type: int
-
-   .. attribute:: gp_wire_edit
-
-      Grease Pencil wireframe color when in edit mode (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
-
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: int in [1, 10], default 0
 
    .. attribute:: grid
 
-      (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
-      :type: :class:`bpy_prop_array`\ [float]
+   .. attribute:: handle_align
 
-   .. attribute:: grid_axis_brightness
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
-      Brightness of the grid axis lines (in [0, 1], default 0.46)
+   .. attribute:: handle_auto
 
-      :type: float
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
-   .. attribute:: grid_major
+   .. attribute:: handle_free
 
-      (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
-      :type: :class:`bpy_prop_array`\ [float]
+   .. attribute:: handle_sel_align
+
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
+
+   .. attribute:: handle_sel_auto
+
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
+
+   .. attribute:: handle_sel_free
+
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
+
+   .. attribute:: handle_sel_vect
+
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
+
+   .. attribute:: handle_vect
+
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
+
+   .. attribute:: lastsel_point
+
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: light
 
-      (array of 4 items, in [0, 1], default (0.0, 0.0, 0.0, 0.0))
-
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: normal
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: nurb_sel_uline
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: nurb_sel_vline
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: nurb_uline
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: nurb_vline
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: object_active
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: object_origin_size
 
-      Diameter in pixels for object/light origin display (in [4, 10], default 0)
+      Diameter in pixels for object/light origin display
 
-      :type: int
+      :type: int in [4, 10], default 0
 
    .. attribute:: object_selected
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: outline_width
 
-      (in [1, 5], default 0)
+      :type: int in [1, 5], default 0
 
-      :type: int
+   .. attribute:: paint_curve_handle
 
-   .. attribute:: seam
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+   .. attribute:: paint_curve_pivot
 
-      :type: :class:`mathutils.Color`
-
-   .. attribute:: sharp
-
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: float array of 4 items in [0, 1], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: skin_root
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. data:: space
 
-      Settings for space (readonly, never None)
+      Settings for space
 
-      :type: :class:`ThemeSpaceGradient`
+      :type: :class:`ThemeSpaceGradient`, (readonly, never None)
 
    .. attribute:: speaker
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: split_normal
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: text_grease_pencil
 
-      Color for indicating Grease Pencil keyframes (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+      Color for indicating Grease Pencil keyframes
 
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
+
+   .. attribute:: text_keyframe
+
+      Color for indicating object keyframes
+
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: transform
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: vertex
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
-      :type: :class:`mathutils.Color`
+   .. attribute:: vertex_bevel
+
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: vertex_normal
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: vertex_select
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: vertex_size
 
-      (in [1, 32], default 0)
-
-      :type: int
+      :type: int in [1, 32], default 0
 
    .. attribute:: vertex_unreferenced
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: view_overlay
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: wire
 
-      (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: wire_edit
 
-      Color for wireframe when in edit mode, but edge selection is active (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+      Color for wireframe when in edit mode, but edge selection is active
 
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -414,7 +371,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -422,30 +379,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -453,5 +409,5 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`Theme.view_3d`
+   * :class:`Theme.view_3d`
 

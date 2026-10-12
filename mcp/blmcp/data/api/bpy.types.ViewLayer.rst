@@ -5,367 +5,357 @@ ViewLayer(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: ViewLayer(bpy_struct)
 
    View layer
 
    .. data:: active_aov
 
-      Active AOV (readonly)
+      Active AOV
 
-      :type: :class:`AOV` | None
+      :type: :class:`AOV`, (readonly)
 
    .. attribute:: active_aov_index
 
-      Index of active AOV (in [0, inf], default 0)
+      Index of active AOV
 
-      :type: int
+      :type: int in [0, inf], default 0
 
    .. attribute:: active_layer_collection
 
-      Active layer collection in this view layer's hierarchy (never None)
+      Active layer collection in this view layer's hierarchy
 
-      :type: :class:`LayerCollection`
+      :type: :class:`LayerCollection`, (never None)
 
    .. data:: active_lightgroup
 
-      Active Lightgroup (readonly)
+      Active Lightgroup
 
-      :type: :class:`Lightgroup` | None
+      :type: :class:`Lightgroup`, (readonly)
 
    .. attribute:: active_lightgroup_index
 
-      Index of active lightgroup (in [0, inf], default 0)
+      Index of active lightgroup
 
-      :type: int
+      :type: int in [0, inf], default 0
 
    .. data:: aovs
 
-      (default None, readonly)
+      :type: :class:`AOVs` :class:`bpy_prop_collection` of :class:`AOV`, (readonly)
 
-      :type: :class:`AOVs`\ [:class:`AOV`]
+   .. data:: cycles
+
+      Cycles ViewLayer Settings
+
+      :type: :class:`CyclesRenderLayerSettings`, (readonly)
 
    .. data:: depsgraph
 
-      Dependencies in the scene data (readonly)
+      Dependencies in the scene data
 
-      :type: :class:`Depsgraph` | None
+      :type: :class:`Depsgraph`, (readonly)
 
    .. data:: eevee
 
-      View layer settings for EEVEE (readonly, never None)
+      View layer settings for EEVEE
 
-      :type: :class:`ViewLayerEEVEE`
+      :type: :class:`ViewLayerEEVEE`, (readonly, never None)
 
    .. data:: freestyle_settings
 
-      (readonly, never None)
-
-      :type: :class:`FreestyleSettings`
+      :type: :class:`FreestyleSettings`, (readonly, never None)
 
    .. data:: has_export_collections
 
-      At least one Collection in this View Layer has an exporter (default False, readonly)
+      At least one Collection in this View Layer has an exporter
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: layer_collection
 
-      Root of collections hierarchy of this view layer, its 'collection' pointer property is the same as the scene's master collection (readonly, never None)
+      Root of collections hierarchy of this view layer, its 'collection' pointer property is the same as the scene's master collection
 
-      :type: :class:`LayerCollection`
+      :type: :class:`LayerCollection`, (readonly, never None)
 
    .. data:: lightgroups
 
-      (default None, readonly)
-
-      :type: :class:`Lightgroups`\ [:class:`Lightgroup`]
+      :type: :class:`Lightgroups` :class:`bpy_prop_collection` of :class:`Lightgroup`, (readonly)
 
    .. attribute:: material_override
 
       Material to override all other materials in this view layer
 
-      :type: :class:`Material` | None
+      :type: :class:`Material`
 
    .. attribute:: name
 
-      View layer name (default "", never None)
+      View layer name
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. data:: objects
 
-      All the objects in this layer (default None, readonly)
+      All the objects in this layer
 
-      :type: :class:`LayerObjects`\ [:class:`Object`]
+      :type: :class:`LayerObjects` :class:`bpy_prop_collection` of :class:`Object`, (readonly)
 
    .. attribute:: pass_alpha_threshold
 
-      Z, Index, normal, UV and vector passes are only affected by surfaces with alpha transparency equal to or higher than this threshold (in [0, 1], default 0.5)
+      Z, Index, normal, UV and vector passes are only affected by surfaces with alpha transparency equal to or higher than this threshold
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: pass_cryptomatte_depth
 
-      Sets how many unique objects can be distinguished per pixel (in [2, 16], default 6)
+      Sets how many unique objects can be distinguished per pixel
 
-      :type: int
+      :type: int in [2, 16], default 6
 
    .. attribute:: samples
 
-      Override number of render samples for this view layer, 0 will use the scene setting (in [0, inf], default 0)
+      Override number of render samples for this view layer, 0 will use the scene setting
 
-      :type: int
+      :type: int in [0, inf], default 0
 
    .. attribute:: use
 
-      Enable or disable rendering of this View Layer (default True)
+      Enable or disable rendering of this View Layer
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_ao
 
-      Render Ambient Occlusion in this Layer (default True)
+      Render Ambient Occlusion in this Layer
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_freestyle
 
-      Render stylized strokes in this Layer (default True)
+      Render stylized strokes in this Layer
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_grease_pencil
 
-      Render Grease Pencil on this layer (default True)
+      Render Grease Pencil on this layer
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_motion_blur
 
-      Render motion blur in this Layer, if enabled in the scene (default True)
+      Render motion blur in this Layer, if enabled in the scene
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_ambient_occlusion
 
-      Deliver Ambient Occlusion pass (default False)
+      Deliver Ambient Occlusion pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_combined
 
-      Deliver full combined RGBA buffer (default True)
+      Deliver full combined RGBA buffer
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_cryptomatte_accurate
 
-      Generate a more accurate cryptomatte pass (default True)
+      Generate a more accurate cryptomatte pass
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_pass_cryptomatte_asset
 
-      Render cryptomatte asset pass, for isolating groups of objects with the same parent (default False)
+      Render cryptomatte asset pass, for isolating groups of objects with the same parent
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_cryptomatte_material
 
-      Render cryptomatte material pass, for isolating materials in compositing (default False)
+      Render cryptomatte material pass, for isolating materials in compositing
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_cryptomatte_object
 
-      Render cryptomatte object pass, for isolating objects in compositing (default False)
+      Render cryptomatte object pass, for isolating objects in compositing
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_diffuse_color
 
-      Deliver diffuse color pass (default False)
+      Deliver diffuse color pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_diffuse_direct
 
-      Deliver diffuse direct pass (default False)
+      Deliver diffuse direct pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_diffuse_indirect
 
-      Deliver diffuse indirect pass (default False)
+      Deliver diffuse indirect pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_emit
 
-      Deliver emission pass (default False)
+      Deliver emission pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_environment
 
-      Deliver environment lighting pass (default False)
+      Deliver environment lighting pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_glossy_color
 
-      Deliver glossy color pass (default False)
+      Deliver glossy color pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_glossy_direct
 
-      Deliver glossy direct pass (default False)
+      Deliver glossy direct pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_glossy_indirect
 
-      Deliver glossy indirect pass (default False)
+      Deliver glossy indirect pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_grease_pencil
 
-      Deliver Grease Pencil render result in a separate pass (default False)
+      Deliver Grease Pencil render result in a separate pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_material_index
 
-      Deliver material index pass (default False)
+      Deliver material index pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_mist
 
-      Deliver mist factor pass (0.0 to 1.0) (default False)
+      Deliver mist factor pass (0.0 to 1.0)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_normal
 
-      Deliver normal pass (default False)
+      Deliver normal pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_object_index
 
-      Deliver object index pass (default False)
+      Deliver object index pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_position
 
-      Deliver position pass (default False)
+      Deliver position pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_shadow
 
-      Deliver shadow pass (default False)
+      Deliver shadow pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_subsurface_color
 
-      Deliver subsurface color pass (default False)
+      Deliver subsurface color pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_subsurface_direct
 
-      Deliver subsurface direct pass (default False)
+      Deliver subsurface direct pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_subsurface_indirect
 
-      Deliver subsurface indirect pass (default False)
+      Deliver subsurface indirect pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_transmission_color
 
-      Deliver transmission color pass (default False)
+      Deliver transmission color pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_transmission_direct
 
-      Deliver transmission direct pass (default False)
+      Deliver transmission direct pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_transmission_indirect
 
-      Deliver transmission indirect pass (default False)
+      Deliver transmission indirect pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_uv
 
-      Deliver texture UV pass (default False)
+      Deliver texture UV pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_vector
 
-      Deliver speed vector pass (default False)
+      Deliver speed vector pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pass_z
 
-      Deliver depth values pass (default False)
+      Deliver Z values pass
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_sky
 
-      Render Sky in this Layer (default True)
+      Render Sky in this Layer
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_solid
 
-      Render Solid faces in this Layer (default True)
+      Render Solid faces in this Layer
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_strand
 
-      Render Strands in this Layer (default True)
+      Render Strands in this Layer
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_volumes
 
-      Render volumes in this Layer (default True)
+      Render volumes in this Layer
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: world_override
 
       Override world in this view layer
 
-      :type: :class:`World` | None
-
-   .. method:: bl_system_properties_get(*, do_create=False)
-
-      DEBUG ONLY. Internal access to runtime-defined RNA data storage, intended solely for testing and debugging purposes. Do not access it in regular scripting work, and in particular, do not assume that it contains writable data
-
-      :param do_create: Ensure that system properties are created if they do not exist yet (optional)
-      :type do_create: bool
-      :return: The system properties root container, or None if there are no system properties stored in this data yet, and its creation was not requested
-      :rtype: :class:`PropertyGroup`
+      :type: :class:`World`
 
    .. classmethod:: update_render_passes()
 
@@ -379,20 +369,16 @@ base class --- :class:`bpy_struct`
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -403,7 +389,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -411,30 +397,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -442,26 +427,25 @@ References
 .. hlist::
    :columns: 2
 
-   - :mod:`bpy.context.view_layer`
-   - :class:`Context.view_layer`
-   - :class:`Depsgraph.view_layer`
-   - :class:`Depsgraph.view_layer_eval`
-   - :class:`ID.override_hierarchy_create`
-   - :class:`IDOverrideLibrary.resync`
-   - :class:`LayerCollection.has_selected_objects`
-   - :class:`Object.hide_get`
-   - :class:`Object.hide_set`
-   - :class:`Object.holdout_get`
-   - :class:`Object.indirect_only_get`
-   - :class:`Object.select_get`
-   - :class:`Object.select_set`
-   - :class:`Object.visible_get`
-   - :class:`RenderEngine.register_pass`
-   - :class:`RenderEngine.update_render_passes`
-   - :class:`Scene.statistics`
-   - :class:`Scene.view_layers`
-   - :class:`SceneStrip.view_layer`
-   - :class:`ViewLayers.new`
-   - :class:`ViewLayers.remove`
-   - :class:`Window.view_layer`
+   * :mod:`bpy.context.view_layer`
+   * :class:`Context.view_layer`
+   * :class:`Depsgraph.view_layer`
+   * :class:`Depsgraph.view_layer_eval`
+   * :class:`ID.override_hierarchy_create`
+   * :class:`IDOverrideLibrary.resync`
+   * :class:`LayerCollection.has_selected_objects`
+   * :class:`Object.hide_get`
+   * :class:`Object.hide_set`
+   * :class:`Object.holdout_get`
+   * :class:`Object.indirect_only_get`
+   * :class:`Object.select_get`
+   * :class:`Object.select_set`
+   * :class:`Object.visible_get`
+   * :class:`RenderEngine.register_pass`
+   * :class:`RenderEngine.update_render_passes`
+   * :class:`Scene.statistics`
+   * :class:`Scene.view_layers`
+   * :class:`ViewLayers.new`
+   * :class:`ViewLayers.remove`
+   * :class:`Window.view_layer`
 

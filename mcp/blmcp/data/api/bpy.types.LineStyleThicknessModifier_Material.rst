@@ -5,98 +5,93 @@ LineStyleThicknessModifier_Material(LineStyleThicknessModifier)
 
 base classes --- :class:`bpy_struct`, :class:`LineStyleModifier`, :class:`LineStyleThicknessModifier`
 
-
 .. class:: LineStyleThicknessModifier_Material(LineStyleThicknessModifier)
 
    Change line thickness based on a material attribute
 
    .. attribute:: blend
 
-      Specify how the modifier value is blended into the base value (default ``'MIX'``)
+      Specify how the modifier value is blended into the base value
 
-      :type: Literal['MIX', 'ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'DIFFERENCE', 'MINIMUM', 'MAXIMUM']
+      :type: enum in [``'MIX'``, ``'ADD'``, ``'SUBTRACT'``, ``'MULTIPLY'``, ``'DIVIDE'``, ``'DIFFERENCE'``, ``'MINIMUM'``, ``'MAXIMUM'``], default ``'MIX'``
 
    .. data:: curve
 
-      Curve used for the curve mapping (readonly)
+      Curve used for the curve mapping
 
-      :type: :class:`CurveMapping` | None
+      :type: :class:`CurveMapping`, (readonly)
 
    .. attribute:: expanded
 
-      True if the modifier tab is expanded (default False)
+      True if the modifier tab is expanded
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: influence
 
-      Influence factor by which the modifier changes the property (in [0, 1], default 0.0)
+      Influence factor by which the modifier changes the property
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: invert
 
-      Invert the fade-out direction of the linear mapping (default False)
+      Invert the fade-out direction of the linear mapping
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: mapping
 
-      Select the mapping type (default ``'LINEAR'``)
+      Select the mapping type
 
-      - ``LINEAR``
+      * ``LINEAR``
         Linear -- Use linear mapping.
-      - ``CURVE``
+      * ``CURVE``
         Curve -- Use curve mapping.
 
-      :type: Literal['LINEAR', 'CURVE']
+      :type: enum in [``'LINEAR'``, ``'CURVE'``], default ``'LINEAR'``
 
    .. attribute:: material_attribute
 
-      Specify which material attribute is used (default ``'LINE'``)
+      Specify which material attribute is used
 
-      :type: Literal['LINE', 'LINE_R', 'LINE_G', 'LINE_B', 'LINE_A', 'DIFF', 'DIFF_R', 'DIFF_G', 'DIFF_B', 'SPEC', 'SPEC_R', 'SPEC_G', 'SPEC_B', 'SPEC_HARD', 'ALPHA']
+      :type: enum in [``'LINE'``, ``'LINE_R'``, ``'LINE_G'``, ``'LINE_B'``, ``'LINE_A'``, ``'DIFF'``, ``'DIFF_R'``, ``'DIFF_G'``, ``'DIFF_B'``, ``'SPEC'``, ``'SPEC_R'``, ``'SPEC_G'``, ``'SPEC_B'``, ``'SPEC_HARD'``, ``'ALPHA'``], default ``'LINE'``
 
    .. data:: type
 
-      Type of the modifier (default ``'ALONG_STROKE'``, readonly)
+      Type of the modifier
 
-      :type: Literal[:ref:`rna_enum_linestyle_thickness_modifier_type_items`]
+      :type: enum in :ref:`rna_enum_linestyle_thickness_modifier_type_items`, default ``'ALONG_STROKE'``, (readonly)
 
    .. attribute:: use
 
-      Enable or disable this modifier during stroke rendering (default False)
+      Enable or disable this modifier during stroke rendering
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: value_max
 
-      Maximum output value of the mapping (in [-inf, inf], default 0.0)
+      Maximum output value of the mapping
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: value_min
 
-      Minimum output value of the mapping (in [-inf, inf], default 0.0)
+      Minimum output value of the mapping
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -107,8 +102,8 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
-   - :class:`LineStyleThicknessModifier.name`
+   * :class:`bpy_struct.id_data`
+   * :class:`LineStyleThicknessModifier.name`
 
 Inherited Functions
 -------------------
@@ -116,32 +111,31 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
-   - :class:`LineStyleModifier.bl_rna_get_subclass`
-   - :class:`LineStyleModifier.bl_rna_get_subclass_py`
-   - :class:`LineStyleThicknessModifier.bl_rna_get_subclass`
-   - :class:`LineStyleThicknessModifier.bl_rna_get_subclass_py`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
+   * :class:`LineStyleModifier.bl_rna_get_subclass`
+   * :class:`LineStyleModifier.bl_rna_get_subclass_py`
+   * :class:`LineStyleThicknessModifier.bl_rna_get_subclass`
+   * :class:`LineStyleThicknessModifier.bl_rna_get_subclass_py`
 

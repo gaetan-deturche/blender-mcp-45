@@ -33,6 +33,12 @@ Value
    Useful when lighting is uneven or background luminance varies.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

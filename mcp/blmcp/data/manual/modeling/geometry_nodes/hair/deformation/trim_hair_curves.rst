@@ -4,9 +4,7 @@
 Trim Hair Curves
 ****************
 
-The *Trim Hair Curves* node shortens or scales hair curves based on a specified length or length factor.
-It can be used to precisely control the overall length of hair, create varied or randomized trims,
-or adjust groom density and layering.
+Trims or scales hair curves to a certain length.
 
 .. peertube:: qfXRAqbL8MKus8YKMkUpE5
 
@@ -15,43 +13,40 @@ Inputs
 ======
 
 Geometry
-   The input geometry containing the hair curves to trim.
+   Input Geometry (only curves will be affected).
 
 Scale Uniform
-   When enabled, each curve is scaled uniformly to reach the target length.
-   When disabled, trimming is applied progressively from root to tip.
+   Scale each curve uniformly to reach the target length.
 
 Length Factor
-   Multiplies the original curve length by this factor.
-   A value of 1.0 keeps the hair at its original length, while 0.5 halves it.
+   Multiply the original length by a factor.
 
 Replace Length
-   When enabled, the *Length* input fully replaces the original curve length
-   instead of scaling it by the *Length Factor*.
+   Use the length input to fully replace the original length.
 
 Length
-   The target length for the operation.
-   Used when *Replace Length* is enabled.
+   Target length for the operation.
 
 Mask
-   A per-curve mask that modulates the overall trimming effect.
-   A value of 0.0 disables trimming for that curve, while 1.0 applies the full effect.
+   Mask to blend overall effect.
 
 Random Offset
-   Adds random variation to the trimmed length of each curve,
-   creating more natural-looking hair variation.
+   Trim hair curves randomly up to a certain amount.
 
 Pin at Parameter
-   Specifies a parameter along each curve to act as a pivot or anchor point during trimming.
-   The trimming operation is performed relative to this point.
+   Pin each curve at a certain point for the operation.
 
 Seed
-   Sets the random seed used for the random offset.
-   Changing this value produces different trimming variations while maintaining the same parameters.
+   Random Seed for the operation.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs
 =======
 
-Geometry
-   The resulting geometry with trimmed or scaled hair curves.
+**Geometry**

@@ -276,18 +276,16 @@ the :doc:`/compositing/types/tracking/plane_track_deform` compositing node.
 
 .. _bpy.ops.clip.solve_camera:
 
-Solve Camera/Object Motion
-==========================
+Solve Solution
+==============
 
 .. reference::
 
    :Mode:      Tracking
-   :Menu:      :menuselection:`Track --> Solve Camera/Object Motion`
+   :Menu:      :menuselection:`Track --> Solve Solution`
 
-The *Solve Camera/Object Motion* operator solves the motion of the camera or the
-selected :doc:`tracked object </movie_clip/tracking/clip/sidebar/track/objects>`,
-using all tracks placed on the footage and two keyframes specified on this panel.
-There are some requirements:
+The *Camera Motion* operator solves the motion of camera using all tracks placed
+on the footage and two keyframes specified on this panel. There are some requirements:
 
 - There should be at least eight common tracks on the both of the selected keyframes.
 - There should be noticeable parallax effects between these two keyframes.
@@ -385,12 +383,12 @@ Clean Tracks
    :Mode:      Tracking
    :Menu:      :menuselection:`Track --> Clean Up --> Clean Tracks`
 
-Identifies all tracks which match settings from above and performs desired action on them.
+Identifies all tracks which matches settings from above and performs desired action on them.
 
 Tracked Frames
    Tracks or tracked segments shorter than this number of frames will be removed.
 Reprojection Error
-   Tracks which have reprojection error higher than this value will be removed.
+   Tracks which has reprojection error higher than this value will be removed.
 Action
    Several actions can be performed for bad tracks.
 
@@ -413,7 +411,7 @@ Filter Tracks
    :Menu:      :menuselection:`Track --> Clean Up --> Filter Tracks`
 
 This operator deletes obviously bad tracks (for example, the ones which are too short).
-Additionally, it identifies tracks which have suspicious spikes in their motion and selects them.
+Additionally, it identifies tracks which has suspicious spikes in their motion and selects them.
 
 
 .. _bpy.ops.clip.delete_track:

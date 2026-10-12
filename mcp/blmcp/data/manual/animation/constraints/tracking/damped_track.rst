@@ -5,13 +5,20 @@
 Damped Track Constraint
 ***********************
 
-The *Damped Track* constraint makes an object or bone point towards a certain target.
-It's typically called "Look At" or "Aim" in other 3D software.
+The *Damped Track* constraint constrains one local axis of the owner to always point towards *Target*.
+This constraint uses a pure :term:`Swing` rotation, i.e. the shortest possible single axis rotation.
+In other 3D software you can find it with the name "Look at" constraint.
 
-The word "damped" means that the constraint uses a pure :term:`swing` rotation
-to minimize rolling around the tracking axis. This is in contrast to the
-:doc:`/animation/constraints/tracking/track_to` which applies an "Up" axis
-in addition to the tracking.
+Although usually associated with bones, Damped Track can align objects to point to (and follow)
+other objects or bones. It is important to note that the constraint aligns the origin's axes to
+point to the target's origin point. This is illustrated in the following figure.
+In each case the objects are set as Damped Track to +X.
+
+.. figure:: /images/animation_constraints_tracking_damped-track_axis.png
+   :align: center
+
+   A: Object vertices aligned along axis origin.
+   B: Object vertices aligned away from origin.
 
 
 Options
@@ -19,19 +26,23 @@ Options
 
 .. figure:: /images/animation_constraints_tracking_damped-track_panel.png
 
-   Damped Track constraint.
+   Damped Track panel.
 
-:ref:`Target <rigging-constraints-interface-common-target>`
-   The object or bone to point towards.
+Target
+   :ref:`ui-data-id` used to select the constraint's target, and is not functional (red state) when it has none.
+   See :ref:`common constraint properties <rigging-constraints-interface-common-target>` for more information.
 
 Track Axis
-   The local axis of the owner that should point at the target.
-   For bones, this should typically be Y.
+   Once the owner object has had a Damped Track constraint applied to it,
+   you must then choose which axis of the object you want to point at the Target object.
+   The negative axis direction cause the object to point away from
+   the Target object along the selected axis direction.
 
-   A negative axis will make the owner point away from the target instead.
+   -X, -Y, -Z, X, Y, Z
 
-:ref:`bpy.types.constraint.influence`
-   How strongly the constraint affects the owner.
+Influence
+   Controls the percentage of affect the constraint has on the object.
+   See :ref:`common constraint properties <bpy.types.constraint.influence>` for more information.
 
 
 Example

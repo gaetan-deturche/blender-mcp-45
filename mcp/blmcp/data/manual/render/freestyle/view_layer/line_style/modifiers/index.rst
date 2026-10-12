@@ -1,11 +1,40 @@
+:orphan:
 
 ########################
   Line Style Modifiers
 ########################
 
-.. toctree::
+Color
+=====
 
-   color/index.rst
-   alpha/index.rst
-   thickness/index.rst
-   geometry/index.rst
+.. toctree::
+   :glob:
+
+   color/*
+
+
+Alpha
+=====
+
+.. toctree::
+   :glob:
+
+   alpha/*
+
+
+Thickness
+=========
+
+.. toctree::
+   :glob:
+
+   thickness/*
+
+
+Geometry
+========
+
+.. toctree::
+   :glob:
+
+   geometry/*

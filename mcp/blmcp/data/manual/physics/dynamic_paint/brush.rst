@@ -41,9 +41,11 @@ Source
    :Type:      Brush
    :Panel:     :menuselection:`Physics --> Dynamic Paint --> Source`
 
-.. figure:: /images/physics_dynamic-paint_brush_source-panel.png
+.. todo:: Update image
 
-   Paint source panel.
+   .. figure:: /images/physics_dynamic-paint_brush_source-panel.png
+
+      Paint source panel.
 
 *Paint* source setting lets you define how brush influence/intersection is defined.
 
@@ -95,7 +97,7 @@ Negate Volume
 .. rubric:: Object Center
 
 Instead of calculating proximity to the brush object mesh, which can be quite slow in some cases,
-only the distance to the center is calculated. This is much faster and often good enough.
+only distance to only center is calculated. This is much faster and often good enough.
 
 .. figure:: /images/physics_dynamic-paint_brush_source-object-center.png
 
@@ -161,9 +163,11 @@ Velocity
    :Type:      Brush
    :Panel:     :menuselection:`Physics --> Dynamic Paint --> Velocity`
 
-.. figure:: /images/physics_dynamic-paint_brush_velocity-panel.png
+.. todo:: Update image
 
-   Velocity panel.
+   .. figure:: /images/physics_dynamic-paint_brush_velocity-panel.png
+
+      Velocity panel.
 
 This panel shows brush options that are based on object velocity.
 
@@ -198,9 +202,11 @@ Waves
    :Type:      Brush
    :Panel:     :menuselection:`Physics --> Dynamic Paint --> Waves`
 
-.. figure:: /images/physics_dynamic-paint_brush_waves-panel.png
+.. todo:: Update image
 
-   Brush Waves panel.
+   .. figure:: /images/physics_dynamic-paint_brush_waves-panel.png
+
+      Brush Waves panel.
 
 This panel is used to adjust brush influence to "Wave" surfaces.
 
@@ -210,14 +216,14 @@ Wave Type
    Select what effect the brush creates in the wave simulation.
 
    :Depth Change:
-      The brush creates waves when the intersection depth with the surface is *changed* on that point.
+      The brush create waves when the intersection depth with the surface is *changed* on that point.
       If the brush is not moved, it will have no effect.
 
       Using a negative "Factor" with this type can create a nice looking "wake" for moving objects like ships.
    :Obstacle:
       Constantly affects surface whenever intersecting.
       Waves are also reflected off this brush type.
-      However, due to the nature of wave simulation algorithm this type creates
+      However, due the nature of wave simulation algorithm this type creates
       an unnatural "dent" in the surface if the brush is not moved.
    :Force:
       Directly affects the velocity of wave motion.

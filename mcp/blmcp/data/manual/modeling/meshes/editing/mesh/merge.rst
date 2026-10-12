@@ -1,5 +1,4 @@
 .. _bpy.ops.mesh.merge:
-.. _bpy.ops.mesh.remove_doubles:
 .. _vertex-merging:
 
 *****
@@ -13,54 +12,40 @@ Merge
                :menuselection:`Context Menu --> Merge`
    :Shortcut:  :kbd:`M`
 
-Merges the selected vertices together. The menu has the following options:
+This tool allows you to merge all selected vertices to a unique one, dissolving all others.
+You can choose the location of the remaining vertex in the menu this tool pops up before executing:
 
 At Center
-   Merge all selected vertices into one vertex placed at their geometric center
-   (i.e. the average of their positions, not their bounding box center).
+   It will place the remaining vertex at the center of the selection.
+   Available in all select modes.
 At Cursor
-   Merge all selected vertices into one vertex placed at the :doc:`/editors/3dview/3d_cursor`.
+   It will place the remaining vertex at the 3D Cursor.
+   Available in all select modes.
 Collapse
-   Merge each island of connected vertices into one vertex placed at the average position.
+   Every island of selected vertices (connected by selected edges) will merge on its own median center,
+   leaving one vertex per island.
 At First
-   Merge all selected vertices into the one that was selected first.
-   Only available in the *Vertex* selection mode.
+   It will place the remaining vertex at the location of the first one selected.
+   Only available in *Vertex* select mode.
 At Last
-   Merge all selected vertices into the one that was selected last.
-   Only available in the *Vertex* selection mode.
-By Distance
-   Merge each cluster of vertices that are closer to each other than a certain distance.
+   It will place the remaining vertex at the location of the last one selected (the active one).
+   Only available in *Vertex* select mode.
+
+Merging vertices of course also deletes some edges and faces. But Blender will do everything
+it can to preserve edges and faces only partly involved in the reunion.
 
 .. note::
 
-   *At First* and *At Last* depend on the selection order which is easily lost (e.g. by
-   changing the selection mode). They should typically be run right after making the selection.
+   *At First* and *At Last* depend on that the selection order is saved:
+   the order is lost, for instance, after changing selection mode.
 
-.. seealso::
-
-   The :doc:`/modeling/modifiers/generate/weld` merges vertices by distance non-destructively.
-
-Options
--------
-
-After merging, the following options are available in the :ref:`bpy.ops.screen.redo_last` panel:
-
-Type
-   The type of merge to perform.
 UVs
-   Corrects the :doc:`UV coordinates </editors/uv/introduction>` to avoid texture distortion.
+   If *UVs* is ticked in the :ref:`bpy.ops.screen.redo_last` panel,
+   the UV mapping coordinates, if existing, will be corrected to avoid image distortion.
 
-*Merge By Distance* instead has the following options:
 
-Merge Distance
-   Vertices closer than this distance will be merged.
-Centroid Merge
-   Place each new vertex at the average position of the vertices that were merged together.
-   When disabled, the position of the original vertex closest to this average is used.
-Unselected
-   Allow merging selected vertices with unselected ones.
-Sharp Edges
-   If the mesh uses :ref:`smooth shading <bpy.ops.object.shade_smooth>` and has
-   :ref:`custom split normals <modeling_meshes_normals_custom>`, this option will add
-   :ref:`edge marks <bpy.ops.mesh.mark_sharp>` where needed so that sharp edges will
-   remain sharp after merging.
+By Distance
+===========
+
+.. todo:: Add this information.
+

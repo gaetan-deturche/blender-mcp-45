@@ -5,9 +5,14 @@ bpy_prop_collection_idprop
 
 base classes --- :class:`bpy_prop_collection`
 
-.. class:: bpy_prop_collection_idprop(bpy_prop_collection)
+.. class:: bpy_prop_collection_idprop
 
    built-in class used for user defined collections.
+
+   .. note::
+
+      Note that :class:`bpy.types.bpy_prop_collection_idprop` is not actually available from within Blender,
+      it only exists for the purpose of documentation.
 
    .. method:: add()
    
@@ -26,9 +31,9 @@ base classes --- :class:`bpy_prop_collection`
    
       This is a function to move an item in a collection.
    
-      :param src_index: Source item index.
+      :arg src_index: Source item index.
       :type src_index: int
-      :param dst_index: Destination item index.
+      :arg dst_index: Destination item index.
       :type dst_index: int
 
 
@@ -36,7 +41,7 @@ base classes --- :class:`bpy_prop_collection`
    
       This is a function to remove an item from a collection.
    
-      :param index: Index of the item to be removed.
+      :arg index: Index of the item to be removed.
       :type index: int
 
 

@@ -5,241 +5,234 @@ RenderLayer(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: RenderLayer(bpy_struct)
 
 
    .. data:: name
 
-      View layer name (default "", readonly, never None)
+      View layer name
 
-      :type: str
+      :type: string, default "", (readonly, never None)
 
    .. data:: passes
 
-      (default None, readonly)
-
-      :type: :class:`RenderPasses`\ [:class:`RenderPass`]
+      :type: :class:`RenderPasses` :class:`bpy_prop_collection` of :class:`RenderPass`, (readonly)
 
    .. data:: use_ao
 
-      Render Ambient Occlusion in this Layer (default False, readonly)
+      Render Ambient Occlusion in this Layer
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_grease_pencil
 
-      Render Grease Pencil on this layer (default False, readonly)
+      Render Grease Pencil on this layer
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_motion_blur
 
-      Render motion blur in this Layer, if enabled in the scene (default False, readonly)
+      Render motion blur in this Layer, if enabled in the scene
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_ambient_occlusion
 
-      Deliver Ambient Occlusion pass (default False, readonly)
+      Deliver Ambient Occlusion pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_combined
 
-      Deliver full combined RGBA buffer (default False, readonly)
+      Deliver full combined RGBA buffer
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_diffuse_color
 
-      Deliver diffuse color pass (default False, readonly)
+      Deliver diffuse color pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_diffuse_direct
 
-      Deliver diffuse direct pass (default False, readonly)
+      Deliver diffuse direct pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_diffuse_indirect
 
-      Deliver diffuse indirect pass (default False, readonly)
+      Deliver diffuse indirect pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_emit
 
-      Deliver emission pass (default False, readonly)
+      Deliver emission pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_environment
 
-      Deliver environment lighting pass (default False, readonly)
+      Deliver environment lighting pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_glossy_color
 
-      Deliver glossy color pass (default False, readonly)
+      Deliver glossy color pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_glossy_direct
 
-      Deliver glossy direct pass (default False, readonly)
+      Deliver glossy direct pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_glossy_indirect
 
-      Deliver glossy indirect pass (default False, readonly)
+      Deliver glossy indirect pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_material_index
 
-      Deliver material index pass (default False, readonly)
+      Deliver material index pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_mist
 
-      Deliver mist factor pass (0.0 to 1.0) (default False, readonly)
+      Deliver mist factor pass (0.0 to 1.0)
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_normal
 
-      Deliver normal pass (default False, readonly)
+      Deliver normal pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_object_index
 
-      Deliver object index pass (default False, readonly)
+      Deliver object index pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_position
 
-      Deliver position pass (default False, readonly)
+      Deliver position pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_shadow
 
-      Deliver shadow pass (default False, readonly)
+      Deliver shadow pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_subsurface_color
 
-      Deliver subsurface color pass (default False, readonly)
+      Deliver subsurface color pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_subsurface_direct
 
-      Deliver subsurface direct pass (default False, readonly)
+      Deliver subsurface direct pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_subsurface_indirect
 
-      Deliver subsurface indirect pass (default False, readonly)
+      Deliver subsurface indirect pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_transmission_color
 
-      Deliver transmission color pass (default False, readonly)
+      Deliver transmission color pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_transmission_direct
 
-      Deliver transmission direct pass (default False, readonly)
+      Deliver transmission direct pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_transmission_indirect
 
-      Deliver transmission indirect pass (default False, readonly)
+      Deliver transmission indirect pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_uv
 
-      Deliver texture UV pass (default False, readonly)
+      Deliver texture UV pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_vector
 
-      Deliver speed vector pass (default False, readonly)
+      Deliver speed vector pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_pass_z
 
-      Deliver depth values pass (default False, readonly)
+      Deliver Z values pass
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_sky
 
-      Render Sky in this Layer (default False, readonly)
+      Render Sky in this Layer
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_solid
 
-      Render Solid faces in this Layer (default False, readonly)
+      Render Solid faces in this Layer
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_strand
 
-      Render Strands in this Layer (default False, readonly)
+      Render Strands in this Layer
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: use_volumes
 
-      Render volumes in this Layer (default False, readonly)
+      Render volumes in this Layer
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. method:: load_from_file(filepath, *, x=0, y=0)
 
       Copies the pixels of this renderlayer from an image file
 
-      :param filepath: File Path, File path to load into this render tile, must be no smaller than the renderlayer (never None)
-      :type filepath: str
-      :param x: Offset X, Offset the position to copy from if the image is larger than the render layer (in [0, inf], optional)
-      :type x: int
-      :param y: Offset Y, Offset the position to copy from if the image is larger than the render layer (in [0, inf], optional)
-      :type y: int
+      :arg filepath: File Path, File path to load into this render tile, must be no smaller than the renderlayer
+      :type filepath: string, (never None)
+      :arg x: Offset X, Offset the position to copy from if the image is larger than the render layer
+      :type x: int in [0, inf], (optional)
+      :arg y: Offset Y, Offset the position to copy from if the image is larger than the render layer
+      :type y: int in [0, inf], (optional)
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -250,7 +243,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -258,30 +251,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -289,5 +281,5 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`RenderResult.layers`
+   * :class:`RenderResult.layers`
 

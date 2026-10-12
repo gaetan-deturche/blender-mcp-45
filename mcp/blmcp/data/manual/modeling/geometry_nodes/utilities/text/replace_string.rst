@@ -1,6 +1,5 @@
 .. index:: Geometry Nodes; Replace String
 .. _bpy.types.FunctionNodeReplaceString:
-.. --- copy below this line ---
 
 *******************
 Replace String Node
@@ -24,6 +23,12 @@ Find
 
 Replace
    A string segment which replaces occurrences of the *Find* substring.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs

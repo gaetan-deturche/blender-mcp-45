@@ -14,22 +14,12 @@ The Color Balance node adjusts the color and values of an image.
 Inputs
 ======
 
-Image
-   Standard color input.
+.. rubric:: Common
+
 Factor
    Controls the amount of influence the node exerts on the output image.
-Type
-   The mathematical method to adjust the image's colors.
-
-   :Lift/Gamma/Gain:
-      Adjusts the colors and tonal range of an image by controlling the shadows, midtones, and highlights separately.
-   :Offset/Power/Slope (ASC-CDL):
-      A standardized model for adjusting the colors and tonal range of an image.
-      This allows the same values to be used across different application to yield the same result.
-      See `Advanced`_ for more details on the underlying implementation.
-   :White Point:
-      Adjusts the color that should be considered white.
-      The white point is specified as setting the inputs color temperature and then the desired output temperature.
+Color
+   Standard color input.
 
 .. rubric:: Lift/Gamma/Gain
 
@@ -70,10 +60,27 @@ Tint
    The amount of green/magenta shift of the output's white point (the default of 10 matches daylight)
 
 
+Properties
+==========
+
+Correction Formula
+   The mathematical method to adjust the image's colors.
+
+   :Lift/Gamma/Gain:
+      Adjusts the colors and tonal range of an image by controlling the shadows, midtones, and highlights separately.
+   :Offset/Power/Slope (ASC-CDL):
+      A standardized model for adjusting the colors and tonal range of an image.
+      This allows the same values to be used across different application to yield the same result.
+      See `Advanced`_ for more details on the underlying implementation.
+   :White Point:
+      Adjusts the color that should be considered white.
+      The white point is specified as setting the inputs color temperature and then the desired output temperature.
+
+
 Outputs
 =======
 
-Image
+Color
    Standard output image.
 
 

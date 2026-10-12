@@ -4,10 +4,7 @@
 Set Hair Curve Profile
 **********************
 
-The *Set Hair Curve Profile* node defines the radius of hair curves along their length
-according to a customizable profile shape.
-It allows artists to control the thickness variation from root to tip, producing
-natural tapering or stylized width adjustments.
+Sets the radius attribute of hair curves according to a profile shape.
 
 .. peertube:: gpQi2ZRQ3usV1FbQ9p3FHw
 
@@ -15,32 +12,31 @@ natural tapering or stylized width adjustments.
 Inputs
 ======
 
-Geometry
-   The input geometry containing the hair curves whose radius will be modified.
+**Geometry**
 
 Replace Radius
-   When enabled, the node replaces the existing radius attribute with a new one.
-   When disabled, the new radius is multiplied with the existing value instead.
+   Replace the original radius.
 
 Radius
-   The base radius value applied to all curves when *Replace Radius* is enabled.
-   This sets the overall scale of the hair thickness.
+   Base radius to be set if *Replace Radius* is enabled.
 
 Shape
-   Defines how the radius changes along the curve.
-   For example, this can create a tapered profile, with thicker roots and thinner tips.
+   Shape of the radius along the curve.
 
 Factor Min
-   The multiplier applied to the radius at the start (root) of each curve.
-   Typically used to control how thick the curve starts.
+   Factor of the radius at the minimum.
 
 Factor Max
-   The multiplier applied to the radius at the end (tip) of each curve.
-   Typically used to control how thin the curve becomes toward the tip.
+   Factor of the radius at the maximum.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs
 =======
 
-Geometry
-   The resulting geometry with updated radius attributes along each hair curve.
+**Geometry**

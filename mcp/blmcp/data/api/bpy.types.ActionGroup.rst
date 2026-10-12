@@ -5,93 +5,84 @@ ActionGroup(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: ActionGroup(bpy_struct)
 
    Groups of F-Curves
 
    .. data:: channels
 
-      F-Curves in this group (default None, readonly)
+      F-Curves in this group
 
-      :type: :class:`bpy_prop_collection`\ [:class:`FCurve`]
+      :type: :class:`bpy_prop_collection` of :class:`FCurve`, (readonly)
 
    .. attribute:: color_set
 
-      Custom color set to use (default ``'DEFAULT'``)
+      Custom color set to use
 
-      :type: Literal[:ref:`rna_enum_color_sets_items`]
+      :type: enum in :ref:`rna_enum_color_sets_items`, default ``'DEFAULT'``
 
    .. data:: colors
 
-      Copy of the colors associated with the group's color set (readonly, never None)
+      Copy of the colors associated with the group's color set
 
-      :type: :class:`ThemeBoneColorSet`
+      :type: :class:`ThemeBoneColorSet`, (readonly, never None)
 
    .. data:: is_custom_color_set
 
-      Color set is user-defined instead of a fixed theme color set (default False, readonly)
+      Color set is user-defined instead of a fixed theme color set
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. attribute:: lock
 
-      Action group is locked (default False)
+      Action group is locked
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: mute
 
-      Action group is muted (default False)
+      Action group is muted
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: name
 
-      (default "", never None)
-
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: select
 
-      Action group is selected (default False)
+      Action group is selected
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_expanded
 
-      Action group is expanded except in graph editor (default False)
+      Action group is expanded except in graph editor
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_expanded_graph
 
-      Action group is expanded in graph editor (default False)
+      Action group is expanded in graph editor
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_pin
 
-      (default False)
-
-      :type: bool
+      :type: boolean, default False
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -102,7 +93,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -110,30 +101,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -141,8 +131,11 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`ActionChannelbag.groups`
-   - :class:`ActionChannelbagGroups.new`
-   - :class:`ActionChannelbagGroups.remove`
-   - :class:`FCurve.group`
+   * :class:`Action.groups`
+   * :class:`ActionChannelbag.groups`
+   * :class:`ActionChannelbagGroups.new`
+   * :class:`ActionChannelbagGroups.remove`
+   * :class:`ActionGroups.new`
+   * :class:`ActionGroups.remove`
+   * :class:`FCurve.group`
 

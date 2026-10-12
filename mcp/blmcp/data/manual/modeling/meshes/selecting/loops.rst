@@ -1,11 +1,10 @@
-.. _bpy.ops.mesh.loop_select:
-.. _bpy.ops.mesh.loop_multi_select:
 
 ************
 Select Loops
 ************
 
-.. _bpy.ops.mesh.select_edge_loop_multi:
+.. _bpy.ops.mesh.loop_select:
+.. _bpy.ops.mesh.loop_multi_select:
 
 Select Edge Loops
 =================
@@ -14,41 +13,39 @@ Select Edge Loops
 
    :Mode:      Edit Mode (Vertex or Edge select mode)
    :Menu:      :menuselection:`Select --> Select Loops --> Edge Loops`
-   :Shortcut:  :kbd:`Alt-LMB` or :kbd:`Shift-Alt-LMB`
+   :Shortcut:  :kbd:`Alt-LMB`, or :kbd:`Shift-Alt-LMB` for modifying existing selection.
 
-Selecting an edge with :kbd:`Alt-LMB` will also select the edges that are connected to it in a
-(topologically) straight line. Use :kbd:`Shift-Alt-LMB` to add to the previous selection
-instead of replacing it.
+Holding :kbd:`Alt` while selecting an edge selects a loop of edges that are connected in
+a line end-to-end, passing through the edge under the mouse pointer.
+Holding :kbd:`Shift-Alt` while clicking adds to the current selection.
 
-The resulting chain of edges is called an :ref:`edge loop <modeling_meshes_structure_topology>`
-in Blender terminology because it typically forms a closed loop around the mesh.
-However, as shown below, this doesn't have to be the case.
+.. note:: *Vertex* mode
+
+   In *Vertex* select mode, you can also select edge loops, by using the same shortcuts,
+   and clicking on the *edges* (not on the vertices).
 
 .. figure:: /images/modeling_meshes_selecting_loops_edge-loops.png
 
-   Selecting edge loops. The clicked edge is highlighted in green.
+   Longitudinal and latitudinal edge loops.
 
-.. hint::
-
-   Selecting edge loops by clicking edges is also possible in the Vertex selection mode.
-
-.. note::
-
-   When :ref:`bpy.types.PreferencesInput.use_mouse_emulate_3_button` is enabled,
-   the :kbd:`Alt-LMB` shortcut won't work because it serves as a replacement for :kbd:`MMB`.
-   To select edge loops in this case, double-click with :kbd:`LMB` instead.
+The left sphere shows an edge that was selected longitudinally. Notice how the loop is open.
+This is because the algorithm hit the vertices at the poles and is terminated
+because the vertices at the pole connect to more than four edges. However,
+the right sphere shows an edge that was selected latitudinally and has formed a closed loop.
+This is because the algorithm hit the first edge that it started with.
 
 
-All Boundaries
---------------
+Select Edge Loops (All Boundaries)
+----------------------------------
 
-Running the edge loop selection on a boundary edge twice will select the whole boundary.
+All boundary edges can be selected by performing a second loop select action on a boundary edge.
+
+This can be useful for selecting boundaries for meshes that include triangles and n-gons,
+where loop select would not otherwise select the full boundary.
 
 .. figure:: /images/modeling_meshes_selecting_loops_edge-boundary-loops.png
 
-   First and second edge loop selection.
-
-See also :ref:`bpy.ops.mesh.region_to_loop`.
+   The second loop select action is shown on the right.
 
 
 .. _modeling-meshes-selecting-face-loops:
@@ -58,108 +55,79 @@ Select Face Loops
 
 .. reference::
 
-   :Mode:      Edit Mode (Face select mode)
-   :Shortcut:  :kbd:`Alt-LMB` or :kbd:`Shift-Alt-LMB`
+   :Mode:      Edit Mode (Face or Vertex select modes)
+   :Shortcut:  :kbd:`Alt-LMB` or :kbd:`Shift-Alt-LMB` for modifying existing selection.
 
-In *Face* selection mode, clicking an edge with :kbd:`Alt-LMB` will select the row
-of faces that's perpendicular to that edge. Use :kbd:`Shift-Alt-LMB` to add to the
-previous selection instead of replacing it.
+In face select mode, holding :kbd:`Alt` while selecting an *edge* selects a loop of
+faces that are connected in a line end-to-end, along their opposite edges.
 
-The resulting row of faces is called a :ref:`face loop <modeling_meshes_structure_topology>`
-in Blender terminology because it typically forms a closed loop around the mesh.
-However, as shown below, this doesn't have to be the case.
+In vertex select mode,
+the same can be accomplished by using :kbd:`Ctrl-Alt` to select an edge,
+which selects the face loop implicitly.
 
 .. figure:: /images/modeling_meshes_selecting_loops_face-loops.png
 
-   Selecting face loops. The clicked edge is highlighted in green.
+   Face loop selection.
 
-In Vertex selection mode, the same can be achieved using
-:ref:`bpy.ops.mesh.select_edge_ring_multi`.
+This face loop was selected by clicking with :kbd:`Alt-LMB` on an edge,
+in *face* select mode.
+The loop extends perpendicular from the edge that was selected.
 
-.. note::
+.. figure:: /images/modeling_meshes_selecting_loops_face-loops-vertex.png
 
-   When :ref:`bpy.types.PreferencesInput.use_mouse_emulate_3_button` is enabled,
-   the :kbd:`Alt-LMB` shortcut won't work because it serves as a replacement for :kbd:`MMB`.
-   To select face loops in this case, double-click the edge with :kbd:`LMB` instead.
+   :kbd:`Alt` versus :kbd:`Ctrl-Alt` in vertex select mode.
+
+A face loop can also be selected in *Vertex* select mode.
+Technically :kbd:`Ctrl-Alt-LMB` will select an *Edge Ring*,
+however, in *Vertex* select mode, selecting an *Edge Ring* implicitly
+selects a *Face Loop* since selecting opposite edges of a face implicitly selects
+the entire face.
 
 
-.. _bpy.ops.mesh.select_edge_ring_multi:
+.. _modeling-meshes-selecting-edge-rings:
+.. _bpy.ops.mesh.select_edge_ring:
 
 Select Edge Rings
 =================
 
 .. reference::
 
-   :Mode:      Edit Mode (Edge select mode)
+   :Mode:      Edit Mode
    :Menu:      :menuselection:`Select --> Select Loops --> Edge Rings`
-   :Shortcut:  :kbd:`Ctrl-Alt-LMB` or :kbd:`Shift-Ctrl-Alt-LMB`
+   :Shortcut:  :kbd:`Ctrl-Alt-LMB`
 
-Selecting an edge with :kbd:`Ctrl-Alt-LMB` will also select the parallel edges that lie
-in the face row perpendicular to the edge. Use :kbd:`Shift-Ctrl-Alt-LMB` to add to the
-previous selection instead of replacing it.
+In *Edge* select mode, holding :kbd:`Ctrl-Alt`
+while selecting an edge (or two vertices) selects a sequence of edges that are not connected,
+but on opposite sides to each other continuing along a :doc:`face loop </modeling/meshes/structure>`.
 
-The resulting set of edges is called an :ref:`edge ring <modeling_meshes_structure_topology>`
-in Blender terminology because it typically forms a closed ring around the mesh.
-However, as shown below, this doesn't have to be the case.
+As with edge loops, you can also select edge rings based on current selection,
+using either :menuselection:`Select --> Select Loops --> Edge Rings`.
+
+.. note:: *Vertex* mode
+
+   In *Vertex* select mode, you can use the same shortcuts when *clicking on the edges* (not on the vertices),
+   but this will directly select the corresponding face loop...
+
+.. _fig-mesh-select-advanced-loop-ring:
 
 .. figure:: /images/modeling_meshes_selecting_loops_edge-ring.png
 
-   Selecting edge rings in Edge mode. The clicked edge is highlighted in green.
+   A selected edge loop, and a selected edge ring.
 
-This shortcut also works in Vertex selection mode, but results in a face loop selection instead:
+In Fig. :ref:`fig-mesh-select-advanced-loop-ring` the same edge was clicked on,
+but two different "groups of edges" were selected, based on the different tools.
+One is based on edges during computation and the other is based on faces.
 
-.. figure:: /images/modeling_meshes_selecting_loops_edge-ring_vertex-mode.png
+.. note:: Convert Selection to Whole Faces
 
-   Selecting edge rings in Vertex mode.
+   If the edge ring selection happened in Edge Select Mode, switching to Face Select Mode will erase the selection.
 
-.. hint::
+   This is because none of those faces had all its (four) edges selected,
+   just two of them.
 
-   To convert an edge ring selection to a face loop, either switch to Vertex mode or
-   switch to Face mode while holding :kbd:`Ctrl`
-   (see :ref:`modeling_meshes_selecting_switch-mode_expand-contract`).
-
-
-.. _bpy.ops.mesh.select_boundary_loop_multi:
-
-Boundary Loops
-==============
-
-.. reference::
-
-   :Mode:      Edit Mode (Edge Select Mode)
-   :Menu:      :menuselection:`Select --> Select Loops --> Boundary Loops`
-
-Selects the entire boundary loop for each selected boundary edge.
-
-A boundary edge is an edge connected to only one face.
-This operator expands the selection to include all connected boundary edges,
-forming one or more continuous loops.
-
-.. figure:: /images/modeling_meshes_selecting_loops_boundary_loops.png
-   :width: 50%
-
-   Selecting Boundary Loops.
-
-.. note::
-
-   At least one boundary edge must be selected to start a boundary loop selection.
-
-.. rubric:: Options
-
-Extend
-   Adds the detected boundary loops to the existing selection
-   instead of replacing it.
-
-Delimit
-   Restricts how far the boundary loop selection can propagate.
-
-   :Seam: Stops the selection at edges marked as seams.
-   :Sharp: Stops the selection at edges marked as sharp.
-   :N-gons: Stops the selection when encountering faces with more than four sides.
-   :Inner Corners: Stops at vertices connected to more than three edges.
-   :Outer Corners:
-      Stops at vertices connected to exactly two edges
-      when those edges share a face that is not an n-gon.
+   Instead of selecting the missing edges manually or by using :kbd:`Shift-Alt-LMB` twice,
+   it is easier to first switch to Vertex Select Mode, which will kind of "flood" the selection.
+   A subsequent switch to Face Select Mode will then properly select the faces.
 
 
 .. _bpy.ops.mesh.loop_to_region:
@@ -172,53 +140,40 @@ Select Loop Inner-Region
    :Mode:      Edit Mode (Edge select mode)
    :Menu:      :menuselection:`Select --> Select Loops --> Select Loop Inner-Region`
 
-Selects all faces that are inside the selected, closed loop of edges.
-While it's possible to use this operator in the *Vertex* and *Face* selection modes,
-results may be unexpected.
-
-Note that if the selected edges do not form a closed loop,
-all connected faces will be selected.
-
-
-Options
--------
-
-Select Bigger
-   Select the faces outside the edge loop instead of those inside it.
-
-
-Examples
---------
+*Select Loop Inner-Region* selects all faces that are inside a closed loop of edges.
+While it is possible to use this operator in *Vertex* and *Face* selection modes, results may be unexpected.
+Note that if the selected loop of edges is not closed,
+then all connected edges on the mesh will be considered inside the loop.
 
 .. figure:: /images/modeling_meshes_selecting_loops_inner-region1.png
 
-   Single edge loop to region.
+   Loop to Region.
 
 .. figure:: /images/modeling_meshes_selecting_loops_inner-region2.png
 
-   Multiple edge loops.
+   This tool handles multiple loops fine, as you can see.
 
 .. figure:: /images/modeling_meshes_selecting_loops_inner-region3.png
 
-   Holes are also supported.
+   This tool handles "holes" just fine as well.
 
 
 .. _bpy.ops.mesh.region_to_loop:
 
-Boundary of Selection
-=====================
+Select Boundary Loop
+====================
 
 .. reference::
 
-   :Mode:      Edit Mode
-   :Menu:      :menuselection:`Select --> Select Loops --> Boundary of Selection`
+   :Mode:      Edit Mode (Edge select mode)
+   :Menu:      :menuselection:`Select --> Select Loops --> Select Boundary Loop`
 
-Replaces the current face selection by an edge selection going around the border of
-each face "island." This is essentially the opposite of :ref:`bpy.ops.mesh.loop_to_region`.
+*Select Boundary Loop* does the opposite of *Select Loop Inner-Region*,
+based on all regions currently selected, it selects only the edges at the border (contour) of these islands.
+It can operate in any select mode, but when in *Face* mode it will switch to *Edge* select mode after running.
 
-This operator can be run in any selection mode. When run in Face mode,
-it will automatically switch to Edge mode.
+All this is much more simple to illustrate with examples:
 
 .. figure:: /images/modeling_meshes_selecting_loops_boundary-loop.png
 
-   Before and after running Select Boundary Loop.
+   Select Boundary Loop does the opposite and forces into Edge Select Mode.

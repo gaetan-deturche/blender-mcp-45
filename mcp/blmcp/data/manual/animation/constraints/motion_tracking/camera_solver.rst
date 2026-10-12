@@ -5,30 +5,33 @@
 Camera Solver Constraint
 ************************
 
-The *Camera Solver* constraint makes a Blender camera imitate the motion of a real-world camera.
+The *Camera Solver* constraint gives the owner of this constraint,
+the location and rotation of the "solved camera motion".
 
-Usage
-=====
+The "solved camera motion" is where Blender reconstructs the position of the physical, real-world camera,
+when it filmed the video footage, relative to the thing being tracked.
 
-Start by loading a video file into the :doc:`Movie Clip Editor </editors/clip/introduction>`
-and using :doc:`motion tracking </movie_clip/tracking/introduction>` to track at least
-eight :doc:`markers </movie_clip/tracking/clip/marker>` in the real-world scene.
-Then use :ref:`bpy.ops.clip.solve_camera` to reconstruct the motion of the physical camera,
-and finally add this constraint to a Blender camera.
+.. note::
+
+   This constraint only works after you have set up a minimum of eight markers and pressed
+   :ref:`Solve Camera Motion <editors-movie-clip-tracking-clip-solve-motion>`
+   (:menuselection:`Movie Clip Editor --> Toolbar --> Solve --> Solve Camera Motion`).
+
 
 Options
 =======
 
 .. figure:: /images/animation_constraints_motion-tracking_camera-solver_panel.png
 
-   Camera Solver constraint.
+   Camera Solver Constraint panel.
 
 Active Clip
-   Whether to follow the physical camera of the scene's :ref:`Active Clip <bpy.types.Scene.active_clip>`.
-   If unchecked, a selector appears for choosing another clip.
+   Receive tracking data from the scene's :ref:`Active Clip <bpy.types.Scene.active_clip>`.
+   If unchecked, an option appears to choose from the other clips.
 
 Constraint to F-Curve
-   Replaces the constraint by a set of equivalent :doc:`keyframes </animation/keyframes/introduction>`.
+   Applies the constraint, creating Keyframes for the transforms.
 
-:ref:`bpy.types.constraint.influence`
-   How strongly the constraint affects the Blender camera.
+Influence
+   Controls the percentage of affect the constraint has on the object.
+   See :ref:`common constraint properties <bpy.types.constraint.influence>` for more information.

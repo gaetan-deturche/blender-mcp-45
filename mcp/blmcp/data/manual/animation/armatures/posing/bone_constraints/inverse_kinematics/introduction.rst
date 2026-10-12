@@ -1,8 +1,7 @@
-.. _bone-constraints-inverse-kinematics:
 
-******************
-Inverse Kinematics
-******************
+************
+Introduction
+************
 
 Inverse Kinematics (IK) simplifies the animation process,
 and makes it possible to make more advanced animations with lesser effort.
@@ -23,8 +22,8 @@ a simple :ref:`bpy.types.Pose.use_auto_ik` feature in Pose Mode.
 They work by the same method but the constraints offer more options and control.
 Please refer to the following pages for details about these constraints:
 
-- :doc:`/animation/constraints/tracking/ik_solver`
-- :doc:`/animation/constraints/tracking/spline_ik`
+- :doc:`IK Solver </animation/constraints/tracking/ik_solver>`
+- :doc:`Spline IK </animation/constraints/tracking/spline_ik>`
 
 
 Armature IK Panel
@@ -36,11 +35,13 @@ Armature IK Panel
    :Panel:     :menuselection:`Properties --> Armature --> Inverse Kinematics`
 
 This panel is used to select the IK Solver type for the armature: *Standard* or *iTaSC*.
-Most of the time people will use the *Standard* IK solver.
+Most the time people will use the *Standard* IK solver.
 
-.. figure:: /images/animation_armatures_posing_bone-constraints_inverse-kinematics_introduction_panel.png
+.. todo:: Update image
 
-   The armature IK panel.
+   .. figure:: /images/animation_armatures_posing_bone-constraints_inverse-kinematics_introduction_panel.png
+
+      The armature IK panel.
 
 
 Standard
@@ -196,19 +197,14 @@ Bone IK Panel
 
 This panel is used to control how the *Pose Bones* work in the IK chain.
 
-.. figure:: /images/animation_armatures_bones_properties_inverse-kinematics_panel.png
+.. todo:: Update image
 
-   The bone IK panel.
+   .. figure:: /images/animation_armatures_bones_properties_inverse-kinematics_panel.png
 
-.. _bpy.types.PoseBone.ik_stretch:
+      The bone IK panel.
 
 IK Stretch
    Stretch influence to IK target.
-
-.. _bpy.types.PoseBone.lock_ik_x:
-.. _bpy.types.PoseBone.lock_ik_y:
-.. _bpy.types.PoseBone.lock_ik_z:
-
 Lock
    Disallow movement around the axis.
 Stiffness

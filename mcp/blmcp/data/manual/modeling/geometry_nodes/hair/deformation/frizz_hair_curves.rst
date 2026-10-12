@@ -4,10 +4,7 @@
 Frizz Hair Curves
 *****************
 
-The *Frizz Hair Curves* node introduces small random displacements along hair curves to create
-a frizzy or irregular look.
-It is commonly used to add natural variation to grooms by breaking up overly smooth or uniform
-strand shapes.
+Deforms hair curves using a random vector per point to frizz them.
 
 .. peertube:: jdiMkR9aQnCm1QXc71Fz5h
 
@@ -16,37 +13,37 @@ Inputs
 ======
 
 Geometry
-   The input geometry containing the hair curves to modify.
+   Input Geometry (only curves will be affected).
 
 Cumulative Offset
-   When enabled, each point's offset depends on the displacement of previous points along the curve.
-   This results in more natural and continuous bending.
+   Apply offset cumulatively (previous points affect points after).
 
 Factor
-   Controls the overall blending strength of the effect.
-   A value of 0.0 applies no frizz, while 1.0 applies the full random displacement.
+   Factor to blend overall effect.
 
 Distance
-   Scales the magnitude of the random displacement applied to the curve points.
+   Overall distance factor for the deformation.
 
 Shape
-   Determines how the displacement strength changes along the length of each curve.
-   A value of 0.0 applies a constant effect, while 0.5 results in a linear falloff from root to tip.
+   Shape of the influence along curves (0=constant, 0.5=linear).
 
 Seed
-   Defines the random seed used to generate unique displacement patterns.
-   Changing this value alters the random variation between curves.
+   Random Seed for the operation.
 
 Preserve Length
-   When enabled, maintains the original length of each curve during deformation.
-   When disabled, curves may stretch or shrink slightly as a result of the frizz.
+   Preserve each curve's length during deformation.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs
 =======
 
-Geometry
-   The resulting geometry with frizzed hair curves.
+**Geometry**
 
 Offset Vector
-   The vector field describing the per-point displacement applied to each curve.
+   Vector by which each point was offset during deformation.

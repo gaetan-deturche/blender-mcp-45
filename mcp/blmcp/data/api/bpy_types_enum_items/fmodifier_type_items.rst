@@ -26,6 +26,3 @@ Fmodifier Type Items
 :STEPPED: Stepped Interpolation.
 
    Snap values to nearest grid step, e.g. for a stop-motion look.
-:SMOOTH: Smooth (Gaussian).
-
-   Smooth curve using Gaussian smoothing.

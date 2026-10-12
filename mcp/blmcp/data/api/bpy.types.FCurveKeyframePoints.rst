@@ -1,34 +1,33 @@
-FCurveKeyframePoints(bpy_prop_collection)
-=========================================
+FCurveKeyframePoints(bpy_struct)
+================================
 
 .. currentmodule:: bpy.types
 
-base class --- :class:`bpy_prop_collection`
+base class --- :class:`bpy_struct`
 
-
-.. class:: FCurveKeyframePoints(bpy_prop_collection)
+.. class:: FCurveKeyframePoints(bpy_struct)
 
    Collection of keyframe points
 
-   .. method:: insert(frame, value, *, options=set(), keyframe_type='KEYFRAME')
+   .. method:: insert(frame, value, *, options={}, keyframe_type='KEYFRAME')
 
       Add a keyframe point to a F-Curve
 
-      :param frame: X Value of this keyframe point (in [-inf, inf])
-      :type frame: float
-      :param value: Y Value of this keyframe point (in [-inf, inf])
-      :type value: float
-      :param options: Keyframe options (optional)
+      :arg frame: X Value of this keyframe point
+      :type frame: float in [-inf, inf]
+      :arg value: Y Value of this keyframe point
+      :type value: float in [-inf, inf]
+      :arg options: Keyframe options
 
-         - ``REPLACE``
+         * ``REPLACE``
            Replace -- Don't add any new keyframes, but just replace existing ones.
-         - ``NEEDED``
+         * ``NEEDED``
            Needed -- Only adds keyframes that are needed.
-         - ``FAST``
+         * ``FAST``
            Fast -- Fast keyframe insertion to avoid recalculating the curve each time.
-      :type options: set[Literal['REPLACE', 'NEEDED', 'FAST']]
-      :param keyframe_type: Type of keyframe to insert (optional)
-      :type keyframe_type: Literal[:ref:`rna_enum_beztriple_keyframe_type_items`]
+      :type options: enum set in {``'REPLACE'``, ``'NEEDED'``, ``'FAST'``}, (optional)
+      :arg keyframe_type: Type of keyframe to insert
+      :type keyframe_type: enum in :ref:`rna_enum_beztriple_keyframe_type_items`, (optional)
       :return: Newly created keyframe
       :rtype: :class:`Keyframe`
 
@@ -36,17 +35,17 @@ base class --- :class:`bpy_prop_collection`
 
       Add a keyframe point to a F-Curve
 
-      :param count: Number, Number of points to add to the spline (in [0, inf])
-      :type count: int
+      :arg count: Number, Number of points to add to the spline
+      :type count: int in [0, inf]
 
    .. method:: remove(keyframe, *, fast=False)
 
       Remove keyframe from an F-Curve
 
-      :param keyframe: Keyframe to remove (never None)
-      :type keyframe: :class:`Keyframe` | None
-      :param fast: Fast, Fast keyframe removal to avoid recalculating the curve each time (optional)
-      :type fast: bool
+      :arg keyframe: Keyframe to remove
+      :type keyframe: :class:`Keyframe`, (never None)
+      :arg fast: Fast, Fast keyframe removal to avoid recalculating the curve each time
+      :type fast: boolean, (optional)
 
    .. method:: clear()
 
@@ -70,20 +69,16 @@ base class --- :class:`bpy_prop_collection`
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -94,7 +89,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -102,30 +97,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -133,5 +127,5 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`FCurve.keyframe_points`
+   * :class:`FCurve.keyframe_points`
 

@@ -46,7 +46,7 @@ Opacity Options
    Alpha
       You can change the amount of transparency used
       when showing the texture using the slider.
-   :bl-icon:`brush_data` Override Overlay
+   Override Overlay (brush icon)
       Allows you to turn off the viewport overlay during strokes.
-   :bl-icon:`hide_on` / :bl-icon:`hide_off` Use Cursor Overlay
+   View (eye icon)
       Toggles whether to show or hide the given brush texture overlay.

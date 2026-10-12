@@ -10,23 +10,10 @@ Rotate Edge
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Edge --> Rotate Edge CW / Rotate Edge CCW`
 
-Restructures the neighboring faces of each selected edge, rotating that edge
-clockwise (CW) or counterclockwise (CCW).
+Rotating an edge clockwise (CW) or counterclockwise (CCW) spins an edge between two faces around their vertices.
+This is very useful for restructuring a mesh's topology.
 
-.. list-table::
-
-   * - .. figure:: /images/modeling_meshes_editing_edge_rotate-edge_flip-before.png
-          :width: 320px
-
-          Selected edge.
-
-     - .. figure:: /images/modeling_meshes_editing_edge_rotate-edge_flip-after.png
-          :width: 320px
-
-          Edge rotated CCW.
-
-It's also possible to select pairs of adjacent faces, in which case each pair's shared
-edge will be rotated:
+The tool operates on selected edges or the shared edge between selected faces.
 
 .. list-table::
 
@@ -38,4 +25,23 @@ edge will be rotated:
      - .. figure:: /images/modeling_meshes_editing_edge_rotate-edge_face-mode2.png
           :width: 320px
 
-          Shared edge rotated.
+          Selected edge rotated.
+
+.. list-table::
+
+   * - .. figure:: /images/modeling_meshes_editing_edge_rotate-edge_flip-before.png
+          :width: 320px
+
+          Selected edge.
+
+     - .. figure:: /images/modeling_meshes_editing_edge_rotate-edge_flip-after.png
+          :width: 320px
+
+          Edge, rotated CW.
+
+.. warning::
+
+   To rotate an edge based on faces you must select adjacent face pairs,
+   otherwise Blender notifies you with an error message,
+   *"Could not find any selected edges that can be rotated"*. Using either *Rotate Edge CW*
+   or *Rotate Edge CCW* will produce exactly the same results as if you had selected the common edge.

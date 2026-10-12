@@ -1,4 +1,4 @@
-.. _bpy.types.SubtractStrip:
+.. _bpy.types.SubtractSequence:
 
 **************
 Subtract Strip

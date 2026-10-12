@@ -4,12 +4,7 @@
 Curl Hair Curves
 ****************
 
-The *Curl Hair Curves* node deforms existing hair curves into curls by wrapping them
-around nearby guide curves.
-It is useful for creating coiled, spiral, or wavy hair patterns and for adding stylized
-variation or realism to a groom.
-The curls can vary in radius, frequency, and start position, with optional random offsets
-for natural variation.
+Deforms existing hair curves into curls using guide curves.
 
 .. peertube:: 3AcYeH2nqMzjEXFUNqTbj7
 
@@ -17,83 +12,66 @@ for natural variation.
 Inputs
 ======
 
-Geometry
-   The input geometry containing the hair curves to deform into curls.
-
-Factor
-   Controls the overall strength of the curling effect.
-   A value of 0.0 disables the effect, while 1.0 applies the full curl deformation.
-
-Subdivision
-   The number of subdivisions applied to curves before deformation.
-   Higher values produce smoother curls but increase processing time.
-
-Curl Start
-   Defines the percentage along each curve (from root to tip) at which the curl effect begins.
-   This allows keeping part of the strand straight before the curl starts.
-
-Radius
-   The overall radius of the curls.
-   Larger values produce looser curls, while smaller values create tighter spirals.
-
-Factor Start
-   Multiplies the curl radius near the start of the curl region, allowing tapering or
-   gradual buildup of curl tightness.
-
-Factor End
-   Multiplies the curl radius near the end of the curve, controlling how curls taper off
-   or unwind toward the tip.
-
-Frequency
-   Controls how many full rotations occur along the length of the curve.
-   Higher values produce more frequent curls.
-   This input can vary per point along the curve, allowing complex wave patterns.
-
-Random Offset
-   Adds random variation to the curl phase or starting angle per curve, creating a
-   more natural, less uniform look.
-
-Seed
-   Sets the random seed used for generating the random offsets.
-   Changing this value produces different curl variations while maintaining the same parameters.
-
-
-Guide Map
----------
+**Geometry**
 
 Guide Index
-   A map that specifies which curve should act as the guide or central reference
-   for each group of curled curves.
-   If provided, this overrides any existing ``guide_curve_index`` attribute,
-   and the *Guide Distance* and *Guide Mask* inputs are ignored.
+   Guide index map witch describes which curve to use as the center of each braid group.
+   If this input is provided, it priority over an existing map in the ``guide_curve_index``
+   attribute, and the *Guide Distance* and *Guide Mask* attribute will be unused.
 
 Guide Distance
-   The minimum spacing between selected guides when generating a new guide map.
-   Larger values result in fewer guide curves and broader curl groups.
+   Minimum distance between two guides for new guide map.
 
 Guide Mask
-   A mask that determines which curves are eligible to be used as guides.
+   Mask for which curve are eligible to be selected as guides.
 
 Existing Guide Map
-   When enabled, uses the existing guide map attribute if one is already present.
-   If disabled and *Guide Index* is not provided, a new
-   :doc:`guide map </modeling/geometry_nodes/hair/guides/create_guide_index_map>`
-   is created using *Guide Distance* and *Guide Mask*.
-   Creating the guide map separately allows for more control and consistency
-   across multiple grooming operations.
+   Use the existing guide map attribute if available. If this is false, and the *Guide Index*
+   input isn't provided, the *Guide Distance* and *Guide Mask* input will be used to generate
+   a new :doc:`guide map </modeling/geometry_nodes/hair/guides/create_guide_index_map>` for this node.
+   Creating the guide map in a separate node or modifier gives more complete control over its creation.
+
+Factor
+   Factor to blend overall effect.
+
+Subdivision
+   Subdivision level applied before deformation.
+
+Curl Start
+   Percentage along each curve to blend deformation from the root.
+
+Radius
+   Overall radius of the curls.
+
+Factor Start
+   Factor for the radius at the curl start.
+
+Factor End
+   Factor for the radius at the curl end.
+
+Frequency
+   Frequency factor of the curls.
+   This input can vary for different points of the same curve.
+
+Random Offset
+   Amount of random offset per curve.
+
+Seed
+   Random Seed for the operation.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs
 =======
 
-Geometry
-   The resulting geometry with curled hair curves.
-
-
-Guide Map
----------
+**Geometry**
 
 Guide Index
-   The guide index map used for the operation.
-   If this node created a new guide map, it is stored and output here
-   for use in subsequent nodes.
+   Guide index map that was used for the operation.
+   If a new guide map is created by this node, it will be stored for
+   this output.

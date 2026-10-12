@@ -23,16 +23,14 @@ When a node is automatically attached, the surrounding nodes
 will be offset to the right or left depending on the :kbd:`T` toggle;
 see :ref:`editors-nodes-usage-auto-offset` for more information.
 
-While dragging nodes, you can press :kbd:`F` to toggle their parent
-:doc:`Frame </interface/controls/nodes/types/layout/frame>`:
+While dragging nodes, you can press :kbd:`F` to toggle their parent :doc:`Frame </interface/controls/nodes/frame>`:
 
 - If the nodes are inside a frame, they will be detached from it.
 - If the nodes are not inside a frame and there is a frame under the cursor, they will be attached to that frame.
 
 In general, it is recommended to arrange your nodes so that data flows from left to right, top to bottom.
 
-The width of a node can be adjusted by dragging its left or right border.
-When multiple nodes are selected, resizing one node affects all selected nodes.
+The width of a node can be changed by dragging its left or right border.
 
 Rotating (:kbd:`R`) and scaling (:kbd:`S`) only apply when multiple nodes are selected,
 and only affect their positions.
@@ -55,7 +53,7 @@ hold :kbd:`Ctrl` while dragging from an output socket.
 This works for single as well as for multiple outgoing links.
 
 Nodes that have no connections can be inserted on a link
-by just moving the node over the link and release when the link is highlighted.
+by just move the node over the link and release when the link is highlighted.
 
 .. _bpy.ops.node.link_make:
 
@@ -91,7 +89,7 @@ then draw a line across one or more links to mute/unmute them.
 A muted link acts as though it's no longer there; this also means the input fields
 for specifying fixed values become visible again.
 
-When muting links on the input side of a :doc:`reroute node </interface/controls/nodes/types/layout/reroute>`,
+When muting links on the input side of a :doc:`reroute node </interface/controls/nodes/reroute>`,
 the links on its output side will be muted too.
 
 .. figure:: /images/interface_controls_nodes_editing_mute_links.png
@@ -123,43 +121,23 @@ Detach Links :kbd:`Alt-LMB` drag
    and move the nodes to a new location.
 
 
-Cut/Copy/Paste
-==============
+.. _bpy.ops.node.clipboard_copy:
+.. _bpy.ops.node.clipboard_paste:
+
+Copy/Paste
+==========
 
 .. reference::
 
-   :Menu:      :menuselection:`Node --> Cut`, :menuselection:`Node --> Copy`, :menuselection:`Node --> Paste`
+   :Menu:      :menuselection:`Node --> Copy`, :menuselection:`Node --> Paste`
    :Shortcut:  :kbd:`Ctrl-C`, :kbd:`Ctrl-V`
 
-These operators allow transferring nodes within a node tree,
-between different node trees, or even between Blender instances.
-
-.. _bpy.ops.node.delete_copy_reconnect:
-
-Cut
-   Removes the selected nodes and places them on the clipboard.
-   When possible, links are automatically reconnected to preserve the node flow.
-
-.. _bpy.ops.node.clipboard_copy:
-
-Copy :kbd:`Ctrl-C`
-   Copies the selected nodes to the clipboard, including the connections between them.
-
-.. _bpy.ops.node.clipboard_paste:
-
-Paste :kbd:`Ctrl-V`
-   Inserts the nodes from the clipboard into the node tree.
+Not only the selected nodes but also the connections between them are copied to the clipboard.
 
 .. note::
 
-   Pasted nodes are placed at the same coordinates as when they were copied.
-   The same considerations as duplicating nodes apply.
-
-.. tip::
-
-   Nodes can be copied and pasted between Blender instances.
-   This also works across different node editors, provided the node
-   types are supported by the destination editor.
+   The pasted node will be placed in the *same* position as when it was copied.
+   Use the same cautions as when duplicating.
 
 
 .. _bpy.ops.node.duplicate_move:
@@ -202,56 +180,24 @@ Duplicate selected nodes, but not their node trees (in the case of group nodes),
 Delete
 ======
 
-.. reference::
-
-   :Menu:      :menuselection:`Node --> Delete`
-   :Shortcut:  :kbd:`X`, :kbd:`Delete`
-
-Deletes the selected node(s).
-
+Delete :kbd:`X`, :kbd:`Delete`
+   Deletes the selected node(s).
 
 .. _bpy.ops.node.delete_reconnect:
 
-Delete with Reconnect
-=====================
+Delete with Reconnect :kbd:`Ctrl-X`
+   Deletes the selected node(s), then creates new links connecting their former input nodes
+   to their former output nodes.
 
-.. reference::
-
-   :Menu:      :menuselection:`Node --> Delete`
-   :Shortcut:  :kbd:`Ctrl-Delete`
-
-Deletes the selected node(s), then creates new links connecting their former input nodes
-to their former output nodes.
-
-
-.. _bpy.ops.node.swap_node:
-
-Swap
-====
-
-.. reference::
-
-   :Menu:      :menuselection:`Node --> Swap`
-   :Shortcut:  :kbd:`Shift-S`
-
-The *Swap* operator replaces the selected node with another node type chosen from the menu.
-
-All existing links are automatically reconnected where possible,
-matching input and output sockets by name and type.
-If a connection cannot be matched, it is left unconnected.
-
-
-Show/Hide
-=========
 
 .. _bpy.ops.node.mute_toggle:
 
 Mute
-----
+====
 
 .. reference::
 
-   :Menu:      :menuselection:`Node --> Show/Hide --> Mute`
+   :Menu:      :menuselection:`Node --> Toggle Node Mute`
    :Shortcut:  :kbd:`M`
 
 Muting a node removes its contribution to the node tree,
@@ -263,91 +209,52 @@ Links will appear red as an indicator of passing through the muted node.
    Individual node links can be muted with :ref:`bpy.ops.node.links_mute`.
 
 
-.. _bpy.ops.node.preview_toggle:
-
-Node Preview
-------------
-
-.. reference::
-
-   :Menu:      :menuselection:`Node --> Show/Hide --> Node Preview`
-   :Shortcut:  :kbd:`Shift-H`
-
-Shows/Hides a preview region on the node that displays the frame
-after that node's operation has been applied. This can also be toggled
-by clicking the material ball icon in the node header.
-
-.. note:: This operator are only available in the :doc:`Compositor </compositing/index>`.
-
-
-.. _bpy.ops.node.options_toggle:
-
-Node Options
-------------
-
-.. reference::
-
-   :Menu:      :menuselection:`Node --> Show/Hide --> Node Options`
-
-Shows/Hides all node properties.
-
-
-.. _bpy.ops.node.hide_socket_toggle:
-
-Unconnected Sockets
--------------------
-
-.. reference::
-
-   :Menu:      :menuselection:`Node --> Show/Hide --> Unconnected Sockets`
-   :Shortcut:  :kbd:`Ctrl-H`
-
-Collapses/Expands any input or output sockets that have no other nodes connected to them.
-
+Show/Hide
+=========
 
 .. _bpy.ops.node.hide_toggle:
 
-Collapse
---------
+Hide :kbd:`H`
+   Collapses the node so only the node header is visible.
+   This can also be toggled by clicking the triangle on the left of the node header.
 
-.. reference::
+.. _bpy.ops.node.preview_toggle:
 
-   :Menu:      :menuselection:`Node --> Show/Hide --> Unconnected Sockets`
-   :Shortcut:  :kbd:`H`
+Toggle Node Preview :kbd:`Shift-H`
+   Shows/Hides a preview region on the node that displays the frame
+   after that node's operation has been applied. This can also be toggled
+   by clicking the material ball icon in the node header.
 
-Collapses the node so only the node header is visible.
-This can also be toggled by clicking the triangle on the left of the node header.
+   .. note:: This operator are only available in the :doc:`Compositor </compositing/index>`.
 
+.. _bpy.ops.node.hide_socket_toggle:
+
+Toggle Hidden Node Sockets :kbd:`Ctrl-H`
+   Collapses/Expands any input or output sockets that have no other nodes connected to them.
+
+.. _bpy.ops.node.options_toggle:
+
+Toggle Node Options
+   Shows/Hides all node properties.
 
 .. _bpy.ops.node.collapse_hide_unused_toggle:
 
 Collapse and Hide Unused Sockets
---------------------------------
-
-.. reference::
-
-   :Menu:      :menuselection:`Node --> Show/Hide --> Unconnected Sockets`
-   :Shortcut:  :kbd:`H`
-
-Applies both the :ref:`bpy.ops.node.hide_socket_toggle` and :ref:`bpy.ops.node.hide_toggle` operations.
+   Applies both the *Toggle Hidden Node Sockets* and *Hide* operations.
 
 
 .. _bpy.ops.node.read_viewlayers:
 
-Read View Layers
-================
+Layers
+======
 
-.. reference::
+Read Render Layers :kbd:`Ctrl-R`
+   Reads all the current scene's render layers from cache, as needed.
+   This can be used to save RAM while rendering because the render layers do not have to be saved in RAM.
+   And also for recovering some information from a failed render.
+   For this to work, :ref:`Cache Result <bpy.types.RenderSettings.use_render_cache>` must be enabled.
 
-   :Menu:      :menuselection:`Node --> Read View Layers`
-   :Shortcut:  :kbd:`Ctrl-R`
-
-Reads all the current scene's render layers from cache, as needed.
-This can be used to save RAM while rendering because the render layers do not have to be saved in RAM.
-And also for recovering some information from a failed render.
-For this to work, :ref:`Cache Result <bpy.types.RenderSettings.use_render_cache>` must be enabled.
-
-.. note:: This operator are only available in the :doc:`Compositor </compositing/index>`.
+   .. note:: This operator are only available in the :doc:`Compositor </compositing/index>`.
 
 
 .. _bpy.ops.node.connect_to_output:
@@ -359,7 +266,6 @@ Connect to Output
 
    :Shortcut:  :kbd:`Shift-Alt-LMB`
 
-Connect the output of the selected node to the final output of the node tree
-(Material Output or World Output in Shader,
-the final Group Output in Geometry Nodes and Compositor, Output in Texture Nodes),
+Connect the output of the selected node to the final output of the node tree (Composite in Compositor,
+Material Output or World Output in Shader, the final Group Output in Geometry Nodes, Output in Texture Nodes),
 or, if the node is inside a group, to the Group Output.

@@ -25,6 +25,12 @@ Path
    The path to the txt file.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

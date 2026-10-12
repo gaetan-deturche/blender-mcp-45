@@ -12,11 +12,7 @@ Nodes to manipulate strings.
    join_strings.rst
    match_string.rst
    replace_string.rst
-   reverse_string.rst
    slice_string.rst
-   set_string_case.rst
-   split_string.rst
-   trim_string.rst
 
 -----
 
@@ -26,7 +22,6 @@ Nodes to manipulate strings.
    find_in_string.rst
    string_length.rst
    string_to_curves.rst
-   string_to_value.rst
    value_to_string.rst
 
 -----
@@ -35,4 +30,3 @@ Nodes to manipulate strings.
    :maxdepth: 1
 
    special_characters.rst
-   tag_filter.rst

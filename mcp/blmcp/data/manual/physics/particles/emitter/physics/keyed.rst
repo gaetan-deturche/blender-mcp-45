@@ -21,10 +21,12 @@ To setup *Keyed* particles you need at least two particle systems in the *Keys* 
 Options
 =======
 
-.. figure:: /images/physics_particles_emitter_physics_keyed_panel.png
-   :align: right
+.. todo:: Update image
 
-   Keyed Physics settings.
+   .. figure:: /images/physics_particles_emitter_physics_keyed_panel.png
+      :align: right
+
+      Keyed Physics settings.
 
 Loops
    Sets the number of times the entire *Keys* list is repeated. Disabled if *Use Timing* is enabled.

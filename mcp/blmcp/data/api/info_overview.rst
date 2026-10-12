@@ -85,13 +85,14 @@ Add-ons
 -------
 
 Some of Blender's functionality is best kept optional,
-alongside scripts loaded at startup there are add-ons which are only loaded on startup
-if enabled from the user preferences. Add-ons are typically distributed as extensions.
+alongside scripts loaded at startup there are add-ons which are kept in their own directory ``scripts/addons``,
+They are only loaded on startup if selected from the user preferences.
 
-The only difference between add-on extensions and built-in Python modules is that add-ons must include a
-``blender_manifest.toml`` which Blender uses to read metadata such as name, author, tags and project link.
-The User Preferences add-on listing uses this to display information about each add-on.
-See :ref:`Creating Extensions <blender_manual:extensions-index>` for details.
+The only difference between add-ons and built-in Python modules is that add-ons must contain a ``bl_info`` variable
+which Blender uses to read metadata such as name, author, category and project link.
+The User Preferences add-on listing uses ``bl_info`` to display information about each add-on.
+`See Add-ons <https://developer.blender.org/docs/handbook/addons/guidelines/>`__
+for details on the ``bl_info`` dictionary.
 
 
 Integration through Classes
@@ -165,7 +166,7 @@ Class mix-in example:
    Modal operators are an exception, keeping their instance variable as Blender runs, see modal operator template.
 
 So once the class is registered with Blender, instancing the class and calling the functions is left up to Blender.
-In fact you cannot instantiate these classes from the script as you would expect with most Python APIs.
+In fact you cannot instance these classes from the script as you would expect with most Python API's.
 To run operators you can call them through the operator API, e.g:
 
 .. code-block:: python
@@ -191,7 +192,7 @@ have a new instance for every redraw.
 Some other types, like :class:`bpy.types.Operator`, have an even more complex internal handling,
 which can lead to several instantiations for a single operator execution.
 
-There are a few cases where defining ``__init__()`` does make sense, e.g., when sub-classing a
+There are a few cases where defining ``__init__()`` does make sense, e.g. when sub-classing a
 :class:`bpy.types.RenderEngine`. When doing so, the parent matching function must always be called,
 otherwise Blender's internal initialization won't happen properly:
 
@@ -217,12 +218,12 @@ otherwise Blender's internal initialization won't happen properly:
    internal data, and may change depending on the implementation.
 
    Unfortunately, the error message, generated in case the expected constructor is not called, can
-   be fairly cryptic and unhelpful. Generally they should be about failure to create a (python)
+   be fairly cryptic and unhelping. Generally they should be about failure to create a (python)
    object:
 
-      MemoryError: couldn't create bpy_struct object
+      MemoryError: couldn't create bpy_struct object\_
 
-   With Operators, it might be something like this:
+   With Operators, it might be something like that:
 
       RuntimeError: could not create instance of <OPERATOR_OT_identifier> to call callback function execute
 
@@ -262,7 +263,7 @@ otherwise Blender's internal initialization won't happen properly:
    fail with the following error:
    ``AttributeError: 'super' object has no attribute '__del__'``.
    If a call to the MRO 'parent' destructor is needed for some reason, the caller code must ensure
-   that the destructor does exist, e.g., using something like this:
+   that the destructor does exist, e.g. using something like that:
    ``getattr(super(), "__del__", lambda self: None)(self)``
 
 
@@ -295,7 +296,7 @@ A simple Blender Python module can look like this:
    if __name__ == "__main__":
        register()
 
-These functions usually appear at the bottom of the script containing class registration, sometimes adding menu items.
+These functions usually appear at the bottom of the script containing class registration sometimes adding menu items.
 You can also use them for internal purposes setting up data for your own tools but take care
 since register won't re-run when a new blend-file is loaded.
 
@@ -323,11 +324,11 @@ Class Registration
 Registering a class with Blender results in the class definition being loaded into Blender,
 where it becomes available alongside existing functionality.
 Once this class is loaded you can access it from :mod:`bpy.types`,
-using the ``bl_idname`` rather than the class's original name.
+using the ``bl_idname`` rather than the classes original name.
 
 .. note::
 
-   There are some exceptions to this for class names which aren't guaranteed to be unique.
+   There are some exceptions to this for class names which aren't guarantee to be unique.
    In this case use: :func:`bpy.types.Struct.bl_rna_get_subclass_py`.
 
 
@@ -370,7 +371,7 @@ For example, if you want to store material settings for a custom engine:
 
    def register():
        bpy.utils.register_class(MyMaterialProps)
-       bpy.types.Material.my_custom_props = bpy.props.PointerProperty(type=MyMaterialProps)
+       bpy.types.Material.my_custom_props: bpy.props.PointerProperty(type=MyMaterialProps)
 
    def unregister():
        del bpy.types.Material.my_custom_props
@@ -401,7 +402,7 @@ For example, if you want to store material settings for a custom engine:
    def register():
        bpy.utils.register_class(MyMaterialSubProps)
        bpy.utils.register_class(MyMaterialGroupProps)
-       bpy.types.Material.my_custom_props = bpy.props.PointerProperty(type=MyMaterialGroupProps)
+       bpy.types.Material.my_custom_props: bpy.props.PointerProperty(type=MyMaterialGroupProps)
 
    def unregister():
        del bpy.types.Material.my_custom_props
@@ -413,7 +414,7 @@ For example, if you want to store material settings for a custom engine:
 
 .. important::
 
-   The lowest class needs to be registered first and that ``unregister()`` is a mirror of ``register()``.
+   The lower most class needs to be registered first and that ``unregister()`` is a mirror of ``register()``.
 
 
 Manipulating Classes
@@ -451,7 +452,7 @@ This is equivalent to:
 Dynamic Class Definition (Advanced)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-In some cases the specifier for data may not be in Blender, for example an external render engine's shader definitions,
+In some cases the specifier for data may not be in Blender, for example a external render engines shader definitions,
 and it may be useful to define them as types and remove them on the fly.
 
 .. code-block:: python

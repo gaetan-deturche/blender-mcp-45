@@ -44,9 +44,11 @@ the velocity depends on its lifetime and the length of the path.
 Options
 =======
 
-.. figure:: /images/physics_forces_force-fields_types_curve-guide_panel.png
+.. todo:: Update image
 
-   UI for a Curve Guide force field.
+   .. figure:: /images/physics_forces_force-fields_types_curve-guide_panel.png
+
+      UI for a Curve Guide force field.
 
 .. _bpy.types.FieldSettings.guide_free:
 

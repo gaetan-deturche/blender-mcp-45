@@ -23,6 +23,12 @@ Subdivisions
    The number of faces quadruple with every subdivision.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

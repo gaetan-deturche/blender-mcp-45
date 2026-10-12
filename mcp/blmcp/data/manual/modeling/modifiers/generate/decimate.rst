@@ -107,9 +107,9 @@ Delimit
    Material
       Does not dissolve edges on the borders of where different materials are assigned.
    Seam
-      Does not dissolve edges marked as :doc:`UV Seams </modeling/meshes/uv/unwrapping/seams>`.
+      Does not dissolve edges marked as seams.
    Sharp
-      Does not dissolve edges marked as :ref:`Sharp <bpy.ops.mesh.mark_sharp>`.
+      Does not dissolve edges marked as sharp.
    UVs
       Does not dissolve edges that are part of a UV map.
 

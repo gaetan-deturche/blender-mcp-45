@@ -27,6 +27,12 @@ Contrast
    Higher values make details stand out. Use a negative number to decrease the overall contrast in the image.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

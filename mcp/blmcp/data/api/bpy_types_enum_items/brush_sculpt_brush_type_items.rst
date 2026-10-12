@@ -55,8 +55,6 @@ Brush Sculpt Brush Type Items
 
 :BOUNDARY: Boundary.
 
-:SCENE_PROJECT: Scene Project.
-
 
 
 ----
@@ -76,6 +74,4 @@ Brush Sculpt Brush Type Items
 :PAINT: Paint.
 
 :SMEAR: Smear.
-
-:BLUR: Blur.
 

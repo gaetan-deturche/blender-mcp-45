@@ -5,137 +5,136 @@ GreasePencilLayer(GreasePencilTreeNode)
 
 base classes --- :class:`bpy_struct`, :class:`GreasePencilTreeNode`
 
-
 .. class:: GreasePencilLayer(GreasePencilTreeNode)
 
    Collection of related drawings
 
    .. attribute:: blend_mode
 
-      Blend mode (default ``'REGULAR'``)
+      Blend mode
 
-      :type: Literal['REGULAR', 'HARDLIGHT', 'ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE']
+      :type: enum in [``'REGULAR'``, ``'HARDLIGHT'``, ``'ADD'``, ``'SUBTRACT'``, ``'MULTIPLY'``, ``'DIVIDE'``], default ``'REGULAR'``
 
    .. data:: frames
 
-      Grease Pencil frames (default None, readonly)
+      Grease Pencil frames
 
-      :type: :class:`GreasePencilFrames`\ [:class:`GreasePencilFrame`]
+      :type: :class:`GreasePencilFrames` :class:`bpy_prop_collection` of :class:`GreasePencilFrame`, (readonly)
 
    .. attribute:: ignore_locked_materials
 
-      Allow editing strokes even if they use locked materials (default False)
+      Allow editing strokes even if they use locked materials
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: lock_frame
 
-      Lock current frame displayed by layer (default False)
+      Lock current frame displayed by layer
 
-      :type: bool
+      :type: boolean, default False
 
    .. data:: mask_layers
 
-      List of Masking Layers (default None, readonly)
+      List of Masking Layers
 
-      :type: :class:`GreasePencilLayerMasks`\ [:class:`GreasePencilLayerMask`]
+      :type: :class:`GreasePencilLayerMasks` :class:`bpy_prop_collection` of :class:`GreasePencilLayerMask`, (readonly)
 
    .. data:: matrix_local
 
-      Local transformation matrix of the layer (multi-dimensional array of 4 * 4 items, in [-inf, inf], default ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)), readonly)
+      Local transformation matrix of the layer
 
-      :type: :class:`mathutils.Matrix`
+      :type: :class:`mathutils.Matrix` of 4 * 4 items in [-inf, inf], default ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)), (readonly)
 
    .. data:: matrix_parent_inverse
 
-      Inverse of layer's parent transformation matrix (multi-dimensional array of 4 * 4 items, in [-inf, inf], default ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)), readonly)
+      Inverse of layer's parent transformation matrix
 
-      :type: :class:`mathutils.Matrix`
+      :type: :class:`mathutils.Matrix` of 4 * 4 items in [-inf, inf], default ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)), (readonly)
 
    .. attribute:: opacity
 
-      Layer Opacity (in [0, 1], default 0.0)
+      Layer Opacity
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: parent
 
       Parent object
 
-      :type: :class:`Object` | None
+      :type: :class:`Object`
 
    .. attribute:: parent_bone
 
-      Name of parent bone. Only used when the parent object is an armature. (default "", never None)
+      Name of parent bone. Only used when the parent object is an armature.
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: pass_index
 
-      Index number for the "Layer Index" pass (in [0, inf], default 0)
+      Index number for the "Layer Index" pass
 
-      :type: int
+      :type: int in [0, inf], default 0
 
    .. attribute:: radius_offset
 
-      Radius change to apply to current strokes (in [-inf, inf], default 0.0)
+      Radius change to apply to current strokes
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: rotation
 
-      Euler rotation of the layer (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0))
+      Euler rotation of the layer
 
-      :type: :class:`mathutils.Euler`
+      :type: :class:`mathutils.Euler` rotation of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)
 
    .. attribute:: scale
 
-      Scale of the layer (array of 3 items, in [-inf, inf], default (1.0, 1.0, 1.0))
+      Scale of the layer
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (1.0, 1.0, 1.0)
 
    .. attribute:: tint_color
 
-      Color for tinting stroke colors (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+      Color for tinting stroke colors
 
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: tint_factor
 
-      Factor of tinting color (in [0, 1], default 0.0)
+      Factor of tinting color
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: translation
 
-      Translation of the layer (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0))
+      Translation of the layer
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)
 
    .. attribute:: use_lights
 
-      Enable the use of lights on stroke and fill materials (default False)
+      Enable the use of lights on stroke and fill materials
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_viewlayer_masks
 
-      Include the mask layers when rendering the view-layer (default True)
+      Include the mask layers when rendering the view-layer
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: viewlayer_render
 
-      Only include Layer in this View Layer render output (leave blank to include always) (default "", never None)
+      Only include Layer in this View Layer render output (leave blank to include always)
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. method:: get_frame_at(frame_number)
 
       Get the frame at given frame number
 
-      :param frame_number: Frame Number, (in [-1048574, 1048574])
-      :type frame_number: int
+      :arg frame_number: Frame Number
+      :type frame_number: int in [-1048574, 1048574]
       :return: Frame
       :rtype: :class:`GreasePencilFrame`
 
@@ -147,20 +146,16 @@ base classes --- :class:`bpy_struct`, :class:`GreasePencilTreeNode`
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -171,17 +166,17 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
-   - :class:`GreasePencilTreeNode.name`
-   - :class:`GreasePencilTreeNode.hide`
-   - :class:`GreasePencilTreeNode.lock`
-   - :class:`GreasePencilTreeNode.select`
-   - :class:`GreasePencilTreeNode.use_onion_skinning`
-   - :class:`GreasePencilTreeNode.use_masks`
-   - :class:`GreasePencilTreeNode.channel_color`
-   - :class:`GreasePencilTreeNode.next_node`
-   - :class:`GreasePencilTreeNode.prev_node`
-   - :class:`GreasePencilTreeNode.parent_group`
+   * :class:`bpy_struct.id_data`
+   * :class:`GreasePencilTreeNode.name`
+   * :class:`GreasePencilTreeNode.hide`
+   * :class:`GreasePencilTreeNode.lock`
+   * :class:`GreasePencilTreeNode.select`
+   * :class:`GreasePencilTreeNode.use_onion_skinning`
+   * :class:`GreasePencilTreeNode.use_masks`
+   * :class:`GreasePencilTreeNode.channel_color`
+   * :class:`GreasePencilTreeNode.next_node`
+   * :class:`GreasePencilTreeNode.prev_node`
+   * :class:`GreasePencilTreeNode.parent_group`
 
 Inherited Functions
 -------------------
@@ -189,32 +184,31 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
-   - :class:`GreasePencilTreeNode.bl_rna_get_subclass`
-   - :class:`GreasePencilTreeNode.bl_rna_get_subclass_py`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
+   * :class:`GreasePencilTreeNode.bl_rna_get_subclass`
+   * :class:`GreasePencilTreeNode.bl_rna_get_subclass_py`
 
 References
 ----------
@@ -222,13 +216,12 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`GreasePencil.layers`
-   - :class:`GreasePencilLayerMasks.add`
-   - :class:`GreasePencilv3Layers.active`
-   - :class:`GreasePencilv3Layers.move`
-   - :class:`GreasePencilv3Layers.move_bottom`
-   - :class:`GreasePencilv3Layers.move_to_layer_group`
-   - :class:`GreasePencilv3Layers.move_top`
-   - :class:`GreasePencilv3Layers.new`
-   - :class:`GreasePencilv3Layers.remove`
+   * :class:`GreasePencilv3.layers`
+   * :class:`GreasePencilv3Layers.active`
+   * :class:`GreasePencilv3Layers.move`
+   * :class:`GreasePencilv3Layers.move_bottom`
+   * :class:`GreasePencilv3Layers.move_to_layer_group`
+   * :class:`GreasePencilv3Layers.move_top`
+   * :class:`GreasePencilv3Layers.new`
+   * :class:`GreasePencilv3Layers.remove`
 

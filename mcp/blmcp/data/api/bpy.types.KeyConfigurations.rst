@@ -1,12 +1,11 @@
-KeyConfigurations(bpy_prop_collection)
-======================================
+KeyConfigurations(bpy_struct)
+=============================
 
 .. currentmodule:: bpy.types
 
-base class --- :class:`bpy_prop_collection`
+base class --- :class:`bpy_struct`
 
-
-.. class:: KeyConfigurations(bpy_prop_collection)
+.. class:: KeyConfigurations(bpy_struct)
 
    Collection of KeyConfigs
 
@@ -14,32 +13,32 @@ base class --- :class:`bpy_prop_collection`
 
       Active key configuration (preset)
 
-      :type: :class:`KeyConfig` | None
+      :type: :class:`KeyConfig`
 
    .. data:: addon
 
-      Key configuration that can be extended by add-ons, and is added to the active configuration when handling events (readonly)
+      Key configuration that can be extended by add-ons, and is added to the active configuration when handling events
 
-      :type: :class:`KeyConfig` | None
+      :type: :class:`KeyConfig`, (readonly)
 
    .. data:: default
 
-      Default builtin key configuration (readonly)
+      Default builtin key configuration
 
-      :type: :class:`KeyConfig` | None
+      :type: :class:`KeyConfig`, (readonly)
 
    .. data:: user
 
-      Final key configuration that combines keymaps from the active and add-on configurations, and can be edited by the user (readonly)
+      Final key configuration that combines keymaps from the active and add-on configurations, and can be edited by the user
 
-      :type: :class:`KeyConfig` | None
+      :type: :class:`KeyConfig`, (readonly)
 
    .. method:: new(name)
 
       new
 
-      :param name: Name, (never None)
-      :type name: str
+      :arg name: Name
+      :type name: string, (never None)
       :return: Key Configuration, Added key configuration
       :rtype: :class:`KeyConfig`
 
@@ -47,53 +46,48 @@ base class --- :class:`bpy_prop_collection`
 
       remove
 
-      :param keyconfig: Key Configuration, Removed key configuration (never None)
-      :type keyconfig: :class:`KeyConfig` | None
+      :arg keyconfig: Key Configuration, Removed key configuration
+      :type keyconfig: :class:`KeyConfig`, (never None)
 
-   .. method:: find_item_from_operator(idname, *, context='INVOKE_DEFAULT', properties=None, include={'ACTIONZONE', 'KEYBOARD', 'MOUSE', 'NDOF'}, exclude=set())
+   .. method:: find_item_from_operator(idname, *, context='INVOKE_DEFAULT', properties=None, include={'ACTIONZONE', 'KEYBOARD', 'MOUSE', 'NDOF'}, exclude={})
 
       find_item_from_operator
 
-      :param idname: Operator Identifier, (never None)
-      :type idname: str
-      :param context: context, (optional)
-      :type context: Literal[:ref:`rna_enum_operator_context_items`]
-      :param properties: (optional)
-      :type properties: :class:`OperatorProperties` | None
-      :param include: Include, (optional)
-      :type include: set[Literal[:ref:`rna_enum_event_type_mask_items`]]
-      :param exclude: Exclude, (optional)
-      :type exclude: set[Literal[:ref:`rna_enum_event_type_mask_items`]]
+      :arg idname: Operator Identifier
+      :type idname: string, (never None)
+      :arg context: context
+      :type context: enum in :ref:`rna_enum_operator_context_items`, (optional)
+      :type properties: :class:`OperatorProperties`, (optional)
+      :arg include: Include
+      :type include: enum set in :ref:`rna_enum_event_type_mask_items`, (optional)
+      :arg exclude: Exclude
+      :type exclude: enum set in :ref:`rna_enum_event_type_mask_items`, (optional)
       :return:
-         ``keymap``, :class:`KeyMap`
+         `keymap`, :class:`KeyMap`
 
-         ``item``, :class:`KeyMapItem`
+         `item`, :class:`KeyMapItem`
 
-      :rtype: tuple[:class:`KeyMap`, :class:`KeyMapItem`]
+      :rtype: (:class:`KeyMap`, :class:`KeyMapItem`)
 
    .. method:: update(*, keep_properties=False)
 
       update
 
-      :param keep_properties: Keep Properties, Operator properties are kept to allow the operators to be registered again in the future (optional)
-      :type keep_properties: bool
+      :arg keep_properties: Keep Properties, Operator properties are kept to allow the operators to be registered again in the future
+      :type keep_properties: boolean, (optional)
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -104,7 +98,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -112,30 +106,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -143,5 +136,5 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`WindowManager.keyconfigs`
+   * :class:`WindowManager.keyconfigs`
 

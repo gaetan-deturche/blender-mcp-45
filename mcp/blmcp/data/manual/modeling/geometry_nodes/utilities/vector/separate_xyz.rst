@@ -18,6 +18,12 @@ Vector
    Standard vector input.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

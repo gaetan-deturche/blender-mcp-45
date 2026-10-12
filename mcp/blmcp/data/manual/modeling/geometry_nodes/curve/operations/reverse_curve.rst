@@ -29,6 +29,12 @@ Selection
    false values mean the spline will be unaffected.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

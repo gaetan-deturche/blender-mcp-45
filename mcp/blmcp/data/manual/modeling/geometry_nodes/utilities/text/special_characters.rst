@@ -1,6 +1,5 @@
 .. index:: Geometry Nodes; Special Characters
 .. _bpy.types.FunctionNodeInputSpecialCharacters:
-.. --- copy below this line ---
 
 ***********************
 Special Characters Node
@@ -25,6 +24,12 @@ Inputs
 ======
 
 This node has no inputs.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs

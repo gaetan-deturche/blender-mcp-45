@@ -5,169 +5,158 @@ SpaceUVEditor(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: SpaceUVEditor(bpy_struct)
 
    UV editor data for the image editor space
 
    .. attribute:: custom_grid_subdivisions
 
-      Number of grid units in UV space that make one UV Unit (array of 2 items, in [1, 5000], default (0, 0))
+      Number of grid units in UV space that make one UV Unit
 
-      :type: :class:`bpy_prop_array`\ [int]
+      :type: int array of 2 items in [1, 5000], default (10, 10)
 
    .. attribute:: display_stretch_type
 
-      Type of stretch to display (default ``'ANGLE'``)
+      Type of stretch to display
 
-      - ``ANGLE``
+      * ``ANGLE``
         Angle -- Angular distortion between UV and 3D angles.
-      - ``AREA``
+      * ``AREA``
         Area -- Area distortion between UV and 3D faces.
 
-      :type: Literal['ANGLE', 'AREA']
+      :type: enum in [``'ANGLE'``, ``'AREA'``], default ``'ANGLE'``
 
    .. attribute:: edge_display_type
 
-      Display style for UV edges (default ``'OUTLINE'``)
+      Display style for UV edges
 
-      - ``OUTLINE``
+      * ``OUTLINE``
         Outline -- Display white edges with black outline.
-      - ``DASH``
+      * ``DASH``
         Dash -- Display dashed black-white edges.
-      - ``BLACK``
+      * ``BLACK``
         Black -- Display black edges.
-      - ``WHITE``
+      * ``WHITE``
         White -- Display white edges.
 
-      :type: Literal['OUTLINE', 'DASH', 'BLACK', 'WHITE']
+      :type: enum in [``'OUTLINE'``, ``'DASH'``, ``'BLACK'``, ``'WHITE'``], default ``'OUTLINE'``
 
    .. attribute:: grid_shape_source
 
-      Specify source for the grid shape (default ``'DYNAMIC'``)
+      Specify source for the grid shape
 
-      - ``DYNAMIC``
+      * ``DYNAMIC``
         Dynamic -- Dynamic grid.
-      - ``FIXED``
+      * ``FIXED``
         Fixed -- Manually set grid divisions.
-      - ``PIXEL``
+      * ``PIXEL``
         Pixel -- Grid aligns with pixels from image.
 
-      :type: Literal['DYNAMIC', 'FIXED', 'PIXEL']
+      :type: enum in [``'DYNAMIC'``, ``'FIXED'``, ``'PIXEL'``], default ``'DYNAMIC'``
 
    .. attribute:: lock_bounds
 
-      Constraint to stay within the image bounds while editing (default False)
+      Constraint to stay within the image bounds while editing
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: pixel_round_mode
 
-      Round UVs to pixels while editing (default ``'DISABLED'``)
+      Round UVs to pixels while editing
 
-      - ``DISABLED``
+      * ``DISABLED``
         Disabled -- Don't round to pixels.
-      - ``CORNER``
+      * ``CORNER``
         Corner -- Round to pixel corners.
-      - ``CENTER``
+      * ``CENTER``
         Center -- Round to pixel centers.
 
-      :type: Literal['DISABLED', 'CORNER', 'CENTER']
+      :type: enum in [``'DISABLED'``, ``'CORNER'``, ``'CENTER'``], default ``'DISABLED'``
 
    .. attribute:: show_faces
 
-      Display faces over the image (default True)
+      Display faces over the image
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_grid_over_image
 
-      Show the grid over the image (default True)
+      Show the grid over the image
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: show_metadata
 
-      Display metadata properties of the image (default False)
+      Display metadata properties of the image
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_modified_edges
 
-      Display edges after modifiers are applied (default False)
+      Display edges after modifiers are applied
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_pixel_coords
 
-      Display UV coordinates in pixels rather than from 0.0 to 1.0 (default True)
+      Display UV coordinates in pixels rather than from 0.0 to 1.0
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_stretch
 
-      Display faces colored according to the difference in shape between UVs and their 3D coordinates (blue for low distortion, red for high distortion) (default False)
+      Display faces colored according to the difference in shape between UVs and their 3D coordinates (blue for low distortion, red for high distortion)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_uv
 
-      Display overlay of UV layer (default True)
+      Display overlay of UV layer
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: stretch_opacity
 
-      Opacity of the UV Stretch overlay (in [0, 1], default 0.0)
+      Opacity of the UV Stretch overlay
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: tile_grid_shape
 
-      How many tiles will be shown in the background (array of 2 items, in [1, 100], default (0, 0))
+      How many tiles will be shown in the background
 
-      :type: :class:`bpy_prop_array`\ [int]
+      :type: int array of 2 items in [1, 100], default (1, 1)
 
    .. attribute:: use_live_unwrap
 
-      Continuously unwrap the selected UV island while transforming pinned vertices (default False)
+      Continuously unwrap the selected UV island while transforming pinned vertices
 
-      :type: bool
-
-   .. attribute:: uv_edge_opacity
-
-      Opacity of edges in UV overlays (in [0, 1], default 0.0)
-
-      :type: float
+      :type: boolean, default False
 
    .. attribute:: uv_face_opacity
 
-      Opacity of faces in UV overlays (in [0, 1], default 0.0)
+      Opacity of faces in UV overlays
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: uv_opacity
 
-      Opacity of UV overlays (in [0, 1], default 0.0)
+      Opacity of UV overlays
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -178,7 +167,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -186,30 +175,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -217,5 +205,5 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`SpaceImageEditor.uv_editor`
+   * :class:`SpaceImageEditor.uv_editor`
 

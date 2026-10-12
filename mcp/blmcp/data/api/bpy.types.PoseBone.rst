@@ -5,422 +5,389 @@ PoseBone(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: PoseBone(bpy_struct)
 
    Channel defining pose data for a bone in a Pose
 
    .. attribute:: bbone_curveinx
 
-      X-axis handle offset for start of the B-Bone's curve, adjusts curvature (in [-inf, inf], default 0.0)
+      X-axis handle offset for start of the B-Bone's curve, adjusts curvature
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_curveinz
 
-      Z-axis handle offset for start of the B-Bone's curve, adjusts curvature (in [-inf, inf], default 0.0)
+      Z-axis handle offset for start of the B-Bone's curve, adjusts curvature
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_curveoutx
 
-      X-axis handle offset for end of the B-Bone's curve, adjusts curvature (in [-inf, inf], default 0.0)
+      X-axis handle offset for end of the B-Bone's curve, adjusts curvature
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_curveoutz
 
-      Z-axis handle offset for end of the B-Bone's curve, adjusts curvature (in [-inf, inf], default 0.0)
+      Z-axis handle offset for end of the B-Bone's curve, adjusts curvature
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. data:: bbone_custom_handle_end
 
-      Bone that serves as the end handle for the B-Bone curve (readonly)
+      Bone that serves as the end handle for the B-Bone curve
 
-      :type: :class:`PoseBone` | None
+      :type: :class:`PoseBone`, (readonly)
 
    .. data:: bbone_custom_handle_start
 
-      Bone that serves as the start handle for the B-Bone curve (readonly)
+      Bone that serves as the start handle for the B-Bone curve
 
-      :type: :class:`PoseBone` | None
+      :type: :class:`PoseBone`, (readonly)
 
    .. attribute:: bbone_easein
 
-      Length of first Bézier Handle (for B-Bones only) (in [-inf, inf], default 0.0)
+      Length of first Bézier Handle (for B-Bones only)
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_easeout
 
-      Length of second Bézier Handle (for B-Bones only) (in [-inf, inf], default 0.0)
+      Length of second Bézier Handle (for B-Bones only)
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_rollin
 
-      Roll offset for the start of the B-Bone, adjusts twist (in [-inf, inf], default 0.0)
+      Roll offset for the start of the B-Bone, adjusts twist
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_rollout
 
-      Roll offset for the end of the B-Bone, adjusts twist (in [-inf, inf], default 0.0)
+      Roll offset for the end of the B-Bone, adjusts twist
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: bbone_scalein
 
-      Scale factors for the start of the B-Bone, adjusts thickness (for tapering effects) (array of 3 items, in [-inf, inf], default (1.0, 1.0, 1.0))
+      Scale factors for the start of the B-Bone, adjusts thickness (for tapering effects)
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (1.0, 1.0, 1.0)
 
    .. attribute:: bbone_scaleout
 
-      Scale factors for the end of the B-Bone, adjusts thickness (for tapering effects) (array of 3 items, in [-inf, inf], default (1.0, 1.0, 1.0))
+      Scale factors for the end of the B-Bone, adjusts thickness (for tapering effects)
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (1.0, 1.0, 1.0)
 
    .. data:: bone
 
-      Bone associated with this PoseBone (readonly, never None)
+      Bone associated with this PoseBone
 
-      :type: :class:`Bone`
+      :type: :class:`Bone`, (readonly, never None)
 
    .. data:: child
 
-      Child of this pose bone (readonly)
+      Child of this pose bone
 
-      :type: :class:`PoseBone` | None
+      :type: :class:`PoseBone`, (readonly)
 
    .. data:: color
 
-      (readonly)
-
-      :type: :class:`BoneColor` | None
+      :type: :class:`BoneColor`, (readonly)
 
    .. data:: constraints
 
-      Constraints that act on this pose channel (default None, readonly)
+      Constraints that act on this pose channel
 
-      :type: :class:`PoseBoneConstraints`\ [:class:`Constraint`]
+      :type: :class:`PoseBoneConstraints` :class:`bpy_prop_collection` of :class:`Constraint`, (readonly)
 
    .. attribute:: custom_shape
 
       Object that defines custom display shape for this bone
 
-      :type: :class:`Object` | None
+      :type: :class:`Object`
 
    .. attribute:: custom_shape_rotation_euler
 
-      Adjust the rotation of the custom shape (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0))
+      Adjust the rotation of the custom shape
 
-      :type: :class:`mathutils.Euler`
+      :type: :class:`mathutils.Euler` rotation of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)
 
    .. attribute:: custom_shape_scale_xyz
 
-      Adjust the size of the custom shape (array of 3 items, in [-inf, inf], default (1.0, 1.0, 1.0))
+      Adjust the size of the custom shape
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (1.0, 1.0, 1.0)
 
    .. attribute:: custom_shape_transform
 
       Bone that defines the display transform of this custom shape
 
-      :type: :class:`PoseBone` | None
+      :type: :class:`PoseBone`
 
    .. attribute:: custom_shape_translation
 
-      Adjust the location of the custom shape (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0))
+      Adjust the location of the custom shape
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)
 
    .. attribute:: custom_shape_wire_width
 
-      Adjust the line thickness of custom shapes (in [1, 16], default 0.0)
+      Adjust the line thickness of custom shapes
 
-      :type: float
+      :type: float in [1, 16], default 0.0
 
    .. data:: head
 
-      Location of head of the channel's bone (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0), readonly)
+      Location of head of the channel's bone
 
-      :type: :class:`mathutils.Vector`
-
-   .. attribute:: hide
-
-      Bone is not visible except for Edit Mode (default False)
-
-      :type: bool
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (0.0, 0.0, 0.0), (readonly)
 
    .. attribute:: ik_linear_weight
 
-      Weight of scale constraint for IK (in [0, 1], default 0.0)
+      Weight of scale constraint for IK
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: ik_max_x
 
-      Maximum angles for IK Limit (in [0, 3.14159], default 0.0)
+      Maximum angles for IK Limit
 
-      :type: float
+      :type: float in [0, 3.14159], default 0.0
 
    .. attribute:: ik_max_y
 
-      Maximum angles for IK Limit (in [0, 3.14159], default 0.0)
+      Maximum angles for IK Limit
 
-      :type: float
+      :type: float in [0, 3.14159], default 0.0
 
    .. attribute:: ik_max_z
 
-      Maximum angles for IK Limit (in [0, 3.14159], default 0.0)
+      Maximum angles for IK Limit
 
-      :type: float
+      :type: float in [0, 3.14159], default 0.0
 
    .. attribute:: ik_min_x
 
-      Minimum angles for IK Limit (in [-3.14159, 0], default 0.0)
+      Minimum angles for IK Limit
 
-      :type: float
+      :type: float in [-3.14159, 0], default 0.0
 
    .. attribute:: ik_min_y
 
-      Minimum angles for IK Limit (in [-3.14159, 0], default 0.0)
+      Minimum angles for IK Limit
 
-      :type: float
+      :type: float in [-3.14159, 0], default 0.0
 
    .. attribute:: ik_min_z
 
-      Minimum angles for IK Limit (in [-3.14159, 0], default 0.0)
+      Minimum angles for IK Limit
 
-      :type: float
+      :type: float in [-3.14159, 0], default 0.0
 
    .. attribute:: ik_rotation_weight
 
-      Weight of rotation constraint for IK (in [0, 1], default 0.0)
+      Weight of rotation constraint for IK
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: ik_stiffness_x
 
-      IK stiffness around the X axis (in [0, 0.99], default 0.0)
+      IK stiffness around the X axis
 
-      :type: float
+      :type: float in [0, 0.99], default 0.0
 
    .. attribute:: ik_stiffness_y
 
-      IK stiffness around the Y axis (in [0, 0.99], default 0.0)
+      IK stiffness around the Y axis
 
-      :type: float
+      :type: float in [0, 0.99], default 0.0
 
    .. attribute:: ik_stiffness_z
 
-      IK stiffness around the Z axis (in [0, 0.99], default 0.0)
+      IK stiffness around the Z axis
 
-      :type: float
+      :type: float in [0, 0.99], default 0.0
 
    .. attribute:: ik_stretch
 
-      Allow scaling of the bone for IK (in [0, 1], default 0.0)
+      Allow scaling of the bone for IK
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. data:: is_in_ik_chain
 
-      Is part of an IK chain (default False, readonly)
+      Is part of an IK chain
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: length
 
-      Length of the bone (in [-inf, inf], default 0.0, readonly)
+      Length of the bone
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0, (readonly)
 
    .. attribute:: location
 
-      (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0))
-
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)
 
    .. attribute:: lock_ik_x
 
-      Disallow movement around the X axis (default False)
+      Disallow movement around the X axis
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: lock_ik_y
 
-      Disallow movement around the Y axis (default False)
+      Disallow movement around the Y axis
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: lock_ik_z
 
-      Disallow movement around the Z axis (default False)
+      Disallow movement around the Z axis
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: lock_location
 
-      Lock editing of location when transforming (array of 3 items, default (False, False, False))
+      Lock editing of location when transforming
 
-      :type: :class:`bpy_prop_array`\ [bool]
+      :type: boolean array of 3 items, default (False, False, False)
 
    .. attribute:: lock_rotation
 
-      Lock editing of rotation when transforming (array of 3 items, default (False, False, False))
+      Lock editing of rotation when transforming
 
-      :type: :class:`bpy_prop_array`\ [bool]
+      :type: boolean array of 3 items, default (False, False, False)
 
    .. attribute:: lock_rotation_w
 
-      Lock editing of 'angle' component of four-component rotations when transforming (default False)
+      Lock editing of 'angle' component of four-component rotations when transforming
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: lock_rotations_4d
 
-      Lock editing of four component rotations by components (instead of as Eulers) (default False)
+      Lock editing of four component rotations by components (instead of as Eulers)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: lock_scale
 
-      Lock editing of scale when transforming (array of 3 items, default (False, False, False))
+      Lock editing of scale when transforming
 
-      :type: :class:`bpy_prop_array`\ [bool]
+      :type: boolean array of 3 items, default (False, False, False)
 
    .. attribute:: matrix
 
-      Final 4×4 matrix after constraints and drivers are applied, in the armature object space (multi-dimensional array of 4 * 4 items, in [-inf, inf], default ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)))
+      Final 4×4 matrix after constraints and drivers are applied, in the armature object space
 
-      :type: :class:`mathutils.Matrix`
+      :type: :class:`mathutils.Matrix` of 4 * 4 items in [-inf, inf], default ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0))
 
    .. attribute:: matrix_basis
 
-      Alternative access to location/scale/rotation relative to the parent and own rest bone (multi-dimensional array of 4 * 4 items, in [-inf, inf], default ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)))
+      Alternative access to location/scale/rotation relative to the parent and own rest bone
 
-      :type: :class:`mathutils.Matrix`
+      :type: :class:`mathutils.Matrix` of 4 * 4 items in [-inf, inf], default ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0))
 
    .. data:: matrix_channel
 
-      4×4 matrix of the bone's location/rotation/scale channels (including animation and drivers) and the effect of bone constraints (multi-dimensional array of 4 * 4 items, in [-inf, inf], default ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)), readonly)
+      4×4 matrix of the bone's location/rotation/scale channels (including animation and drivers) and the effect of bone constraints
 
-      :type: :class:`mathutils.Matrix`
+      :type: :class:`mathutils.Matrix` of 4 * 4 items in [-inf, inf], default ((0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0), (0.0, 0.0, 0.0, 0.0)), (readonly)
 
    .. data:: motion_path
 
-      Motion Path for this element (readonly)
+      Motion Path for this element
 
-      :type: :class:`MotionPath` | None
+      :type: :class:`MotionPath`, (readonly)
 
    .. attribute:: name
 
-      (default "", never None)
-
-      :type: str
+      :type: string, default "", (never None)
 
    .. data:: parent
 
-      Parent of this pose bone (readonly)
+      Parent of this pose bone
 
-      :type: :class:`PoseBone` | None
+      :type: :class:`PoseBone`, (readonly)
 
    .. attribute:: rotation_axis_angle
 
-      Angle of Rotation for Axis-Angle rotation representation (array of 4 items, in [-inf, inf], default (0.0, 0.0, 1.0, 0.0))
+      Angle of Rotation for Axis-Angle rotation representation
 
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [-inf, inf], default (0.0, 0.0, 1.0, 0.0)
 
    .. attribute:: rotation_euler
 
-      Rotation in Eulers (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0))
+      Rotation in Eulers
 
-      :type: :class:`mathutils.Euler`
+      :type: :class:`mathutils.Euler` rotation of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)
 
    .. attribute:: rotation_mode
 
-      The kind of rotation to apply, values from other rotation modes are not used (default ``'QUATERNION'``)
+      The kind of rotation to apply, values from other rotation modes aren't used
 
-      :type: Literal[:ref:`rna_enum_object_rotation_mode_items`]
+      :type: enum in :ref:`rna_enum_object_rotation_mode_items`, default ``'QUATERNION'``
 
    .. attribute:: rotation_quaternion
 
-      Rotation in Quaternions (array of 4 items, in [-inf, inf], default (1.0, 0.0, 0.0, 0.0))
+      Rotation in Quaternions
 
-      :type: :class:`mathutils.Quaternion`
+      :type: :class:`mathutils.Quaternion` rotation of 4 items in [-inf, inf], default (1.0, 0.0, 0.0, 0.0)
 
    .. attribute:: scale
 
-      (array of 3 items, in [-inf, inf], default (1.0, 1.0, 1.0))
-
-      :type: :class:`mathutils.Vector`
-
-   .. attribute:: select
-
-      Bone is selected in Pose Mode (default False)
-
-      :type: bool
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (1.0, 1.0, 1.0)
 
    .. data:: tail
 
-      Location of tail of the channel's bone (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0), readonly)
+      Location of tail of the channel's bone
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (0.0, 0.0, 0.0), (readonly)
 
    .. attribute:: use_custom_shape_bone_size
 
-      Scale the custom object by the bone length (default True)
+      Scale the custom object by the bone length
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_ik_limit_x
 
-      Limit movement around the X axis (default False)
+      Limit movement around the X axis
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_ik_limit_y
 
-      Limit movement around the Y axis (default False)
+      Limit movement around the Y axis
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_ik_limit_z
 
-      Limit movement around the Z axis (default False)
+      Limit movement around the Z axis
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_ik_linear_control
 
-      Apply channel size as IK constraint if stretching is enabled (default False)
+      Apply channel size as IK constraint if stretching is enabled
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_ik_rotation_control
 
-      Apply channel rotation as IK constraint (default False)
+      Apply channel rotation as IK constraint
 
-      :type: bool
-
-   .. attribute:: use_transform_around_custom_shape
-
-      Transform the bone as if it was a child of the Custom Shape Transform bone. This can be useful when combining shape-key and armature deformations. (default False)
-
-      :type: bool
-
-   .. attribute:: use_transform_at_custom_shape
-
-      The location and orientation of the Custom Shape Transform bone will be used for transform gizmos and for other transform operators in the 3D Viewport. When disabled, the 3D Viewport will still use the actual bone transform for these, even when the custom bone shape transform is overridden. (default False)
-
-      :type: bool
+      :type: boolean, default False
 
    .. data:: basename
 
-      The name of this bone before any ``.`` character.
+      The name of this bone before any '.' character
 
       (readonly)
 
@@ -439,7 +406,7 @@ base class --- :class:`bpy_struct`
 
       A list of all children from this bone.
       
-      .. note:: Takes ``O(len(bones)**2)`` time.
+              .. note:: Takes ``O(len(bones)**2)`` time.
 
       (readonly)
 
@@ -456,7 +423,7 @@ base class --- :class:`bpy_struct`
 
    .. data:: parent_recursive
 
-      A list of parents, starting with the immediate parent.
+      A list of parents, starting with the immediate parent
 
       (readonly)
 
@@ -485,110 +452,89 @@ base class --- :class:`bpy_struct`
 
       (readonly)
 
-   .. method:: bl_system_properties_get(*, do_create=False)
-
-      DEBUG ONLY. Internal access to runtime-defined RNA data storage, intended solely for testing and debugging purposes. Do not access it in regular scripting work, and in particular, do not assume that it contains writable data
-
-      :param do_create: Ensure that system properties are created if they do not exist yet (optional)
-      :type do_create: bool
-      :return: The system properties root container, or None if there are no system properties stored in this data yet, and its creation was not requested
-      :rtype: :class:`PropertyGroup`
-
    .. method:: evaluate_envelope(point)
 
       Calculate bone envelope at given point
 
-      :param point: Point, Position in 3d space to evaluate (array of 3 items, in [-inf, inf])
-      :type point: :class:`mathutils.Vector` | Sequence[float]
-      :return: Factor, Envelope factor (in [-inf, inf])
-      :rtype: float
+      :arg point: Point, Position in 3d space to evaluate
+      :type point: :class:`mathutils.Vector` of 3 items in [-inf, inf]
+      :return: Factor, Envelope factor
+      :rtype: float in [-inf, inf]
 
    .. method:: bbone_segment_index(point)
 
       Retrieve the index and blend factor of the B-Bone segments based on vertex position
 
-      :param point: Point, Vertex position in armature pose space (array of 3 items, in [-inf, inf])
-      :type point: :class:`mathutils.Vector` | Sequence[float]
+      :arg point: Point, Vertex position in armature pose space
+      :type point: :class:`mathutils.Vector` of 3 items in [-inf, inf]
       :return:
-         ``index``, The index of the first segment joint affecting the point, int
+         `index`, The index of the first segment joint affecting the point, int in [-inf, inf]
 
-         ``blend_next``, The blend factor between the given and the following joint, float
+         `blend_next`, The blend factor between the given and the following joint, float in [-inf, inf]
 
-      :rtype: tuple[int, float]
+      :rtype: (int in [-inf, inf], float in [-inf, inf])
 
    .. method:: bbone_segment_matrix(index, *, rest=False)
 
       Retrieve the matrix of the joint between B-Bone segments if available
 
-      :param index: Index of the segment endpoint (in [0, inf])
-      :type index: int
-      :param rest: Return the rest pose matrix (optional)
-      :type rest: bool
-      :return: The resulting matrix in bone local space (multi-dimensional array of 4 * 4 items, in [-inf, inf])
-      :rtype: :class:`mathutils.Matrix`
+      :arg index: Index of the segment endpoint
+      :type index: int in [0, inf]
+      :arg rest: Return the rest pose matrix
+      :type rest: boolean, (optional)
+      :return: The resulting matrix in bone local space
+      :rtype: :class:`mathutils.Matrix` of 4 * 4 items in [-inf, inf]
 
       This example shows how to use B-Bone segment matrices to emulate deformation
       produced by the Armature modifier or constraint when assigned to the given bone
       (without Preserve Volume). The coordinates are processed in armature Pose space:
 
-      .. literalinclude:: ./examples/bpy.types.PoseBone.bbone_segment_matrix.0.py
-         :lines: 6-
+      .. literalinclude:: ./examples/bpy.types.PoseBone.bbone_segment_matrix.py
+         :lines: 8-
 
 
    .. method:: compute_bbone_handles(*, rest=False, ease=False, offsets=False)
 
       Retrieve the vectors and rolls coming from B-Bone custom handles
 
-      :param rest: Return the rest pose state (optional)
-      :type rest: bool
-      :param ease: Apply scale from ease values (optional)
-      :type ease: bool
-      :param offsets: Apply roll and curve offsets from bone properties (optional)
-      :type offsets: bool
+      :arg rest: Return the rest pose state
+      :type rest: boolean, (optional)
+      :arg ease: Apply scale from ease values
+      :type ease: boolean, (optional)
+      :arg offsets: Apply roll and curve offsets from bone properties
+      :type offsets: boolean, (optional)
       :return:
-         ``handle1``, The direction vector of the start handle in bone local space, :class:`mathutils.Vector`
+         `handle1`, The direction vector of the start handle in bone local space, :class:`mathutils.Vector` of 3 items in [-inf, inf]
 
-         ``roll1``, Roll of the start handle, float
+         `roll1`, Roll of the start handle, float in [-inf, inf]
 
-         ``handle2``, The direction vector of the end handle in bone local space, :class:`mathutils.Vector`
+         `handle2`, The direction vector of the end handle in bone local space, :class:`mathutils.Vector` of 3 items in [-inf, inf]
 
-         ``roll2``, Roll of the end handle, float
+         `roll2`, Roll of the end handle, float in [-inf, inf]
 
-      :rtype: tuple[:class:`mathutils.Vector`, float, :class:`mathutils.Vector`, float]
+      :rtype: (:class:`mathutils.Vector` of 3 items in [-inf, inf], float in [-inf, inf], :class:`mathutils.Vector` of 3 items in [-inf, inf], float in [-inf, inf])
 
    .. method:: parent_index(parent_test)
 
       The same as 'bone in other_bone.parent_recursive'
       but saved generating a list.
-      
-      :param parent_test: Bone to search for among this bone's ancestors.
-      :type parent_test: Self
-      :return: 1-based depth of *parent_test* in the parent chain, or 0 if not found.
-      :rtype: int
 
    .. method:: translate(vec)
 
-      Utility function to add *vec* to the head and tail of this bone.
-      
-      :param vec: Translation vector.
-      :type vec: :class:`mathutils.Vector`
+      Utility function to add *vec* to the head and tail of this bone
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -599,7 +545,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -607,30 +553,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -638,16 +583,16 @@ References
 .. hlist::
    :columns: 2
 
-   - :mod:`bpy.context.active_pose_bone`
-   - :mod:`bpy.context.pose_bone`
-   - :mod:`bpy.context.selected_pose_bones`
-   - :mod:`bpy.context.selected_pose_bones_from_active_object`
-   - :mod:`bpy.context.visible_pose_bones`
-   - :class:`Object.convert_space`
-   - :class:`Pose.bones`
-   - :class:`PoseBone.bbone_custom_handle_end`
-   - :class:`PoseBone.bbone_custom_handle_start`
-   - :class:`PoseBone.child`
-   - :class:`PoseBone.custom_shape_transform`
-   - :class:`PoseBone.parent`
+   * :mod:`bpy.context.active_pose_bone`
+   * :mod:`bpy.context.pose_bone`
+   * :mod:`bpy.context.selected_pose_bones`
+   * :mod:`bpy.context.selected_pose_bones_from_active_object`
+   * :mod:`bpy.context.visible_pose_bones`
+   * :class:`Object.convert_space`
+   * :class:`Pose.bones`
+   * :class:`PoseBone.bbone_custom_handle_end`
+   * :class:`PoseBone.bbone_custom_handle_start`
+   * :class:`PoseBone.child`
+   * :class:`PoseBone.custom_shape_transform`
+   * :class:`PoseBone.parent`
 

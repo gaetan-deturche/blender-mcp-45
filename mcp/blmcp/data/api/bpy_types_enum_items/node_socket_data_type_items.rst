@@ -11,8 +11,6 @@ Node Socket Data Type Items
 
 :VECTOR: Vector.
 
-:RGBA: Color.
-
 :ROTATION: Rotation.
 
 :MATRIX: Matrix.
@@ -21,7 +19,7 @@ Node Socket Data Type Items
 
 :MENU: Menu.
 
-:SHADER: Shader.
+:RGBA: Color.
 
 :OBJECT: Object.
 
@@ -38,16 +36,4 @@ Node Socket Data Type Items
 :BUNDLE: Bundle.
 
 :CLOSURE: Closure.
-
-:FONT: Font.
-
-:SCENE: Scene.
-
-:TEXT: Text.
-
-:MASK: Mask.
-
-:SOUND: Sound.
-
-:INT_VECTOR: Integer Vector.
 

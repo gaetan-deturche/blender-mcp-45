@@ -20,7 +20,16 @@ Mask
 Size
    The size of the surrounding area to look at for each pixel; or in other words, how much to
    dilate (for positive values) or erode (for negative values) the mask.
-Type
+Falloff Size :guilabel:`Threshold`
+   Determines how much to blur the edges after dilation/erosion.
+Falloff :guilabel:`Feather`
+   Determines the brightness curve of the blurred edges.
+
+
+Properties
+==========
+
+Mode
    :Steps:
       Sets each pixel to the maximum (for dilation) or minimum (for erosion) value that's found
       within a square surrounding it. This approach keeps the original gray levels and is best
@@ -41,10 +50,6 @@ Type
       is well-suited for masks that contain rounded corners.
    :Feather:
       Blurs the image.
-Falloff Size :guilabel:`Threshold`
-   Determines how much to blur the edges after dilation/erosion.
-Falloff :guilabel:`Feather`
-   Determines the brightness curve of the blurred edges.
 
 
 Outputs

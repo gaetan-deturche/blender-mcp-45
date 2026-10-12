@@ -5,233 +5,226 @@ BevelModifier(Modifier)
 
 base classes --- :class:`bpy_struct`, :class:`Modifier`
 
-
 .. class:: BevelModifier(Modifier)
 
    Bevel modifier to make edges and vertices more rounded
 
    .. attribute:: affect
 
-      Affect edges or vertices (default ``'EDGES'``)
+      Affect edges or vertices
 
-      - ``VERTICES``
+      * ``VERTICES``
         Vertices -- Affect only vertices.
-      - ``EDGES``
+      * ``EDGES``
         Edges -- Affect only edges.
 
-      :type: Literal['VERTICES', 'EDGES']
+      :type: enum in [``'VERTICES'``, ``'EDGES'``], default ``'EDGES'``
 
    .. attribute:: angle_limit
 
-      Angle above which to bevel edges (in [0, 3.14159], default 0.523599)
+      Angle above which to bevel edges
 
-      :type: float
+      :type: float in [0, 3.14159], default 0.523599
 
    .. data:: custom_profile
 
-      The path for the custom profile (readonly)
+      The path for the custom profile
 
-      :type: :class:`CurveProfile` | None
+      :type: :class:`CurveProfile`, (readonly)
 
    .. attribute:: edge_weight
 
-      Attribute name for edge weight (default "bevel_weight_edge", never None)
+      Attribute name for edge weight
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: face_strength_mode
 
-      Whether to set face strength, and which faces to set it on (default ``'FSTR_NONE'``)
+      Whether to set face strength, and which faces to set it on
 
-      - ``FSTR_NONE``
+      * ``FSTR_NONE``
         None -- Do not set face strength.
-      - ``FSTR_NEW``
+      * ``FSTR_NEW``
         New -- Set face strength on new faces only.
-      - ``FSTR_AFFECTED``
+      * ``FSTR_AFFECTED``
         Affected -- Set face strength on new and affected faces only.
-      - ``FSTR_ALL``
+      * ``FSTR_ALL``
         All -- Set face strength on all faces.
 
-      :type: Literal['FSTR_NONE', 'FSTR_NEW', 'FSTR_AFFECTED', 'FSTR_ALL']
+      :type: enum in [``'FSTR_NONE'``, ``'FSTR_NEW'``, ``'FSTR_AFFECTED'``, ``'FSTR_ALL'``], default ``'FSTR_NONE'``
 
    .. attribute:: harden_normals
 
-      Match normals of new faces to adjacent faces (default False)
+      Match normals of new faces to adjacent faces
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: invert_vertex_group
 
-      Invert vertex group influence (default False)
+      Invert vertex group influence
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: limit_method
 
-      (default ``'ANGLE'``)
-
-      - ``NONE``
+      * ``NONE``
         None -- Bevel the entire mesh by a constant amount.
-      - ``ANGLE``
+      * ``ANGLE``
         Angle -- Only bevel edges with sharp enough angles between faces.
-      - ``WEIGHT``
+      * ``WEIGHT``
         Weight -- Use bevel weights to determine how much bevel is applied in edge mode.
-      - ``VGROUP``
+      * ``VGROUP``
         Vertex Group -- Use vertex group weights to select whether vertex or edge is beveled.
 
-      :type: Literal['NONE', 'ANGLE', 'WEIGHT', 'VGROUP']
+      :type: enum in [``'NONE'``, ``'ANGLE'``, ``'WEIGHT'``, ``'VGROUP'``], default ``'ANGLE'``
 
    .. attribute:: loop_slide
 
-      Prefer sliding along edges to having even widths (default True)
+      Prefer sliding along edges to having even widths
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: mark_seam
 
-      Mark Seams along beveled edges (default False)
+      Mark Seams along beveled edges
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: mark_sharp
 
-      Mark beveled edges as sharp (default False)
+      Mark beveled edges as sharp
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: material
 
-      Material index of generated faces, -1 for automatic (in [-1, 32767], default -1)
+      Material index of generated faces, -1 for automatic
 
-      :type: int
+      :type: int in [-1, 32767], default -1
 
    .. attribute:: miter_inner
 
-      Pattern to use for inside of miters (default ``'MITER_SHARP'``)
+      Pattern to use for inside of miters
 
-      - ``MITER_SHARP``
+      * ``MITER_SHARP``
         Sharp -- Inside of miter is sharp.
-      - ``MITER_ARC``
+      * ``MITER_ARC``
         Arc -- Inside of miter is arc.
 
-      :type: Literal['MITER_SHARP', 'MITER_ARC']
+      :type: enum in [``'MITER_SHARP'``, ``'MITER_ARC'``], default ``'MITER_SHARP'``
 
    .. attribute:: miter_outer
 
-      Pattern to use for outside of miters (default ``'MITER_SHARP'``)
+      Pattern to use for outside of miters
 
-      - ``MITER_SHARP``
+      * ``MITER_SHARP``
         Sharp -- Outside of miter is sharp.
-      - ``MITER_PATCH``
+      * ``MITER_PATCH``
         Patch -- Outside of miter is squared-off patch.
-      - ``MITER_ARC``
+      * ``MITER_ARC``
         Arc -- Outside of miter is arc.
 
-      :type: Literal['MITER_SHARP', 'MITER_PATCH', 'MITER_ARC']
+      :type: enum in [``'MITER_SHARP'``, ``'MITER_PATCH'``, ``'MITER_ARC'``], default ``'MITER_SHARP'``
 
    .. attribute:: offset_type
 
-      What distance Width measures (default ``'OFFSET'``)
+      What distance Width measures
 
-      - ``OFFSET``
+      * ``OFFSET``
         Offset -- Amount is offset of new edges from original.
-      - ``WIDTH``
+      * ``WIDTH``
         Width -- Amount is width of new face.
-      - ``DEPTH``
+      * ``DEPTH``
         Depth -- Amount is perpendicular distance from original edge to bevel face.
-      - ``PERCENT``
+      * ``PERCENT``
         Percent -- Amount is percent of adjacent edge length.
-      - ``ABSOLUTE``
+      * ``ABSOLUTE``
         Absolute -- Amount is absolute distance along adjacent edge.
 
-      :type: Literal['OFFSET', 'WIDTH', 'DEPTH', 'PERCENT', 'ABSOLUTE']
+      :type: enum in [``'OFFSET'``, ``'WIDTH'``, ``'DEPTH'``, ``'PERCENT'``, ``'ABSOLUTE'``], default ``'OFFSET'``
 
    .. attribute:: profile
 
-      The profile shape (0.5 = round) (in [0, 1], default 0.5)
+      The profile shape (0.5 = round)
 
-      :type: float
+      :type: float in [0, 1], default 0.5
 
    .. attribute:: profile_type
 
-      The type of shape used to rebuild a beveled section (default ``'SUPERELLIPSE'``)
+      The type of shape used to rebuild a beveled section
 
-      - ``SUPERELLIPSE``
+      * ``SUPERELLIPSE``
         Superellipse -- The profile can be a concave or convex curve.
-      - ``CUSTOM``
+      * ``CUSTOM``
         Custom -- The profile can be any arbitrary path between its endpoints.
 
-      :type: Literal['SUPERELLIPSE', 'CUSTOM']
+      :type: enum in [``'SUPERELLIPSE'``, ``'CUSTOM'``], default ``'SUPERELLIPSE'``
 
    .. attribute:: segments
 
-      Number of segments for round edges/verts (in [1, 1000], default 1)
+      Number of segments for round edges/verts
 
-      :type: int
+      :type: int in [1, 1000], default 1
 
    .. attribute:: spread
 
-      Spread distance for inner miter arcs (in [0, inf], default 0.1)
+      Spread distance for inner miter arcs
 
-      :type: float
+      :type: float in [0, inf], default 0.1
 
    .. attribute:: use_clamp_overlap
 
-      Clamp the width to avoid overlap (default True)
+      Clamp the width to avoid overlap
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: vertex_group
 
-      Vertex group name (default "", never None)
+      Vertex group name
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: vertex_weight
 
-      Attribute name for vertex weight (default "bevel_weight_vert", never None)
+      Attribute name for vertex weight
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: vmesh_method
 
-      The method to use to create the mesh at intersections (default ``'ADJ'``)
+      The method to use to create the mesh at intersections
 
-      - ``ADJ``
+      * ``ADJ``
         Grid Fill -- Default patterned fill.
-      - ``CUTOFF``
+      * ``CUTOFF``
         Cutoff -- A cut-off at the end of each profile before the intersection.
 
-      :type: Literal['ADJ', 'CUTOFF']
+      :type: enum in [``'ADJ'``, ``'CUTOFF'``], default ``'ADJ'``
 
    .. attribute:: width
 
-      Bevel amount (in [0, inf], default 0.1)
+      Bevel amount
 
-      :type: float
+      :type: float in [0, inf], default 0.1
 
    .. attribute:: width_pct
 
-      Bevel amount for percentage method (in [0, inf], default 0.1)
+      Bevel amount for percentage method
 
-      :type: float
+      :type: float in [0, inf], default 0.1
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -242,20 +235,20 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
-   - :class:`Modifier.name`
-   - :class:`Modifier.type`
-   - :class:`Modifier.show_viewport`
-   - :class:`Modifier.show_render`
-   - :class:`Modifier.show_in_editmode`
-   - :class:`Modifier.show_on_cage`
-   - :class:`Modifier.show_expanded`
-   - :class:`Modifier.is_active`
-   - :class:`Modifier.use_pin_to_last`
-   - :class:`Modifier.is_override_data`
-   - :class:`Modifier.use_apply_on_spline`
-   - :class:`Modifier.execution_time`
-   - :class:`Modifier.persistent_uid`
+   * :class:`bpy_struct.id_data`
+   * :class:`Modifier.name`
+   * :class:`Modifier.type`
+   * :class:`Modifier.show_viewport`
+   * :class:`Modifier.show_render`
+   * :class:`Modifier.show_in_editmode`
+   * :class:`Modifier.show_on_cage`
+   * :class:`Modifier.show_expanded`
+   * :class:`Modifier.is_active`
+   * :class:`Modifier.use_pin_to_last`
+   * :class:`Modifier.is_override_data`
+   * :class:`Modifier.use_apply_on_spline`
+   * :class:`Modifier.execution_time`
+   * :class:`Modifier.persistent_uid`
 
 Inherited Functions
 -------------------
@@ -263,30 +256,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
-   - :class:`Modifier.bl_rna_get_subclass`
-   - :class:`Modifier.bl_rna_get_subclass_py`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
+   * :class:`Modifier.bl_rna_get_subclass`
+   * :class:`Modifier.bl_rna_get_subclass_py`
 

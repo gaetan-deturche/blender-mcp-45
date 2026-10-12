@@ -9,7 +9,11 @@ Beautify Faces
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Face --> Beautify Faces`
 
-Rearranges the selected faces to obtain cleaner topology.
+*Beautify Faces* works only on selected existing faces.
+It rearrange selected triangles to obtain more "balanced" ones (i.e. less long thin triangles).
+
+Max Angle
+   An angle delimiter option to limit edge rotation to flat surfaces.
 
 .. list-table::
 
@@ -22,11 +26,3 @@ Rearranges the selected faces to obtain cleaner topology.
           :width: 320px
 
           Result of Beautify Faces.
-
-Options
-=======
-
-Max Angle
-   Maximum allowed angle between face normals (meaning that two faces that lie in the
-   same plane are considered to have an angle of 0°, not 180°). If an edge lies between
-   two faces that exceed this angle, it will not be changed.

@@ -1,41 +1,36 @@
-.. index:: Geometry Nodes; Attachment Info
+.. index:: Geometry Nodes; Hair Attachment Info
 
-***************
-Attachment Info
-***************
+********************
+Hair Attachment Info
+********************
 
-The *Attachment Info* node retrieves information about how hair curves are
-attached to a surface mesh.
-
-This includes the surface geometry, the stored attachment coordinates, and the
-surface normal at each attachment point. The node can also be used to determine
-whether the attachment data is valid.
+Reads attachment information regarding a surface mesh.
 
 
 Inputs
 ======
 
-Hair Curves
-   Hair curves with stored surface attachment information.
+Surface Geometry
+   Surface geometry of the curve attachment.
+
+Surface UV Map
+   Surface UV map stored on the mesh used for finding curve attachment locations.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs
 =======
 
-Surface Geometry
-   Surface geometry the curves are attached to.
-
-Surface Exists
-   Whether the attached surface geometry exists.
-
 Attachment UV
-   UV coordinates of each curve's attachment point on the surface.
+   Surface attachment UV coordinate stored on each curve.
 
 Attachment is Valid
-   Whether each curve has valid attachment data.
-
-   This output can be used to detect missing or invalid attachments, for
-   example after removing or replacing the surface geometry.
+   Whether the stored attachment UV coordinate is valid.
 
 Surface Normal
-   Surface normal evaluated at each curve's attachment point.
+   Normal direction of the surface mesh at the attachment point.

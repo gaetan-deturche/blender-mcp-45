@@ -32,6 +32,12 @@ Face Set
    Ignored for faces where the value of Selection is false.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

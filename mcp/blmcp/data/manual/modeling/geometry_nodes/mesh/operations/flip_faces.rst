@@ -30,6 +30,12 @@ Selection
    True values mean the face will be flipped, false means the face will be unaffected.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Output
 ======
 

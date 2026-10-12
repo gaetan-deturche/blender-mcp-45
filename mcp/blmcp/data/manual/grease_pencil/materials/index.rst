@@ -4,27 +4,18 @@
   Grease Pencil Materials
 ###########################
 
-Grease Pencil objects are composed of strokes.
-Each stroke can have a stroke (outline) component, a fill component, or both.
-The appearance of these components is controlled by Grease Pencil materials.
-
-Each stroke references a single material data-block.
-Within that material, the *Stroke* and *Fill* components are defined separately.
-This means that a stroke and its fill can share the same material,
-but their visual properties are configured independently inside that material.
-
-Materials define the base color, texture, and shading of both the stroke outline
-and the filled area.
+Materials control the appearance of the Grease Pencil object.
+They define the base color and texture of the strokes and filled areas.
 
 There is always only one active material in the list (the selected one).
-When you draw, new strokes are created using the active material.
+When you draw, the new strokes use the active material.
 
-You can override the base material color using tools in
+You can override the base material color using the tools in
 :doc:`Vertex Mode </grease_pencil/modes/vertex_paint/introduction>`
 or the Draw and Tint tool in Draw Mode.
 
-The material remains linked to the strokes.
-Any change made to a material will immediately affect all strokes using it.
+The material always remains linked to the strokes, this means that any change in a material will change
+the look of already drawn strokes.
 
 .. figure:: /images/grease-pencil_materials_introduction_sample.png
 
@@ -34,29 +25,19 @@ Any change made to a material will immediately affect all strokes using it.
 Material Shader
 ===============
 
-Grease Pencil materials use a dedicated
-:doc:`shader </grease_pencil/materials/properties>`
-to define the appearance of stroke outlines and fills.
+Grease Pencil materials use a special :doc:`shader </grease_pencil/materials/properties>`
+that define the appearance of the surface of the stroke and fill.
 
-The material contains two independent sections:
+Stroke and fill components has it own section panel and
+they can be enabled with a checkbox on the panel header.
 
-Stroke
-   Controls the appearance of the stroke (outline).
-   This affects line color, thickness shading behavior, and stroke textures.
-
-Fill
-   Controls the appearance of enclosed areas.
-   Fill only affects regions defined by closed strokes
-   (where the start and end points connect).
-
-Both components can be enabled or disabled independently
-using the checkbox in each panel header.
+*Stroke* only has effect on the lines and *Fill* only on the areas
+determined by closed lines (by connecting the lines start and end points).
 
 .. note::
 
-   The Grease Pencil shader is not a standard BSDF shader.
-   It is configured in the Material Properties panel
-   and does not use the Shader Editor node system.
+   The shader is not a BSDF capable shader and can only be setting up
+   on the Material Properties panel (it is not a shader node).
 
 
 Setting Up Materials
@@ -68,25 +49,21 @@ Setting Up Materials
    :Panel:     :menuselection:`Material --> Material Slots`
    :Shortcut:  :kbd:`U`
 
-Grease Pencil materials are created and managed in the
-:doc:`Material properties </editors/properties_editor>`
-like other Blender materials.
-See :doc:`Material assignment </render/materials/assignment>` for general material usage.
+Grease Pencil materials can be created in the :doc:`Material properties </editors/properties_editor>`
+as any other materials in Blender.
+See :doc:`Material assignment </render/materials/assignment>` for more information.
 
-The 3D Viewport can be set to Material Preview or Rendered shading
-to preview materials interactively.
+The 3D Viewport can be set to Material Preview or Rendered shading,
+to interactively preview how the material looks in the scene.
 
-Grease Pencil materials are data-blocks that can be
-:doc:`assigned </render/materials/assignment>`
-to one or more objects.
-Different strokes within the same object can use different materials.
+Grease Pencil materials are data-blocks that can be :doc:`assigned </render/materials/assignment>`
+to one or more objects, and different materials can be assigned to different strokes.
 
-In Grease Pencil, the :doc:`brush </grease_pencil/modes/draw/brushes/index>`
-settings together with the selected material determine
-the final visual appearance of strokes.
+In Grease Pencil the :doc:`brush </grease_pencil/modes/draw/brushes/index>`
+settings together with the material used will define the look and feel of the final strokes.
 
-:ref:`Material slots <gp-material-slots>` provide additional controls
-for managing and switching materials while drawing or editing strokes.
+:ref:`Materials slots <gp-material-slots>` also have some extra controls
+that help to work with materials while drawing or editing lines.
 
 
 :doc:`Properties <properties>`

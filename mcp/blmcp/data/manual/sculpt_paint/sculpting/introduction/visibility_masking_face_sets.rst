@@ -1,3 +1,4 @@
+
 *******************************
 Visibility, Masking & Face Sets
 *******************************
@@ -114,3 +115,6 @@ The mask and face sets display can be toggled and adjusted in the :ref:`Mask Dis
 
 .. figure:: /images/sculpt-paint_sculpting_viewport_overlays.png
 
+.. note::
+
+   When Xray shading is enabled, masks and face sets will not be displayed.

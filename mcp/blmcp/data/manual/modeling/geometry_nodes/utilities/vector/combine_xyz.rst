@@ -19,6 +19,12 @@ Inputs
 - Z
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Output
 ======
 

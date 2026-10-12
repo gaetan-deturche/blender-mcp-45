@@ -1,4 +1,4 @@
-.. _bpy.types.AddStrip:
+.. _bpy.types.AddSequence:
 
 *********
 Add Strip

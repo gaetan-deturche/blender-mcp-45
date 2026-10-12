@@ -5,318 +5,308 @@ View3DShading(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: View3DShading(bpy_struct)
 
    Settings for shading in the 3D viewport
 
    .. attribute:: aov_name
 
-      Name of the active Shader AOV (default "", never None)
+      Name of the active Shader AOV
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: background_color
 
-      Color for custom background color (array of 3 items, in [0, 1], default (0.05, 0.05, 0.05))
+      Color for custom background color
 
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.05, 0.05, 0.05)
 
    .. attribute:: background_type
 
-      Way to display the background (default ``'THEME'``)
+      Way to display the background
 
-      - ``THEME``
+      * ``THEME``
         Theme -- Use the theme for background color.
-      - ``WORLD``
+      * ``WORLD``
         World -- Use the world for background color.
-      - ``VIEWPORT``
+      * ``VIEWPORT``
         Custom -- Use a custom color limited to this viewport only.
 
-      :type: Literal['THEME', 'WORLD', 'VIEWPORT']
+      :type: enum in [``'THEME'``, ``'WORLD'``, ``'VIEWPORT'``], default ``'THEME'``
 
    .. attribute:: cavity_ridge_factor
 
-      Factor for the cavity ridges (in [0, 250], default 1.0)
+      Factor for the cavity ridges
 
-      :type: float
+      :type: float in [0, 250], default 1.0
 
    .. attribute:: cavity_type
 
-      Way to display the cavity shading (default ``'SCREEN'``)
+      Way to display the cavity shading
 
-      - ``WORLD``
+      * ``WORLD``
         World -- Cavity shading computed in world space, useful for larger-scale occlusion.
-      - ``SCREEN``
+      * ``SCREEN``
         Screen -- Curvature-based shading, useful for making fine details more visible.
-      - ``BOTH``
+      * ``BOTH``
         Both -- Use both effects simultaneously.
 
-      :type: Literal['WORLD', 'SCREEN', 'BOTH']
+      :type: enum in [``'WORLD'``, ``'SCREEN'``, ``'BOTH'``], default ``'SCREEN'``
 
    .. attribute:: cavity_valley_factor
 
-      Factor for the cavity valleys (in [0, 250], default 1.0)
+      Factor for the cavity valleys
 
-      :type: float
+      :type: float in [0, 250], default 1.0
 
    .. attribute:: color_type
 
-      Color Type (default ``'MATERIAL'``)
+      Color Type
 
-      - ``MATERIAL``
+      * ``MATERIAL``
         Material -- Show material color.
-      - ``OBJECT``
+      * ``OBJECT``
         Object -- Show object color.
-      - ``RANDOM``
+      * ``RANDOM``
         Random -- Show random object color.
-      - ``VERTEX``
+      * ``VERTEX``
         Attribute -- Show active color attribute.
-      - ``TEXTURE``
+      * ``TEXTURE``
         Texture -- Show the texture from the active image texture node using the active UV map coordinates.
-      - ``SINGLE``
+      * ``SINGLE``
         Custom -- Show scene in a single custom color.
 
-      :type: Literal['MATERIAL', 'OBJECT', 'RANDOM', 'VERTEX', 'TEXTURE', 'SINGLE']
+      :type: enum in [``'MATERIAL'``, ``'OBJECT'``, ``'RANDOM'``, ``'VERTEX'``, ``'TEXTURE'``, ``'SINGLE'``], default ``'MATERIAL'``
 
    .. attribute:: curvature_ridge_factor
 
-      Factor for the curvature ridges (in [0, 2], default 1.0)
+      Factor for the curvature ridges
 
-      :type: float
+      :type: float in [0, 2], default 1.0
 
    .. attribute:: curvature_valley_factor
 
-      Factor for the curvature valleys (in [0, 2], default 1.0)
+      Factor for the curvature valleys
 
-      :type: float
+      :type: float in [0, 2], default 1.0
+
+   .. data:: cycles
+
+      :type: :class:`CyclesView3DShadingSettings`, (readonly)
 
    .. attribute:: light
 
-      Lighting Method for Solid/Texture Viewport Shading (default ``'STUDIO'``)
+      Lighting Method for Solid/Texture Viewport Shading
 
-      - ``STUDIO``
+      * ``STUDIO``
         Studio -- Display using studio lighting.
-      - ``MATCAP``
+      * ``MATCAP``
         MatCap -- Display using matcap material and lighting.
-      - ``FLAT``
+      * ``FLAT``
         Flat -- Display using flat lighting.
 
-      :type: Literal['STUDIO', 'MATCAP', 'FLAT']
+      :type: enum in [``'STUDIO'``, ``'MATCAP'``, ``'FLAT'``], default ``'STUDIO'``
 
    .. attribute:: object_outline_color
 
-      Color for object outline (array of 3 items, in [0, 1], default (0.0, 0.0, 0.0))
+      Color for object outline
 
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.0, 0.0, 0.0)
 
    .. attribute:: render_pass
 
-      Render Pass to show in the viewport (default ``'COMBINED'``)
+      Render Pass to show in the viewport
 
-      :type: Literal['COMBINED', 'EMISSION', 'ENVIRONMENT', 'AO', 'SHADOW', 'TRANSPARENT', 'DIFFUSE_LIGHT', 'DIFFUSE_COLOR', 'SPECULAR_LIGHT', 'SPECULAR_COLOR', 'VOLUME_LIGHT', 'POSITION', 'NORMAL', 'MIST', 'CryptoObject', 'CryptoAsset', 'CryptoMaterial', 'AOV']
+      :type: enum in [``'COMBINED'``, ``'EMISSION'``, ``'ENVIRONMENT'``, ``'AO'``, ``'SHADOW'``, ``'TRANSPARENT'``, ``'DIFFUSE_LIGHT'``, ``'DIFFUSE_COLOR'``, ``'SPECULAR_LIGHT'``, ``'SPECULAR_COLOR'``, ``'VOLUME_LIGHT'``, ``'POSITION'``, ``'NORMAL'``, ``'MIST'``, ``'CryptoObject'``, ``'CryptoAsset'``, ``'CryptoMaterial'``, ``'AOV'``], default ``'COMBINED'``
 
    .. data:: selected_studio_light
 
-      Selected StudioLight (readonly)
+      Selected StudioLight
 
-      :type: :class:`StudioLight` | None
+      :type: :class:`StudioLight`, (readonly)
 
    .. attribute:: shadow_intensity
 
-      Darkness of shadows (in [0, 1], default 0.5)
+      Darkness of shadows
 
-      :type: float
+      :type: float in [0, 1], default 0.5
 
    .. attribute:: show_backface_culling
 
-      Use back face culling to hide the back side of faces (default False)
+      Use back face culling to hide the back side of faces
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_cavity
 
-      Show Cavity (default False)
+      Show Cavity
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_outline
 
-      Show Object Outline (default False)
+      Show Object Outline
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_shadows
 
-      Show Shadow (default False)
+      Show Shadow
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_specular_highlight
 
-      Render specular highlights (default True)
+      Render specular highlights
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: show_xray
 
-      Show whole scene transparent (default False)
+      Show whole scene transparent
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_xray_wireframe
 
-      Show whole scene transparent (default True)
+      Show whole scene transparent
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: single_color
 
-      Color for single color mode (array of 3 items, in [0, 1], default (0.8, 0.8, 0.8))
+      Color for single color mode
 
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, 1], default (0.8, 0.8, 0.8)
 
    .. attribute:: studio_light
 
-      Studio lighting setup (default ``'DEFAULT'``)
+      Studio lighting setup
 
-      :type: Literal['DEFAULT']
+      :type: enum in [``'DEFAULT'``], default ``'DEFAULT'``
 
    .. attribute:: studiolight_background_alpha
 
-      Show the studiolight in the background (in [0, 1], default 0.0)
+      Show the studiolight in the background
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: studiolight_background_blur
 
-      Blur the studiolight in the background (in [0, 1], default 0.5)
+      Blur the studiolight in the background
 
-      :type: float
+      :type: float in [0, 1], default 0.5
 
    .. attribute:: studiolight_intensity
 
-      Strength of the studiolight (in [0, inf], default 1.0)
+      Strength of the studiolight
 
-      :type: float
+      :type: float in [0, inf], default 1.0
 
    .. attribute:: studiolight_rotate_z
 
-      Rotation of the studiolight around the Z-Axis (in [-3.14159, 3.14159], default 0.0)
+      Rotation of the studiolight around the Z-Axis
 
-      :type: float
+      :type: float in [-3.14159, 3.14159], default 0.0
 
    .. attribute:: type
 
-      Method to display/shade objects in the 3D View (default ``'SOLID'``)
+      Method to display/shade objects in the 3D View
 
-      :type: Literal[:ref:`rna_enum_shading_type_items`]
+      :type: enum in :ref:`rna_enum_shading_type_items`, default ``'SOLID'``
 
    .. attribute:: use_compositor
 
-      When to preview the compositor output inside the viewport (default ``'DISABLED'``)
+      When to preview the compositor output inside the viewport
 
-      - ``DISABLED``
+      * ``DISABLED``
         Disabled -- The compositor is disabled.
-      - ``CAMERA``
+      * ``CAMERA``
         Camera -- The compositor is enabled only in camera view.
-      - ``ALWAYS``
+      * ``ALWAYS``
         Always -- The compositor is always enabled regardless of the view.
 
-      :type: Literal['DISABLED', 'CAMERA', 'ALWAYS']
+      :type: enum in [``'DISABLED'``, ``'CAMERA'``, ``'ALWAYS'``], default ``'DISABLED'``
 
    .. attribute:: use_dof
 
-      Use depth of field on viewport using the values from the active camera (default False)
+      Use depth of field on viewport using the values from the active camera
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_scene_lights
 
-      Render lights and light probes of the scene (default False)
+      Render lights and light probes of the scene
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_scene_lights_render
 
-      Render lights and light probes of the scene (default True)
+      Render lights and light probes of the scene
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_scene_world
 
-      Use scene world for lighting (default False)
+      Use scene world for lighting
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_scene_world_render
 
-      Use scene world for lighting (default True)
+      Use scene world for lighting
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_studiolight_view_rotation
 
-      Make the HDR rotation fixed and not follow the camera (default True)
+      Make the HDR rotation fixed and not follow the camera
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_world_space_lighting
 
-      Make the lighting fixed and not follow the camera (default False)
+      Make the lighting fixed and not follow the camera
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: wireframe_color_type
 
-      Wire Color Type (default ``'THEME'``)
+      Wire Color Type
 
-      - ``THEME``
+      * ``THEME``
         Theme -- Show scene wireframes with the theme's wire color.
-      - ``OBJECT``
+      * ``OBJECT``
         Object -- Show object color on wireframe.
-      - ``RANDOM``
+      * ``RANDOM``
         Random -- Show random object color on wireframe.
 
-      :type: Literal['THEME', 'OBJECT', 'RANDOM']
+      :type: enum in [``'THEME'``, ``'OBJECT'``, ``'RANDOM'``], default ``'THEME'``
 
    .. attribute:: xray_alpha
 
-      Amount of opacity to use (in [0, 1], default 0.5)
+      Amount of opacity to use
 
-      :type: float
+      :type: float in [0, 1], default 0.5
 
    .. attribute:: xray_alpha_wireframe
 
-      Amount of opacity to use (in [0, 1], default 0.5)
+      Amount of opacity to use
 
-      :type: float
-
-   .. method:: bl_system_properties_get(*, do_create=False)
-
-      DEBUG ONLY. Internal access to runtime-defined RNA data storage, intended solely for testing and debugging purposes. Do not access it in regular scripting work, and in particular, do not assume that it contains writable data
-
-      :param do_create: Ensure that system properties are created if they do not exist yet (optional)
-      :type do_create: bool
-      :return: The system properties root container, or None if there are no system properties stored in this data yet, and its creation was not requested
-      :rtype: :class:`PropertyGroup`
+      :type: float in [0, 1], default 0.5
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -327,7 +317,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -335,30 +325,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -366,7 +355,7 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`SceneDisplay.shading`
-   - :class:`SpaceView3D.shading`
-   - :class:`XrSessionSettings.shading`
+   * :class:`SceneDisplay.shading`
+   * :class:`SpaceView3D.shading`
+   * :class:`XrSessionSettings.shading`
 

@@ -35,6 +35,12 @@ Corner Rounding
    The higher the value the better corners will be preserved, i.e. resemble original image.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

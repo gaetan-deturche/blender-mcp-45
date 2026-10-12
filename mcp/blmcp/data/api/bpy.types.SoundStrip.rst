@@ -5,101 +5,68 @@ SoundStrip(Strip)
 
 base classes --- :class:`bpy_struct`, :class:`Strip`
 
-
 .. class:: SoundStrip(Strip)
 
    Sequence strip defining a sound to be played over a period of time
 
    .. attribute:: animation_offset_end
 
-      Animation end offset (trim end) (in [0, inf], default 0)
+      Animation end offset (trim end)
 
-      .. deprecated:: 5.10 removal planned in version 6.0
-
-         Replaced by '.content_trim_end'.
-
-      :type: int
+      :type: int in [0, inf], default 0
 
    .. attribute:: animation_offset_start
 
-      Animation start offset (trim start) (in [0, inf], default 0)
+      Animation start offset (trim start)
 
-      .. deprecated:: 5.10 removal planned in version 6.0
-
-         Replaced by '.content_trim_start'.
-
-      :type: int
-
-   .. attribute:: content_trim_end
-
-      Number of frames to ignore from the end of the underlying source. The source content is trimmed, and future frames are turned into holds (in [0, inf], default 0)
-
-      :type: int
-
-   .. attribute:: content_trim_start
-
-      Number of frames to ignore from the start of the underlying source. The source content is trimmed, and previous frames are turned into holds (in [0, inf], default 0)
-
-      :type: int
+      :type: int in [0, inf], default 0
 
    .. attribute:: pan
 
-      Playback panning of the sound (only for Mono sources) (in [-inf, inf], default 0.0)
+      Playback panning of the sound (only for Mono sources)
 
-      :type: float
-
-   .. attribute:: pitch_correction
-
-      Maintain the original pitch of the audio when changing playback speed (default False)
-
-      :type: bool
+      :type: float in [-inf, inf], default 0.0
 
    .. data:: retiming_keys
 
-      (default None, readonly)
-
-      :type: :class:`RetimingKeys`\ [:class:`RetimingKey`]
+      :type: :class:`RetimingKeys` :class:`bpy_prop_collection` of :class:`RetimingKey`, (readonly)
 
    .. attribute:: show_waveform
 
-      Display the audio waveform inside the strip (default False)
+      Display the audio waveform inside the strip
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: sound
 
-      Sound data-block used by this strip
+      Sound data-block used by this sequence
 
-      :type: :class:`Sound` | None
+      :type: :class:`Sound`
 
    .. attribute:: sound_offset
 
-      Subframe offset of the sound source start expressed in seconds (in [-inf, inf], default 0.0)
+      Offset of the sound from the beginning of the strip, expressed in seconds
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: volume
 
-      Playback volume of the sound (in [0, 100], default 1.0)
+      Playback volume of the sound
 
-      :type: float
+      :type: float in [0, 100], default 1.0
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -110,38 +77,30 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
-   - :class:`Strip.name`
-   - :class:`Strip.type`
-   - :class:`Strip.select`
-   - :class:`Strip.select_left_handle`
-   - :class:`Strip.select_right_handle`
-   - :class:`Strip.mute`
-   - :class:`Strip.lock`
-   - :class:`Strip.frame_final_duration`
-   - :class:`Strip.duration`
-   - :class:`Strip.frame_duration`
-   - :class:`Strip.content_duration`
-   - :class:`Strip.frame_start`
-   - :class:`Strip.content_start`
-   - :class:`Strip.content_end`
-   - :class:`Strip.frame_final_start`
-   - :class:`Strip.left_handle`
-   - :class:`Strip.frame_final_end`
-   - :class:`Strip.right_handle`
-   - :class:`Strip.frame_offset_start`
-   - :class:`Strip.left_handle_offset`
-   - :class:`Strip.frame_offset_end`
-   - :class:`Strip.right_handle_offset`
-   - :class:`Strip.channel`
-   - :class:`Strip.blend_type`
-   - :class:`Strip.blend_alpha`
-   - :class:`Strip.effect_fader`
-   - :class:`Strip.use_default_fade`
-   - :class:`Strip.color_tag`
-   - :class:`Strip.modifiers`
-   - :class:`Strip.show_retiming_keys`
-   - :class:`Strip.connections`
+   * :class:`bpy_struct.id_data`
+   * :class:`Strip.name`
+   * :class:`Strip.type`
+   * :class:`Strip.select`
+   * :class:`Strip.select_left_handle`
+   * :class:`Strip.select_right_handle`
+   * :class:`Strip.mute`
+   * :class:`Strip.lock`
+   * :class:`Strip.frame_final_duration`
+   * :class:`Strip.frame_duration`
+   * :class:`Strip.frame_start`
+   * :class:`Strip.frame_final_start`
+   * :class:`Strip.frame_final_end`
+   * :class:`Strip.frame_offset_start`
+   * :class:`Strip.frame_offset_end`
+   * :class:`Strip.channel`
+   * :class:`Strip.use_linear_modifiers`
+   * :class:`Strip.blend_type`
+   * :class:`Strip.blend_alpha`
+   * :class:`Strip.effect_fader`
+   * :class:`Strip.use_default_fade`
+   * :class:`Strip.color_tag`
+   * :class:`Strip.modifiers`
+   * :class:`Strip.show_retiming_keys`
 
 Inherited Functions
 -------------------
@@ -149,37 +108,35 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
-   - :class:`Strip.bl_system_properties_get`
-   - :class:`Strip.strip_elem_from_frame`
-   - :class:`Strip.swap`
-   - :class:`Strip.move_to_meta`
-   - :class:`Strip.parent_meta`
-   - :class:`Strip.invalidate_cache`
-   - :class:`Strip.split`
-   - :class:`Strip.bl_rna_get_subclass`
-   - :class:`Strip.bl_rna_get_subclass_py`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
+   * :class:`Strip.strip_elem_from_frame`
+   * :class:`Strip.swap`
+   * :class:`Strip.move_to_meta`
+   * :class:`Strip.parent_meta`
+   * :class:`Strip.invalidate_cache`
+   * :class:`Strip.split`
+   * :class:`Strip.bl_rna_get_subclass`
+   * :class:`Strip.bl_rna_get_subclass_py`
 

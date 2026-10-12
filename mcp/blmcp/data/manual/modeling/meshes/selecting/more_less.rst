@@ -1,67 +1,50 @@
+.. _bpy.ops.mesh.select_more:
+.. _bpy.ops.mesh.select_less:
+
 ****************
 Select More/Less
 ****************
-
-Select More
-===========
-
-.. _bpy.ops.mesh.select_more:
 
 .. reference::
 
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Select --> Select More/Less --> More`
    :Shortcut:  :kbd:`Ctrl-NumpadPlus`
-
-Grows the selection to include the elements at its border.
-Specifically, this adds the neighbors of the currently selected elements,
-with the type of those neighbors (vertices, edges, or faces) depending on the
-:doc:`Selection Mode </modeling/meshes/selecting/introduction>`.
-
-Options
--------
-
-Face Step
-   Add whole neighboring faces even if they only share a single vertex.
-
-.. figure:: /images/modeling_meshes_selecting_more-less_example.png
-
-   From left to right: initial selection -- Select More -- Face Step enabled
-
-.. _bpy.ops.mesh.select_less:
-
-Select Less
-===========
-
-.. reference::
-
-   :Mode:      Edit Mode
    :Menu:      :menuselection:`Select --> Select More/Less --> Less`
    :Shortcut:  :kbd:`Ctrl-NumpadMinus`
 
-Shrinks the selection to exclude the elements at its border.
-Specifically, this deselects elements that have any unselected neighbors,
-with the type of those neighbors (vertices, edges, or faces) depending on the
-:doc:`Selection Mode </modeling/meshes/selecting/introduction>`.
-
-Options
--------
+With at least one vertex, edge, or face selected, *Select More/Less* expands or shrinks the selection.
+However, if there is only one selection in any selection mode, *Less* will deselect it.
 
 Face Step
-   Deselect elements that share a vertex with an unselected face.
+   With *Face Step* on, each use of the tool
+   will affect the size of the selection on a face by face basis.
+   When deactivated, it will be based on either vertices or edges depending on which
+   :doc:`Selection Mode </modeling/meshes/selecting/introduction>` is active.
+
+.. figure:: /images/modeling_meshes_selecting_more-less_example.png
+
+   (From left to right) initial selection, without Face Step,
+   with Face Step, and in edge selection mode.
+
 
 .. _bpy.ops.mesh.select_next_item:
+.. _bpy.ops.mesh.select_prev_item:
 
-Select Next Active
-==================
+Select Next/Previous Active
+===========================
 
 .. reference::
 
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Select --> Select More/Less --> Next Active`
    :Shortcut:  :kbd:`Shift-Ctrl-NumpadPlus`
+   :Menu:      :menuselection:`Select --> Select More/Less --> Previous Active`
+   :Shortcut:  :kbd:`Shift-Ctrl-NumpadMinus`
 
-Selects the element that "logically follows" the two most recently selected ones.
+Next Active
+   This uses selection history to select the next vertex, edge, or face based on the surrounding topology.
+   Which means that, it will derive the next selection from the previous two selections.
 
 .. list-table::
 
@@ -80,15 +63,5 @@ Selects the element that "logically follows" the two most recently selected ones
 
           Using Next Active twice.
 
-.. _bpy.ops.mesh.select_prev_item:
-
-Select Previous Active
-======================
-
-.. reference::
-
-   :Mode:      Edit Mode
-   :Menu:      :menuselection:`Select --> Select More/Less --> Previous Active`
-   :Shortcut:  :kbd:`Shift-Ctrl-NumpadMinus`
-
-Deselects the last selected element and makes the next-to-last one active again.
+Previous Active
+   Only the last selected element will be removed.

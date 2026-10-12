@@ -5,34 +5,30 @@ Select All by Trait
 
 .. _bpy.ops.mesh.select_non_manifold:
 
-Non Manifold
+Non-Manifold
 ============
 
 .. reference::
 
    :Mode:      Edit Mode
-   :Menu:      :menuselection:`Select --> Select All by Trait --> Non Manifold`
+   :Menu:      :menuselection:`Select --> Select All by Trait --> Non-Manifold`
 
-Selects the :term:`non-manifold` geometry of a mesh.
-This entry is only available in the *Vertex* and *Edge*
-:ref:`selection modes <bpy.types.ToolSettings.mesh_select_mode>`.
-
-Options
--------
+Selects the :term:`Non-manifold` geometry of a mesh.
+This entry is available when editing a mesh, in Vertex and Edge selection modes only.
 
 Extend
-   Adds to the current selection instead of replacing it.
+   Lets you extend the current selection.
 Wire
-   Selects edges that do not belong to any face.
+   Selects all the edges that do not belong to any face.
 Boundaries
-   Selects edges at boundaries and holes.
+   Selects edges in boundaries and holes.
 Multiple Faces
    Selects edges that belong to three or more faces.
 Non Contiguous
    Selects edges that belong to exactly two faces with opposite normals.
 Vertices
-   Selects vertices that are isolated, belong to an edge that's a *Wire*
-   or has *Multiple Faces*, or are the only vertex connecting two faces.
+   Selects vertices that belong to *wire* and *multiple face* edges,
+   isolated vertices, and vertices that belong to non-adjoining faces.
 
 
 .. _bpy.ops.mesh.select_loose:
@@ -45,9 +41,9 @@ Loose Geometry
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Select --> Select All by Trait --> Loose Geometry`
 
-Depending on the :ref:`selection mode <bpy.types.ToolSettings.mesh_select_mode>`,
-this operator selects vertices that are not part of any edge, edges that are not
-part of any face, or faces that do not share an edge with any other face.
+This selection depends on the currently selected :ref:`Selection Modes <bpy.types.ToolSettings.mesh_select_mode>`;
+In vertex and edge selection mode it selects all vertices or edges that do not form part of a face.
+In face selection mode it selects all faces that do not share edges with other faces.
 
 
 .. _bpy.ops.mesh.select_interior_faces:
@@ -60,10 +56,8 @@ Interior Faces
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Select --> Select All by Trait --> Interior Faces`
 
-Selects faces that may have been accidentally created inside the mesh instead of
-on the mesh's surface. Specifically, it selects faces with "abnormal" neighbors
-(multiple neighbors connected to the same edge), as well as any "normal" neighbors
-of those faces.
+Selects faces where all edges have more than two faces.
+
 
 .. _bpy.ops.mesh.select_face_by_sides:
 
@@ -75,22 +69,25 @@ Faces by Sides
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Select --> Select All by Trait --> Faces by Sides`
 
-Selects all faces that have a certain number of edges.
-The number can be specified in the :ref:`bpy.ops.screen.redo_last` panel.
+Selects all faces that have a specified number of edges.
+
 
 .. _bpy.ops.mesh.select_by_pole_count:
 
-Poles by Count
-==============
+Select By Pole Count
+====================
 
 .. reference::
 
    :Mode:      Edit Mode
-   :Menu:      :menuselection:`Select --> Select All by Trait --> Poles by Count`
+   :Menu:      :menuselection:`Select --> Select All by Trait --> Select by Pole Count`
 
-Finds vertices that are a :term:`pole`, namely vertices that are connected to an irregular
-number of edges. Then, selects either those poles (in vertex selection mode) or the
-edges/faces connected to them (in edge/face selection mode).
+This operator selects all elements connected to :term:`Pole` vertices,
+based on the number of edges connected to each pole.
+
+- In vertex selection mode, pole vertices are selected.
+- In edge selection mode, pole vertices and all their connected edges are selected.
+- In face selection mode, pole vertices and all their connected faces are selected.
 
 .. list-table::
 
@@ -102,30 +99,27 @@ edges/faces connected to them (in edge/face selection mode).
 
           After selecting poles.
 
-Options
--------
-
 Pole Count
-   Specifies the number of edges a vertex must (not) have to be considered a pole.
+   Specifies the number of edges a :term:`Pole` must have to be included in the selection.
 
 Type
-   Defines the comparison method for determining poles:
+   Defines the comparison method for selecting poles:
 
-   :Less Than: Find vertices that have fewer edges than *Pole Count*.
-   :Equal To: Find vertices that have exactly *Pole Count* edges.
-   :Greater Than: Find vertices that have more edges than *Pole Count*.
-   :Not Equal To: Find vertices that have more or fewer edges than *Pole Count*.
+   :Equal: Includes poles with the specified number of edges.
+   :Not Equal: Includes poles with a number of edges different from the specified value.
+   :Greater Than: Includes poles with more edges than the specified value.
+   :Less Than: Includes poles with fewer edges than the specified value.
 
 Extend
-   Adds to the existing selection rather than replacing it.
+   Adds selected poles to the existing selection rather than replacing it.
 
-Exclude Non Manifold
-   Skips poles that are part of :term:`non-manifold` geometry.
+Exclude Non-manifold
+   Skips poles that are part of :term:`Non-manifold` geometry.
 
 .. hint::
 
-   Poles can cause ugly pinching when using the :doc:`/modeling/modifiers/generate/subdivision_surface`,
-   so this operator is useful for finding them.
+   Use this operator to inspect poles, which is particularly useful for identifying problematic poles
+   during topology cleanup or for optimizing quad flow.
 
 
 .. _bpy.ops.mesh.select_ungrouped:
@@ -138,5 +132,5 @@ Ungrouped Vertices
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Select --> Select All by Trait --> Ungrouped Vertices`
 
-Selects all vertices that are not part of any
-:doc:`vertex group </modeling/meshes/properties/vertex_groups/introduction>`.
+Selects all vertices which are not part of
+a :doc:`vertex group </modeling/meshes/properties/vertex_groups/index>`.

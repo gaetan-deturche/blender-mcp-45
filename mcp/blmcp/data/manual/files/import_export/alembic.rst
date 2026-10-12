@@ -92,8 +92,11 @@ Scale
    This sets the global scale of the Alembic file. Keep it at the default value of 1.0 to use
    Blender's units.
 
-Include -- Selection Only
-   When enabled, exports only the selected objects. When disabled, all objects are exported.
+Include
+   Selected Objects
+      When enabled, exports only the selected objects. When disabled, all objects are exported.
+   Visible Objects
+      Limits the export to scene collections that are currently visible.
 
 
 Scene

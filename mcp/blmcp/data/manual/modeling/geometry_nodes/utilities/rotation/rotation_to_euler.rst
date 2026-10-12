@@ -1,6 +1,5 @@
 .. index:: Geometry Nodes; Rotation to Euler
 .. _bpy.types.FunctionNodeRotationToEuler:
-.. --- copy below this line ---
 
 **********************
 Rotation to Euler Node

@@ -20,6 +20,7 @@ Markers can be created and edited in the following editors:
 - :doc:`Dope Sheet </editors/dope_sheet/introduction>`
 - :doc:`NLA Editor </editors/nla/index>`
 - :doc:`Video Sequence Editor </video_editing/index>`
+- :doc:`Timeline </editors/timeline>`
 
 .. note::
 
@@ -107,7 +108,8 @@ and press :kbd:`M`.
 Pose Markers
 ------------
 
-If :ref:`bpy.types.SpaceDopeSheetEditor.show_pose_markers` is enabled, a pose marker is added.
+If *Show Pose Markers* is checked, a pose marker and
+a new pose in the :ref:`Old Pose Library <pose-library-old>` are added.
 
 
 .. _bpy.ops.marker.select:
@@ -240,14 +242,10 @@ Invert :kbd:`Ctrl-I`
 
 .. _bpy.ops.marker.select_leftright:
 
-Before Current Frame :kbd:`[`
-   Selects all markers before the current frame, including the marker on the current frame if one exists.
-After Current Frame :kbd:`]`
-   Selects all markers after the current frame, including the marker on the current frame if one exists.
-
-.. tip::
-
-   Markers can also be selected interactively by clicking with :kbd:`Ctrl-LMB` on either side of the playhead.
+Before Current Frame
+   Selects all Markers to the left of the current frame and the Marker on the current frame if it exists.
+After Current Frame
+   Selects all Markers to the Right of the current frame and the Marker on the current frame if it exists.
 
 
 .. _bpy.types.SpaceDopeSheetEditor.show_pose_markers:
@@ -298,11 +296,12 @@ Bind Camera to Markers
 
 .. reference::
 
-   :Mode:      All modes
+   :Editor:    Timeline
    :Menu:      :menuselection:`Marker --> Bind Camera to Markers`
    :Shortcut:  :kbd:`Ctrl-B`
 
-*Bind Camera to Markers* allows markers to be used to set the active object as the active camera.
+*Bind Camera to Markers* is a special operator only available in the *Timeline*.
+The operator allows markers to be used to set the active object as the active camera.
 
 To use this operator, select the object to become the active camera
 and select a marker to bind the active camera to.

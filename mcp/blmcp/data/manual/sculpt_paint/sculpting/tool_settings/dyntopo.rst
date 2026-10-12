@@ -26,7 +26,7 @@ Detail Size/Percentage, Resolution :kbd:`R`
 
    :kbd:`R` allows you to interactively set the detail, with a preview of the detail's density in the 3D Viewport.
 
-   :bl-icon:`eyedropper` Sample Detail Size
+   Sample Detail Size (pipette icon)
       When using *Constant Detail*, it is possible to sample the detail value of a certain mesh area
       by clicking the pipette icon next to the detail setting and then clicking on the area.
 

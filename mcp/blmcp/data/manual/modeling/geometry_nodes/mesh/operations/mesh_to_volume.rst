@@ -22,7 +22,20 @@ Mesh
 Density
    Value of voxels inside the generated fog volume.
 
-Resolution Mode
+Voxel Amount
+   Specify the approximate number of voxels along the diagonal.
+
+Voxel Size
+   Specify the voxel side length.
+
+Interior Band Width
+   The maximum distance of the included voxels to the surface on the inside of the mesh.
+
+
+Properties
+==========
+
+Resolution
    How the voxel size is specified.
 
    :Amount:
@@ -30,15 +43,6 @@ Resolution Mode
    :Size:
       Specify the voxel side length. It is recommended to be careful when tweaking this value,
       because small changes can have a large effect on the processing time.
-
-Voxel Amount :guilabel:`Amount`
-   Specify the approximate number of voxels along the diagonal.
-
-Voxel Size :guilabel:`Size`
-   Specify the voxel side length.
-
-Interior Band Width
-   The maximum distance of the included voxels to the surface on the inside of the mesh.
 
 
 Outputs

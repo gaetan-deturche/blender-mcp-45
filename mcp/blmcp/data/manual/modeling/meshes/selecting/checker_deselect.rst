@@ -9,37 +9,19 @@ Checker Deselect
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Select --> Checker Deselect`
 
-Deselects mesh elements in a repeating pattern, starting at the active element.
-The type of element that gets deselected (vertices, edges, or faces) depends on the
-current selection mode.
+This tool applies an alternating selected/deselected checker pattern.
+This only works if you already have more than one mesh element selected.
 
-If there are multiple disconnected "islands" in the selection, this tool will only affect
-the one containing the active element.
+Changes the current selection so that only every Nth elements (vertices, edges or faces,
+depending on the active selection mode) will remain selected, starting from the active one.
 
-Options
-=======
+In case of islands of selected elements, this tool will affect
+only the island of the active element (if there is one), or the island of the first element
+in the order of internal storage (if there is no active element).
 
 Deselected
-   The number of elements to deselect at the start of each pattern repetition.
+   The number of deselected elements in each pattern repetition.
 Selected
-   The number of elements to keep selected at the end of each pattern repetition.
+   The number of selected elements in each pattern repetition.
 Offset
-   The number of elements to skip in the pattern in its first repetition.
-
-Example
-=======
-
-.. list-table::
-   :widths: 1 1 1
-
-   * - .. figure:: /images/modeling_meshes_selecting_checker-deselect-before.png
-
-          Initial selection.
-
-     - .. figure:: /images/modeling_meshes_selecting_checker-deselect-after-1.png
-
-          Running with Deselected = 1 and Selected = 1.
-
-     - .. figure:: /images/modeling_meshes_selecting_checker-deselect-after-2.png
-
-          Deselected changed to 2.
+   Offset from the starting point.

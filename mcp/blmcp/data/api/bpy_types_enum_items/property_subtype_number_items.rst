@@ -6,9 +6,6 @@ Property Subtype Number Items
 :PIXEL: Pixel.
 
    A distance on screen.
-:PIXEL_DIAMETER: Pixel.
-
-   A distance on screen, specifically representing a diameter value.
 :UNSIGNED: Unsigned.
 
 :PERCENTAGE: Percentage.
@@ -17,9 +14,6 @@ Property Subtype Number Items
 :FACTOR: Factor.
 
    A factor between 0.0 and 1.0.
-:MASS: Mass.
-
-   A mass, based on scene unit settings.
 :ANGLE: Angle.
 
    A rotational value specified in radians.
@@ -32,9 +26,6 @@ Property Subtype Number Items
 :DISTANCE: Distance.
 
    A distance between two points.
-:DISTANCE_DIAMETER: Distance.
-
-   A distance between two points, specifically representing a diameter value.
 :DISTANCE_CAMERA: Camera Distance.
 
 :POWER: Power.

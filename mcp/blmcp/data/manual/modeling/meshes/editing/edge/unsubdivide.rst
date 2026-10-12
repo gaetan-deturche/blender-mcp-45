@@ -10,11 +10,10 @@ Un-Subdivide
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Edge --> Un-Subdivide`
 
-Removes edges in an attempt to undo a previous :doc:`/modeling/meshes/editing/edge/subdivide` operation.
-If additional editing was done after the subdivide, unexpected results may occur.
-
-Options
-=======
+Un-subdivide functions as the reverse of subdivide by attempting to remove edges
+that were the result of a subdivide operation.
+If additional editing has been done after the subdivide operation,
+unexpected results may occur.
 
 Iterations
    How many subdivisions to remove.

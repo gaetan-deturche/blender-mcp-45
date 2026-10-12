@@ -1,6 +1,5 @@
 .. index:: Geometry Nodes; Separate Matrix
 .. _bpy.types.FunctionNodeSeparateMatrix:
-.. --- copy below this line ---
 
 ********************
 Separate Matrix Node
@@ -18,6 +17,12 @@ Inputs
 
 Matrix
    The matrix to split into individual values.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs

@@ -7,9 +7,11 @@ Dynamics
 
    :Panel:     :menuselection:`Physics --> Rigid Body --> Dynamics`
 
-.. figure:: /images/physics_rigid-body_properties_dynamics_panel.png
+.. todo:: Update image
 
-   Rigid Body Dynamics panel.
+   .. figure:: /images/physics_rigid-body_properties_dynamics_panel.png
+
+      Rigid Body Dynamics panel.
 
 Used to control the physics of the rigid body simulation.
 This panel is available only for *Active* type of rigid bodies.

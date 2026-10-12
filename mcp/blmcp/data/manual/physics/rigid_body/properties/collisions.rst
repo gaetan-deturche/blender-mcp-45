@@ -7,9 +7,11 @@ Collisions
 
    :Panel:     :menuselection:`Physics --> Rigid Body --> Collisions`
 
-.. figure:: /images/physics_rigid-body_properties_collisions_panel.png
+.. todo:: Update image
 
-   Rigid Body Collisions panel.
+   .. figure:: /images/physics_rigid-body_properties_collisions_panel.png
+
+      Rigid Body Collisions panel.
 
 .. _bpy.types.RigidBodyObject.collision_shape:
 

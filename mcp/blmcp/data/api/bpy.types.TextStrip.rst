@@ -5,195 +5,150 @@ TextStrip(EffectStrip)
 
 base classes --- :class:`bpy_struct`, :class:`Strip`, :class:`EffectStrip`
 
-
 .. class:: TextStrip(EffectStrip)
 
    Sequence strip creating text
 
-   .. attribute:: abs_space_line
-
-      Distance between lines of text in pixels (in [0, 5000], default 1.0)
-
-      :type: float
-
    .. attribute:: alignment_x
 
-      Horizontal text alignment (default ``'LEFT'``)
+      Horizontal text alignment
 
-      :type: Literal['LEFT', 'CENTER', 'RIGHT']
+      :type: enum in [``'LEFT'``, ``'CENTER'``, ``'RIGHT'``], default ``'LEFT'``
 
    .. attribute:: anchor_x
 
-      Horizontal position of the text box relative to Location (default ``'LEFT'``)
+      Horizontal position of the text box relative to Location
 
-      :type: Literal['LEFT', 'CENTER', 'RIGHT']
+      :type: enum in [``'LEFT'``, ``'CENTER'``, ``'RIGHT'``], default ``'LEFT'``
 
    .. attribute:: anchor_y
 
-      Vertical position of the text box relative to Location (default ``'TOP'``)
+      Vertical position of the text box relative to Location
 
-      :type: Literal['TOP', 'CENTER', 'BOTTOM']
+      :type: enum in [``'TOP'``, ``'CENTER'``, ``'BOTTOM'``], default ``'TOP'``
 
    .. attribute:: box_color
 
-      (array of 4 items, in [0, inf], default (0.0, 0.0, 0.0, 0.0))
-
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, inf], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: box_margin
 
-      Box margin as factor of image width (in [0, 1], default 0.01)
+      Box margin as factor of image width
 
-      :type: float
+      :type: float in [0, 1], default 0.01
 
    .. attribute:: box_roundness
 
-      Box corner radius as a factor of box height (in [0, 1], default 0.0)
+      Box corner radius as a factor of box height
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: color
 
-      Text color (array of 4 items, in [0, inf], default (0.0, 0.0, 0.0, 0.0))
+      Text color
 
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, inf], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: font
 
       Font of the text. Falls back to the UI font by default.
 
-      :type: :class:`VectorFont` | None
+      :type: :class:`VectorFont`
 
    .. attribute:: font_size
 
-      Size of the text (in [0, 2000], default 0.0)
+      Size of the text
 
-      :type: float
+      :type: float in [0, 2000], default 0.0
 
    .. data:: input_count
 
-      (in [0, inf], default 0, readonly)
-
-      :type: int
+      :type: int in [0, inf], default 0, (readonly)
 
    .. attribute:: location
 
-      Location of the text (array of 2 items, in [-inf, inf], default (0.0, 0.0))
+      Location of the text
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 2 items in [-inf, inf], default (0.0, 0.0)
 
    .. attribute:: outline_color
 
-      (array of 4 items, in [0, inf], default (0.0, 0.0, 0.0, 0.0))
-
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, inf], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: outline_width
 
-      (in [0, 1], default 0.05)
-
-      :type: float
+      :type: float in [0, 1], default 0.05
 
    .. attribute:: shadow_angle
 
-      (in [0, 6.28319], default 1.13446)
-
-      :type: float
+      :type: float in [0, 6.28319], default 1.13446
 
    .. attribute:: shadow_blur
 
-      (in [0, 1], default 0.0)
-
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: shadow_color
 
-      (array of 4 items, in [0, inf], default (0.0, 0.0, 0.0, 0.0))
-
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, inf], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: shadow_offset
 
-      (in [0, 1], default 0.04)
-
-      :type: float
-
-   .. attribute:: space_line
-
-      Distance between lines of text in proportion to text size (in [0, 50], default 1.0)
-
-      :type: float
+      :type: float in [0, 1], default 0.04
 
    .. attribute:: text
 
-      Text that will be displayed (default "", never None)
+      Text that will be displayed
 
-      :type: str
-
-   .. data:: textbox_state
-
-      Textbox state in the UI (readonly)
-
-      :type: :class:`TextboxState` | None
-
-   .. attribute:: use_absolute_line_spacing
-
-      Define spacing using pixel values instead of relative scaling based on font size (default False)
-
-      :type: bool
+      :type: string, default "", (never None)
 
    .. attribute:: use_bold
 
-      Display text as bold (default False)
+      Display text as bold
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_box
 
-      Display colored box behind text (default False)
+      Display colored box behind text
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_italic
 
-      Display text as italic (default False)
+      Display text as italic
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_outline
 
-      Display outline around text (default False)
+      Display outline around text
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_shadow
 
-      Display shadow behind text (default False)
+      Display shadow behind text
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: wrap_width
 
-      Word wrap width as factor, zero disables (in [0, inf], default 0.0)
+      Word wrap width as factor, zero disables
 
-      :type: float
+      :type: float in [0, inf], default 0.0
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -204,52 +159,44 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
-   - :class:`Strip.name`
-   - :class:`Strip.type`
-   - :class:`Strip.select`
-   - :class:`Strip.select_left_handle`
-   - :class:`Strip.select_right_handle`
-   - :class:`Strip.mute`
-   - :class:`Strip.lock`
-   - :class:`Strip.frame_final_duration`
-   - :class:`Strip.duration`
-   - :class:`Strip.frame_duration`
-   - :class:`Strip.content_duration`
-   - :class:`Strip.frame_start`
-   - :class:`Strip.content_start`
-   - :class:`Strip.content_end`
-   - :class:`Strip.frame_final_start`
-   - :class:`Strip.left_handle`
-   - :class:`Strip.frame_final_end`
-   - :class:`Strip.right_handle`
-   - :class:`Strip.frame_offset_start`
-   - :class:`Strip.left_handle_offset`
-   - :class:`Strip.frame_offset_end`
-   - :class:`Strip.right_handle_offset`
-   - :class:`Strip.channel`
-   - :class:`Strip.blend_type`
-   - :class:`Strip.blend_alpha`
-   - :class:`Strip.effect_fader`
-   - :class:`Strip.use_default_fade`
-   - :class:`Strip.color_tag`
-   - :class:`Strip.modifiers`
-   - :class:`Strip.show_retiming_keys`
-   - :class:`Strip.connections`
-   - :class:`EffectStrip.use_deinterlace`
-   - :class:`EffectStrip.alpha_mode`
-   - :class:`EffectStrip.use_flip_x`
-   - :class:`EffectStrip.use_flip_y`
-   - :class:`EffectStrip.use_float`
-   - :class:`EffectStrip.use_reverse_frames`
-   - :class:`EffectStrip.color_multiply`
-   - :class:`EffectStrip.multiply_alpha`
-   - :class:`EffectStrip.color_saturation`
-   - :class:`EffectStrip.strobe`
-   - :class:`EffectStrip.transform`
-   - :class:`EffectStrip.crop`
-   - :class:`EffectStrip.use_proxy`
-   - :class:`EffectStrip.proxy`
+   * :class:`bpy_struct.id_data`
+   * :class:`Strip.name`
+   * :class:`Strip.type`
+   * :class:`Strip.select`
+   * :class:`Strip.select_left_handle`
+   * :class:`Strip.select_right_handle`
+   * :class:`Strip.mute`
+   * :class:`Strip.lock`
+   * :class:`Strip.frame_final_duration`
+   * :class:`Strip.frame_duration`
+   * :class:`Strip.frame_start`
+   * :class:`Strip.frame_final_start`
+   * :class:`Strip.frame_final_end`
+   * :class:`Strip.frame_offset_start`
+   * :class:`Strip.frame_offset_end`
+   * :class:`Strip.channel`
+   * :class:`Strip.use_linear_modifiers`
+   * :class:`Strip.blend_type`
+   * :class:`Strip.blend_alpha`
+   * :class:`Strip.effect_fader`
+   * :class:`Strip.use_default_fade`
+   * :class:`Strip.color_tag`
+   * :class:`Strip.modifiers`
+   * :class:`Strip.show_retiming_keys`
+   * :class:`EffectStrip.use_deinterlace`
+   * :class:`EffectStrip.alpha_mode`
+   * :class:`EffectStrip.use_flip_x`
+   * :class:`EffectStrip.use_flip_y`
+   * :class:`EffectStrip.use_float`
+   * :class:`EffectStrip.use_reverse_frames`
+   * :class:`EffectStrip.color_multiply`
+   * :class:`EffectStrip.multiply_alpha`
+   * :class:`EffectStrip.color_saturation`
+   * :class:`EffectStrip.strobe`
+   * :class:`EffectStrip.transform`
+   * :class:`EffectStrip.crop`
+   * :class:`EffectStrip.use_proxy`
+   * :class:`EffectStrip.proxy`
 
 Inherited Functions
 -------------------
@@ -257,39 +204,37 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
-   - :class:`Strip.bl_system_properties_get`
-   - :class:`Strip.strip_elem_from_frame`
-   - :class:`Strip.swap`
-   - :class:`Strip.move_to_meta`
-   - :class:`Strip.parent_meta`
-   - :class:`Strip.invalidate_cache`
-   - :class:`Strip.split`
-   - :class:`Strip.bl_rna_get_subclass`
-   - :class:`Strip.bl_rna_get_subclass_py`
-   - :class:`EffectStrip.bl_rna_get_subclass`
-   - :class:`EffectStrip.bl_rna_get_subclass_py`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
+   * :class:`Strip.strip_elem_from_frame`
+   * :class:`Strip.swap`
+   * :class:`Strip.move_to_meta`
+   * :class:`Strip.parent_meta`
+   * :class:`Strip.invalidate_cache`
+   * :class:`Strip.split`
+   * :class:`Strip.bl_rna_get_subclass`
+   * :class:`Strip.bl_rna_get_subclass_py`
+   * :class:`EffectStrip.bl_rna_get_subclass`
+   * :class:`EffectStrip.bl_rna_get_subclass_py`
 

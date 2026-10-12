@@ -3,7 +3,7 @@
 Troubleshooting Windows -- Intel
 ********************************
 
-.. include:: ../_common/introduction.rst
+.. include:: ../common/introduction.rst
    :start-line: 1
 
 On Windows, drivers are provided by the graphics card manufacturer (Intel). Windows Update automatically installs
@@ -14,7 +14,7 @@ the official drivers.
 
 `Download Latest Intel Drivers <https://www.intel.com/content/www/us/en/support/products/80939/graphics.html>`__
 
-.. include:: ../_common/laptops.rst
+.. include:: ../common/laptops.rst
    :start-line: 1
 
 
@@ -25,7 +25,7 @@ In some cases, Blender may crash on startup. Running Blender in compatibility mo
 enable compatibility mode, :kbd:`RMB` on the Blender executable and select :menuselection:`Properties -->
 Compatibility` and enable :menuselection:`Run this program in compatibility mode`. Confirm the changes with *Apply*.
 
-.. include:: ../_common/other.rst
+.. include:: ../common/other.rst
    :start-line: 1
 
 

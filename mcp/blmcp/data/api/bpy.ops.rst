@@ -50,7 +50,7 @@ There are 2 optional positional arguments (documented in detail below).
 
 Each of these arguments is optional, but must be given in the order above.
 
-.. literalinclude:: ./examples/bpy.ops.0.py
+.. literalinclude:: ./examples/bpy.ops.py
    :lines: 48-
 
 

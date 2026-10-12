@@ -1,4 +1,4 @@
-.. _bpy.types.ColorMixStrip:
+.. _bpy.types.ColorMixSequence:
 
 ***************
 Color Mix Strip

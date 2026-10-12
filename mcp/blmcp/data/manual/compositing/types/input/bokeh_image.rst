@@ -34,6 +34,12 @@ Color Shift
    Introduces chromatic aberration into the blur such as would be caused by a tilt-shift lens.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

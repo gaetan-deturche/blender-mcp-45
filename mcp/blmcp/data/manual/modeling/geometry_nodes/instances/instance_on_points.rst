@@ -73,6 +73,12 @@ Scale
    The size of each generated instance.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

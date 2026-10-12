@@ -9,3 +9,6 @@ Uilist Layout Type Items
 :COMPACT: Compact Layout.
 
    Use the compact, single-row layout.
+:GRID: Grid Layout.
+
+   Use the grid-based layout.

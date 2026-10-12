@@ -17,7 +17,7 @@ Bake Pass Type Items
 
 :ROUGHNESS: ROUGHNESS.
 
-:EMIT: Emission.
+:EMIT: Emit.
 
 :ENVIRONMENT: Environment.
 

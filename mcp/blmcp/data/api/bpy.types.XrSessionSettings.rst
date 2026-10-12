@@ -5,401 +5,339 @@ XrSessionSettings(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: XrSessionSettings(bpy_struct)
 
 
    .. attribute:: base_pose_angle
 
-      Rotation angle around the Z-Axis to apply the rotation deltas from the VR headset to (in [-inf, inf], default 0.0)
+      Rotation angle around the Z-Axis to apply the rotation deltas from the VR headset to
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: base_pose_location
 
-      Coordinates to apply translation deltas from the VR headset to (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0))
+      Coordinates to apply translation deltas from the VR headset to
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)
 
    .. attribute:: base_pose_object
 
       Object to take the location and rotation to which translation and rotation deltas from the VR headset will be applied to
 
-      :type: :class:`Object` | None
+      :type: :class:`Object`
 
    .. attribute:: base_pose_type
 
-      Define where the location and rotation for the VR view come from, to which translation and rotation deltas from the VR headset will be applied to (default ``'SCENE_CAMERA'``)
+      Define where the location and rotation for the VR view come from, to which translation and rotation deltas from the VR headset will be applied to
 
-      - ``SCENE_CAMERA``
+      * ``SCENE_CAMERA``
         Scene Camera -- Follow the active scene camera to define the VR view's base pose.
-      - ``OBJECT``
+      * ``OBJECT``
         Object -- Follow the transformation of an object to define the VR view's base pose.
-      - ``CUSTOM``
+      * ``CUSTOM``
         Custom -- Follow a custom transformation to define the VR view's base pose.
 
-      :type: Literal['SCENE_CAMERA', 'OBJECT', 'CUSTOM']
+      :type: enum in [``'SCENE_CAMERA'``, ``'OBJECT'``, ``'CUSTOM'``], default ``'SCENE_CAMERA'``
 
    .. attribute:: base_scale
 
-      Uniform base pose scale to apply to VR view (in [1e-06, inf], default 1.0)
+      Uniform scale to apply to VR view
 
-      :type: float
+      :type: float in [1e-06, inf], default 1.0
 
    .. attribute:: clip_end
 
-      VR viewport far clipping distance (in [1e-06, inf], default 0.0)
+      VR viewport far clipping distance
 
-      :type: float
+      :type: float in [1e-06, inf], default 0.0
 
    .. attribute:: clip_start
 
-      VR viewport near clipping distance (in [1e-06, inf], default 0.0)
+      VR viewport near clipping distance
 
-      :type: float
+      :type: float in [1e-06, inf], default 0.0
 
    .. attribute:: controller_draw_style
 
-      Style to use when drawing VR controllers (default ``'DARK'``)
+      Style to use when drawing VR controllers
 
-      - ``DARK``
+      * ``DARK``
         Dark -- Draw dark controller.
-      - ``LIGHT``
+      * ``LIGHT``
         Light -- Draw light controller.
-      - ``DARK_RAY``
+      * ``DARK_RAY``
         Dark + Ray -- Draw dark controller with aiming axis ray.
-      - ``LIGHT_RAY``
+      * ``LIGHT_RAY``
         Light + Ray -- Draw light controller with aiming axis ray.
 
-      :type: Literal['DARK', 'LIGHT', 'DARK_RAY', 'LIGHT_RAY']
-
-   .. attribute:: fly_speed
-
-      Fly speed in meters per second (in [1e-06, inf], default 0.0)
-
-      :type: float
+      :type: enum in [``'DARK'``, ``'LIGHT'``, ``'DARK_RAY'``, ``'LIGHT_RAY'``], default ``'DARK'``
 
    .. data:: icon_from_show_object_viewport
 
-      (in [-inf, inf], default 0, readonly)
-
-      :type: int
+      :type: int in [-inf, inf], default 0, (readonly)
 
    .. data:: shading
 
-      (readonly, never None)
-
-      :type: :class:`View3DShading`
+      :type: :class:`View3DShading`, (readonly, never None)
 
    .. attribute:: show_annotation
 
-      Show annotations for this view (default False)
+      Show annotations for this view
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_controllers
 
-      Show VR controllers (requires VR actions for controller poses) (default False)
+      Show VR controllers (requires VR actions for controller poses)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_custom_overlays
 
-      Show custom VR overlays (default False)
+      Show custom VR overlays
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_floor
 
-      Show the ground plane grid (default False)
+      Show the ground plane grid
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_extras
 
-      Show object extras, including empties, lights, and cameras (default False)
+      Show object extras, including empties, lights, and cameras
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_armature
 
-      Allow selection of armatures (default True)
+      Allow selection of armatures
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_camera
 
-      Allow selection of cameras (default True)
+      Allow selection of cameras
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_curve
 
-      Allow selection of curves (default True)
+      Allow selection of curves
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_curves
 
-      Allow selection of hair curves (default True)
+      Allow selection of hair curves
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_empty
 
-      Allow selection of empties (default True)
+      Allow selection of empties
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_font
 
-      Allow selection of text objects (default True)
+      Allow selection of text objects
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_grease_pencil
 
-      Allow selection of Grease Pencil objects (default True)
+      Allow selection of Grease Pencil objects
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_lattice
 
-      Allow selection of lattices (default True)
+      Allow selection of lattices
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_light
 
-      Allow selection of lights (default True)
+      Allow selection of lights
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_light_probe
 
-      Allow selection of light probes (default True)
+      Allow selection of light probes
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_mesh
 
-      Allow selection of mesh objects (default True)
+      Allow selection of mesh objects
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_meta
 
-      Allow selection of metaballs (default True)
+      Allow selection of metaballs
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_pointcloud
 
-      Allow selection of point clouds (default True)
+      Allow selection of point clouds
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_speaker
 
-      Allow selection of speakers (default True)
+      Allow selection of speakers
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_surf
 
-      Allow selection of surfaces (default True)
+      Allow selection of surfaces
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_select_volume
 
-      Allow selection of volumes (default True)
+      Allow selection of volumes
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_armature
 
-      Show armatures (default True)
+      Show armatures
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_camera
 
-      Show cameras (default True)
+      Show cameras
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_curve
 
-      Show curves (default True)
+      Show curves
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_curves
 
-      Show hair curves (default True)
+      Show hair curves
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_empty
 
-      Show empties (default True)
+      Show empties
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_font
 
-      Show text objects (default True)
+      Show text objects
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_grease_pencil
 
-      Show Grease Pencil objects (default True)
+      Show Grease Pencil objects
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_lattice
 
-      Show lattices (default True)
+      Show lattices
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_light
 
-      Show lights (default True)
+      Show lights
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_light_probe
 
-      Show light probes (default True)
+      Show light probes
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_mesh
 
-      Show mesh objects (default True)
+      Show mesh objects
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_meta
 
-      Show metaballs (default True)
+      Show metaballs
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_pointcloud
 
-      Show point clouds (default True)
+      Show point clouds
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_speaker
 
-      Show speakers (default True)
+      Show speakers
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_surf
 
-      Show surfaces (default True)
+      Show surfaces
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_object_viewport_volume
 
-      Show volumes (default True)
+      Show volumes
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_passthrough
 
-      Show the passthrough view (default False)
+      Show the passthrough view
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_selection
 
-      Show selection outlines (default False)
+      Show selection outlines
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_absolute_tracking
 
-      Allow the VR tracking origin to be defined independently of the headset location (default False)
+      Allow the VR tracking origin to be defined independently of the headset location
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_positional_tracking
 
-      Allow VR headsets to affect the location in virtual space, in addition to the rotation (default False)
+      Allow VR headsets to affect the location in virtual space, in addition to the rotation
 
-      :type: bool
-
-   .. attribute:: view_scale
-
-      Scaling factor applied to the VR view for fine adjustements. Modifying this value will keep the viewer at the same world relative position (in [1e-06, inf], default 1.0)
-
-      :type: float
-
-   .. attribute:: viewfinder_crosshair_enabled
-
-      Enable the Viewfinder Crosshair (default True)
-
-      :type: bool
-
-   .. attribute:: viewfinder_enabled
-
-      Enable the Location Scouting Viewfinder (default True)
-
-      :type: bool
-
-   .. attribute:: viewfinder_hand
-
-      Hand on which to place the Location Scouting Viewfinder (default ``'LEFT'``)
-
-      - ``LEFT``
-        Left -- Place the viewfinder on the left hand controller.
-      - ``RIGHT``
-        Right -- Place the viewfinder on the right hand controller.
-
-      :type: Literal['LEFT', 'RIGHT']
-
-   .. attribute:: viewfinder_passepartout_opacity
-
-      Opacity of the darkened Viewfinder Passepartout overlay (in [0, 1], default 0.5)
-
-      :type: float
-
-   .. attribute:: viewfinder_passepartout_overscan
-
-      Border size of the Viewfinder Passepartout overlay (in [0, 1], default 0.5)
-
-      :type: float
-
-   .. attribute:: viewfinder_scale
-
-      Location Scouting Viewfinder size scale (in [-3, inf], default 1.0)
-
-      :type: float
+      :type: boolean, default False
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -410,7 +348,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -418,30 +356,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -449,5 +386,5 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`WindowManager.xr_session_settings`
+   * :class:`WindowManager.xr_session_settings`
 

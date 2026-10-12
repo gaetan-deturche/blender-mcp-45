@@ -1,3 +1,4 @@
+.. _bpy.types.Object.empty:
 .. _bpy.ops.object.empty:
 .. (todo add) Needs more detailed use cases.
 
@@ -84,7 +85,7 @@ Offset X, Y
 Depth
    :Default: Use normal depth behavior.
    :Front: Always display on top of other objects.
-   :Back: Always display behind other objects.
+   :Back: Always display behind of other objects.
 
    .. tip::
 

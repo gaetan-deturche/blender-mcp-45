@@ -8,4 +8,4 @@ Space Graph Mode Items
    Edit animation/keyframes displayed as 2D curves.
 :DRIVERS: Drivers.
 
-   Define and edit drivers that link properties to custom functions or other data.
+   Edit drivers.

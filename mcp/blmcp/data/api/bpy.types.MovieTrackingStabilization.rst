@@ -5,142 +5,137 @@ MovieTrackingStabilization(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: MovieTrackingStabilization(bpy_struct)
 
    2D stabilization based on tracking markers
 
    .. attribute:: active_rotation_track_index
 
-      Index of active track in rotation stabilization tracks list (in [-inf, inf], default 0)
+      Index of active track in rotation stabilization tracks list
 
-      :type: int
+      :type: int in [-inf, inf], default 0
 
    .. attribute:: active_track_index
 
-      Index of active track in translation stabilization tracks list (in [-inf, inf], default 0)
+      Index of active track in translation stabilization tracks list
 
-      :type: int
+      :type: int in [-inf, inf], default 0
 
    .. attribute:: anchor_frame
 
-      Reference point to anchor stabilization (other frames will be adjusted relative to this frame's position) (in [0, 1048574], default 0)
+      Reference point to anchor stabilization (other frames will be adjusted relative to this frame's position)
 
-      :type: int
+      :type: int in [0, 1048574], default 0
 
    .. attribute:: filter_type
 
-      Interpolation to use for sub-pixel shifts and rotations due to stabilization (default ``'NEAREST'``)
+      Interpolation to use for sub-pixel shifts and rotations due to stabilization
 
-      - ``NEAREST``
+      * ``NEAREST``
         Nearest -- No interpolation, use nearest neighbor pixel.
-      - ``BILINEAR``
+      * ``BILINEAR``
         Bilinear -- Simple interpolation between adjacent pixels.
-      - ``BICUBIC``
+      * ``BICUBIC``
         Bicubic -- High quality pixel interpolation.
 
-      :type: Literal['NEAREST', 'BILINEAR', 'BICUBIC']
+      :type: enum in [``'NEAREST'``, ``'BILINEAR'``, ``'BICUBIC'``], default ``'NEAREST'``
 
    .. attribute:: influence_location
 
-      Influence of stabilization algorithm on footage location (in [0, 1], default 0.0)
+      Influence of stabilization algorithm on footage location
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: influence_rotation
 
-      Influence of stabilization algorithm on footage rotation (in [0, 1], default 0.0)
+      Influence of stabilization algorithm on footage rotation
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: influence_scale
 
-      Influence of stabilization algorithm on footage scale (in [0, 1], default 0.0)
+      Influence of stabilization algorithm on footage scale
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. data:: rotation_tracks
 
-      Collection of tracks used for 2D stabilization (translation) (default None, readonly)
+      Collection of tracks used for 2D stabilization (translation)
 
-      :type: :class:`bpy_prop_collection`\ [:class:`MovieTrackingTrack`]
+      :type: :class:`bpy_prop_collection` of :class:`MovieTrackingTrack`, (readonly)
 
    .. attribute:: scale_max
 
-      Limit the amount of automatic scaling (in [0, 10], default 0.0)
+      Limit the amount of automatic scaling
 
-      :type: float
+      :type: float in [0, 10], default 0.0
 
    .. attribute:: show_tracks_expanded
 
-      Show UI list of tracks participating in stabilization (default False)
+      Show UI list of tracks participating in stabilization
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: target_position
 
-      Known relative offset of original shot, will be subtracted (e.g. for panning shot, can be animated) (array of 2 items, in [-inf, inf], default (0.0, 0.0))
+      Known relative offset of original shot, will be subtracted (e.g. for panning shot, can be animated)
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 2 items in [-inf, inf], default (0.0, 0.0)
 
    .. attribute:: target_rotation
 
-      Rotation present on original shot, will be compensated (e.g. for deliberate tilting) (in [-inf, inf], default 0.0)
+      Rotation present on original shot, will be compensated (e.g. for deliberate tilting)
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: target_scale
 
-      Explicitly scale resulting frame to compensate zoom of original shot (in [1.192e-07, inf], default 0.0)
+      Explicitly scale resulting frame to compensate zoom of original shot
 
-      :type: float
+      :type: float in [1.192e-07, inf], default 0.0
 
    .. data:: tracks
 
-      Collection of tracks used for 2D stabilization (translation) (default None, readonly)
+      Collection of tracks used for 2D stabilization (translation)
 
-      :type: :class:`bpy_prop_collection`\ [:class:`MovieTrackingTrack`]
+      :type: :class:`bpy_prop_collection` of :class:`MovieTrackingTrack`, (readonly)
 
    .. attribute:: use_2d_stabilization
 
-      Use 2D stabilization for footage (default False)
+      Use 2D stabilization for footage
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_autoscale
 
-      Automatically scale footage to cover unfilled areas when stabilizing (default False)
+      Automatically scale footage to cover unfilled areas when stabilizing
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_stabilize_rotation
 
-      Stabilize detected rotation around center of frame (default False)
+      Stabilize detected rotation around center of frame
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_stabilize_scale
 
-      Compensate any scale changes relative to center of rotation (default False)
+      Compensate any scale changes relative to center of rotation
 
-      :type: bool
+      :type: boolean, default False
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -151,7 +146,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -159,30 +154,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -190,5 +184,5 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`MovieTracking.stabilization`
+   * :class:`MovieTracking.stabilization`
 

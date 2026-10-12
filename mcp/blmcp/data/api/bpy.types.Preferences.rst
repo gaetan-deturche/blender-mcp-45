@@ -5,159 +5,130 @@ Preferences(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: Preferences(bpy_struct)
 
    Global preferences
 
    .. attribute:: active_section
 
-      Preferences (default ``'INTERFACE'``)
+      Preferences
 
-      :type: Literal[:ref:`rna_enum_preference_section_items`]
+      :type: enum in :ref:`rna_enum_preference_section_items`, default ``'INTERFACE'``
 
    .. data:: addons
 
-      (default None, readonly)
-
-      :type: :class:`Addons`\ [:class:`Addon`]
+      :type: :class:`Addons` :class:`bpy_prop_collection` of :class:`Addon`, (readonly)
 
    .. attribute:: app_template
 
-      (default "", never None)
-
-      :type: str
+      :type: string, default "", (never None)
 
    .. data:: apps
 
-      Preferences that work only for apps (readonly, never None)
+      Preferences that work only for apps
 
-      :type: :class:`PreferencesApps`
-
-   .. data:: asset_libraries
-
-      Setup for custom and builtin asset libraries (readonly, never None)
-
-      :type: :class:`PreferencesAssetLibraries`
+      :type: :class:`PreferencesApps`, (readonly, never None)
 
    .. data:: autoexec_paths
 
-      (default None, readonly)
-
-      :type: :class:`PathCompareCollection`\ [:class:`PathCompare`]
+      :type: :class:`PathCompareCollection` :class:`bpy_prop_collection` of :class:`PathCompare`, (readonly)
 
    .. data:: edit
 
-      Settings for interacting with Blender data (readonly, never None)
+      Settings for interacting with Blender data
 
-      :type: :class:`PreferencesEdit`
+      :type: :class:`PreferencesEdit`, (readonly, never None)
 
    .. data:: experimental
 
-      Settings for features that are still early in their development stage (readonly, never None)
+      Settings for features that are still early in their development stage
 
-      :type: :class:`PreferencesExperimental`
+      :type: :class:`PreferencesExperimental`, (readonly, never None)
 
    .. data:: extensions
 
-      Settings for extensions (readonly, never None)
+      Settings for extensions
 
-      :type: :class:`PreferencesExtensions`
+      :type: :class:`PreferencesExtensions`, (readonly, never None)
 
    .. data:: filepaths
 
-      Default paths for external files (readonly, never None)
+      Default paths for external files
 
-      :type: :class:`PreferencesFilePaths`
+      :type: :class:`PreferencesFilePaths`, (readonly, never None)
 
    .. data:: inputs
 
-      Settings for input devices (readonly, never None)
+      Settings for input devices
 
-      :type: :class:`PreferencesInput`
+      :type: :class:`PreferencesInput`, (readonly, never None)
 
    .. attribute:: is_dirty
 
-      Preferences have changed (default False)
+      Preferences have changed
 
-      :type: bool
+      :type: boolean, default False
 
    .. data:: keymap
 
-      Shortcut setup for keyboards and other input devices (readonly, never None)
+      Shortcut setup for keyboards and other input devices
 
-      :type: :class:`PreferencesKeymap`
-
-   .. attribute:: show_hidden_ids
-
-      Show data-blocks with dot-prefixed names in search menus (default False)
-
-      :type: bool
+      :type: :class:`PreferencesKeymap`, (readonly, never None)
 
    .. data:: studio_lights
 
-      (default None, readonly)
-
-      :type: :class:`StudioLights`\ [:class:`StudioLight`]
+      :type: :class:`StudioLights` :class:`bpy_prop_collection` of :class:`StudioLight`, (readonly)
 
    .. data:: system
 
-      Graphics driver and operating system settings (readonly, never None)
+      Graphics driver and operating system settings
 
-      :type: :class:`PreferencesSystem`
+      :type: :class:`PreferencesSystem`, (readonly, never None)
 
    .. data:: themes
 
-      (default None, readonly)
-
-      :type: :class:`bpy_prop_collection`\ [:class:`Theme`]
+      :type: :class:`bpy_prop_collection` of :class:`Theme`, (readonly)
 
    .. data:: ui_styles
 
-      (default None, readonly)
-
-      :type: :class:`bpy_prop_collection`\ [:class:`ThemeStyle`]
+      :type: :class:`bpy_prop_collection` of :class:`ThemeStyle`, (readonly)
 
    .. attribute:: use_preferences_save
 
-      Save preferences on exit when modified (unless factory settings have been loaded) (default True)
+      Save preferences on exit when modified (unless factory settings have been loaded)
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_recent_searches
 
-      Sort the recently searched items at the top (default True)
+      Sort the recently searched items at the top
 
-      :type: bool
+      :type: boolean, default True
 
    .. data:: version
 
-      Version of Blender the userpref.blend was saved with (array of 3 items, in [0, inf], default (0, 0, 0), readonly)
+      Version of Blender the userpref.blend was saved with
 
-      :type: :class:`bpy_prop_array`\ [int]
+      :type: int array of 3 items in [0, inf], default (0, 0, 0), (readonly)
 
    .. data:: view
 
-      Preferences related to viewing data (readonly, never None)
+      Preferences related to viewing data
 
-      :type: :class:`PreferencesView`
+      :type: :class:`PreferencesView`, (readonly, never None)
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -168,7 +139,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -176,30 +147,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -207,5 +177,5 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`Context.preferences`
+   * :class:`Context.preferences`
 

@@ -5,81 +5,66 @@ MovieTracking(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: MovieTracking(bpy_struct)
 
    Match-moving data for tracking
 
    .. attribute:: active_object_index
 
-      Index of active object (in [-inf, inf], default 0)
+      Index of active object
 
-      :type: int
+      :type: int in [-inf, inf], default 0
 
    .. data:: camera
 
-      (readonly)
-
-      :type: :class:`MovieTrackingCamera` | None
+      :type: :class:`MovieTrackingCamera`, (readonly)
 
    .. data:: dopesheet
 
-      (readonly)
-
-      :type: :class:`MovieTrackingDopesheet` | None
+      :type: :class:`MovieTrackingDopesheet`, (readonly)
 
    .. data:: objects
 
-      Collection of objects in this tracking data object (default None, readonly)
+      Collection of objects in this tracking data object
 
-      :type: :class:`MovieTrackingObjects`\ [:class:`MovieTrackingObject`]
+      :type: :class:`MovieTrackingObjects` :class:`bpy_prop_collection` of :class:`MovieTrackingObject`, (readonly)
 
    .. data:: plane_tracks
 
-      Collection of plane tracks in this tracking data object. Deprecated, use objects[name].plane_tracks (default None, readonly)
+      Collection of plane tracks in this tracking data object. Deprecated, use objects[name].plane_tracks
 
-      :type: :class:`MovieTrackingPlaneTracks`\ [:class:`MovieTrackingPlaneTrack`]
+      :type: :class:`MovieTrackingPlaneTracks` :class:`bpy_prop_collection` of :class:`MovieTrackingPlaneTrack`, (readonly)
 
    .. data:: reconstruction
 
-      (readonly)
-
-      :type: :class:`MovieTrackingReconstruction` | None
+      :type: :class:`MovieTrackingReconstruction`, (readonly)
 
    .. data:: settings
 
-      (readonly)
-
-      :type: :class:`MovieTrackingSettings` | None
+      :type: :class:`MovieTrackingSettings`, (readonly)
 
    .. data:: stabilization
 
-      (readonly)
-
-      :type: :class:`MovieTrackingStabilization` | None
+      :type: :class:`MovieTrackingStabilization`, (readonly)
 
    .. data:: tracks
 
-      Collection of tracks in this tracking data object. Deprecated, use objects[name].tracks (default None, readonly)
+      Collection of tracks in this tracking data object. Deprecated, use objects[name].tracks
 
-      :type: :class:`MovieTrackingTracks`\ [:class:`MovieTrackingTrack`]
+      :type: :class:`MovieTrackingTracks` :class:`bpy_prop_collection` of :class:`MovieTrackingTrack`, (readonly)
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -90,7 +75,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -98,30 +83,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -129,5 +113,5 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`MovieClip.tracking`
+   * :class:`MovieClip.tracking`
 

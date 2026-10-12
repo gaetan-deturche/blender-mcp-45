@@ -47,6 +47,12 @@ Geometry
    When the node is muted, only the first link will be passed through.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Output
 ======
 

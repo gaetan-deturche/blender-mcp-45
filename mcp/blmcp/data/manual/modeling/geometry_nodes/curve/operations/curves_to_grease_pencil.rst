@@ -26,6 +26,12 @@ Instances as Layers
     layer is created with the input geometry's name.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

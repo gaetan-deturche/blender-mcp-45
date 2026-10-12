@@ -34,6 +34,12 @@ Threshold
    determinator and the determinator of the center pixel is less than this threshold.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

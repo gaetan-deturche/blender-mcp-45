@@ -11,10 +11,7 @@ Asset Library Type Items
    Show the assets currently available in this Blender session.
 :ESSENTIALS: Essentials.
 
-   Show basic building blocks and utilities coming with Blender.
-:ONLINE_ESSENTIALS: Online Essentials.
-
-   Show additional building blocks and utilities available online.
+   Show the basic building blocks and utilities coming with Blender.
 :CUSTOM: Custom.
 
    Show assets from the asset libraries configured in the Preferences.

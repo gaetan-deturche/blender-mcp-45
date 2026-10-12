@@ -31,42 +31,8 @@ example of how to create/use filtering/reordering callbacks.
 
 base class --- :class:`bpy_struct`
 
-.. toctree::
-   :caption: Subclasses
-   :maxdepth: 1
-
-   bpy.types.ASSETBROWSER_UL_metadata_tags.rst
-   bpy.types.CLIP_UL_tracking_objects.rst
-   bpy.types.CURVES_UL_attributes.rst
-   bpy.types.DATA_UL_bone_collections.rst
-   bpy.types.FILEBROWSER_UL_dir.rst
-   bpy.types.GPENCIL_UL_annotation_layer.rst
-   bpy.types.GPENCIL_UL_matslots.rst
-   bpy.types.GREASE_PENCIL_UL_attributes.rst
-   bpy.types.GREASE_PENCIL_UL_masks.rst
-   bpy.types.IMAGE_UL_render_slots.rst
-   bpy.types.IMAGE_UL_udim_tiles.rst
-   bpy.types.MASK_UL_layers.rst
-   bpy.types.MATERIAL_UL_matslots.rst
-   bpy.types.MESH_UL_attributes.rst
-   bpy.types.MESH_UL_color_attributes.rst
-   bpy.types.MESH_UL_color_attributes_selector.rst
-   bpy.types.MESH_UL_uvmaps.rst
-   bpy.types.MESH_UL_vgroups.rst
-   bpy.types.PARTICLE_UL_particle_systems.rst
-   bpy.types.PHYSICS_UL_dynapaint_surfaces.rst
-   bpy.types.POINTCLOUD_UL_attributes.rst
-   bpy.types.POSE_UL_selection_set.rst
-   bpy.types.RENDER_UL_renderviews.rst
-   bpy.types.SCENE_UL_gltf2_filter_action.rst
-   bpy.types.SCENE_UL_keying_set_paths.rst
-   bpy.types.TEXTURE_UL_texpaintslots.rst
-   bpy.types.TEXTURE_UL_texslots.rst
-   bpy.types.UI_UL_list.rst
-   bpy.types.USERPREF_UL_extension_repos.rst
-   bpy.types.VIEWLAYER_UL_aov.rst
-   bpy.types.VOLUME_UL_grids.rst
-   bpy.types.WORKSPACE_UL_addons_items.rst
+subclasses --- 
+:class:`ASSETBROWSER_UL_metadata_tags`, :class:`CLIP_UL_tracking_objects`, :class:`CURVES_UL_attributes`, :class:`DATA_UL_bone_collections`, :class:`FILEBROWSER_UL_dir`, :class:`GPENCIL_UL_annotation_layer`, :class:`GPENCIL_UL_layer`, :class:`GPENCIL_UL_masks`, :class:`GPENCIL_UL_matslots`, :class:`GREASE_PENCIL_UL_attributes`, :class:`GREASE_PENCIL_UL_masks`, :class:`IMAGE_UL_render_slots`, :class:`IMAGE_UL_udim_tiles`, :class:`MASK_UL_layers`, :class:`MATERIAL_UL_matslots`, :class:`MESH_UL_attributes`, :class:`MESH_UL_color_attributes`, :class:`MESH_UL_color_attributes_selector`, :class:`MESH_UL_shape_keys`, :class:`MESH_UL_uvmaps`, :class:`MESH_UL_vgroups`, :class:`PARTICLE_UL_particle_systems`, :class:`PHYSICS_UL_dynapaint_surfaces`, :class:`POINTCLOUD_UL_attributes`, :class:`POSE_UL_selection_set`, :class:`RENDER_UL_renderviews`, :class:`SCENE_UL_gltf2_filter_action`, :class:`SCENE_UL_keying_set_paths`, :class:`TEXTURE_UL_texpaintslots`, :class:`TEXTURE_UL_texslots`, :class:`UI_UL_list`, :class:`USERPREF_UL_asset_libraries`, :class:`USERPREF_UL_extension_repos`, :class:`VIEWLAYER_UL_aov`, :class:`VIEWLAYER_UL_linesets`, :class:`VOLUME_UL_grids`, :class:`WORKSPACE_UL_addons_items`
 
 .. class:: UIList(bpy_struct)
 
@@ -74,174 +40,142 @@ base class --- :class:`bpy_struct`
 
    .. data:: bitflag_filter_item
 
-      The value of the reserved bitflag 'FILTER_ITEM' (in filter_flags values) (in [0, inf], default 0, readonly)
+      The value of the reserved bitflag 'FILTER_ITEM' (in filter_flags values)
 
-      :type: int
+      :type: int in [0, inf], default 0, (readonly)
 
    .. data:: bitflag_item_never_show
 
-      Skip the item from displaying in the list (in [0, inf], default 0, readonly)
+      Skip the item from displaying in the list
 
-      :type: int
+      :type: int in [0, inf], default 0, (readonly)
 
    .. attribute:: bl_idname
 
-      If this is set, the uilist gets a custom ID, otherwise it takes the name of the class used to define the uilist (for example, if the class name is "OBJECT_UL_vgroups", and bl_idname is not set by the script, then bl_idname = "OBJECT_UL_vgroups") (default "", never None)
+      If this is set, the uilist gets a custom ID, otherwise it takes the name of the class used to define the uilist (for example, if the class name is "OBJECT_UL_vgroups", and bl_idname is not set by the script, then bl_idname = "OBJECT_UL_vgroups")
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: filter_name
 
-      Only show items matching this name (use '*' as wildcard) (default "", never None)
+      Only show items matching this name (use '*' as wildcard)
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. data:: layout_type
 
-      (default ``'DEFAULT'``, readonly)
-
-      :type: Literal[:ref:`rna_enum_uilist_layout_type_items`]
+      :type: enum in :ref:`rna_enum_uilist_layout_type_items`, default ``'DEFAULT'``, (readonly)
 
    .. data:: list_id
 
-      Identifier of the list, if any was passed to the "list_id" parameter of "template_list()" (default "", readonly, never None)
+      Identifier of the list, if any was passed to the "list_id" parameter of "template_list()"
 
-      :type: str
+      :type: string, default "", (readonly, never None)
 
    .. attribute:: use_filter_invert
 
-      Invert filtering (show hidden items, and vice versa) (default False)
+      Invert filtering (show hidden items, and vice versa)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_filter_show
 
-      Show filtering options (default False)
+      Show filtering options
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_filter_sort_alpha
 
-      Sort items by their name (default False)
+      Sort items by their name
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_filter_sort_lock
 
-      Lock the order of shown items (user cannot change it) (default False)
+      Lock the order of shown items (user cannot change it)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_filter_sort_reverse
 
-      Reverse the order of shown items (default False)
+      Reverse the order of shown items
 
-      :type: bool
-
-   .. method:: bl_system_properties_get(*, do_create=False)
-
-      DEBUG ONLY. Internal access to runtime-defined RNA data storage, intended solely for testing and debugging purposes. Do not access it in regular scripting work, and in particular, do not assume that it contains writable data
-
-      :param do_create: Ensure that system properties are created if they do not exist yet (optional)
-      :type do_create: bool
-      :return: The system properties root container, or None if there are no system properties stored in this data yet, and its creation was not requested
-      :rtype: :class:`PropertyGroup`
+      :type: boolean, default False
 
    .. method:: draw_item(context, layout, data, item, icon, active_data, active_property, index, flt_flag)
 
       Draw an item in the list (NOTE: when you define your own draw_item function, you may want to check given 'item' is of the right type...)
 
-      :param context: The context
-      :type context: :class:`Context` | None
-      :param layout: Layout to draw the item (never None)
-      :type layout: :class:`UILayout` | None
-      :param data: Data from which to take Collection property
-      :type data: :class:`AnyType` | None
-      :param item: Item of the collection property
-      :type item: :class:`AnyType` | None
-      :param icon: Icon of the item in the collection (in [0, inf])
-      :type icon: int
-      :param active_data: Data from which to take property for the active element (never None)
-      :type active_data: :class:`AnyType` | None
-      :param active_property: Identifier of property in active_data, for the active element (optional for registration, never None)
-      :type active_property: str
-      :param index: Index of the item in the collection (in [0, inf])
-      :type index: int
-      :param flt_flag: The filter-flag result for this item (in [0, inf])
-      :type flt_flag: int
+      :type context: :class:`Context`
+      :arg layout: Layout to draw the item
+      :type layout: :class:`UILayout`, (never None)
+      :arg data: Data from which to take Collection property
+      :type data: :class:`AnyType`
+      :arg item: Item of the collection property
+      :type item: :class:`AnyType`
+      :arg icon: Icon of the item in the collection
+      :type icon: int in [0, inf]
+      :arg active_data: Data from which to take property for the active element
+      :type active_data: :class:`AnyType`, (never None)
+      :arg active_property: Identifier of property in active_data, for the active element
+      :type active_property: string, (optional for registration, never None)
+      :arg index: Index of the item in the collection
+      :type index: int in [0, inf]
+      :arg flt_flag: The filter-flag result for this item
+      :type flt_flag: int in [0, inf]
 
    .. method:: draw_filter(context, layout)
 
       Draw filtering options
 
-      :param context: The context
-      :type context: :class:`Context` | None
-      :param layout: Layout to draw the item (never None)
-      :type layout: :class:`UILayout` | None
+      :type context: :class:`Context`
+      :arg layout: Layout to draw the item
+      :type layout: :class:`UILayout`, (never None)
 
    .. method:: filter_items(context, data, property)
 
       Filter and/or re-order items of the collection (output filter results in filter_flags, and reorder results in filter_neworder arrays)
 
-      :param context: The context
-      :type context: :class:`Context` | None
-      :param data: Data from which to take Collection property
-      :type data: :class:`AnyType` | None
-      :param property: Identifier of property in data, for the collection (never None)
-      :type property: str
+      :type context: :class:`Context`
+      :arg data: Data from which to take Collection property
+      :type data: :class:`AnyType`
+      :arg property: Identifier of property in data, for the collection
+      :type property: string, (never None)
       :return:
-         ``filter_flags``, An array of filter flags, one for each item in the collection (NOTE: The upper 16 bits, including FILTER_ITEM, are reserved, only use the lower 16 bits for custom usages), :class:`bpy_prop_array`\ [int]
+         `filter_flags`, An array of filter flags, one for each item in the collection (NOTE: The upper 16 bits, including FILTER_ITEM, are reserved, only use the lower 16 bits for custom usages), int array of 1 items in [0, inf]
 
-         ``filter_neworder``, An array of indices, one for each item in the collection, mapping the org index to the new one, :class:`bpy_prop_array`\ [int]
+         `filter_neworder`, An array of indices, one for each item in the collection, mapping the org index to the new one, int array of 1 items in [0, inf]
 
-      :rtype: tuple[:class:`bpy_prop_array`\ [int], :class:`bpy_prop_array`\ [int]]
+      :rtype: (int array of 1 items in [0, inf], int array of 1 items in [0, inf])
 
    .. classmethod:: append(draw_func)
 
       Append a draw function to this menu,
       takes the same arguments as the menus draw function
-      
-      :param draw_func: Draw function to append.
-      :type draw_func: Callable[[Self, :class:`Context`], None]
 
    .. classmethod:: is_extended()
-
-      Test if any draw function has been added via :meth:`append` or :meth:`prepend`.
-      
-      :return: True when at least one draw function has been added.
-      :rtype: bool
 
    .. classmethod:: prepend(draw_func)
 
       Prepend a draw function to this menu, takes the same arguments as
       the menus draw function
-      
-      :param draw_func: Draw function to prepend.
-      :type draw_func: Callable[[Self, :class:`Context`], None]
 
    .. classmethod:: remove(draw_func)
 
-      Remove a draw function that has been added to this menu.
-      
-      :param draw_func: Draw function previously registered via :meth:`append` or :meth:`prepend`.
-      :type draw_func: Callable[[Self, :class:`Context`], None]
+      Remove a draw function that has been added to this menu
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -252,7 +186,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -260,28 +194,27 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 

@@ -28,6 +28,12 @@ Path
    The path to the `.stl` file to be imported.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

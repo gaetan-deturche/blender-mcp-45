@@ -1,5 +1,4 @@
 .. _bpy.types.Bone.use_deform:
-.. _bpy.types.EditBone.use_deform:
 
 ******
 Deform
@@ -56,7 +55,7 @@ shown in the *Envelope* visualization:
 .. _bpy.types.Bone.envelope_distance:
 
 Envelope Distance
-   The Distance defines a volume which is the range within which the bone
+   The Distance defines a volume which is the range within the bone
    has an influence on vertices of the deformed object.
    The geometry is less and less affected by the bone as it goes away by following a quadratic decay.
 

@@ -1,12 +1,11 @@
 .. index:: Geometry Nodes; Object
 .. _bpy.types.GeometryNodeInputObject:
-.. --- copy below this line ---
 
 ***********
 Object Node
 ***********
 
-.. figure:: /images/node-types_GeometryNodeInputObject.webp
+.. figure:: /images/node-types_GeometryNodeInputObject.png
    :align: right
    :width: 300px
    :alt: Object Input Node.

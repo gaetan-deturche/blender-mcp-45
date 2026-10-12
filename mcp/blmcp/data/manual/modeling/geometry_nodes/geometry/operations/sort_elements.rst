@@ -20,19 +20,20 @@ Geometry
 
 Selection
    The selection of elements to sort, if left blank, all elements are sorted.
-   Non-selected elements will keep their current indices.
+   Non selected elements will be keep their current indices.
 
 Group ID
    Elements with the same group ID are sorted together.
-   If the connected socket is not a field, this socket has no effect.
+   If this is not a field, the node has no affect.
 
 Sort Weight
    The sorted values used to do the reordering.
-   If the connected socket is not a field, this socket has no effect.
+   If this is not a field, the node has no affect.
 
 
 Properties
 ==========
+
 
 Domain
    The domain on which the selection and group ID fields are evaluated.

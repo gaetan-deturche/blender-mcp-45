@@ -137,15 +137,14 @@ Auto Iteration Count
    via the shortcut :kbd:`Shift-R`.
 
 
+.. _bpy.ops.mesh.paint_mask_extract:
+
 Expand Mask
 ===========
 
 .. note::
 
    More info on Mask Expand along Topology at the :ref:`Expand page <bpy.ops.sculpt.expand>`.
-
-
-.. _bpy.ops.sculpt.paint_mask_extract:
 
 Mask Extract
 ============
@@ -175,7 +174,7 @@ Extract as Solid
    Adds a :doc:`Solidify Modifier </modeling/modifiers/generate/solidify>` to the newly created mesh object.
 
 
-.. _bpy.ops.sculpt.paint_mask_slice:
+.. _bpy.ops.mesh.paint_mask_slice:
 
 Mask Slice
 ==========
@@ -237,7 +236,7 @@ Custom Curve
    Same as :doc:`Auto-Masking </sculpt_paint/sculpting/controls>`.
 
 
-.. _sculpt-mask_from_mesh_boundary:
+.. _bpy.ops.sculpt.mask_from_mesh_boundary:
 
 Mask From Mesh Boundary
 =======================
@@ -261,7 +260,7 @@ Propagation Steps
    Same as :doc:`Auto-Masking </sculpt_paint/sculpting/controls>`.
 
 
-.. _bpy.ops.sculpt.mask_from_boundary:
+.. _bpy.ops.sculpt.mask_from_face_sets_boundary:
 
 Mask From Face Sets Boundary
 ============================
@@ -332,6 +331,8 @@ Per Loose Mask
    Assigns a random mask value for each disjoint part of the mesh.
 
 
+.. _bpy.types.Sculpt.show_mask:
+.. _bpy.types.View3DOverlay.sculpt_mode_mask_opacity:
 .. _Mask Display Settings:
 
 Display Settings

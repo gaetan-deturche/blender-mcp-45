@@ -24,9 +24,14 @@ Inputs
 
 Curve
    Standard geometry input, containing curves.
-
 Selection
    Whether or not to change the value on each curve.
+Normal
+   Input for the custom normal attribute (``custom_normal``) when using *Free* mode.
+
+
+Properties
+==========
 
 Mode
    The method for evaluation of the curve's normals
@@ -47,9 +52,6 @@ Mode
          Custom normals are not rotation invariant,
          meaning normals must be set **after** any rotation transformations;
          i.e. at the end of the node tree or at the bottom of the modifier stack.
-
-Normal :guilabel:`Free`
-   Input for the custom normal attribute (``custom_normal``) when using *Free* mode.
 
 
 Outputs

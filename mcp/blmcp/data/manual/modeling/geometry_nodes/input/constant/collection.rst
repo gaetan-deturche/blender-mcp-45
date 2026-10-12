@@ -5,7 +5,7 @@
 Collection Node
 ***************
 
-.. figure:: /images/node-types_GeometryNodeInputCollection.webp
+.. figure:: /images/node-types_GeometryNodeInputCollection.png
    :align: right
    :width: 300px
    :alt: Collection Input Node.

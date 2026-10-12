@@ -37,37 +37,29 @@ Target Object
    The object from which to compute distances.
 
 Proximity Mode
-   Defines how distances are measured.
+   Object Distance
+      Use the distance between the modified mesh object and the target object as
+      weight for all vertices in the affected vertex group.
+   Geometry Distance
+      Use the distance between each vertex and the target object, or its geometry.
 
-   :Object:
-      Uses the distance between the modified object origin and the target object origin.
+      Vertex
+         This will set each vertex's weight from its distance to the nearest vertex of the target object.
+      Edge
+         This will set each vertex's weight from its distance to the nearest edge of the target object.
+      Face
+         This will set each vertex's weight from its distance to the nearest face of the target object.
 
-      All affected vertices receive the same weight value.
-   :Geometry:
-      Uses the distance between each vertex and the target object's geometry.
+      .. note::
 
-Geometry :guilabel:`Geometry Mode`
-   Defines which geometric elements of the target object are used when computing distances.
-
-   :Vertex:
-      Uses the distance to the nearest vertex of the target object.
-   :Edge:
-      Uses the distance to the nearest edge of the target object.
-   :Face:
-      Uses the distance to the nearest face of the target object.
-
-   .. note::
-
-      When multiple geometry types are enabled, the shortest distance is used.
-
-      If the target object has no geometry, such as an empty or camera,
-      the object origin is used instead.
-
+         If you enable more than one of them, the shortest distance will be used.
+         If the target object has no geometry (e.g. an empty or camera),
+         it will use the location of the object itself.
 
 Lowest
-   Distance value mapped to a weight of ``0.0``.
+   Distance mapping to 0.0 weight.
 Highest
-   Distance value mapped to a weight of ``1.0``.
+   Distance mapping to 1.0 weight.
 
 .. tip::
 
@@ -82,18 +74,18 @@ Falloff
 -------
 
 Type
-   Defines how distances are converted into weight values.
+   Type of mapping.
 
-   :Linear: Uses a direct linear mapping.
-   :Custom Curve: Uses a user-defined curve for the mapping.
-   :Sharp: Creates a sharper transition.
-   :Smooth: Creates a smoother transition.
-   :Root: Biases the mapping toward higher values.
-   :Sphere: Creates a rounded spherical-style falloff.
-   :Random: Assigns random weights to vertices.
-   :Median Step:
-      Produces binary weights of either ``0.0`` or ``1.0``,
-      using ``0.5`` as the threshold.
+   Linear
+      No mapping.
+   Custom Curve
+      Allows you to manually define the mapping using a curve.
+   Sharp, Smooth, Root and Sphere
+      These are classical mapping functions, from spikiest to roundest.
+   Random
+      Uses a random value for each vertex.
+   Median Step
+      Creates binary weights (0.0 or 1.0), with 0.5 as cutting value.
 
 :bl-icon:`arrow_leftright` Invert
    Inverts the falloff.

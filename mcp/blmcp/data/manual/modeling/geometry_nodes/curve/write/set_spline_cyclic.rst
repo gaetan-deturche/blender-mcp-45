@@ -19,7 +19,7 @@ to read this property.
 Inputs
 ======
 
-Curve
+Geometry
    Standard geometry input.
 
 Selection
@@ -30,8 +30,14 @@ Cyclic
    Whether to connect the first and last control points of each spline.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 
-Curve
+Geometry
    Standard geometry output.

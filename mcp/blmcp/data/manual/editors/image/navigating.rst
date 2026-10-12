@@ -13,19 +13,8 @@ Zooming can be done using :kbd:`Wheel` or :kbd:`NumpadPlus`/:kbd:`NumpadMinus`.
 Gizmos
 ======
 
-At the top of the Image Editor, next to the Sidebar region, navigation gizmos are available.
-These provide on-screen controls for panning and zooming the view, which can be useful when
-a mouse wheel is not available or when working on touch-based or pen-based devices.
-
-The pan gizmo allows dragging the view in any direction, while the zoom gizmo adjusts the
-view scale interactively.
-
-When using the zoom gizmo, the current zoom level is displayed as a percentage, providing
-immediate feedback about the scale of the image.
-
-Holding :kbd:`Shift` while dragging the zoom gizmo enables more precise control.
-Holding :kbd:`Ctrl` snaps the zoom level to 10% increments, allowing consistent and
-predictable adjustments.
+Next to the Sidebar region at the top, there are gizmos that allow panning
+and zooming more comfortably when e.g. no mouse wheel is available.
 
 
 View Menu
@@ -53,8 +42,6 @@ Show Metadata
    Displays metadata about the selected Render Result. See the Output tab's
    :doc:`/render/output/properties/metadata` panel to change what metadata to include.
 
-.. _bpy.ops.image.view_zoom_ratio:
-
 Zoom
    Menu with convenient zoom levels and operations.
    The zoom levels are calculated based on the images resolution compared to the screen resolution.
@@ -63,7 +50,6 @@ Zoom
    - 25% (1:4) :kbd:`Numpad4` zoom out to a factor of 25%.
    - 50% (1:2) :kbd:`Numpad2` zoom out to a factor of 50%.
    - 100% (1:1) :kbd:`Numpad1` resets the zoom to 100%.
-     (:kbd:`Ctrl-Numpad1` and :kbd:`Shift-Numpad1` also reset to 100%.)
    - 200% (2:1) :kbd:`Ctrl-Numpad2` zoom in to a factor of 200%.
    - 400% (4:1) :kbd:`Ctrl-Numpad4` zoom in to a factor of 400%.
    - 800% (8:1) :kbd:`Ctrl-Numpad8` zoom in to a factor of 800%.

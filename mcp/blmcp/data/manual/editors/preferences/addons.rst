@@ -3,14 +3,10 @@
 Add-ons
 *******
 
-The Add-ons section lets you manage secondary scripts, called “Add-ons” that extend Blender's functionality.
+The Add-ons section lets you manage secondary scripts, called “Add-ons” that extends Blender's functionality.
 Most of the time you can get add-ons as part of the :ref:`Extensions <extensions-index>` system.
 
 In this section you can search, install, enable and disable Add-ons.
-
-.. figure:: /images/editors_preferences_section_addons.webp
-
-   Blender Preferences Add-ons section.
 
 .. tip::
 

@@ -18,17 +18,16 @@ Layers have the following settings:
 
 Opacity
    The layer's :ref:`opacity <bpy.types.GreasePencilLayer.opacity>`.
-:bl-icon:`clipuv_hlt` / :bl-icon:`clipuv_dehlt` Use Mask
-   Toggle the layer's :ref:`masks <bpy.types.GreasePencilTreeNode.use_masks>` on or off.
-:bl-icon:`onionskin_on` / :bl-icon:`onionskin_off` Onion Skinning
+Use Mask
+   Toggle the layer's :ref:`masks <bpy.types.GreasePencilLayer.use_masks>` on or off.
+Onion Skinning
    Toggle :doc:`onion skinning </grease_pencil/properties/onion_skinning>`.
-:bl-icon:`hide_off` / :bl-icon:`hide_on`
+Visibility (eye icon)
    Toggle layer visibility in the viewport and in render.
-   Use :kbd:`Ctrl-LMB` to solo the selected channel.
-:bl-icon:`checkbox_hlt` / :bl-icon:`checkbox_dehlt` Show all keyframes
+Show all keyframes (checkbox)
    When unchecked, the layer gets frozen in its current state, and moving to
    a different keyframe will no longer change its appearance.
-:bl-icon:`unlocked` / :bl-icon:`locked` Lock
+Lock (padlock)
    Locked layers can't be edited.
 
 

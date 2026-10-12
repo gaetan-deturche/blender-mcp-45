@@ -9,38 +9,17 @@ Poke Faces
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Face --> Poke Faces`
 
-Splits each selected face into a triangle fan with a newly created vertex in the middle.
-This new vertex can further be raised or lowered to create a pyramid/cone.
-
-.. list-table::
-
-   * - .. figure:: /images/modeling_meshes_editing_face_poke-faces_before.png
-
-          Before poking.
-
-     - .. figure:: /images/modeling_meshes_editing_face_poke-faces_after.png
-
-          After poking.
-
-     - .. figure:: /images/modeling_meshes_editing_face_poke-faces_offset.png
-
-          Adding a Poke Offset.
-
-Options
-=======
+Splits each selected faces into a triangle fan,
+creating a new center vertex and triangles between the original face edges
+and new center vertex. The *Offset* can be used to make spikes or depressions.
 
 Poke Offset
-   Distance to move the new center vertex along the face normal.
+   Offset the new center vertex along the face normal.
 Offset Relative
-   Make the *Poke Offset* relative to face size. More specifically, this multiplies the offset
-   for each face by the average distance from its center to its corners.
+   Multiply the Offset by the average length from the center to the face vertices.
 Poke Center
-   How to determine the position of the face center:
+   Computes the center of a face.
 
-   Weighted Median
-      Use the average position of the face corners, weighted by the lengths of those
-      corners' neighboring edges.
-   Median
-      Use the average position of the face corners.
-   Bounds
-      Use the center of the bounding box.
+   :Weighted Median: Using the mean average weighted by edge length.
+   :Median: Using the mean average.
+   :Bounds: Uses center of bounding box.

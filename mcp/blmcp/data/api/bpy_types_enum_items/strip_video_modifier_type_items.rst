@@ -7,8 +7,6 @@ Strip Video Modifier Type Items
 
 :COLOR_BALANCE: Color Balance.
 
-:COMPOSITOR: Compositor.
-
 :CURVES: Curves.
 
 :HUE_CORRECT: Hue Correct.

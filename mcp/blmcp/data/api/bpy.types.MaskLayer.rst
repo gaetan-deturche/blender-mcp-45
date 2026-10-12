@@ -5,110 +5,94 @@ MaskLayer(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: MaskLayer(bpy_struct)
 
    Single layer used for masking pixels
 
    .. attribute:: alpha
 
-      Render Opacity (in [-inf, inf], default 0.0)
+      Render Opacity
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: blend
 
-      Method of blending mask layers (default ``'ADD'``)
+      Method of blending mask layers
 
-      :type: Literal['MERGE_ADD', 'MERGE_SUBTRACT', 'ADD', 'SUBTRACT', 'LIGHTEN', 'DARKEN', 'MUL', 'REPLACE', 'DIFFERENCE']
+      :type: enum in [``'MERGE_ADD'``, ``'MERGE_SUBTRACT'``, ``'ADD'``, ``'SUBTRACT'``, ``'LIGHTEN'``, ``'DARKEN'``, ``'MUL'``, ``'REPLACE'``, ``'DIFFERENCE'``], default ``'ADD'``
 
    .. attribute:: falloff
 
-      Falloff type of the feather (default ``'SMOOTH'``)
+      Falloff type of the feather
 
-      :type: Literal[:ref:`rna_enum_proportional_falloff_curve_only_items`]
-
-   .. attribute:: fill_solver
-
-      Triangulation solver for filling 2D curves (default ``'CDT'``)
-
-      - ``SWEEP_LINE``
-        Sweep Line -- Fast without support for self-intersection.
-      - ``CDT``
-        Delaunay -- Constrained Delaunay Triangulation (CDT), robust with support for self-intersections.
-
-      :type: Literal['SWEEP_LINE', 'CDT']
+      :type: enum in :ref:`rna_enum_proportional_falloff_curve_only_items`, default ``'SMOOTH'``
 
    .. attribute:: hide
 
-      Restrict visibility in the viewport (default False)
+      Restrict visibility in the viewport
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: hide_render
 
-      Restrict renderability (default False)
+      Restrict renderability
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: hide_select
 
-      Restrict selection in the viewport (default False)
+      Restrict selection in the viewport
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: invert
 
-      Invert the mask black/white (default False)
+      Invert the mask black/white
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: name
 
-      Unique name of layer (default "", never None)
+      Unique name of layer
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: select
 
-      Layer is selected for editing in the Dope Sheet (default False)
+      Layer is selected for editing in the Dope Sheet
 
-      :type: bool
+      :type: boolean, default False
 
    .. data:: splines
 
-      Collection of splines which defines this layer (default None, readonly)
+      Collection of splines which defines this layer
 
-      :type: :class:`MaskSplines`\ [:class:`MaskSpline`]
+      :type: :class:`MaskSplines` :class:`bpy_prop_collection` of :class:`MaskSpline`, (readonly)
 
    .. attribute:: use_fill_holes
 
-      Calculate holes when filling overlapping curves (default True)
+      Calculate holes when filling overlapping curves
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_fill_overlap
 
-      Calculate self intersections and overlap before filling (only for the sweep-line solver) (default False)
+      Calculate self intersections and overlap before filling
 
-      :type: bool
+      :type: boolean, default False
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -119,7 +103,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -127,30 +111,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -158,8 +141,8 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`Mask.layers`
-   - :class:`MaskLayers.active`
-   - :class:`MaskLayers.new`
-   - :class:`MaskLayers.remove`
+   * :class:`Mask.layers`
+   * :class:`MaskLayers.active`
+   * :class:`MaskLayers.new`
+   * :class:`MaskLayers.remove`
 

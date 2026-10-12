@@ -4,38 +4,36 @@
 Blend Hair Curves
 *****************
 
-The *Blend Hair Curves* node smooths or blends the shape of hair curves by averaging
-their positions with nearby curves within a specified radius.
-This can be used to reduce noise, create more coherent flow in the groom, or
-harmonize transitions between clumps of hair.
+Blends shape between multiple hair curves in a certain radius.
 
 .. peertube:: kegHEYG8URADfPpBZ4jRUo
-
 
 Inputs
 ======
 
 Geometry
-   The input geometry containing the hair curves to be blended.
+   Input Geometry (only curves will be affected).
 
 Factor
-   Controls the overall strength of the blending effect.
-   A value of 0.0 applies no blending, while 1.0 fully averages the selected curves.
+   Factor to blend overall effect.
 
 Blend Radius
-   Defines the distance used to find neighboring curves that influence the blend.
+   Radius to select neighbors for blending.
 
 Blend Neighbors
-   Limits the number of neighboring curves considered during the blending process.
-   Increasing this value can result in smoother results but slower performance.
+   Amount of neighbors used for blending.
 
 Preserve Length
-   When enabled, the length of each curve is maintained during blending.
-   When disabled, curves may stretch or compress as a result of the averaging.
+   Preserve each curve's length during deformation.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs
 =======
 
-Geometry
-   The modified geometry with blended hair curves.
+**Geometry**

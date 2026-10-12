@@ -68,6 +68,12 @@ Sort Index
    If this value is outside the range of valid indices, it wraps around.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

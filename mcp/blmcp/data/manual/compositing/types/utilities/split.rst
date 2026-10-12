@@ -7,65 +7,55 @@ Split Node
 
 .. figure:: /images/node-types_CompositorNodeSplit.webp
    :align: right
-   :alt: Split Node
+   :alt: Split Viewer Node.
 
-The *Split* node combines two input images into a single output image,
-displaying them side by side or along a rotated split line.
-This is useful for comparing two versions of an image, such as before and after
-a color correction, compositing effect, or render adjustment.
+The *Split* node combines two images for side-by-side display. Typically
+used in combination with the :doc:`Viewer Node </compositing/types/output/viewer>`.
 
 
 Inputs
 ======
 
-Position
-   A 2D vector that defines the location of the split line in normalized coordinates.
-   The *X* and *Y* values range from 0 to 1, where (0.5, 0.5) places the split line
-   at the center of the image.
-
-Rotation
-   Adjusts the angle of the split line in degrees.
-
+Factor
+   Percentage factor setting the space distribution between the two images.
 Image
-   The first image input, displayed on one side of the split.
-
+   Shown on the right or top half set by the axis.
 Image
-   The second image input, displayed on the opposite side of the split.
+   And respectively the left or bottom half.
+
+
+Properties
+==========
+
+Axis
+   X or Y used as the split axis.
 
 
 Outputs
 =======
 
-Image
-   The combined image showing both inputs divided by the split line.
+This node has no output sockets.
+
+.. hint::
+
+   This node could be used to plan scene transitions by comparing the end frame of one scene
+   with the start frame of another to make sure they align.
 
 
-Gizmos
-======
+Usage
+=====
 
-The *Split* node provides an interactive gizmo in the Node Editor.
-To enable it, make sure :ref:`Active Node Gizmo <bpy.types.SpaceNodeEditor.show_gizmo_active_node>`
-is turned on, then select the *Split* node.
+The Split node supports an interactive gizmo in the node editor.
+To enable it, make sure :ref:`Active Node <bpy.types.SpaceNodeEditor.show_gizmo_active_node>`  gizmo is enabled,
+and select the Split node in the Compositor.
 
-The gizmo displays a split line with draggable handles:
-
-- Drag the line to adjust the split *position* horizontally or vertically.
-- Use the circular handle at the center to adjust the *rotation* interactively.
+The gizmo allows direct manipulation of the split *Factor* by dragging the line horizontally/vertically:
 
 
 Examples
 ========
 
-The *Split* node is typically used for comparing two images directly in the compositor.
-It can be connected to a :doc:`Viewer Node </compositing/types/output/viewer>`
-to preview before-and-after results, such as comparing an ungraded render against
-a color-corrected version.
-
-It can also be used to align transitions between scenes or shots by displaying
-the last frame of one scene alongside the first frame of another,
-helping ensure visual consistency.
-
 .. figure:: /images/compositing_types_color_gamma_example.jpg
    :width: 700px
 
-   Comparing two images using the Split node.
+   Example of a Split Viewer node.

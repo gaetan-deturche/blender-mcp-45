@@ -64,7 +64,7 @@ Attribute Type
 
          Currently only up to 4 layers of Geometry Node instancing are searched.
    :View Layer:
-      The attribute is looked up in the current :doc:`View Layer </render/layers/introduction>`,
+      The attribute is looked up in the current :doc:`View Layer </scene_layout/view_layers/introduction>`,
       :doc:`Scene </scene_layout/scene/introduction>` and :doc:`World </render/lights/world>`, using the same lookup
       logic as *Object*, and likewise producing all zero outputs including *Alpha* if not found. Attributes of this
       type have the same uniform value throughout the whole Render Layer.
@@ -84,11 +84,11 @@ Attribute Type
       .. seealso::
 
          An alternative method to access the same set of properties is to use driver
-         :ref:`Context Properties <bpy.types.DriverVariable.type>`,
+         :ref:`Context Properties <bpy.types.DriverVariable.type.CONTEXT_PROP>`,
          possibly with a :ref:`manually emulated <driver-attribute-node-emulation>` lookup fallback chain.
 
 Name
-   The name of the attribute to retrieve.
+   Name of the attribute.
 
 
 Outputs

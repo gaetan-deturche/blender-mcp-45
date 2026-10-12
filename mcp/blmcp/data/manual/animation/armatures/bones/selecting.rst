@@ -225,14 +225,12 @@ Parent/Child
 ============
 
 Parent :kbd:`[`, Child :kbd:`]`
-   Starting at the currently selected bones select their immediate parents or all of their children.
-   The active bone is moved with the selection. When selecting children, the first connected
-   child is chosen as the active. In case there are no connected bones, the first child will be active.
+   You can deselect the active bone and select its immediate parent or one of its children.
 
 
 Extend Parent/Child
 ===================
 
 Extend Parent :kbd:`Shift-[`, Extend Child :kbd:`Shift-]`
-   Similar to *Parent*/*Child* but it keeps the current selection. The active bone is still moved.
+   Similar to *Parent*/*Child* but it keeps the active bone in the selection.
 

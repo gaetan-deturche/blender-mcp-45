@@ -9,9 +9,11 @@ Fluid
    :Panel:     :menuselection:`Particle System --> Physics`
    :Type:      Fluid
 
-.. figure:: /images/physics_particles_emitter_physics_fluid_panel.png
+.. todo:: Update image
 
-   Fluid Physics settings.
+   .. figure:: /images/physics_particles_emitter_physics_fluid_panel.png
+
+      Fluid Physics settings.
 
 Fluid particles are similar to Newtonian ones but this time particles are influenced by
 internal forces like pressure, surface tension, viscosity, springs, etc.

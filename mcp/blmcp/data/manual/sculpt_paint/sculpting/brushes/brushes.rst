@@ -1,11 +1,11 @@
 
-************************
-Mesh Sculpt Brush Assets
-************************
+
+*******
+Brushes
+*******
 
 This is a list of all provided 'Essentials' brush assets that come with Blender.
 These are based on various :ref:`Brush Types <sculpt-tool-settings-brush-type>` which are mentioned for each brush..
-
 
 Add/Subtract Brushes
 ====================
@@ -169,15 +169,6 @@ Elastic Snake Hook
 
    Similar to Elastic Grab but rotates affected geometry based on the stroke direction.
 
-Scene Project
-   | Brush Type: :doc:`scene_project`
-
-   Projects vertices of the active object onto other visible meshes in the scene.
-
-   This provides more flexible and localized control than the
-   :doc:`Shrinkwrap modifier </modeling/modifiers/deform/shrinkwrap>`,
-   making it useful for manually conforming geometry to a target surface.
-
 Snake Hook
    | Brush Type: :doc:`snake_hook`
    | Shortcut:  :kbd:`K`
@@ -210,7 +201,7 @@ Nudge
 Twist
    Brush Type: :doc:`rotate`
 
-   Rotates vertices within the brush in the direction the cursor is moved.
+   Rotates vertices within the brush in the direction mouse.
 
 Relax Slide
    Brush Type: :doc:`slide_relax`
@@ -248,8 +239,6 @@ Mask
    | Shortcut:  :kbd:`M`
 
    Paints a selection on parts of the mesh to be unaffected by other brushes.
-   It is possible to temporarily toggle this brush with :kbd:`Alt-LMB`,
-   to temporarily toggle mask erasing use :kbd:`Ctrl-Alt-LMB`,
 
 Draw Face Sets
    Brush Type: :doc:`draw_facesets`
@@ -275,6 +264,31 @@ Painting Brushes
 Recognizable by their blue thumbnails.
 These brushes are used for painting color attributes within sculpt mode.
 
+Paint Hard
+   Brush Type: :doc:`paint`
+
+   A simple hard round falloff.
+
+Paint Soft
+   Brush Type: :doc:`paint`
+
+   A soft round falloff with pressure sensitivity for only the strength.
+
+Paint Hard Pressure
+   Brush Type: :doc:`paint`
+
+   A hard round falloff with pressure sensitivity for the brush radius.
+
+Paint Soft Pressure
+   Brush Type: :doc:`paint`
+
+   A soft round falloff with pressure sensitivity for both radius and strength.
+
+Paint Square
+   Brush Type: :doc:`paint`
+
+   A hard square brush falloff.
+
 Airbrush
    Brush Type: :doc:`paint`
 
@@ -295,51 +309,21 @@ Blend Square
 
    Same as Blend Hard but with a hard square falloff.
 
-Blur
-   Brush Type: :doc:`paint`
-
-   Smooths painted colors; softening transitions and reducing sharp color differences.
-
 Paint Blend
    Brush Type: :doc:`paint`
 
    A mix of a Paint and Blend brush. On low pen pressure the brush averages colors and with high pen pressure it
    paints colors.
 
-Paint Hard
-   Brush Type: :doc:`paint`
+Smear
+   Brush Type: :doc:`smear`
 
-   A simple hard round falloff.
-
-Paint Hard Pressure
-   Brush Type: :doc:`paint`
-
-   A hard round falloff with pressure sensitivity for the brush size.
-
-Paint Soft
-   Brush Type: :doc:`paint`
-
-   A soft round falloff with pressure sensitivity for only the strength.
-
-Paint Soft Pressure
-   Brush Type: :doc:`paint`
-
-   A soft round falloff with pressure sensitivity for both size and strength.
-
-Paint Square
-   Brush Type: :doc:`paint`
-
-   A hard square brush falloff.
+   Smears colors along the stroke.
 
 Sharpen
    Brush Type: :doc:`smear`
 
    Pinches the colors inwards to create sharp edges or points.
-
-Smear
-   Brush Type: :doc:`smear`
-
-   Smears colors along the stroke.
 
 
 Simulation Brushes

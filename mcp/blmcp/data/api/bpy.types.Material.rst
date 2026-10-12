@@ -5,313 +5,302 @@ Material(ID)
 
 base classes --- :class:`bpy_struct`, :class:`ID`
 
-
 .. class:: Material(ID)
 
    Material data-block to define the appearance of geometric objects for rendering
 
    .. attribute:: alpha_threshold
 
-      A pixel is rendered only if its alpha value is above this threshold (in [0, 1], default 0.5)
+      A pixel is rendered only if its alpha value is above this threshold
 
-      :type: float
+      :type: float in [0, 1], default 0.5
 
    .. data:: animation_data
 
-      Animation data for this data-block (readonly)
+      Animation data for this data-block
 
-      :type: :class:`AnimData` | None
+      :type: :class:`AnimData`, (readonly)
 
    .. attribute:: blend_method
 
-      Blend Mode for Transparent Faces (Deprecated: use 'surface_render_method') (default ``'OPAQUE'``)
+      Blend Mode for Transparent Faces (Deprecated: use 'surface_render_method')
 
-      - ``OPAQUE``
+      * ``OPAQUE``
         Opaque -- Render surface without transparency.
-      - ``CLIP``
+      * ``CLIP``
         Alpha Clip -- Use the alpha threshold to clip the visibility (binary visibility).
-      - ``HASHED``
+      * ``HASHED``
         Alpha Hashed -- Use noise to dither the binary visibility (works well with multi-samples).
-      - ``BLEND``
+      * ``BLEND``
         Alpha Blend -- Render polygon transparent, depending on alpha channel of the texture.
 
-      :type: Literal['OPAQUE', 'CLIP', 'HASHED', 'BLEND']
+      :type: enum in [``'OPAQUE'``, ``'CLIP'``, ``'HASHED'``, ``'BLEND'``], default ``'OPAQUE'``
+
+   .. data:: cycles
+
+      Cycles material settings
+
+      :type: :class:`CyclesMaterialSettings`, (readonly)
 
    .. attribute:: diffuse_color
 
-      Diffuse color of the material (array of 4 items, in [0, inf], default (0.8, 0.8, 0.8, 1.0))
+      Diffuse color of the material
 
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, inf], default (0.8, 0.8, 0.8, 1.0)
 
    .. attribute:: displacement_method
 
-      Method to use for the displacement (default ``'BUMP'``)
+      Method to use for the displacement
 
-      - ``BUMP``
+      * ``BUMP``
         Bump Only -- Bump mapping to simulate the appearance of displacement.
-      - ``DISPLACEMENT``
+      * ``DISPLACEMENT``
         Displacement Only -- Use true displacement of surface only, requires fine subdivision.
-      - ``BOTH``
+      * ``BOTH``
         Displacement and Bump -- Combination of true displacement and bump mapping for finer detail.
 
-      :type: Literal['BUMP', 'DISPLACEMENT', 'BOTH']
+      :type: enum in [``'BUMP'``, ``'DISPLACEMENT'``, ``'BOTH'``], default ``'BUMP'``
 
    .. data:: grease_pencil
 
-      Grease Pencil color settings for material (readonly)
+      Grease Pencil color settings for material
 
-      :type: :class:`MaterialGPencilStyle` | None
+      :type: :class:`MaterialGPencilStyle`, (readonly)
 
    .. data:: is_grease_pencil
 
-      True if this material has Grease Pencil data (default False, readonly)
+      True if this material has Grease Pencil data
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. attribute:: line_color
 
-      Line color used for Freestyle line rendering (array of 4 items, in [0, inf], default (0.0, 0.0, 0.0, 0.0))
+      Line color used for Freestyle line rendering
 
-      :type: :class:`bpy_prop_array`\ [float]
+      :type: float array of 4 items in [0, inf], default (0.0, 0.0, 0.0, 0.0)
 
    .. attribute:: line_priority
 
-      The line color of a higher priority is used at material boundaries (in [0, 32767], default 0)
+      The line color of a higher priority is used at material boundaries
 
-      :type: int
+      :type: int in [0, 32767], default 0
 
    .. data:: lineart
 
-      Line Art settings for material (readonly)
+      Line Art settings for material
 
-      :type: :class:`MaterialLineArt` | None
+      :type: :class:`MaterialLineArt`, (readonly)
 
    .. attribute:: max_vertex_displacement
 
-      The max distance a vertex can be displaced. Displacements over this threshold may cause visibility issues. (in [0, inf], default 0.0)
+      The max distance a vertex can be displaced. Displacements over this threshold may cause visibility issues.
 
-      :type: float
+      :type: float in [0, inf], default 0.0
 
    .. attribute:: metallic
 
-      Amount of mirror reflection for raytrace (in [0, 1], default 0.0)
+      Amount of mirror reflection for raytrace
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. data:: node_tree
 
-      Node tree for node based materials (readonly)
+      Node tree for node based materials
 
-      :type: :class:`NodeTree` | None
+      :type: :class:`NodeTree`, (readonly)
 
    .. attribute:: paint_active_slot
 
-      Index of active texture paint slot (in [0, 32767], default 0)
+      Index of active texture paint slot
 
-      :type: int
+      :type: int in [0, 32767], default 0
 
    .. attribute:: paint_clone_slot
 
-      Index of clone texture paint slot (in [0, 32767], default 0)
+      Index of clone texture paint slot
 
-      :type: int
+      :type: int in [0, 32767], default 0
 
    .. attribute:: pass_index
 
-      Index number for the "Material Index" render pass (in [0, 32767], default 0)
+      Index number for the "Material Index" render pass
 
-      :type: int
+      :type: int in [0, 32767], default 0
 
    .. attribute:: preview_render_type
 
-      Type of preview render (default ``'SPHERE'``)
+      Type of preview render
 
-      - ``FLAT``
+      * ``FLAT``
         Flat -- Flat XY plane.
-      - ``SPHERE``
+      * ``SPHERE``
         Sphere -- Sphere.
-      - ``CUBE``
+      * ``CUBE``
         Cube -- Cube.
-      - ``HAIR``
+      * ``HAIR``
         Hair -- Hair strands.
-      - ``SHADERBALL``
+      * ``SHADERBALL``
         Shader Ball -- Shader ball.
-      - ``CLOTH``
+      * ``CLOTH``
         Cloth -- Cloth.
-      - ``FLUID``
+      * ``FLUID``
         Fluid -- Fluid.
 
-      :type: Literal['FLAT', 'SPHERE', 'CUBE', 'HAIR', 'SHADERBALL', 'CLOTH', 'FLUID']
+      :type: enum in [``'FLAT'``, ``'SPHERE'``, ``'CUBE'``, ``'HAIR'``, ``'SHADERBALL'``, ``'CLOTH'``, ``'FLUID'``], default ``'SPHERE'``
 
    .. attribute:: refraction_depth
 
-      Approximate the thickness of the object to compute two refraction events (0 is disabled) (Deprecated) (in [0, inf], default 0.0)
+      Approximate the thickness of the object to compute two refraction events (0 is disabled) (Deprecated)
 
-      :type: float
+      :type: float in [0, inf], default 0.0
 
    .. attribute:: roughness
 
-      Roughness of the material (in [0, 1], default 0.4)
+      Roughness of the material
 
-      :type: float
+      :type: float in [0, 1], default 0.4
 
    .. attribute:: show_transparent_back
 
-      Render multiple transparent layers (may introduce transparency sorting problems) (Deprecated: use 'use_tranparency_overlap') (default True)
+      Render multiple transparent layers (may introduce transparency sorting problems) (Deprecated: use 'use_tranparency_overlap')
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: specular_color
 
-      Specular color of the material (array of 3 items, in [0, inf], default (1.0, 1.0, 1.0))
+      Specular color of the material
 
-      :type: :class:`mathutils.Color`
+      :type: :class:`mathutils.Color` of 3 items in [0, inf], default (1.0, 1.0, 1.0)
 
    .. attribute:: specular_intensity
 
-      How intense (bright) the specular reflection is (in [0, 1], default 0.5)
+      How intense (bright) the specular reflection is
 
-      :type: float
+      :type: float in [0, 1], default 0.5
 
    .. attribute:: surface_render_method
 
-      Controls the blending and the compatibility with certain features (default ``'DITHERED'``)
+      Controls the blending and the compatibility with certain features
 
-      - ``DITHERED``
+      * ``DITHERED``
         Dithered -- Allows for grayscale hashed transparency, and compatible with render passes and raytracing. Also known as deferred rendering..
-      - ``BLENDED``
+      * ``BLENDED``
         Blended -- Allows for colored transparency, but incompatible with render passes and raytracing. Also known as forward rendering..
 
-      :type: Literal['DITHERED', 'BLENDED']
+      :type: enum in [``'DITHERED'``, ``'BLENDED'``], default ``'DITHERED'``
 
    .. data:: texture_paint_images
 
-      Texture images used for texture painting (default None, readonly)
+      Texture images used for texture painting
 
-      :type: :class:`bpy_prop_collection`\ [:class:`Image`]
+      :type: :class:`bpy_prop_collection` of :class:`Image`, (readonly)
 
    .. data:: texture_paint_slots
 
-      Texture slots defining the mapping and influence of textures (default None, readonly)
+      Texture slots defining the mapping and influence of textures
 
-      :type: :class:`bpy_prop_collection`\ [:class:`TexPaintSlot`]
+      :type: :class:`bpy_prop_collection` of :class:`TexPaintSlot`, (readonly)
 
    .. attribute:: thickness_mode
 
-      Approximation used to model the light interactions inside the object (default ``'SPHERE'``)
+      Approximation used to model the light interactions inside the object
 
-      - ``SPHERE``
+      * ``SPHERE``
         Sphere -- Approximate the object as a sphere whose diameter is equal to the thickness defined by the node tree.
-      - ``SLAB``
+      * ``SLAB``
         Slab -- Approximate the object as an infinite slab of thickness defined by the node tree.
 
-      :type: Literal['SPHERE', 'SLAB']
+      :type: enum in [``'SPHERE'``, ``'SLAB'``], default ``'SPHERE'``
 
    .. attribute:: use_backface_culling
 
-      Use back face culling to hide the back side of faces (default False)
+      Use back face culling to hide the back side of faces
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_backface_culling_lightprobe_volume
 
-      Consider material single sided for light probe volume capture. Additionally helps rejecting probes inside the object to avoid light leaks. (default True)
+      Consider material single sided for light probe volume capture. Additionally helps rejecting probes inside the object to avoid light leaks.
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_backface_culling_shadow
 
-      Use back face culling when casting shadows (default False)
+      Use back face culling when casting shadows
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_nodes
 
-      Use shader nodes to render the material (default False)
+      Use shader nodes to render the material
 
-      .. deprecated:: 5.0 removal planned in version 6.0
-
-         Unused but kept for compatibility reasons. Setting the property has no effect, and getting it always returns True.
-
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_preview_world
 
-      Use the current world background to light the preview render (default False)
+      Use the current world background to light the preview render
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_raytrace_refraction
 
-      Use raytracing to determine transmitted color instead of using only light probes. This prevents the surface from contributing to the lighting of surfaces not using this setting. (default False)
+      Use raytracing to determine transmitted color instead of using only light probes. This prevents the surface from contributing to the lighting of surfaces not using this setting.
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_screen_refraction
 
-      Use raytracing to determine transmitted color instead of using only light probes. This prevents the surface from contributing to the lighting of surfaces not using this setting. Deprecated: use 'use_raytrace_refraction'. (default False)
+      Use raytracing to determine transmitted color instead of using only light probes. This prevents the surface from contributing to the lighting of surfaces not using this setting. Deprecated: use 'use_raytrace_refraction'.
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_sss_translucency
 
-      Add translucency effect to subsurface (Deprecated) (default False)
+      Add translucency effect to subsurface (Deprecated)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_thickness_from_shadow
 
-      Use the shadow maps from shadow casting lights to refine the thickness defined by the material node tree (default False)
+      Use the shadow maps from shadow casting lights to refine the thickness defined by the material node tree
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_transparency_overlap
 
-      Render multiple transparent layers (may introduce transparency sorting problems) (default True)
+      Render multiple transparent layers (may introduce transparency sorting problems)
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_transparent_shadow
 
-      Use transparent shadows for this material if it contains a Transparent BSDF, disabling will render faster but not give accurate shadows (default True)
+      Use transparent shadows for this material if it contains a Transparent BSDF, disabling will render faster but not give accurate shadows
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: volume_intersection_method
 
-      Determines which inner part of the mesh will produce volumetric effect (default ``'FAST'``)
+      Determines which inner part of the mesh will produce volumetric effect
 
-      - ``FAST``
+      * ``FAST``
         Fast -- Each face is considered as a medium interface. Gives correct results for manifold geometry that contains no inner parts..
-      - ``ACCURATE``
+      * ``ACCURATE``
         Accurate -- Faces are considered as medium interface only when they have different consecutive facing. Gives correct results as long as the max ray depth is not exceeded. Have significant memory overhead compared to the fast method..
 
-      :type: Literal['FAST', 'ACCURATE']
-
-   .. method:: inline_shader_nodes()
-
-      Get the inlined shader nodes of this material. This preprocesses the node tree
-      to remove nested groups, repeat zones and more.
-      
-      :return: The inlined shader nodes.
-      :rtype: :class:`InlineShaderNodes`
+      :type: enum in [``'FAST'``, ``'ACCURATE'``], default ``'FAST'``
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -322,28 +311,27 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
-   - :class:`ID.name`
-   - :class:`ID.name_full`
-   - :class:`ID.id_type`
-   - :class:`ID.session_uid`
-   - :class:`ID.is_evaluated`
-   - :class:`ID.original`
-   - :class:`ID.users`
-   - :class:`ID.use_fake_user`
-   - :class:`ID.use_extra_user`
-   - :class:`ID.is_embedded_data`
-   - :class:`ID.is_linked_packed`
-   - :class:`ID.is_missing`
-   - :class:`ID.is_runtime_data`
-   - :class:`ID.is_editable`
-   - :class:`ID.tag`
-   - :class:`ID.is_library_indirect`
-   - :class:`ID.library`
-   - :class:`ID.library_weak_reference`
-   - :class:`ID.asset_data`
-   - :class:`ID.override_library`
-   - :class:`ID.preview`
+   * :class:`bpy_struct.id_data`
+   * :class:`ID.name`
+   * :class:`ID.name_full`
+   * :class:`ID.id_type`
+   * :class:`ID.session_uid`
+   * :class:`ID.is_evaluated`
+   * :class:`ID.original`
+   * :class:`ID.users`
+   * :class:`ID.use_fake_user`
+   * :class:`ID.use_extra_user`
+   * :class:`ID.is_embedded_data`
+   * :class:`ID.is_missing`
+   * :class:`ID.is_runtime_data`
+   * :class:`ID.is_editable`
+   * :class:`ID.tag`
+   * :class:`ID.is_library_indirect`
+   * :class:`ID.library`
+   * :class:`ID.library_weak_reference`
+   * :class:`ID.asset_data`
+   * :class:`ID.override_library`
+   * :class:`ID.preview`
 
 Inherited Functions
 -------------------
@@ -351,49 +339,47 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
-   - :class:`ID.bl_system_properties_get`
-   - :class:`ID.rename`
-   - :class:`ID.evaluated_get`
-   - :class:`ID.copy`
-   - :class:`ID.asset_mark`
-   - :class:`ID.asset_clear`
-   - :class:`ID.asset_generate_preview`
-   - :class:`ID.override_create`
-   - :class:`ID.override_hierarchy_create`
-   - :class:`ID.user_clear`
-   - :class:`ID.user_remap`
-   - :class:`ID.make_local`
-   - :class:`ID.user_of_id`
-   - :class:`ID.animation_data_create`
-   - :class:`ID.animation_data_clear`
-   - :class:`ID.update_tag`
-   - :class:`ID.preview_ensure`
-   - :class:`ID.bl_rna_get_subclass`
-   - :class:`ID.bl_rna_get_subclass_py`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
+   * :class:`ID.rename`
+   * :class:`ID.evaluated_get`
+   * :class:`ID.copy`
+   * :class:`ID.asset_mark`
+   * :class:`ID.asset_clear`
+   * :class:`ID.asset_generate_preview`
+   * :class:`ID.override_create`
+   * :class:`ID.override_hierarchy_create`
+   * :class:`ID.user_clear`
+   * :class:`ID.user_remap`
+   * :class:`ID.make_local`
+   * :class:`ID.user_of_id`
+   * :class:`ID.animation_data_create`
+   * :class:`ID.animation_data_clear`
+   * :class:`ID.update_tag`
+   * :class:`ID.preview_ensure`
+   * :class:`ID.bl_rna_get_subclass`
+   * :class:`ID.bl_rna_get_subclass_py`
 
 References
 ----------
@@ -401,52 +387,52 @@ References
 .. hlist::
    :columns: 2
 
-   - :mod:`bpy.context.material`
-   - :class:`BlendData.materials`
-   - :class:`BlendDataMaterials.create_gpencil_data`
-   - :class:`BlendDataMaterials.new`
-   - :class:`BlendDataMaterials.remove`
-   - :class:`BlendDataMaterials.remove_gpencil_data`
-   - :class:`BrushGpencilSettings.material`
-   - :class:`BrushGpencilSettings.material_alt`
-   - :class:`Curve.materials`
-   - :class:`Curves.materials`
-   - :class:`GeometryNodeInputMaterial.material`
-   - :class:`GreasePencil.materials`
-   - :class:`GreasePencilArrayModifier.material_filter`
-   - :class:`GreasePencilBuildModifier.material_filter`
-   - :class:`GreasePencilColorModifier.material_filter`
-   - :class:`GreasePencilDashModifierData.material_filter`
-   - :class:`GreasePencilEnvelopeModifier.material_filter`
-   - :class:`GreasePencilHookModifier.material_filter`
-   - :class:`GreasePencilLatticeModifier.material_filter`
-   - :class:`GreasePencilLengthModifier.material_filter`
-   - :class:`GreasePencilLineartModifier.target_material`
-   - :class:`GreasePencilMirrorModifier.material_filter`
-   - :class:`GreasePencilMultiplyModifier.material_filter`
-   - :class:`GreasePencilNoiseModifier.material_filter`
-   - :class:`GreasePencilOffsetModifier.material_filter`
-   - :class:`GreasePencilOpacityModifier.material_filter`
-   - :class:`GreasePencilOutlineModifier.material_filter`
-   - :class:`GreasePencilOutlineModifier.outline_material`
-   - :class:`GreasePencilShrinkwrapModifier.material_filter`
-   - :class:`GreasePencilSimplifyModifier.material_filter`
-   - :class:`GreasePencilSmoothModifier.material_filter`
-   - :class:`GreasePencilSubdivModifier.material_filter`
-   - :class:`GreasePencilTextureModifier.material_filter`
-   - :class:`GreasePencilThickModifierData.material_filter`
-   - :class:`GreasePencilTintModifier.material_filter`
-   - :class:`GreasePencilWeightAngleModifier.material_filter`
-   - :class:`GreasePencilWeightProximityModifier.material_filter`
-   - :class:`IDMaterials.append`
-   - :class:`IDMaterials.pop`
-   - :class:`MaterialSlot.material`
-   - :class:`Mesh.materials`
-   - :class:`MetaBall.materials`
-   - :class:`NodeSocketMaterial.default_value`
-   - :class:`NodeTreeInterfaceSocketMaterial.default_value`
-   - :class:`Object.active_material`
-   - :class:`PointCloud.materials`
-   - :class:`ViewLayer.material_override`
-   - :class:`Volume.materials`
+   * :mod:`bpy.context.material`
+   * :class:`BlendData.materials`
+   * :class:`BlendDataMaterials.create_gpencil_data`
+   * :class:`BlendDataMaterials.new`
+   * :class:`BlendDataMaterials.remove`
+   * :class:`BlendDataMaterials.remove_gpencil_data`
+   * :class:`BrushGpencilSettings.material`
+   * :class:`BrushGpencilSettings.material_alt`
+   * :class:`Curve.materials`
+   * :class:`Curves.materials`
+   * :class:`GeometryNodeInputMaterial.material`
+   * :class:`GreasePencilArrayModifier.material_filter`
+   * :class:`GreasePencilBuildModifier.material_filter`
+   * :class:`GreasePencilColorModifier.material_filter`
+   * :class:`GreasePencilDashModifierData.material_filter`
+   * :class:`GreasePencilEnvelopeModifier.material_filter`
+   * :class:`GreasePencilHookModifier.material_filter`
+   * :class:`GreasePencilLatticeModifier.material_filter`
+   * :class:`GreasePencilLengthModifier.material_filter`
+   * :class:`GreasePencilLineartModifier.target_material`
+   * :class:`GreasePencilMirrorModifier.material_filter`
+   * :class:`GreasePencilMultiplyModifier.material_filter`
+   * :class:`GreasePencilNoiseModifier.material_filter`
+   * :class:`GreasePencilOffsetModifier.material_filter`
+   * :class:`GreasePencilOpacityModifier.material_filter`
+   * :class:`GreasePencilOutlineModifier.material_filter`
+   * :class:`GreasePencilOutlineModifier.outline_material`
+   * :class:`GreasePencilShrinkwrapModifier.material_filter`
+   * :class:`GreasePencilSimplifyModifier.material_filter`
+   * :class:`GreasePencilSmoothModifier.material_filter`
+   * :class:`GreasePencilSubdivModifier.material_filter`
+   * :class:`GreasePencilTextureModifier.material_filter`
+   * :class:`GreasePencilThickModifierData.material_filter`
+   * :class:`GreasePencilTintModifier.material_filter`
+   * :class:`GreasePencilWeightAngleModifier.material_filter`
+   * :class:`GreasePencilWeightProximityModifier.material_filter`
+   * :class:`GreasePencilv3.materials`
+   * :class:`IDMaterials.append`
+   * :class:`IDMaterials.pop`
+   * :class:`MaterialSlot.material`
+   * :class:`Mesh.materials`
+   * :class:`MetaBall.materials`
+   * :class:`NodeSocketMaterial.default_value`
+   * :class:`NodeTreeInterfaceSocketMaterial.default_value`
+   * :class:`Object.active_material`
+   * :class:`PointCloud.materials`
+   * :class:`ViewLayer.material_override`
+   * :class:`Volume.materials`
 

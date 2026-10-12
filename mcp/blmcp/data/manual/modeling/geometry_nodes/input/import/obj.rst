@@ -33,6 +33,12 @@ Path
    The path to the `.obj` file to be imported.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

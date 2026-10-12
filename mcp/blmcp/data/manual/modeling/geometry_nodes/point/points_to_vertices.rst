@@ -23,6 +23,12 @@ Selection
    Boolean field used to determine if each point will be converted to a vertex.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

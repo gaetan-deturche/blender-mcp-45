@@ -25,6 +25,12 @@ Corner Index
       the face corner domain.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

@@ -35,8 +35,15 @@ Add Menu
    :Menu:      :menuselection:`Add`
    :Shortcut:  :kbd:`Shift-A`
 
-In the 3D Viewport, Shift-A to add a new bone to your armature.
-More information about adding bones can be found :doc:`here </animation/armatures/bones/add_bones>`.
+In the 3D Viewport, :kbd:`Shift-A` to add a new bone to your armature.
+
+This bone will be:
+
+- Of one unit of length.
+- Oriented towards the global Z axis.
+- With its root placed at the 3D cursor position.
+- With no relationship with any other bone of the armature.
+
 
 .. _animation_armatures_bones_locking:
 

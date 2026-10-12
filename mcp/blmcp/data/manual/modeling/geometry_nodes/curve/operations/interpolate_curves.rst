@@ -44,6 +44,12 @@ Max Neighbors
    Maximum amount of close guide curves that are taken into account for interpolation.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

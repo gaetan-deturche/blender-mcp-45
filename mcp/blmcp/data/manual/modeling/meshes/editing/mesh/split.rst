@@ -1,17 +1,18 @@
+.. _bpy.ops.mesh.split:
+
 *****
 Split
 *****
 
-The *Split* menu can be accessed as a popover by pressing :kbd:`Alt-M`.
+.. reference::
 
-These operators are about splitting meshes by disconnecting faces from each other.
-For splitting faces into smaller ones, see the :doc:`/modeling/meshes/editing/mesh/knife_topology_tool`
-or the :doc:`/modeling/meshes/editing/vertex/connect_vertex_path` operator.
+   :Mode:      Edit Mode
+   :Menu:      :menuselection:`Mesh --> Split`
+   :Shortcut:  :kbd:`Alt-M`
 
-.. _bpy.ops.mesh.split:
 
-Split Selection
-===============
+Selection
+=========
 
 .. reference::
 
@@ -19,54 +20,60 @@ Split Selection
    :Menu:      :menuselection:`Mesh --> Split --> Selection`
    :Shortcut:  :kbd:`Y`
 
-Cuts the mesh along the border of the selected faces. The faces can then be moved elsewhere.
+Splits (disconnects) the selection from the rest of the mesh.
+The border edge to any non-selected elements are duplicated.
 
-This operator can also disconnect "wires" (edges that are not part of a face) from
-their surroundings. However, using it on edges that *are* part of a face will simply duplicate them.
-
-.. figure:: /images/modeling_meshes_editing_mesh_split_selection.png
-
-   Disconnecting inner faces from their surroundings.
-
-.. seealso::
-
-   The :doc:`/modeling/meshes/editing/mesh/separate` operator disconnects the selection
-   and moves it into a new mesh object.
+Note that the "copy" is left exactly at the same position as the original, so you must move it
+:kbd:`G` to see it clearly...
 
 
 .. _bpy.ops.mesh.edge_split:
 
-Split Faces by Edges
-====================
+Faces by Edges
+==============
 
 .. reference::
 
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Mesh --> Split --> Faces by Edges`
 
-Cuts the mesh along the selected edges. The vertices can then be pulled apart to create a hole.
+*Faces by Edges* is similar to the *Rip* tool. When two or more touching interior edges,
+or a border edge is selected, a hole will be created,
+and the selected edges will be duplicated to form the border of the hole.
 
-.. figure:: /images/modeling_meshes_editing_mesh_split_faces-by-edges.png
+.. list-table::
 
-   Splitting by selected edges.
+   * - .. figure:: /images/modeling_meshes_editing_mesh_split_edges-before.png
+          :width: 320px
 
-.. seealso::
+          Selected edges.
 
-   :doc:`/modeling/meshes/editing/vertex/rip_vertices` also cuts neighboring unselected edges.
+     - .. figure:: /images/modeling_meshes_editing_mesh_split_edges-after.png
+          :width: 320px
 
-Split Faces & Edges by Vertices
-===============================
+          Adjacent face moved to reveal hole left by split.
+
+
+Faces & Edges by Vertices
+=========================
 
 .. reference::
 
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Mesh --> Split --> Faces & Edges by Vertices`
 
-Cuts the mesh along *all* neighboring edges of each selected vertex. (This is different from
-*Rip Vertices* which only cuts two edges per vertex.)
+*Faces & Edges by Vertices* is similar to *Faces by Edges* except that
+it also splits the vertices of the adjacent connecting edges.
+This has the same functionality as manually ripping all faces and edges away from a vertex.
 
-The vertices can then be pulled apart to create a hole.
+.. list-table::
 
-.. figure:: /images/modeling_meshes_editing_mesh_split_faces-and-edges-by-vertices.png
+   * - .. figure:: /images/modeling_meshes_editing_mesh_split_faces-before.png
+          :width: 320px
 
-   Splitting by selected vertices.
+          Before.
+
+     - .. figure:: /images/modeling_meshes_editing_mesh_split_faces-after.png
+          :width: 320px
+
+          After (also moving edges away).

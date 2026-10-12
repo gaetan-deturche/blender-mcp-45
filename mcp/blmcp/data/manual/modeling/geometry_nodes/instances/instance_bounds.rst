@@ -29,6 +29,12 @@ Use Radius
    take the radius attribute into account when computing the bounds.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

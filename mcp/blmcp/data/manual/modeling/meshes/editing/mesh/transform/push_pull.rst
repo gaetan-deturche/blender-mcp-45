@@ -11,35 +11,27 @@ Push/Pull
    :Tool:      :menuselection:`Toolbar --> Shrink/Fatten --> Push/Pull`
    :Menu:      :menuselection:`Object/Mesh --> Transform --> Push/Pull`
 
-Moves the selected elements further away from or closer to the
-:doc:`Pivot Point </editors/3dview/controls/pivot_point/index>`,
-all by the same distance.
+.. figure:: /images/modeling_meshes_editing_mesh_transform_push-pull_operator-panel.png
+   :align: right
 
-When using the tool, simply drag the yellow pin.
+   Push/Pull distance.
 
-When using the menu item, move the mouse down to Push or up to Pull
-(Alternatively, type a number for the *Distance* option.)
-Then press :kbd:`LMB` or :kbd:`Return` to confirm,
-or :kbd:`RMB` or :kbd:`Esc` to cancel.
+Moves the selected elements closer to (Push) or further away from (Pull) the pivot point,
+all by the same distance. You can control this distance by moving the mouse up or down,
+typing a number, or using the slider in the :ref:`bpy.ops.screen.redo_last` panel.
 
-After confirming, the distance can still be changed in the
-:ref:`bpy.ops.screen.redo_last` panel.
 
-Options
-=======
+Examples
+========
 
-Distance
-   How far to push (negative) or pull (positive) the selected items.
-Mirror Editing
-   Whether to also affect matching geometry on the other side of the mesh.
-   :ref:`Mesh Symmetry <modeling_meshes_tools-settings_mirror>`
-   needs to be enabled for this to work.
-Proportional Editing
-   See :doc:`Proportional Editing </editors/3dview/controls/proportional_editing>`.
+.. figure:: /images/modeling_meshes_editing_mesh_transform_push-pull_objects-equidistant.png
 
-Example
-=======
+   Equidistant objects being pushed together.
+
+.. figure:: /images/modeling_meshes_editing_mesh_transform_push-pull_objects-random.png
+
+   Random objects being pushed together.
 
 .. figure:: /images/modeling_meshes_editing_mesh_transform_push-pull_vertices.png
 
-   Pushing vertices away from the 3D Cursor (middle) compared to scaling (right).
+   Push (middle) vertices around the 3D cursor compared to Scale (right).

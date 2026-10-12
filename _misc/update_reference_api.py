@@ -25,6 +25,8 @@ def _rst_transform(dst_dir: str) -> None:
     """
     old = ".. literalinclude:: ../examples/"
     new = ".. literalinclude:: ./examples/"
+    # API builds generated on Windows use backslash separators.
+    old_win = ".. literalinclude:: ..\\examples\\"
     for dirpath, _dirnames, filenames in os.walk(dst_dir):
         for filename in filenames:
             if not filename.endswith(".rst"):
@@ -32,7 +34,7 @@ def _rst_transform(dst_dir: str) -> None:
             filepath = os.path.join(dirpath, filename)
             with open(filepath, "r", encoding="utf-8") as fh:
                 data = fh.read()
-            data_replaced = data.replace(old, new)
+            data_replaced = data.replace(old, new).replace(old_win, new)
             if data_replaced != data:
                 with open(filepath, "w", encoding="utf-8") as fh:
                     fh.write(data_replaced)

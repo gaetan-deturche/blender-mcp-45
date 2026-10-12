@@ -7,8 +7,6 @@ Strip Modifier Type Items
 
 :COLOR_BALANCE: Color Balance.
 
-:COMPOSITOR: Compositor.
-
 :CURVES: Curves.
 
 :HUE_CORRECT: Hue Correct.
@@ -20,8 +18,4 @@ Strip Modifier Type Items
 :WHITE_BALANCE: White Balance.
 
 :SOUND_EQUALIZER: Sound Equalizer.
-
-:PITCH: Pitch.
-
-:ECHO: Echo.
 

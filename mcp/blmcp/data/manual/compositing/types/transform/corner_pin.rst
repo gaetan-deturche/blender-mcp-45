@@ -13,9 +13,6 @@ The Corner Pin node uses explicit corner values for a plane warp transformation.
 It works like the :doc:`Plane Track Deform </compositing/types/tracking/plane_track_deform>` node,
 but without using "plane track" data from the Movie Clip Editor.
 
-The transformation of the input Image is applied before distortion, this consequently means that
-translations will introduce clipping.
-
 
 Inputs
 ======
@@ -23,11 +20,11 @@ Inputs
 Image
    Standard color input.
 Corners
-   Four vector inputs to define the plane warping.
+   Four vector inputs to define the plane warping. (Z component of vector inputs is ignored.)
 
 
-Sampling
---------
+Properties
+==========
 
 Interpolation
    Determines how pixel values are interpolated when scaling or transforming images.

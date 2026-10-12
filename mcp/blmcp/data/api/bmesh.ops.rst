@@ -15,40 +15,39 @@ Operator Example
 This script shows how operators can be used to model a link of a chain.
 
 .. literalinclude:: __/examples/bmesh.ops.1.py
-
 .. function:: smooth_vert(bm, verts=[], factor=0, mirror_clip_x=False, mirror_clip_y=False, mirror_clip_z=False, clip_dist=0, use_axis_x=False, use_axis_y=False, use_axis_z=False)
 
    Vertex Smooth.
 
    Smooths vertices by using a basic vertex averaging scheme.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param factor:
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg factor:
       Smoothing factor.
    :type factor: float
-   :param mirror_clip_x:
+   :arg mirror_clip_x:
       Set vertices close to the x axis before the operation to 0.
    :type mirror_clip_x: bool
-   :param mirror_clip_y:
+   :arg mirror_clip_y:
       Set vertices close to the y axis before the operation to 0.
    :type mirror_clip_y: bool
-   :param mirror_clip_z:
+   :arg mirror_clip_z:
       Set vertices close to the z axis before the operation to 0.
    :type mirror_clip_z: bool
-   :param clip_dist:
+   :arg clip_dist:
       Clipping threshold for the above three slots.
    :type clip_dist: float
-   :param use_axis_x:
+   :arg use_axis_x:
       Smooth vertices along X axis.
    :type use_axis_x: bool
-   :param use_axis_y:
+   :arg use_axis_y:
       Smooth vertices along Y axis.
    :type use_axis_y: bool
-   :param use_axis_z:
+   :arg use_axis_z:
       Smooth vertices along Z axis.
    :type use_axis_z: bool
 
@@ -57,30 +56,30 @@ This script shows how operators can be used to model a link of a chain.
 
    Vertex Smooth Laplacian.
 
-   Smooths vertices by using Laplacian smoothing proposed by
+   Smooths vertices by using Laplacian smoothing propose by.
    Desbrun, et al. Implicit Fairing of Irregular Meshes using Diffusion and Curvature Flow.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param lambda_factor:
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg lambda_factor:
       Lambda parameter.
    :type lambda_factor: float
-   :param lambda_border:
+   :arg lambda_border:
       Lambda param in border.
    :type lambda_border: float
-   :param use_x:
+   :arg use_x:
       Smooth object along X axis.
    :type use_x: bool
-   :param use_y:
+   :arg use_y:
       Smooth object along Y axis.
    :type use_y: bool
-   :param use_z:
+   :arg use_z:
       Smooth object along Z axis.
    :type use_z: bool
-   :param preserve_volume:
+   :arg preserve_volume:
       Apply volume preservation after smooth.
    :type preserve_volume: bool
 
@@ -91,11 +90,11 @@ This script shows how operators can be used to model a link of a chain.
 
    Computes an "outside" normal for the specified input faces.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
+   :type faces: list of (:class:`bmesh.types.BMFace`)
 
 
 .. function:: planar_faces(bm, faces=[], iterations=0, factor=0)
@@ -104,15 +103,15 @@ This script shows how operators can be used to model a link of a chain.
 
    Iteratively flatten faces.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input geometry.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param iterations:
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg iterations:
       Number of times to flatten faces (for when connected faces are used)
    :type iterations: int
-   :param factor:
+   :arg factor:
       Influence for making planar each iteration
    :type factor: float
    :return:
@@ -120,7 +119,7 @@ This script shows how operators can be used to model a link of a chain.
       - ``geom``:
         Output slot, computed boundary geometry.
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -129,24 +128,25 @@ This script shows how operators can be used to model a link of a chain.
 
    Region Extend.
 
-   Used to implement the select more/less tools.
-   Puts geometry surrounding regions of geometry in ``geom`` into ``geom.out``.
+   used to implement the select more/less tools.
+   this puts some geometry surrounding regions of
+   geometry in geom into geom.out.
 
-   If ``use_faces`` is 0 then ``geom.out`` spits out verts and edges,
+   if use_faces is 0 then geom.out spits out verts and edges,
    otherwise it spits out faces.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
+   :arg geom:
       Input geometry.
-   :type geom: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param use_contract:
+   :type geom: list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
+   :arg use_contract:
       Find boundary inside the regions, not outside.
    :type use_contract: bool
-   :param use_faces:
+   :arg use_faces:
       Extend from faces instead of edges.
    :type use_faces: bool
-   :param use_face_step:
+   :arg use_face_step:
       Step over connected faces.
    :type use_face_step: bool
    :return:
@@ -154,7 +154,7 @@ This script shows how operators can be used to model a link of a chain.
       - ``geom``:
         Output slot, computed boundary geometry.
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -166,12 +166,12 @@ This script shows how operators can be used to model a link of a chain.
    Rotates edges topologically. Also known as "spin edge" to some people.
    Simple example: ``[/] becomes [|] then [\]``.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param use_ccw:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg use_ccw:
       Rotate edge counter-clockwise if true, otherwise clockwise.
    :type use_ccw: bool
    :return:
@@ -179,7 +179,7 @@ This script shows how operators can be used to model a link of a chain.
       - ``edges``:
         Newly spun edges.
 
-        **type** list[:class:`bmesh.types.BMEdge`]
+        **type** list of (:class:`bmesh.types.BMEdge`)
 
    :rtype: dict[str, Any]
 
@@ -191,12 +191,12 @@ This script shows how operators can be used to model a link of a chain.
    Reverses the winding (vertex order) of faces.
    This has the effect of flipping the normal.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param flip_multires:
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg flip_multires:
       Maintain multi-res offset.
    :type flip_multires: bool
 
@@ -207,11 +207,11 @@ This script shows how operators can be used to model a link of a chain.
 
    Flip the tessellation direction of the selected quads.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
+   :type faces: list of (:class:`bmesh.types.BMFace`)
 
 
 .. function:: bisect_edges(bm, edges=[], cuts=0, edge_percents={})
@@ -221,59 +221,59 @@ This script shows how operators can be used to model a link of a chain.
    Splits input edges (but doesn't do anything else).
    This creates a 2-valence vert.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param cuts:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg cuts:
       Number of cuts.
    :type cuts: int
-   :param edge_percents:
+   :arg edge_percents:
       Undocumented.
-   :type edge_percents: dict[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`, float]
+   :type edge_percents: dict mapping vert/edge/face types to float
    :return:
 
       - ``geom_split``:
         Newly created vertices and edges.
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
 
-.. function:: mirror(bm, geom=[], matrix=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), merge_dist=0, axis='X', mirror_u=False, mirror_v=False, mirror_udim=False, use_shapekey=False)
+.. function:: mirror(bm, geom=[], matrix=mathutils.Matrix.Identity(4), merge_dist=0, axis='X', mirror_u=False, mirror_v=False, mirror_udim=False, use_shapekey=False)
 
    Mirror.
 
    Mirrors geometry along an axis. The resulting geometry is welded on using
-   ``merge_dist``. Pairs of original/mirrored vertices are welded using the ``merge_dist``
+   merge_dist. Pairs of original/mirrored vertices are welded using the merge_dist
    parameter (which defines the minimum distance for welding to happen).
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
+   :arg geom:
       Input geometry.
-   :type geom: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param matrix:
+   :type geom: list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
+   :arg matrix:
       Matrix defining the mirror transformation.
    :type matrix: :class:`mathutils.Matrix`
-   :param merge_dist:
+   :arg merge_dist:
       Maximum distance for merging. does no merging if 0.
    :type merge_dist: float
-   :param axis:
+   :arg axis:
       The axis to use.
-   :type axis: Literal['X', 'Y', 'Z']
-   :param mirror_u:
+   :type axis: enum in ['X', 'Y', 'Z'], default 'X'
+   :arg mirror_u:
       Mirror UVs across the u axis.
    :type mirror_u: bool
-   :param mirror_v:
+   :arg mirror_v:
       Mirror UVs across the v axis.
    :type mirror_v: bool
-   :param mirror_udim:
+   :arg mirror_udim:
       Mirror UVs in each tile.
    :type mirror_udim: bool
-   :param use_shapekey:
+   :arg use_shapekey:
       Transform shape keys too.
    :type use_shapekey: bool
    :return:
@@ -281,142 +281,57 @@ This script shows how operators can be used to model a link of a chain.
       - ``geom``:
         Output geometry, mirrored.
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
 
-.. function:: find_doubles(bm, verts=[], keep_verts=[], use_connected=False, dist=0)
+.. function:: find_doubles(bm, verts=[], keep_verts=[], dist=0)
 
    Find Doubles.
 
-   Takes input verts and finds vertices they should weld to.
+   Takes input verts and find vertices they should weld to.
    Outputs a mapping slot suitable for use with the weld verts BMOP.
 
-   If ``keep_verts`` is used, vertices outside that set can only be merged
+   If keep_verts is used, vertices outside that set can only be merged
    with vertices in that set.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param keep_verts:
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg keep_verts:
       List of verts to keep.
-   :type keep_verts: list[:class:`bmesh.types.BMVert`]
-   :param use_connected:
-      Limit the search for doubles by connected geometry.
-   :type use_connected: bool
-   :param dist:
+   :type keep_verts: list of (:class:`bmesh.types.BMVert`)
+   :arg dist:
       Maximum distance.
    :type dist: float
    :return:
 
       - ``targetmap``:
 
-        **type** dict[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`, :class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** dict mapping vert/edge/face types to :class:`bmesh.types.BMVert`/:class:`bmesh.types.BMEdge`/:class:`bmesh.types.BMFace`
 
    :rtype: dict[str, Any]
 
 
-.. function:: remove_doubles(bm, verts=[], use_connected=False, dist=0)
+.. function:: remove_doubles(bm, verts=[], dist=0)
 
    Remove Doubles.
 
    Finds groups of vertices closer than dist and merges them together,
    using the weld verts BMOP.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param verts:
+   :arg verts:
       Input verts.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param use_connected:
-      Limit the search for doubles by connected geometry.
-   :type use_connected: bool
-   :param dist:
-      Maximum distance.
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg dist:
+      Minimum distance.
    :type dist: float
-
-
-.. function:: circularize(bm, geom=[], factor=0, custom_radius=0, angle=0, fit_method=0, flatten=0, regular=False, lock_x=False, lock_y=False, lock_z=False, mirror_x=False, mirror_y=False, mirror_z=False)
-
-   Circularize.
-
-   Shape selected geometry into a circle.
-
-   :param bm: The bmesh to operate on.
-   :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
-      Input geometry.
-   :type geom: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param factor:
-      Influence factor: spans from 0.0 to 1.0.
-   :type factor: float
-   :param custom_radius:
-      Custom radius.
-   :type custom_radius: float
-   :param angle:
-      Rotation angle.
-   :type angle: float
-   :param fit_method:
-      Method to fit the circle.
-   :type fit_method: int
-   :param flatten:
-      Flatten factor: 0.0 projects onto the mesh, 1.0 flattens on the optimal plane.
-   :type flatten: float
-   :param regular:
-      Distributes vertices at constant distances, otherwise preserves original spacing.
-   :type regular: bool
-   :param lock_x:
-      Lock X-axis editing.
-   :type lock_x: bool
-   :param lock_y:
-      Lock Y-axis editing.
-   :type lock_y: bool
-   :param lock_z:
-      Lock Z-axis editing.
-   :type lock_z: bool
-   :param mirror_x:
-      Use X axis of the mirror modifier.
-   :type mirror_x: bool
-   :param mirror_y:
-      Use Y axis of the mirror modifier.
-   :type mirror_y: bool
-   :param mirror_z:
-      Use Z axis of the mirror modifier.
-   :type mirror_z: bool
-
-
-.. function:: flatten(bm, geom=[], factor=0, method=0, view_normal=(0.0, 0.0, 0.0), lock_x=False, lock_y=False, lock_z=False)
-
-   Flatten.
-
-   Flatten vertices on a best-fitting plane.
-
-   :param bm: The bmesh to operate on.
-   :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
-      Input geometry.
-   :type geom: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param factor:
-      Influence factor: spans from 0.0 to 1.0.
-   :type factor: float
-   :param method:
-      Plane on which vertices are flattened.
-   :type method: int
-   :param view_normal:
-      View direction in object local space.
-   :type view_normal: Sequence[float]
-   :param lock_x:
-      Lock X axis editing.
-   :type lock_x: bool
-   :param lock_y:
-      Lock Y axis editing.
-   :type lock_y: bool
-   :param lock_z:
-      Lock Z axis editing.
-   :type lock_z: bool
 
 
 .. function:: collapse(bm, edges=[], uvs=False)
@@ -425,30 +340,30 @@ This script shows how operators can be used to model a link of a chain.
 
    Collapses connected vertices
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param uvs:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg uvs:
       Also collapse UVs and such.
    :type uvs: bool
 
 
-.. function:: pointmerge_facedata(bm, verts=[], vert_target=None)
+.. function:: pointmerge_facedata(bm, verts=[], vert_snap)
 
    Face-Data Point Merge.
 
    Merge uv/vcols at a specific vertex.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param vert_target:
-      Target vertex to merge into.
-   :type vert_target: :class:`bmesh.types.BMVert` | None
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg vert_snap:
+      Snap vertex.
+   :type vert_snap: :class:`bmesh.types.BMVert`
 
 
 .. function:: average_vert_facedata(bm, verts=[])
@@ -456,33 +371,30 @@ This script shows how operators can be used to model a link of a chain.
    Average Vertices Face-vert Data.
 
    Merge uv/vcols associated with the input vertices at
-   the bounding box center.
+   the bounding box center. (I know, it's not averaging but
+   the vert_snap_to_bb_center is just too long).
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
+   :type verts: list of (:class:`bmesh.types.BMVert`)
 
 
-.. function:: pointmerge(bm, verts=[], merge_co=(0.0, 0.0, 0.0), vert_target=None)
+.. function:: pointmerge(bm, verts=[], merge_co=mathutils.Vector())
 
    Point Merge.
 
    Merge verts together at a point.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param verts:
+   :arg verts:
       Input vertices (all verts will be merged into the first).
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param merge_co:
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg merge_co:
       Position to merge at.
-   :type merge_co: Sequence[float]
-   :param vert_target:
-      Optional target vertex to merge into. Does not override merge_co.
-      Set this to preserve the custom data of the target vertex.
-   :type vert_target: :class:`bmesh.types.BMVert` | None
+   :type merge_co: :class:`mathutils.Vector` or any sequence of 3 floats
 
 
 .. function:: collapse_uvs(bm, edges=[])
@@ -491,14 +403,14 @@ This script shows how operators can be used to model a link of a chain.
 
    Collapses connected UV vertices.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
 
 
-.. function:: weld_verts(bm, targetmap={}, use_centroid=False, average_vert_data=False)
+.. function:: weld_verts(bm, targetmap={})
 
    Weld Verts.
 
@@ -506,38 +418,31 @@ This script shows how operators can be used to model a link of a chain.
    use or will use this BMOP). You pass in mappings from vertices to the vertices
    they weld with.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param targetmap:
+   :arg targetmap:
       Maps welded vertices to verts they should weld to.
-   :type targetmap: dict[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`, :class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param use_centroid:
-      Merge vertices to their centroid position,
-      otherwise use the position of the target vertex.
-   :type use_centroid: bool
-   :param average_vert_data:
-      Whether to average custom data of merged vertices.
-   :type average_vert_data: bool
+   :type targetmap: dict mapping vert/edge/face types to :class:`bmesh.types.BMVert`/:class:`bmesh.types.BMEdge`/:class:`bmesh.types.BMFace`
 
 
-.. function:: create_vert(bm, co=(0.0, 0.0, 0.0))
+.. function:: create_vert(bm, co=mathutils.Vector())
 
    Make Vertex.
 
    Creates a single vertex; this BMOP was necessary
    for click-create-vertex.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param co:
+   :arg co:
       The coordinate of the new vert.
-   :type co: Sequence[float]
+   :type co: :class:`mathutils.Vector` or any sequence of 3 floats
    :return:
 
       - ``vert``:
         The new vert.
 
-        **type** list[:class:`bmesh.types.BMVert`]
+        **type** list of (:class:`bmesh.types.BMVert`)
 
    :rtype: dict[str, Any]
 
@@ -549,42 +454,42 @@ This script shows how operators can be used to model a link of a chain.
    Tries to intelligently join triangles according
    to angle threshold and delimiters.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input geometry.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param cmp_seam:
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg cmp_seam:
       Compare seam
    :type cmp_seam: bool
-   :param cmp_sharp:
+   :arg cmp_sharp:
       Compare sharp
    :type cmp_sharp: bool
-   :param cmp_uvs:
+   :arg cmp_uvs:
       Compare UVs
    :type cmp_uvs: bool
-   :param cmp_vcols:
+   :arg cmp_vcols:
       Compare VCols.
    :type cmp_vcols: bool
-   :param cmp_materials:
+   :arg cmp_materials:
       Compare materials.
    :type cmp_materials: bool
-   :param angle_face_threshold:
+   :arg angle_face_threshold:
       Undocumented.
    :type angle_face_threshold: float
-   :param angle_shape_threshold:
+   :arg angle_shape_threshold:
       Undocumented.
    :type angle_shape_threshold: float
-   :param topology_influence:
+   :arg topology_influence:
       Undocumented.
    :type topology_influence: float
-   :param deselect_joined:
+   :arg deselect_joined:
       Undocumented.
    :type deselect_joined: bool
-   :param merge_limit:
+   :arg merge_limit:
       Undocumented.
    :type merge_limit: int
-   :param neighbor_debug:
+   :arg neighbor_debug:
       Undocumented.
    :type neighbor_debug: int
    :return:
@@ -592,7 +497,7 @@ This script shows how operators can be used to model a link of a chain.
       - ``faces``:
         Joined faces.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -608,27 +513,27 @@ This script shows how operators can be used to model a link of a chain.
    Three verts become a triangle, four become a quad. Two
    become a wire edge.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
+   :arg geom:
       Input geometry.
-   :type geom: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param mat_nr:
+   :type geom: list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
+   :arg mat_nr:
       Material to use.
    :type mat_nr: int
-   :param use_smooth:
-      Set smooth shading on newly created faces.
+   :arg use_smooth:
+      Smooth to use.
    :type use_smooth: bool
    :return:
 
       - ``faces``:
         Newly-made face(s).
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
       - ``edges``:
         Newly-made edge(s).
 
-        **type** list[:class:`bmesh.types.BMEdge`]
+        **type** list of (:class:`bmesh.types.BMEdge`)
 
    :rtype: dict[str, Any]
 
@@ -637,24 +542,24 @@ This script shows how operators can be used to model a link of a chain.
 
    Bridge edge loops with faces.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param use_pairs:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg use_pairs:
       Undocumented.
    :type use_pairs: bool
-   :param use_cyclic:
+   :arg use_cyclic:
       Undocumented.
    :type use_cyclic: bool
-   :param use_merge:
+   :arg use_merge:
       Merge rather than creating faces.
    :type use_merge: bool
-   :param merge_factor:
-      Merge factor.
+   :arg merge_factor:
+      merge factor
    :type merge_factor: float
-   :param twist_offset:
+   :arg twist_offset:
       Twist offset for closed loops.
    :type twist_offset: int
    :return:
@@ -662,11 +567,11 @@ This script shows how operators can be used to model a link of a chain.
       - ``faces``:
         New faces.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
       - ``edges``:
         New edges.
 
-        **type** list[:class:`bmesh.types.BMEdge`]
+        **type** list of (:class:`bmesh.types.BMEdge`)
 
    :rtype: dict[str, Any]
 
@@ -677,18 +582,18 @@ This script shows how operators can be used to model a link of a chain.
 
    Create faces defined by 2 disconnected edge loops (which share edges).
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param mat_nr:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg mat_nr:
       Material to use.
    :type mat_nr: int
-   :param use_smooth:
+   :arg use_smooth:
       Smooth state to use.
    :type use_smooth: bool
-   :param use_interp_simple:
+   :arg use_interp_simple:
       Use simple interpolation.
    :type use_interp_simple: bool
    :return:
@@ -696,7 +601,7 @@ This script shows how operators can be used to model a link of a chain.
       - ``faces``:
         New faces.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -707,20 +612,20 @@ This script shows how operators can be used to model a link of a chain.
 
    Fill boundary edges with faces, copying surrounding custom-data.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param sides:
-      Maximum number of sides for holes to fill (holes with more edges are skipped).
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg sides:
+      Number of face sides to fill.
    :type sides: int
    :return:
 
       - ``faces``:
         New faces.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -731,15 +636,15 @@ This script shows how operators can be used to model a link of a chain.
 
    Fill in faces with data from adjacent faces.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param use_normals:
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg use_normals:
       Copy face winding.
    :type use_normals: bool
-   :param use_data:
+   :arg use_data:
       Copy face data.
    :type use_data: bool
    :return:
@@ -747,7 +652,7 @@ This script shows how operators can be used to model a link of a chain.
       - ``faces_fail``:
         Faces that could not be handled.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -758,15 +663,15 @@ This script shows how operators can be used to model a link of a chain.
 
    Create faces defined by one or more non overlapping edge loops.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param mat_nr:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg mat_nr:
       Material to use.
    :type mat_nr: int
-   :param use_smooth:
+   :arg use_smooth:
       Smooth state to use.
    :type use_smooth: bool
    :return:
@@ -774,7 +679,7 @@ This script shows how operators can be used to model a link of a chain.
       - ``faces``:
         New faces.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -785,26 +690,26 @@ This script shows how operators can be used to model a link of a chain.
 
    Create faces defined by enclosed edges.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param mat_nr:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg mat_nr:
       Material to use.
    :type mat_nr: int
-   :param use_smooth:
+   :arg use_smooth:
       Smooth state to use.
    :type use_smooth: bool
-   :param sides:
-      Maximum number of sides for created faces.
+   :arg sides:
+      Number of sides.
    :type sides: int
    :return:
 
       - ``faces``:
         New faces.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -820,109 +725,109 @@ This script shows how operators can be used to model a link of a chain.
    - Two loops; two edges are added to connect the endpoints (based on the
      shortest distance between each endpoint).
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
    :return:
 
       - ``edges``:
         New edges.
 
-        **type** list[:class:`bmesh.types.BMEdge`]
+        **type** list of (:class:`bmesh.types.BMEdge`)
 
    :rtype: dict[str, Any]
 
 
-.. function:: rotate(bm, cent=(0.0, 0.0, 0.0), matrix=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), verts=[], space=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), use_shapekey=False)
+.. function:: rotate(bm, cent=mathutils.Vector(), matrix=mathutils.Matrix.Identity(4), verts=[], space=mathutils.Matrix.Identity(4), use_shapekey=False)
 
    Rotate.
 
    Rotate vertices around a center, using a 3x3 rotation matrix.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param cent:
+   :arg cent:
       Center of rotation.
-   :type cent: Sequence[float]
-   :param matrix:
+   :type cent: :class:`mathutils.Vector` or any sequence of 3 floats
+   :arg matrix:
       Matrix defining rotation.
    :type matrix: :class:`mathutils.Matrix`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param space:
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg space:
       Matrix to define the space (typically object matrix).
    :type space: :class:`mathutils.Matrix`
-   :param use_shapekey:
+   :arg use_shapekey:
       Transform shape keys too.
    :type use_shapekey: bool
 
 
-.. function:: translate(bm, vec=(0.0, 0.0, 0.0), space=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), verts=[], use_shapekey=False)
+.. function:: translate(bm, vec=mathutils.Vector(), space=mathutils.Matrix.Identity(4), verts=[], use_shapekey=False)
 
    Translate.
 
    Translate vertices by an offset.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param vec:
+   :arg vec:
       Translation offset.
-   :type vec: Sequence[float]
-   :param space:
+   :type vec: :class:`mathutils.Vector` or any sequence of 3 floats
+   :arg space:
       Matrix to define the space (typically object matrix).
    :type space: :class:`mathutils.Matrix`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param use_shapekey:
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg use_shapekey:
       Transform shape keys too.
    :type use_shapekey: bool
 
 
-.. function:: scale(bm, vec=(0.0, 0.0, 0.0), space=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), verts=[], use_shapekey=False)
+.. function:: scale(bm, vec=mathutils.Vector(), space=mathutils.Matrix.Identity(4), verts=[], use_shapekey=False)
 
    Scale.
 
-   Scales vertices by a factor.
+   Scales vertices by an offset.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param vec:
+   :arg vec:
       Scale factor.
-   :type vec: Sequence[float]
-   :param space:
+   :type vec: :class:`mathutils.Vector` or any sequence of 3 floats
+   :arg space:
       Matrix to define the space (typically object matrix).
    :type space: :class:`mathutils.Matrix`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param use_shapekey:
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg use_shapekey:
       Transform shape keys too.
    :type use_shapekey: bool
 
 
-.. function:: transform(bm, matrix=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), space=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), verts=[], use_shapekey=False)
+.. function:: transform(bm, matrix=mathutils.Matrix.Identity(4), space=mathutils.Matrix.Identity(4), verts=[], use_shapekey=False)
 
    Transform.
 
    Transforms a set of vertices by a matrix. Multiplies
    the vertex coordinates with the matrix.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param matrix:
+   :arg matrix:
       Transform matrix.
    :type matrix: :class:`mathutils.Matrix`
-   :param space:
+   :arg space:
       Matrix to define the space (typically object matrix).
    :type space: :class:`mathutils.Matrix`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param use_shapekey:
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg use_shapekey:
       Transform shape keys too.
    :type use_shapekey: bool
 
@@ -934,13 +839,13 @@ This script shows how operators can be used to model a link of a chain.
    Loads a bmesh into an object/mesh. This is a "private"
    BMOP.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param scene:
-      The scene.
+   :arg scene:
+      Pointer to an scene structure.
    :type scene: :class:`bpy.types.Scene`
-   :param object:
-      The object.
+   :arg object:
+      Pointer to an object structure.
    :type object: :class:`bpy.types.Object`
 
 
@@ -950,13 +855,13 @@ This script shows how operators can be used to model a link of a chain.
 
    Converts a bmesh to a Mesh. This is reserved for exiting edit-mode.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param mesh:
-      The mesh to write into.
+   :arg mesh:
+      Pointer to a mesh structure to fill in.
    :type mesh: :class:`bpy.types.Mesh`
-   :param object:
-      The object.
+   :arg object:
+      Pointer to an object structure.
    :type object: :class:`bpy.types.Object`
 
 
@@ -967,15 +872,15 @@ This script shows how operators can be used to model a link of a chain.
    Load the contents of a mesh into the bmesh. this BMOP is private, it's
    reserved exclusively for entering edit-mode.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param mesh:
-      The mesh to read from.
+   :arg mesh:
+      Pointer to a Mesh structure.
    :type mesh: :class:`bpy.types.Mesh`
-   :param object:
-      The object.
+   :arg object:
+      Pointer to an Object structure.
    :type object: :class:`bpy.types.Object`
-   :param use_shapekey:
+   :arg use_shapekey:
       Load active shapekey coordinates into verts.
    :type use_shapekey: bool
 
@@ -986,23 +891,23 @@ This script shows how operators can be used to model a link of a chain.
 
    Extrudes faces individually.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param use_normal_flip:
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg use_normal_flip:
       Create faces with reversed direction.
    :type use_normal_flip: bool
-   :param use_select_history:
-      Preserve the selection history in the extruded geometry.
+   :arg use_select_history:
+      Pass to duplicate.
    :type use_select_history: bool
    :return:
 
       - ``faces``:
         Output faces.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -1014,23 +919,23 @@ This script shows how operators can be used to model a link of a chain.
    Extrudes Edges into faces, note that this is very simple, there's no fancy
    winged extrusion.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
-      Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param use_normal_flip:
+   :arg edges:
+      Input vertices.
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg use_normal_flip:
       Create faces with reversed direction.
    :type use_normal_flip: bool
-   :param use_select_history:
-      Preserve the selection history in the extruded geometry.
+   :arg use_select_history:
+      Pass to duplicate.
    :type use_select_history: bool
    :return:
 
       - ``geom``:
         Output geometry.
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -1039,26 +944,26 @@ This script shows how operators can be used to model a link of a chain.
 
    Individual Vertex Extrude.
 
-   Extrudes individual vertices, creating new vertices connected by wire edges.
+   Extrudes wire edges from vertices.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param use_select_history:
-      Preserve the selection history in the extruded geometry.
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg use_select_history:
+      Pass to duplicate.
    :type use_select_history: bool
    :return:
 
       - ``edges``:
         Output wire edges.
 
-        **type** list[:class:`bmesh.types.BMEdge`]
+        **type** list of (:class:`bmesh.types.BMEdge`)
       - ``verts``:
         Output vertices.
 
-        **type** list[:class:`bmesh.types.BMVert`]
+        **type** list of (:class:`bmesh.types.BMVert`)
 
    :rtype: dict[str, Any]
 
@@ -1067,24 +972,25 @@ This script shows how operators can be used to model a link of a chain.
 
    Connect Verts.
 
-   Split faces by adding edges that connect ``verts``.
+   Split faces by adding edges that connect **verts**.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param faces_exclude:
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg faces_exclude:
       Input faces to explicitly exclude from connecting.
-   :type faces_exclude: list[:class:`bmesh.types.BMFace`]
-   :param check_degenerate:
+   :type faces_exclude: list of (:class:`bmesh.types.BMFace`)
+   :arg check_degenerate:
       Prevent splits with overlaps & intersections.
    :type check_degenerate: bool
    :return:
 
       - ``edges``:
 
-        **type** list[:class:`bmesh.types.BMEdge`]
+
+        **type** list of (:class:`bmesh.types.BMEdge`)
 
    :rtype: dict[str, Any]
 
@@ -1093,114 +999,117 @@ This script shows how operators can be used to model a link of a chain.
 
    Connect Verts to form Convex Faces.
 
-   Splits concave faces into convex faces.
+   Ensures all faces are convex **faces**.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
+   :type faces: list of (:class:`bmesh.types.BMFace`)
    :return:
 
       - ``edges``:
 
-        **type** list[:class:`bmesh.types.BMEdge`]
+
+        **type** list of (:class:`bmesh.types.BMEdge`)
       - ``faces``:
 
-        **type** list[:class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
 
 .. function:: connect_verts_nonplanar(bm, angle_limit=0, faces=[])
 
-   Connect Verts Across non Planar Faces.
+   Connect Verts Across non Planer Faces.
 
-   Split faces by connecting edges along non planar ``faces``.
+   Split faces by connecting edges along non planer **faces**.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param angle_limit:
-      Maximum angle of non-planarity before splitting (radians).
+   :arg angle_limit:
+      Total rotation angle (radians).
    :type angle_limit: float
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
+   :type faces: list of (:class:`bmesh.types.BMFace`)
    :return:
 
       - ``edges``:
 
-        **type** list[:class:`bmesh.types.BMEdge`]
+
+        **type** list of (:class:`bmesh.types.BMEdge`)
       - ``faces``:
 
-        **type** list[:class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
 
 .. function:: connect_vert_pair(bm, verts=[], verts_exclude=[], faces_exclude=[])
 
-   Connect Vert Pair.
+   Connect Verts.
 
-   Connect a pair of vertices by splitting faces along the shortest path between them.
+   Split faces by adding edges that connect **verts**.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param verts_exclude:
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg verts_exclude:
       Input vertices to explicitly exclude from connecting.
-   :type verts_exclude: list[:class:`bmesh.types.BMVert`]
-   :param faces_exclude:
+   :type verts_exclude: list of (:class:`bmesh.types.BMVert`)
+   :arg faces_exclude:
       Input faces to explicitly exclude from connecting.
-   :type faces_exclude: list[:class:`bmesh.types.BMFace`]
+   :type faces_exclude: list of (:class:`bmesh.types.BMFace`)
    :return:
 
       - ``edges``:
 
-        **type** list[:class:`bmesh.types.BMEdge`]
+
+        **type** list of (:class:`bmesh.types.BMEdge`)
 
    :rtype: dict[str, Any]
 
 
-.. function:: extrude_face_region(bm, geom=[], edges_exclude=set(), use_keep_orig=False, use_normal_flip=False, use_normal_from_adjacent=False, use_dissolve_ortho_edges=False, use_select_history=False, skip_input_flip=False)
+.. function:: extrude_face_region(bm, geom=[], edges_exclude=set(), use_keep_orig=False, use_normal_flip=False, use_normal_from_adjacent=False, use_dissolve_ortho_edges=False, use_select_history=False)
 
    Extrude Faces.
 
    Extrude operator (does not transform)
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
+   :arg geom:
       Edges and faces.
-   :type geom: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param edges_exclude:
+   :type geom: list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
+   :arg edges_exclude:
       Input edges to explicitly exclude from extrusion.
-   :type edges_exclude: set[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param use_keep_orig:
-      Keep original geometry (requires `geom` to include edges).
+   :type edges_exclude: set of vert/edge/face type
+   :arg use_keep_orig:
+      Keep original geometry (requires ``geom`` to include edges).
    :type use_keep_orig: bool
-   :param use_normal_flip:
+   :arg use_normal_flip:
       Create faces with reversed direction.
    :type use_normal_flip: bool
-   :param use_normal_from_adjacent:
+   :arg use_normal_from_adjacent:
       Use winding from surrounding faces instead of this region.
    :type use_normal_from_adjacent: bool
-   :param use_dissolve_ortho_edges:
+   :arg use_dissolve_ortho_edges:
       Dissolve edges whose faces form a flat surface.
    :type use_dissolve_ortho_edges: bool
-   :param use_select_history:
-      Preserve the selection history in the extruded geometry.
+   :arg use_select_history:
+      Pass to duplicate.
    :type use_select_history: bool
-   :param skip_input_flip:
-      Skip flipping of input faces to preserve original orientation.
-   :type skip_input_flip: bool
    :return:
 
       - ``geom``:
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -1209,46 +1118,44 @@ This script shows how operators can be used to model a link of a chain.
 
    Dissolve Verts.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param use_face_split:
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg use_face_split:
       Split off face corners to maintain surrounding geometry.
    :type use_face_split: bool
-   :param use_boundary_tear:
+   :arg use_boundary_tear:
       Split off face corners instead of merging faces.
    :type use_boundary_tear: bool
 
 
-.. function:: dissolve_edges(bm, edges=[], use_verts=False, use_face_split=False, angle_threshold=0, use_preserve_quads=False)
+.. function:: dissolve_edges(bm, edges=[], use_verts=False, use_face_split=False, angle_threshold=0)
 
    Dissolve Edges.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param use_verts:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg use_verts:
       Dissolve verts left between only 2 edges.
    :type use_verts: bool
-   :param use_face_split:
+   :arg use_face_split:
       Split off face corners to maintain surrounding geometry.
    :type use_face_split: bool
-   :param angle_threshold:
+   :arg angle_threshold:
       Do not dissolve verts between 2 edges when their angle exceeds this threshold.
       Disabled by default.
    :type angle_threshold: float
-   :param use_preserve_quads:
-      When dissolving the edge between 2 triangles, don't dissolve the verts.
-   :type use_preserve_quads: bool
    :return:
 
       - ``region``:
 
-        **type** list[:class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -1257,19 +1164,20 @@ This script shows how operators can be used to model a link of a chain.
 
    Dissolve Faces.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param use_verts:
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg use_verts:
       Dissolve verts left between only 2 edges.
    :type use_verts: bool
    :return:
 
       - ``region``:
 
-        **type** list[:class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -1280,28 +1188,29 @@ This script shows how operators can be used to model a link of a chain.
 
    Dissolve planar faces and co-linear edges.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param angle_limit:
-      Maximum angle (radians) between face normals for dissolving.
+   :arg angle_limit:
+      Total rotation angle (radians).
    :type angle_limit: float
-   :param use_dissolve_boundaries:
+   :arg use_dissolve_boundaries:
       Dissolve all vertices in between face boundaries.
    :type use_dissolve_boundaries: bool
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param edges:
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param delimit:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg delimit:
       Delimit dissolve operation.
-   :type delimit: set[Literal['NORMAL', 'MATERIAL', 'SEAM', 'SHARP', 'UV']]
+   :type delimit: set of flags from ['NORMAL', 'MATERIAL', 'SEAM', 'SHARP', 'UV'], default set()
    :return:
 
       - ``region``:
 
-        **type** list[:class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -1312,48 +1221,49 @@ This script shows how operators can be used to model a link of a chain.
 
    Dissolve edges with no length, faces with no area.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param dist:
+   :arg dist:
       Maximum distance to consider degenerate.
    :type dist: float
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
 
 
 .. function:: triangulate(bm, faces=[], quad_method='BEAUTY', ngon_method='BEAUTY')
 
    Triangulate.
 
-   Triangulate faces, splitting quads and n-gons into triangles.
-
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param quad_method:
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg quad_method:
       Method for splitting the quads into triangles.
-   :type quad_method: Literal['BEAUTY', 'FIXED', 'ALTERNATE', 'SHORT_EDGE', 'LONG_EDGE']
-   :param ngon_method:
+   :type quad_method: enum in ['BEAUTY', 'FIXED', 'ALTERNATE', 'SHORT_EDGE', 'LONG_EDGE'], default 'BEAUTY'
+   :arg ngon_method:
       Method for splitting the polygons into triangles.
-   :type ngon_method: Literal['BEAUTY', 'EAR_CLIP']
+   :type ngon_method: enum in ['BEAUTY', 'EAR_CLIP'], default 'BEAUTY'
    :return:
 
       - ``edges``:
 
-        **type** list[:class:`bmesh.types.BMEdge`]
+
+        **type** list of (:class:`bmesh.types.BMEdge`)
       - ``faces``:
 
-        **type** list[:class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMFace`)
       - ``face_map``:
 
-        **type** dict[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`, :class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** dict mapping vert/edge/face types to :class:`bmesh.types.BMVert`/:class:`bmesh.types.BMEdge`/:class:`bmesh.types.BMFace`
       - ``face_map_double``:
         Duplicate faces.
 
-        **type** dict[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`, :class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+        **type** dict mapping vert/edge/face types to :class:`bmesh.types.BMVert`/:class:`bmesh.types.BMEdge`/:class:`bmesh.types.BMFace`
 
    :rtype: dict[str, Any]
 
@@ -1364,12 +1274,12 @@ This script shows how operators can be used to model a link of a chain.
 
    Reduce detail in geometry containing grids.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param verts:
+   :arg verts:
       Input vertices.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param iterations:
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg iterations:
       Number of times to unsubdivide.
    :type iterations: int
 
@@ -1381,65 +1291,67 @@ This script shows how operators can be used to model a link of a chain.
    Advanced operator for subdividing edges
    with options for face patterns, smoothing and randomization.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param smooth:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg smooth:
       Smoothness factor.
    :type smooth: float
-   :param smooth_falloff:
+   :arg smooth_falloff:
       Smooth falloff type.
-   :type smooth_falloff: Literal['SMOOTH', 'SPHERE', 'ROOT', 'SHARP', 'LINEAR', 'INVERSE_SQUARE']
-   :param fractal:
+   :type smooth_falloff: enum in ['SMOOTH', 'SPHERE', 'ROOT', 'SHARP', 'LINEAR', 'INVERSE_SQUARE'], default 'SMOOTH'
+   :arg fractal:
       Fractal randomness factor.
    :type fractal: float
-   :param along_normal:
-      Factor (0 to 1) controlling how much fractal displacement is restricted to the normal.
+   :arg along_normal:
+      Apply fractal displacement along normal only.
    :type along_normal: float
-   :param cuts:
+   :arg cuts:
       Number of cuts.
    :type cuts: int
-   :param seed:
+   :arg seed:
       Seed for the random number generator.
    :type seed: int
-   :param custom_patterns:
-      Internal use only, not accessible from Python.
-   :type custom_patterns: dict
-   :param edge_percents:
-      Mapping of edges to a float (0 to 1) controlling the cut position along each edge.
-   :type edge_percents: dict[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`, float]
-   :param quad_corner_type:
+   :arg custom_patterns:
+      Uses custom pointers.
+   :type custom_patterns: dict mapping vert/edge/face types to unknown internal data, not compatible with Python
+   :arg edge_percents:
+      Undocumented.
+   :type edge_percents: dict mapping vert/edge/face types to float
+   :arg quad_corner_type:
       Quad corner type.
-   :type quad_corner_type: Literal['STRAIGHT_CUT', 'INNER_VERT', 'PATH', 'FAN']
-   :param use_grid_fill:
+   :type quad_corner_type: enum in ['STRAIGHT_CUT', 'INNER_VERT', 'PATH', 'FAN'], default 'STRAIGHT_CUT'
+   :arg use_grid_fill:
       Fill in fully-selected faces with a grid.
    :type use_grid_fill: bool
-   :param use_single_edge:
+   :arg use_single_edge:
       Tessellate the case of one edge selected in a quad or triangle.
    :type use_single_edge: bool
-   :param use_only_quads:
+   :arg use_only_quads:
       Only subdivide quads (for loop-cut).
    :type use_only_quads: bool
-   :param use_sphere:
-      Project new vertices onto a sphere (used for spherical primitives).
+   :arg use_sphere:
+      For making new primitives only.
    :type use_sphere: bool
-   :param use_smooth_even:
+   :arg use_smooth_even:
       Maintain even offset when smoothing.
    :type use_smooth_even: bool
    :return:
 
       - ``geom_inner``:
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
       - ``geom_split``:
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
       - ``geom``:
         Contains all output geometry.
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -1450,24 +1362,24 @@ This script shows how operators can be used to model a link of a chain.
 
    Take an edge-ring, and subdivide with interpolation options.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
-      Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param interp_mode:
+   :arg edges:
+      Input vertices.
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg interp_mode:
       Interpolation method.
-   :type interp_mode: Literal['LINEAR', 'PATH', 'SURFACE']
-   :param smooth:
+   :type interp_mode: enum in ['LINEAR', 'PATH', 'SURFACE'], default 'LINEAR'
+   :arg smooth:
       Smoothness factor.
    :type smooth: float
-   :param cuts:
+   :arg cuts:
       Number of cuts.
    :type cuts: int
-   :param profile_shape:
+   :arg profile_shape:
       Profile shape type.
-   :type profile_shape: Literal['SMOOTH', 'SPHERE', 'ROOT', 'SHARP', 'LINEAR', 'INVERSE_SQUARE']
-   :param profile_shape_factor:
+   :type profile_shape: enum in ['SMOOTH', 'SPHERE', 'ROOT', 'SHARP', 'LINEAR', 'INVERSE_SQUARE'], default 'SMOOTH'
+   :arg profile_shape_factor:
       How much intermediary new edges are shrunk/expanded.
    :type profile_shape_factor: float
    :return:
@@ -1475,50 +1387,50 @@ This script shows how operators can be used to model a link of a chain.
       - ``faces``:
         Output faces.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
 
-.. function:: bisect_plane(bm, geom=[], dist=0, plane_co=(0.0, 0.0, 0.0), plane_no=(0.0, 0.0, 0.0), use_snap_center=False, clear_outer=False, clear_inner=False)
+.. function:: bisect_plane(bm, geom=[], dist=0, plane_co=mathutils.Vector(), plane_no=mathutils.Vector(), use_snap_center=False, clear_outer=False, clear_inner=False)
 
    Bisect Plane.
 
    Bisects the mesh by a plane (cut the mesh in half).
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
+   :arg geom:
       Input geometry.
-   :type geom: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param dist:
+   :type geom: list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
+   :arg dist:
       Minimum distance when testing if a vert is exactly on the plane.
    :type dist: float
-   :param plane_co:
+   :arg plane_co:
       Point on the plane.
-   :type plane_co: Sequence[float]
-   :param plane_no:
-      Normal of the plane.
-   :type plane_no: Sequence[float]
-   :param use_snap_center:
+   :type plane_co: :class:`mathutils.Vector` or any sequence of 3 floats
+   :arg plane_no:
+      Direction of the plane.
+   :type plane_no: :class:`mathutils.Vector` or any sequence of 3 floats
+   :arg use_snap_center:
       Snap axis aligned verts to the center.
    :type use_snap_center: bool
-   :param clear_outer:
-      When enabled, remove all geometry on the positive side of the plane.
+   :arg clear_outer:
+      When enabled. remove all geometry on the positive side of the plane.
    :type clear_outer: bool
-   :param clear_inner:
-      When enabled, remove all geometry on the negative side of the plane.
+   :arg clear_inner:
+      When enabled. remove all geometry on the negative side of the plane.
    :type clear_inner: bool
    :return:
 
       - ``geom_cut``:
         Output geometry aligned with the plane (new and existing).
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge`]
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`)
       - ``geom``:
         Input and output geometry (result of cut).
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -1529,14 +1441,14 @@ This script shows how operators can be used to model a link of a chain.
 
    Utility operator to delete geometry.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
+   :arg geom:
       Input geometry.
-   :type geom: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param context:
+   :type geom: list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
+   :arg context:
       Geometry types to delete.
-   :type context: Literal['VERTS', 'EDGES', 'FACES_ONLY', 'EDGES_FACES', 'FACES', 'FACES_KEEP_BOUNDARY', 'TAGGED_ONLY']
+   :type context: enum in ['VERTS', 'EDGES', 'FACES_ONLY', 'EDGES_FACES', 'FACES', 'FACES_KEEP_BOUNDARY', 'TAGGED_ONLY'], default 'VERTS'
 
 
 .. function:: duplicate(bm, geom=[], dest=None, use_select_history=False, use_edge_flip_from_face=False)
@@ -1546,45 +1458,51 @@ This script shows how operators can be used to model a link of a chain.
    Utility operator to duplicate geometry,
    optionally into a destination mesh.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
+   :arg geom:
       Input geometry.
-   :type geom: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param dest:
-      Destination bmesh, if None will use current one.
-   :type dest: :class:`bmesh.types.BMesh` | None
-   :param use_select_history:
-      Preserve the selection history in the duplicated geometry.
+   :type geom: list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
+   :arg dest:
+      Destination bmesh, if None will use current on.
+   :type dest: :class:`bmesh.types.BMesh`
+   :arg use_select_history:
+      Undocumented.
    :type use_select_history: bool
-   :param use_edge_flip_from_face:
-      Copy edge flip state from connected faces.
+   :arg use_edge_flip_from_face:
+      Undocumented.
    :type use_edge_flip_from_face: bool
    :return:
 
       - ``geom_orig``:
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
       - ``geom``:
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
       - ``vert_map``:
 
-        **type** dict[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`, :class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** dict mapping vert/edge/face types to :class:`bmesh.types.BMVert`/:class:`bmesh.types.BMEdge`/:class:`bmesh.types.BMFace`
       - ``edge_map``:
 
-        **type** dict[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`, :class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** dict mapping vert/edge/face types to :class:`bmesh.types.BMVert`/:class:`bmesh.types.BMEdge`/:class:`bmesh.types.BMFace`
       - ``face_map``:
 
-        **type** dict[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`, :class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** dict mapping vert/edge/face types to :class:`bmesh.types.BMVert`/:class:`bmesh.types.BMEdge`/:class:`bmesh.types.BMFace`
       - ``boundary_map``:
         Boundary edges from the split geometry that maps edges from the original geometry
         to the destination edges.
 
-        **type** dict[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`, :class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+        **type** dict mapping vert/edge/face types to :class:`bmesh.types.BMVert`/:class:`bmesh.types.BMEdge`/:class:`bmesh.types.BMFace`
       - ``isovert_map``:
 
-        **type** dict[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`, :class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** dict mapping vert/edge/face types to :class:`bmesh.types.BMVert`/:class:`bmesh.types.BMEdge`/:class:`bmesh.types.BMFace`
 
    :rtype: dict[str, Any]
 
@@ -1596,22 +1514,23 @@ This script shows how operators can be used to model a link of a chain.
    Disconnect geometry from adjacent edges and faces,
    optionally into a destination mesh.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
+   :arg geom:
       Input geometry.
-   :type geom: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param dest:
+   :type geom: list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
+   :arg dest:
       Destination bmesh, if None will use current one.
-   :type dest: :class:`bmesh.types.BMesh` | None
-   :param use_only_faces:
-      When enabled, don't duplicate loose verts/edges.
+   :type dest: :class:`bmesh.types.BMesh`
+   :arg use_only_faces:
+      When enabled. don't duplicate loose verts/edges.
    :type use_only_faces: bool
    :return:
 
       - ``geom``:
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
       - ``boundary_map``:
         Boundary edges from the split geometry that maps edges from the original geometry
         to the destination edges.
@@ -1619,59 +1538,60 @@ This script shows how operators can be used to model a link of a chain.
         When the source edges have been deleted, the destination edge will be used
         for both the key and the value.
 
-        **type** dict[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`, :class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+        **type** dict mapping vert/edge/face types to :class:`bmesh.types.BMVert`/:class:`bmesh.types.BMEdge`/:class:`bmesh.types.BMFace`
       - ``isovert_map``:
 
-        **type** dict[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`, :class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** dict mapping vert/edge/face types to :class:`bmesh.types.BMVert`/:class:`bmesh.types.BMEdge`/:class:`bmesh.types.BMFace`
 
    :rtype: dict[str, Any]
 
 
-.. function:: spin(bm, geom=[], cent=(0.0, 0.0, 0.0), axis=(0.0, 0.0, 0.0), dvec=(0.0, 0.0, 0.0), angle=0, space=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), steps=0, use_merge=False, use_normal_flip=False, use_duplicate=False)
+.. function:: spin(bm, geom=[], cent=mathutils.Vector(), axis=mathutils.Vector(), dvec=mathutils.Vector(), angle=0, space=mathutils.Matrix.Identity(4), steps=0, use_merge=False, use_normal_flip=False, use_duplicate=False)
 
    Spin.
 
    Extrude or duplicate geometry a number of times,
    rotating and possibly translating after each step
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
+   :arg geom:
       Input geometry.
-   :type geom: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param cent:
+   :type geom: list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
+   :arg cent:
       Rotation center.
-   :type cent: Sequence[float]
-   :param axis:
+   :type cent: :class:`mathutils.Vector` or any sequence of 3 floats
+   :arg axis:
       Rotation axis.
-   :type axis: Sequence[float]
-   :param dvec:
+   :type axis: :class:`mathutils.Vector` or any sequence of 3 floats
+   :arg dvec:
       Translation delta per step.
-   :type dvec: Sequence[float]
-   :param angle:
+   :type dvec: :class:`mathutils.Vector` or any sequence of 3 floats
+   :arg angle:
       Total rotation angle (radians).
    :type angle: float
-   :param space:
+   :arg space:
       Matrix to define the space (typically object matrix).
    :type space: :class:`mathutils.Matrix`
-   :param steps:
+   :arg steps:
       Number of steps.
    :type steps: int
-   :param use_merge:
+   :arg use_merge:
       Merge first/last when the angle is a full revolution.
    :type use_merge: bool
-   :param use_normal_flip:
+   :arg use_normal_flip:
       Create faces with reversed direction.
    :type use_normal_flip: bool
-   :param use_duplicate:
-      Duplicate the geometry, otherwise extrude.
+   :arg use_duplicate:
+      Duplicate or extrude?.
    :type use_duplicate: bool
    :return:
 
       - ``geom_last``:
         Result of last step.
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -1682,12 +1602,12 @@ This script shows how operators can be used to model a link of a chain.
 
    Cycle the loop UVs
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param use_ccw:
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg use_ccw:
       Rotate counter-clockwise if true, otherwise clockwise.
    :type use_ccw: bool
 
@@ -1698,11 +1618,11 @@ This script shows how operators can be used to model a link of a chain.
 
    Reverse the UVs
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
+   :type faces: list of (:class:`bmesh.types.BMFace`)
 
 
 .. function:: rotate_colors(bm, faces=[], use_ccw=False, color_index=0)
@@ -1711,15 +1631,15 @@ This script shows how operators can be used to model a link of a chain.
 
    Cycle the loop colors
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param use_ccw:
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg use_ccw:
       Rotate counter-clockwise if true, otherwise clockwise.
    :type use_ccw: bool
-   :param color_index:
+   :arg color_index:
       Index into color attribute list.
    :type color_index: int
 
@@ -1730,12 +1650,12 @@ This script shows how operators can be used to model a link of a chain.
 
    Reverse the loop colors.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param color_index:
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg color_index:
       Index into color attribute list.
    :type color_index: int
 
@@ -1746,48 +1666,48 @@ This script shows how operators can be used to model a link of a chain.
 
    Disconnects faces along input edges.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param verts:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg verts:
       Optional tag verts, use to have greater control of splits.
-   :type verts: list[:class:`bmesh.types.BMVert`]
-   :param use_verts:
-      Use `verts` for splitting, else just find verts to split from edges.
+   :type verts: list of (:class:`bmesh.types.BMVert`)
+   :arg use_verts:
+      Use 'verts' for splitting, else just find verts to split from edges.
    :type use_verts: bool
    :return:
 
       - ``edges``:
-        The original edges that were disconnected.
+        Old output disconnected edges.
 
-        **type** list[:class:`bmesh.types.BMEdge`]
+        **type** list of (:class:`bmesh.types.BMEdge`)
 
    :rtype: dict[str, Any]
 
 
-.. function:: create_grid(bm, x_segments=0, y_segments=0, size=0, matrix=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), calc_uvs=False)
+.. function:: create_grid(bm, x_segments=0, y_segments=0, size=0, matrix=mathutils.Matrix.Identity(4), calc_uvs=False)
 
    Create Grid.
 
    Creates a grid with a variable number of subdivisions
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param x_segments:
+   :arg x_segments:
       Number of x segments.
    :type x_segments: int
-   :param y_segments:
+   :arg y_segments:
       Number of y segments.
    :type y_segments: int
-   :param size:
+   :arg size:
       Size of the grid.
    :type size: float
-   :param matrix:
+   :arg matrix:
       Matrix to multiply the new geometry with.
    :type matrix: :class:`mathutils.Matrix`
-   :param calc_uvs:
+   :arg calc_uvs:
       Calculate default UVs.
    :type calc_uvs: bool
    :return:
@@ -1795,32 +1715,32 @@ This script shows how operators can be used to model a link of a chain.
       - ``verts``:
         Output verts.
 
-        **type** list[:class:`bmesh.types.BMVert`]
+        **type** list of (:class:`bmesh.types.BMVert`)
 
    :rtype: dict[str, Any]
 
 
-.. function:: create_uvsphere(bm, u_segments=0, v_segments=0, radius=0, matrix=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), calc_uvs=False)
+.. function:: create_uvsphere(bm, u_segments=0, v_segments=0, radius=0, matrix=mathutils.Matrix.Identity(4), calc_uvs=False)
 
    Create UV Sphere.
 
-   Creates a UV sphere with a variable number of subdivisions.
+   Creates a grid with a variable number of subdivisions
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param u_segments:
+   :arg u_segments:
       Number of u segments.
    :type u_segments: int
-   :param v_segments:
-      Number of v segments.
+   :arg v_segments:
+      Number of v segment.
    :type v_segments: int
-   :param radius:
+   :arg radius:
       Radius.
    :type radius: float
-   :param matrix:
+   :arg matrix:
       Matrix to multiply the new geometry with.
    :type matrix: :class:`mathutils.Matrix`
-   :param calc_uvs:
+   :arg calc_uvs:
       Calculate default UVs.
    :type calc_uvs: bool
    :return:
@@ -1828,29 +1748,29 @@ This script shows how operators can be used to model a link of a chain.
       - ``verts``:
         Output verts.
 
-        **type** list[:class:`bmesh.types.BMVert`]
+        **type** list of (:class:`bmesh.types.BMVert`)
 
    :rtype: dict[str, Any]
 
 
-.. function:: create_icosphere(bm, subdivisions=0, radius=0, matrix=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), calc_uvs=False)
+.. function:: create_icosphere(bm, subdivisions=0, radius=0, matrix=mathutils.Matrix.Identity(4), calc_uvs=False)
 
    Create Ico-Sphere.
 
-   Creates an ico-sphere with a variable number of subdivisions.
+   Creates a grid with a variable number of subdivisions
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param subdivisions:
+   :arg subdivisions:
       How many times to recursively subdivide the sphere.
    :type subdivisions: int
-   :param radius:
+   :arg radius:
       Radius.
    :type radius: float
-   :param matrix:
+   :arg matrix:
       Matrix to multiply the new geometry with.
    :type matrix: :class:`mathutils.Matrix`
-   :param calc_uvs:
+   :arg calc_uvs:
       Calculate default UVs.
    :type calc_uvs: bool
    :return:
@@ -1858,23 +1778,23 @@ This script shows how operators can be used to model a link of a chain.
       - ``verts``:
         Output verts.
 
-        **type** list[:class:`bmesh.types.BMVert`]
+        **type** list of (:class:`bmesh.types.BMVert`)
 
    :rtype: dict[str, Any]
 
 
-.. function:: create_monkey(bm, matrix=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), calc_uvs=False)
+.. function:: create_monkey(bm, matrix=mathutils.Matrix.Identity(4), calc_uvs=False)
 
    Create Suzanne.
 
    Creates a monkey (standard blender primitive).
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param matrix:
+   :arg matrix:
       Matrix to multiply the new geometry with.
    :type matrix: :class:`mathutils.Matrix`
-   :param calc_uvs:
+   :arg calc_uvs:
       Calculate default UVs.
    :type calc_uvs: bool
    :return:
@@ -1882,41 +1802,41 @@ This script shows how operators can be used to model a link of a chain.
       - ``verts``:
         Output verts.
 
-        **type** list[:class:`bmesh.types.BMVert`]
+        **type** list of (:class:`bmesh.types.BMVert`)
 
    :rtype: dict[str, Any]
 
 
-.. function:: create_cone(bm, cap_ends=False, cap_tris=False, segments=0, radius1=0, radius2=0, depth=0, matrix=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), calc_uvs=False)
+.. function:: create_cone(bm, cap_ends=False, cap_tris=False, segments=0, radius1=0, radius2=0, depth=0, matrix=mathutils.Matrix.Identity(4), calc_uvs=False)
 
    Create Cone.
 
-   Creates a cone with variable radius at both ends
+   Creates a cone with variable depth at both ends
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param cap_ends:
+   :arg cap_ends:
       Whether or not to fill in the ends with faces.
    :type cap_ends: bool
-   :param cap_tris:
+   :arg cap_tris:
       Fill ends with triangles instead of ngons.
    :type cap_tris: bool
-   :param segments:
+   :arg segments:
       Number of vertices in the base circle.
    :type segments: int
-   :param radius1:
+   :arg radius1:
       Radius of one end.
    :type radius1: float
-   :param radius2:
-      Radius of the opposite end.
+   :arg radius2:
+      Radius of the opposite.
    :type radius2: float
-   :param depth:
+   :arg depth:
       Distance between ends.
    :type depth: float
-   :param matrix:
+   :arg matrix:
       Matrix to multiply the new geometry with.
    :type matrix: :class:`mathutils.Matrix`
-   :param calc_uvs:
+   :arg calc_uvs:
       Calculate default UVs.
    :type calc_uvs: bool
    :return:
@@ -1924,33 +1844,33 @@ This script shows how operators can be used to model a link of a chain.
       - ``verts``:
         Output verts.
 
-        **type** list[:class:`bmesh.types.BMVert`]
+        **type** list of (:class:`bmesh.types.BMVert`)
 
    :rtype: dict[str, Any]
 
 
-.. function:: create_circle(bm, cap_ends=False, cap_tris=False, segments=0, radius=0, matrix=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), calc_uvs=False)
+.. function:: create_circle(bm, cap_ends=False, cap_tris=False, segments=0, radius=0, matrix=mathutils.Matrix.Identity(4), calc_uvs=False)
 
    Creates a Circle.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param cap_ends:
-      Whether or not to fill in the circle with a face.
+   :arg cap_ends:
+      Whether or not to fill in the ends with faces.
    :type cap_ends: bool
-   :param cap_tris:
-      Fill the circle with triangles instead of an n-gon.
+   :arg cap_tris:
+      Fill ends with triangles instead of ngons.
    :type cap_tris: bool
-   :param segments:
+   :arg segments:
       Number of vertices in the circle.
    :type segments: int
-   :param radius:
+   :arg radius:
       Radius of the circle.
    :type radius: float
-   :param matrix:
+   :arg matrix:
       Matrix to multiply the new geometry with.
    :type matrix: :class:`mathutils.Matrix`
-   :param calc_uvs:
+   :arg calc_uvs:
       Calculate default UVs.
    :type calc_uvs: bool
    :return:
@@ -1958,26 +1878,26 @@ This script shows how operators can be used to model a link of a chain.
       - ``verts``:
         Output verts.
 
-        **type** list[:class:`bmesh.types.BMVert`]
+        **type** list of (:class:`bmesh.types.BMVert`)
 
    :rtype: dict[str, Any]
 
 
-.. function:: create_cube(bm, size=0, matrix=((1, 0, 0, 0), (0, 1, 0, 0), (0, 0, 1, 0), (0, 0, 0, 1)), calc_uvs=False)
+.. function:: create_cube(bm, size=0, matrix=mathutils.Matrix.Identity(4), calc_uvs=False)
 
    Create Cube
 
    Creates a cube.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param size:
+   :arg size:
       Size of the cube.
    :type size: float
-   :param matrix:
+   :arg matrix:
       Matrix to multiply the new geometry with.
    :type matrix: :class:`mathutils.Matrix`
-   :param calc_uvs:
+   :arg calc_uvs:
       Calculate default UVs.
    :type calc_uvs: bool
    :return:
@@ -1985,7 +1905,7 @@ This script shows how operators can be used to model a link of a chain.
       - ``verts``:
         Output verts.
 
-        **type** list[:class:`bmesh.types.BMVert`]
+        **type** list of (:class:`bmesh.types.BMVert`)
 
    :rtype: dict[str, Any]
 
@@ -1996,79 +1916,79 @@ This script shows how operators can be used to model a link of a chain.
 
    Bevels edges and vertices
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
+   :arg geom:
       Input edges and vertices.
-   :type geom: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param offset:
+   :type geom: list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
+   :arg offset:
       Amount to offset beveled edge.
    :type offset: float
-   :param offset_type:
+   :arg offset_type:
       How to measure the offset.
-   :type offset_type: Literal['OFFSET', 'WIDTH', 'DEPTH', 'PERCENT', 'ABSOLUTE']
-   :param profile_type:
+   :type offset_type: enum in ['OFFSET', 'WIDTH', 'DEPTH', 'PERCENT', 'ABSOLUTE'], default 'OFFSET'
+   :arg profile_type:
       The profile type to use for bevel.
-   :type profile_type: Literal['SUPERELLIPSE', 'CUSTOM']
-   :param segments:
+   :type profile_type: enum in ['SUPERELLIPSE', 'CUSTOM'], default 'SUPERELLIPSE'
+   :arg segments:
       Number of segments in bevel.
    :type segments: int
-   :param profile:
+   :arg profile:
       Profile shape, 0->1 (.5=>round).
    :type profile: float
-   :param affect:
+   :arg affect:
       Whether to bevel vertices or edges.
-   :type affect: Literal['VERTICES', 'EDGES']
-   :param clamp_overlap:
+   :type affect: enum in ['VERTICES', 'EDGES'], default 'VERTICES'
+   :arg clamp_overlap:
       Do not allow beveled edges/vertices to overlap each other.
    :type clamp_overlap: bool
-   :param material:
+   :arg material:
       Material for bevel faces, -1 means get from adjacent faces.
    :type material: int
-   :param loop_slide:
+   :arg loop_slide:
       Prefer to slide along edges to having even widths.
    :type loop_slide: bool
-   :param mark_seam:
+   :arg mark_seam:
       Extend edge data to allow seams to run across bevels.
    :type mark_seam: bool
-   :param mark_sharp:
+   :arg mark_sharp:
       Extend edge data to allow sharp edges to run across bevels.
    :type mark_sharp: bool
-   :param harden_normals:
+   :arg harden_normals:
       Harden normals.
    :type harden_normals: bool
-   :param face_strength_mode:
+   :arg face_strength_mode:
       Whether to set face strength, and which faces to set if so.
-   :type face_strength_mode: Literal['NONE', 'NEW', 'AFFECTED', 'ALL']
-   :param miter_outer:
+   :type face_strength_mode: enum in ['NONE', 'NEW', 'AFFECTED', 'ALL'], default 'NONE'
+   :arg miter_outer:
       Outer miter kind.
-   :type miter_outer: Literal['SHARP', 'PATCH', 'ARC']
-   :param miter_inner:
-      Inner miter kind.
-   :type miter_inner: Literal['SHARP', 'PATCH', 'ARC']
-   :param spread:
-      Amount to spread the miter.
+   :type miter_outer: enum in ['SHARP', 'PATCH', 'ARC'], default 'SHARP'
+   :arg miter_inner:
+      Outer miter kind.
+   :type miter_inner: enum in ['SHARP', 'PATCH', 'ARC'], default 'SHARP'
+   :arg spread:
+      Amount to offset beveled edge.
    :type spread: float
-   :param custom_profile:
+   :arg custom_profile:
       CurveProfile, if None ignored
-   :type custom_profile: :class:`bpy.types.bpy_struct` | None
-   :param vmesh_method:
+   :type custom_profile: :class:`bpy.types.bpy_struct`
+   :arg vmesh_method:
       The method to use to create meshes at intersections.
-   :type vmesh_method: Literal['ADJ', 'CUTOFF']
+   :type vmesh_method: enum in ['ADJ', 'CUTOFF'], default 'ADJ'
    :return:
 
       - ``faces``:
         Output faces.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
       - ``edges``:
         Output edges.
 
-        **type** list[:class:`bmesh.types.BMEdge`]
+        **type** list of (:class:`bmesh.types.BMEdge`)
       - ``verts``:
         Output verts.
 
-        **type** list[:class:`bmesh.types.BMVert`]
+        **type** list of (:class:`bmesh.types.BMVert`)
 
    :rtype: dict[str, Any]
 
@@ -2079,56 +1999,56 @@ This script shows how operators can be used to model a link of a chain.
 
    Rotate edges to create more evenly spaced triangles.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param edges:
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg edges:
       Edges that can be flipped.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param use_restrict_tag:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg use_restrict_tag:
       Restrict edge rotation to mixed tagged vertices.
    :type use_restrict_tag: bool
-   :param method:
+   :arg method:
       Method to define what is beautiful.
-   :type method: Literal['AREA', 'ANGLE']
+   :type method: enum in ['AREA', 'ANGLE'], default 'AREA'
    :return:
 
       - ``geom``:
         New flipped faces and edges.
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
 
-.. function:: triangle_fill(bm, use_beauty=False, use_dissolve=False, edges=[], normal=(0.0, 0.0, 0.0))
+.. function:: triangle_fill(bm, use_beauty=False, use_dissolve=False, edges=[], normal=mathutils.Vector())
 
    Triangle Fill.
 
    Fill edges with triangles
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param use_beauty:
+   :arg use_beauty:
       Use best triangulation division.
    :type use_beauty: bool
-   :param use_dissolve:
+   :arg use_dissolve:
       Dissolve resulting faces.
    :type use_dissolve: bool
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param normal:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg normal:
       Optionally pass the fill normal to use.
-   :type normal: Sequence[float]
+   :type normal: :class:`mathutils.Vector` or any sequence of 3 floats
    :return:
 
       - ``geom``:
         New faces and edges.
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -2139,20 +2059,20 @@ This script shows how operators can be used to model a link of a chain.
 
    Turns a mesh into a shell with thickness
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
+   :arg geom:
       Input geometry.
-   :type geom: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param thickness:
-      Thickness of the solidified shell.
+   :type geom: list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
+   :arg thickness:
+      Thickness.
    :type thickness: float
    :return:
 
       - ``geom``:
-        Output geometry (new shell faces, edges, and vertices).
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -2163,24 +2083,24 @@ This script shows how operators can be used to model a link of a chain.
 
    Insets individual faces.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param thickness:
-      Inset distance from the boundary.
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg thickness:
+      Thickness.
    :type thickness: float
-   :param depth:
-      Distance to raise or lower the inset face along its normal.
+   :arg depth:
+      Depth.
    :type depth: float
-   :param use_even_offset:
+   :arg use_even_offset:
       Scale the offset to give more even thickness.
    :type use_even_offset: bool
-   :param use_interpolate:
+   :arg use_interpolate:
       Blend face data across the inset.
    :type use_interpolate: bool
-   :param use_relative_offset:
+   :arg use_relative_offset:
       Scale the offset by surrounding geometry.
    :type use_relative_offset: bool
    :return:
@@ -2188,7 +2108,7 @@ This script shows how operators can be used to model a link of a chain.
       - ``faces``:
         Output faces.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -2199,36 +2119,36 @@ This script shows how operators can be used to model a link of a chain.
 
    Inset or outset face regions.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param faces_exclude:
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg faces_exclude:
       Input faces to explicitly exclude from inset.
-   :type faces_exclude: list[:class:`bmesh.types.BMFace`]
-   :param use_boundary:
+   :type faces_exclude: list of (:class:`bmesh.types.BMFace`)
+   :arg use_boundary:
       Inset face boundaries.
    :type use_boundary: bool
-   :param use_even_offset:
+   :arg use_even_offset:
       Scale the offset to give more even thickness.
    :type use_even_offset: bool
-   :param use_interpolate:
+   :arg use_interpolate:
       Blend face data across the inset.
    :type use_interpolate: bool
-   :param use_relative_offset:
+   :arg use_relative_offset:
       Scale the offset by surrounding geometry.
    :type use_relative_offset: bool
-   :param use_edge_rail:
+   :arg use_edge_rail:
       Inset the region along existing edges.
    :type use_edge_rail: bool
-   :param thickness:
-      Inset distance from the boundary.
+   :arg thickness:
+      Thickness.
    :type thickness: float
-   :param depth:
-      Distance to raise or lower the inset face along its normal.
+   :arg depth:
+      Depth.
    :type depth: float
-   :param use_outset:
+   :arg use_outset:
       Outset rather than inset.
    :type use_outset: bool
    :return:
@@ -2236,7 +2156,7 @@ This script shows how operators can be used to model a link of a chain.
       - ``faces``:
         Output faces.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -2247,12 +2167,12 @@ This script shows how operators can be used to model a link of a chain.
 
    Creates edge loops based on simple edge-outset method.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param edges:
+   :arg edges:
       Input edges.
-   :type edges: list[:class:`bmesh.types.BMEdge`]
-   :param use_cap_endpoint:
+   :type edges: list of (:class:`bmesh.types.BMEdge`)
+   :arg use_cap_endpoint:
       Extend loop around end-points.
    :type use_cap_endpoint: bool
    :return:
@@ -2260,7 +2180,7 @@ This script shows how operators can be used to model a link of a chain.
       - ``edges``:
         Output edges.
 
-        **type** list[:class:`bmesh.types.BMEdge`]
+        **type** list of (:class:`bmesh.types.BMEdge`)
 
    :rtype: dict[str, Any]
 
@@ -2271,36 +2191,36 @@ This script shows how operators can be used to model a link of a chain.
 
    Makes a wire-frame copy of faces.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param thickness:
-      Wire thickness.
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg thickness:
+      Thickness.
    :type thickness: float
-   :param offset:
+   :arg offset:
       Offset the thickness from the center.
    :type offset: float
-   :param use_replace:
+   :arg use_replace:
       Remove original geometry.
    :type use_replace: bool
-   :param use_boundary:
+   :arg use_boundary:
       Inset face boundaries.
    :type use_boundary: bool
-   :param use_even_offset:
+   :arg use_even_offset:
       Scale the offset to give more even thickness.
    :type use_even_offset: bool
-   :param use_crease:
+   :arg use_crease:
       Crease hub edges for improved subdivision surface.
    :type use_crease: bool
-   :param crease_weight:
+   :arg crease_weight:
       The mean crease weight for resulting edges.
    :type crease_weight: float
-   :param use_relative_offset:
+   :arg use_relative_offset:
       Scale the offset by surrounding geometry.
    :type use_relative_offset: bool
-   :param material_offset:
+   :arg material_offset:
       Offset material index of generated faces.
    :type material_offset: int
    :return:
@@ -2308,7 +2228,7 @@ This script shows how operators can be used to model a link of a chain.
       - ``faces``:
         Output faces.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -2319,18 +2239,18 @@ This script shows how operators can be used to model a link of a chain.
 
    Splits a face into a triangle fan.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param faces:
+   :arg faces:
       Input faces.
-   :type faces: list[:class:`bmesh.types.BMFace`]
-   :param offset:
+   :type faces: list of (:class:`bmesh.types.BMFace`)
+   :arg offset:
       Center vertex offset along normal.
    :type offset: float
-   :param center_mode:
+   :arg center_mode:
       Calculation mode for center vertex.
-   :type center_mode: Literal['MEAN_WEIGHTED', 'MEAN', 'BOUNDS']
-   :param use_relative_offset:
+   :type center_mode: enum in ['MEAN_WEIGHTED', 'MEAN', 'BOUNDS'], default 'MEAN_WEIGHTED'
+   :arg use_relative_offset:
       Apply offset.
    :type use_relative_offset: bool
    :return:
@@ -2338,11 +2258,11 @@ This script shows how operators can be used to model a link of a chain.
       - ``verts``:
         Output verts.
 
-        **type** list[:class:`bmesh.types.BMVert`]
+        **type** list of (:class:`bmesh.types.BMVert`)
       - ``faces``:
         Output faces.
 
-        **type** list[:class:`bmesh.types.BMFace`]
+        **type** list of (:class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 
@@ -2351,102 +2271,79 @@ This script shows how operators can be used to model a link of a chain.
 
    Convex Hull
 
-   Builds a convex hull from the vertices in ``input``.
+   Builds a convex hull from the vertices in 'input'.
 
-   If ``use_existing_faces`` is true, the hull will not output triangles
+   If 'use_existing_faces' is true, the hull will not output triangles
    that are covered by a pre-existing face.
 
-   All hull vertices, faces, and edges are added to ``geom.out``. Any
+   All hull vertices, faces, and edges are added to 'geom.out'. Any
    input elements that end up inside the hull (i.e. are not used by an
-   output face) are added to the ``geom_interior.out`` slot. The
-   ``geom_unused.out`` slot will contain all interior geometry that is
-   completely unused. Lastly, ``geom_holes.out`` contains edges and faces
+   output face) are added to the 'interior_geom' slot. The
+   'unused_geom' slot will contain all interior geometry that is
+   completely unused. Lastly, 'holes_geom' contains edges and faces
    that were in the input and are part of the hull.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param input:
+   :arg input:
       Input geometry.
-   :type input: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param use_existing_faces:
+   :type input: list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
+   :arg use_existing_faces:
       Skip hull triangles that are covered by a pre-existing face.
    :type use_existing_faces: bool
    :return:
 
       - ``geom``:
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
       - ``geom_interior``:
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
       - ``geom_unused``:
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
       - ``geom_holes``:
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
-
-
-.. function:: space_edge_loops_evenly(bm, geom=[], interpolation='CUBIC', factor=0, lock_x=False, lock_y=False, lock_z=False)
-
-   Space Evenly.
-
-   Space the vertices in a regular distribution on the loop.
-
-   :param bm: The bmesh to operate on.
-   :type bm: :class:`bmesh.types.BMesh`
-   :param geom:
-      Input geometry.
-   :type geom: list[:class:`bmesh.types.BMEdge`]
-   :param interpolation:
-      Method used for interpolation.
-   :type interpolation: Literal['CUBIC', 'LINEAR']
-   :param factor:
-      Influence factor: spans from 0.0 to 1.0.
-   :type factor: float
-   :param lock_x:
-      Lock X-axis editing.
-   :type lock_x: bool
-   :param lock_y:
-      Lock Y-axis editing.
-   :type lock_y: bool
-   :param lock_z:
-      Lock Z-axis editing.
-   :type lock_z: bool
 
 
 .. function:: symmetrize(bm, input=[], direction='-X', dist=0, use_shapekey=False)
 
    Symmetrize.
 
-   Makes the mesh elements in the ``input`` slot symmetrical. Unlike
+   Makes the mesh elements in the "input" slot symmetrical. Unlike
    normal mirroring, it only copies in one direction, as specified by
-   the ``direction`` slot. The edges and faces that cross the plane of
+   the "direction" slot. The edges and faces that cross the plane of
    symmetry are split as needed to enforce symmetry.
 
-   All new vertices, edges, and faces are added to the ``geom.out`` slot.
+   All new vertices, edges, and faces are added to the "geom.out" slot.
 
-   :param bm: The bmesh to operate on.
+   :arg bm: The bmesh to operate on.
    :type bm: :class:`bmesh.types.BMesh`
-   :param input:
+   :arg input:
       Input geometry.
-   :type input: list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
-   :param direction:
+   :type input: list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
+   :arg direction:
       Axis to use.
-   :type direction: Literal['-X', '-Y', '-Z', 'X', 'Y', 'Z']
-   :param dist:
+   :type direction: enum in ['-X', '-Y', '-Z', 'X', 'Y', 'Z'], default '-X'
+   :arg dist:
       Minimum distance.
    :type dist: float
-   :param use_shapekey:
+   :arg use_shapekey:
       Transform shape keys too.
    :type use_shapekey: bool
    :return:
 
       - ``geom``:
 
-        **type** list[:class:`bmesh.types.BMVert` | :class:`bmesh.types.BMEdge` | :class:`bmesh.types.BMFace`]
+
+        **type** list of (:class:`bmesh.types.BMVert`, :class:`bmesh.types.BMEdge`, :class:`bmesh.types.BMFace`)
 
    :rtype: dict[str, Any]
 

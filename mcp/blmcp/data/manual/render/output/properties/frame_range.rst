@@ -21,8 +21,7 @@ Frame Start, End
 .. _bpy.types.Scene.frame_step:
 
 Step
-   Controls the number of frames to advance for each frame rendered, a value above 1 skips frames.
-   This is also used when viewing rendered animations.
+   Controls the number of frames to advance by for each frame in the timeline.
 
 
 Time Stretching

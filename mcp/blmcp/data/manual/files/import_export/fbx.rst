@@ -1,7 +1,7 @@
 
-***
-FBX
-***
+******************
+FBX (Experimental)
+******************
 
 The *FBX* (Filmbox) format is widely used for exchanging 3D data between applications,
 especially for animated characters and complex scene data. It is supported by software
@@ -10,8 +10,11 @@ such as Autodesk Maya, 3ds Max, Cinema 4D, and game engines like Unity and Unrea
 Blender's FBX importer supports a broad range of FBX features and is designed to be
 fast, memory-efficient, and highly compatible with both modern and legacy FBX files.
 
+.. note::
 
-.. _bpy.ops.wm.fbx_import:
+   This importer is currently marked as *Experimental*. It is only accessible
+   through the Import menu and is not used for drag-and-drop imports.
+
 
 Import
 ======
@@ -48,16 +51,6 @@ Vertex Colors
    :Linear: Vertex colors in the file are in Linear :term:`Color Space`
 
 
-Materials
----------
-
-Material Name Collision
-   Behavior when the name of an imported material conflicts with an existing material.
-
-   :Make Unique: Import each FBX material as a unique Blender material.
-   :Reference Existing: If a material with the same name already exists, reference that instead of importing.
-
-
 Animation
 ---------
 
@@ -76,9 +69,3 @@ Armature
 
 Ignore Leaf Bones
    Ignore the last bone at the end of each chain (used to mark the length of the previous bone).
-
-
-Export
-======
-
-To export FBX files use the :ref:`FBX Add-on <bpy.ops.export_scene.fbx>`.

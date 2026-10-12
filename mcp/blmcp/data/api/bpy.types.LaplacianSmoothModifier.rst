@@ -5,87 +5,80 @@ LaplacianSmoothModifier(Modifier)
 
 base classes --- :class:`bpy_struct`, :class:`Modifier`
 
-
 .. class:: LaplacianSmoothModifier(Modifier)
 
    Smoothing effect modifier
 
    .. attribute:: invert_vertex_group
 
-      Invert vertex group influence (default False)
+      Invert vertex group influence
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: iterations
 
-      (in [0, 32767], default 1)
-
-      :type: int
+      :type: int in [0, 32767], default 1
 
    .. attribute:: lambda_border
 
-      Lambda factor in border (in [-inf, inf], default 0.01)
+      Lambda factor in border
 
-      :type: float
+      :type: float in [-inf, inf], default 0.01
 
    .. attribute:: lambda_factor
 
-      Smooth effect factor (in [-inf, inf], default 0.01)
+      Smooth effect factor
 
-      :type: float
+      :type: float in [-inf, inf], default 0.01
 
    .. attribute:: use_normalized
 
-      Improve and stabilize the enhanced shape (default True)
+      Improve and stabilize the enhanced shape
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_volume_preserve
 
-      Apply volume preservation after smooth (default True)
+      Apply volume preservation after smooth
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_x
 
-      Smooth object along X axis (default True)
+      Smooth object along X axis
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_y
 
-      Smooth object along Y axis (default True)
+      Smooth object along Y axis
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_z
 
-      Smooth object along Z axis (default True)
+      Smooth object along Z axis
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: vertex_group
 
-      Name of Vertex Group which determines influence of modifier per point (default "", never None)
+      Name of Vertex Group which determines influence of modifier per point
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -96,20 +89,20 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
-   - :class:`Modifier.name`
-   - :class:`Modifier.type`
-   - :class:`Modifier.show_viewport`
-   - :class:`Modifier.show_render`
-   - :class:`Modifier.show_in_editmode`
-   - :class:`Modifier.show_on_cage`
-   - :class:`Modifier.show_expanded`
-   - :class:`Modifier.is_active`
-   - :class:`Modifier.use_pin_to_last`
-   - :class:`Modifier.is_override_data`
-   - :class:`Modifier.use_apply_on_spline`
-   - :class:`Modifier.execution_time`
-   - :class:`Modifier.persistent_uid`
+   * :class:`bpy_struct.id_data`
+   * :class:`Modifier.name`
+   * :class:`Modifier.type`
+   * :class:`Modifier.show_viewport`
+   * :class:`Modifier.show_render`
+   * :class:`Modifier.show_in_editmode`
+   * :class:`Modifier.show_on_cage`
+   * :class:`Modifier.show_expanded`
+   * :class:`Modifier.is_active`
+   * :class:`Modifier.use_pin_to_last`
+   * :class:`Modifier.is_override_data`
+   * :class:`Modifier.use_apply_on_spline`
+   * :class:`Modifier.execution_time`
+   * :class:`Modifier.persistent_uid`
 
 Inherited Functions
 -------------------
@@ -117,30 +110,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
-   - :class:`Modifier.bl_rna_get_subclass`
-   - :class:`Modifier.bl_rna_get_subclass_py`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
+   * :class:`Modifier.bl_rna_get_subclass`
+   * :class:`Modifier.bl_rna_get_subclass_py`
 

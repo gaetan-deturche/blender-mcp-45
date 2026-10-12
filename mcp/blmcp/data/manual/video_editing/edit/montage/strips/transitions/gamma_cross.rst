@@ -1,4 +1,4 @@
-.. _bpy.types.GammaCrossStrip:
+.. _bpy.types.GammaCrossSequence:
 
 *****************
 Gamma Cross Strip

@@ -20,23 +20,6 @@ Inputs
 Volume
    Standard geometry input.
 
-Resolution Mode
-   Mode for how the resolution of the final mesh is controlled.
-
-   :Grid:
-      This makes the resolution dependent on the resolution of the grid that is converted.
-      Higher resolution grids result in a higher resolution mesh.
-      In many cases, that is the most efficient mode.
-   :Voxel Amount:
-      Specifies the approximate resolution of the final mesh.
-      The voxel size is adapted to the size of the entire volume.
-   :Voxel Size:
-      Use a fixed resolution that does not change when the volume changes.
-
-   .. note::
-
-      This option applies individually for every grid in the input geometry.
-
 Voxel Amount
    Specifies the approximate resolution of the final mesh.
    The voxel size is adapted to the size of the entire volume.
@@ -53,6 +36,26 @@ Adaptivity
    Reduces the final face count by simplifying geometry where detail is not needed.
    This is similar to decimating the final to reduce resolution where it is not needed.
 
+
+Properties
+==========
+
+Resolution Mode
+   Mode for how the resolution of the final mesh is controlled.
+
+   :Grid:
+      This makes the resolution dependent on the resolution of the grid that is converted.
+      Higher resolution grids result in a higher resolution mesh.
+      In many cases, that is the most efficient mode.
+   :Voxel Amount:
+      Specifies the approximate resolution of the final mesh.
+      The voxel size is adapted to the size of the entire volume.
+   :Voxel Size:
+      Use a fixed resolution that does not change when the volume changes.
+
+   .. note::
+
+      This option applies individually for every grid in the input geometry.
 
 Outputs
 =======

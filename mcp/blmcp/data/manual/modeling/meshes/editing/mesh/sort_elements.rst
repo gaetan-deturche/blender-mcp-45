@@ -10,39 +10,35 @@ Sort Elements
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Mesh --> Sort Elements...`
 
-Changes the internal storage order of the selected mesh elements.
-
-.. hint::
-
-   To see the storage indices of the selected elements, first ensure the
-   :ref:`bpy.types.PreferencesView.show_developer_ui` option is enabled in the Preferences,
-   then enable the :ref:`bpy.types.View3DOverlay.show_extra_indices` overlay in the 3D Viewport.
+This tool (available from the context menu, *Vertices*, *Edges* and *Faces* menus)
+allows you to reorder the matching selected mesh elements, following various methods.
+Note that when called from the context menu,
+the affected element types are the same as the active select modes.
 
 View Z Axis
-   Sort along the active view's Z axis, from farthest to nearest.
+   Sort along the active view's Z axis, from farthest to nearest by default
+   (use *Reverse* if you want it the other way).
 View X Axis
-   Sort along the active view's X axis, from left to right.
+   Sort along the active view's X axis, from left to right by default (again, there is the *Reverse* option).
 Cursor Distance
-   Sort by distance from the :doc:`/editors/3dview/3d_cursor`, from nearest to farthest.
+   Sort from nearest to farthest away from the 3D cursor position (*Reverse* also available).
 Material
-   Sort faces by their :ref:`material slot <bpy.types.MaterialSlot>` index, from lowest
-   to highest. The order of faces within each "material group" remains unchanged.
+   Sort faces, and faces only, from those having the lowest material's index to those having the highest.
+   Order of faces inside each of those "material groups" remains unchanged.
+   Note that the *Reverse* option only reverses the order of the materials,
+   *not* the order of the faces inside them.
 Selected
-   Move all selected elements to the beginning (without affecting their relative order).
-   Warning: This will also affect the indices of **unselected** elements!
+   Move all selected elements to the beginning (or end, if *Reverse* enabled),
+   without affecting their relative orders.
+   Warning: This option will also affect **unselected** elements' indices!
 Randomize
-   Randomize the order of the selected elements.
+   Randomizes indices of selected elements (*without* affecting those of unselected ones).
+   The seed option allows you to get another randomization --
+   the same seed over the same mesh or set of selected elements will always give the same result!
 Reverse
-   Reverse the order of the selected elements.
+   Simply reverse the order of the selected elements.
 
-The :ref:`bpy.ops.screen.redo_last` panel has the following options:
+.. hint:: Enabling the Display Indices Option
 
-Type
-   The sort order as described above.
-Elements
-   Whether to sort vertices, edges, or faces. This is initially determined by the
-   current :ref:`selection mode <bpy.ops.mesh.select_mode>`.
-Reverse
-   Sort in the opposite order than the default one.
-Seed
-   When using *Randomize*, changing the seed will result in a different order.
+   Enable the *Developer Extras* Option in :menuselection:`Preferences --> Interface --> Display` panel,
+   a checkbox will appear in :menuselection:`Display & Shading Menu --> Viewport Overlay --> Developer --> Indices`.

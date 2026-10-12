@@ -11,11 +11,9 @@ Nodes used mainly as input to other nodes.
    boolean.rst
    collection.rst
    color.rst
-   font.rst
    image.rst
    integer.rst
    material.rst
-   menu.rst
    object.rst
    rotation.rst
    string.rst

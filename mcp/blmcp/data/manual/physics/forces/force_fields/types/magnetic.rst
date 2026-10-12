@@ -12,9 +12,11 @@ Magnetic
 This field depends on the speed of the particles.
 It simulates the force of magnetism on magnetized objects.
 
-.. figure:: /images/physics_forces_force-fields_types_magnetic_panel.png
+.. todo:: Update image
 
-   UI for a Magnetic force field.
+   .. figure:: /images/physics_forces_force-fields_types_magnetic_panel.png
+
+      UI for a Magnetic force field.
 
 
 Example

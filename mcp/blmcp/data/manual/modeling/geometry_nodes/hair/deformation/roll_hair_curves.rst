@@ -4,9 +4,7 @@
 Roll Hair Curves
 ****************
 
-The *Roll Hair Curves* node coils or curls the tips of hair curves, rolling them inward or outward
-based on configurable geometric parameters.
-This node can be used to create spiral or curled hairstyles, simulate rolled fur, or stylize hair motion.
+Rolls up hair curves starting from their tips.
 
 .. peertube:: 5jrgEkcWH88fmL1MEsqQN2
 
@@ -14,57 +12,52 @@ This node can be used to create spiral or curled hairstyles, simulate rolled fur
 Inputs
 ======
 
-Geometry
-   The input geometry containing the hair curves to be deformed.
+**Geometry**
 
 Factor
-   Controls the overall strength of the rolling effect.
-   A value of 0.0 disables the effect, while 1.0 applies the full roll.
+   Factor to blend overall effect.
 
 Subdivision
-   Defines how finely each curve is subdivided before deformation.
-   Higher values produce smoother and more detailed rolls but increase computational cost.
+   Subdivision level applied before deformation.
 
 Variation Level
-   Introduces variation along the roll path by smoothing or distorting its shape.
-   Higher values produce more natural and uneven rolls.
+   Level of smoothing on the roll path to include shape variation.
 
 Roll Length
-   Specifies the portion of each curve (measured from the tip) that is rolled.
-   Increasing this value extends the length of the coiled section.
+   Length of each curve to be rolled.
 
 Roll Radius
-   Determines the radius of the roll, controlling how tightly each curve is coiled.
+   Radius of the rolls.
 
 Roll Depth
-   Adds an offset along the roll axis, producing a stretched or compressed spiral shape.
+   Depth offset of the roll.
 
 Roll Taper
-   Controls how the roll radius decreases toward the tip, tapering the spiral.
+   Taper of the roll.
 
 Retain Overall Shape
-   When enabled, offsets the roll along the curve's original path to better preserve the initial flow and shape
-   of the hair.
+   Offset the roll along the original curve to retain shape.
 
 Roll Direction
-   Defines the axis around which the roll is performed (e.g., X, Y, or Z).
-   This determines the orientation of the curls.
+   Axis around which each curve is rolled.
 
 Random Orientation
-   Introduces randomization to the direction of the roll, helping to avoid uniform patterns
-   and adding a more natural appearance.
+   Amount of randomization of the direction of the roll.
 
 Seed
-   Sets the random seed for the orientation randomization.
-   Changing the value alters the distribution of curl directions while keeping the same parameters.
+   Random Seed for the operation.
 
 Preserve Length
-   When enabled, maintains the total length of each curve after deformation.
-   When disabled, the curves may stretch or compress slightly as a result of rolling.
+   Preserve each curve's length during deformation.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs
 =======
 
-Geometry
-   The resulting geometry with the rolled hair curves applied.
+**Geometry**

@@ -1,6 +1,5 @@
 .. index:: Geometry Nodes; Match String
-.. _bpy.types.FunctionNodeMatchString:
-.. --- copy below this line ---
+.. _bpy.types.GeometryNodeMatchString:
 
 *****************
 Match String Node
@@ -20,6 +19,13 @@ Inputs
 String
    The input string to be evaluated.
 
+Key
+   The target string to compare against.
+
+
+Properties
+==========
+
 Operation
    Determines how the input string is compared to the key:
 
@@ -29,9 +35,6 @@ Operation
       True if the input string ends with the key.
    :Contains:
       True if the input string contains the key anywhere within it.
-
-Key
-   The target string to compare against.
 
 
 Outputs

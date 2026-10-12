@@ -5,7 +5,7 @@ Space Image Mode Items
 
 :IMAGE_EDITOR: Image Editor.
 
-   Inspect images or render results.
+   View the image.
 :UV: UV Editor.
 
-   View and edit UVs.
+   UV edit in mesh editmode.

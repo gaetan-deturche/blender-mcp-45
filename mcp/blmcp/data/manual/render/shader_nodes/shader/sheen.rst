@@ -1,3 +1,4 @@
+.. _bpy.types.ShaderNodeBsdfVelvet:
 .. _bpy.types.ShaderNodeBsdfSheen:
 
 **********

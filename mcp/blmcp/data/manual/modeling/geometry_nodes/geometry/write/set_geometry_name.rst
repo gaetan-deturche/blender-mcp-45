@@ -25,6 +25,12 @@ Name
    The new name for the geometry.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

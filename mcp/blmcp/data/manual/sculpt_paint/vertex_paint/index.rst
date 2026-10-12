@@ -1,4 +1,6 @@
+.. _painting-vertex-index:
 .. _bpy.types.VertexPaint:
+.. _bpy.types.VertexColors:
 
 ################
   Vertex Paint

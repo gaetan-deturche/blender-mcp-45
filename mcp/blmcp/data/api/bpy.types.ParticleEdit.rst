@@ -5,163 +5,152 @@ ParticleEdit(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: ParticleEdit(bpy_struct)
 
    Properties of particle editing mode
 
    .. data:: brush
 
-      (readonly)
-
-      :type: :class:`ParticleBrush` | None
+      :type: :class:`ParticleBrush`, (readonly)
 
    .. attribute:: default_key_count
 
-      How many keys to make new particles with (in [2, 32767], default 5)
+      How many keys to make new particles with
 
-      :type: int
+      :type: int in [2, 32767], default 5
 
    .. attribute:: display_step
 
-      How many steps to display the path with (in [1, 10], default 2)
+      How many steps to display the path with
 
-      :type: int
+      :type: int in [1, 10], default 2
 
    .. attribute:: emitter_distance
 
-      Distance to keep particles away from the emitter (in [-inf, inf], default 0.25)
+      Distance to keep particles away from the emitter
 
-      :type: float
+      :type: float in [-inf, inf], default 0.25
 
    .. attribute:: fade_frames
 
-      How many frames to fade (in [1, 100], default 2)
+      How many frames to fade
 
-      :type: int
+      :type: int in [1, 100], default 2
 
    .. data:: is_editable
 
-      A valid edit mode exists (default False, readonly)
+      A valid edit mode exists
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: is_hair
 
-      Editing hair (default False, readonly)
+      Editing hair
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: object
 
-      The edited object (readonly)
+      The edited object
 
-      :type: :class:`Object` | None
+      :type: :class:`Object`, (readonly)
 
    .. attribute:: select_mode
 
-      Particle select and display mode (default ``'PATH'``)
+      Particle select and display mode
 
-      - ``PATH``
+      * ``PATH``
         Path -- Path edit mode.
-      - ``POINT``
+      * ``POINT``
         Point -- Point select mode.
-      - ``TIP``
+      * ``TIP``
         Tip -- Tip select mode.
 
-      :type: Literal['PATH', 'POINT', 'TIP']
+      :type: enum in [``'PATH'``, ``'POINT'``, ``'TIP'``], default ``'PATH'``
 
    .. attribute:: shape_object
 
       Outer shape to use for tools
 
-      :type: :class:`Object` | None
+      :type: :class:`Object`
 
    .. attribute:: show_particles
 
-      Display actual particles (default False)
+      Display actual particles
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: tool
 
-      (default ``'COMB'``)
-
-      - ``COMB``
+      * ``COMB``
         Comb -- Comb hairs.
-      - ``SMOOTH``
+      * ``SMOOTH``
         Smooth -- Smooth hairs.
-      - ``ADD``
+      * ``ADD``
         Add -- Add hairs.
-      - ``LENGTH``
+      * ``LENGTH``
         Length -- Make hairs longer or shorter.
-      - ``PUFF``
+      * ``PUFF``
         Puff -- Make hairs stand up.
-      - ``CUT``
+      * ``CUT``
         Cut -- Cut hairs.
-      - ``WEIGHT``
+      * ``WEIGHT``
         Weight -- Weight hair particles.
 
-      :type: Literal['COMB', 'SMOOTH', 'ADD', 'LENGTH', 'PUFF', 'CUT', 'WEIGHT']
+      :type: enum in [``'COMB'``, ``'SMOOTH'``, ``'ADD'``, ``'LENGTH'``, ``'PUFF'``, ``'CUT'``, ``'WEIGHT'``], default ``'COMB'``
 
    .. attribute:: type
 
-      (default ``'PARTICLES'``)
-
-      :type: Literal['PARTICLES', 'SOFT_BODY', 'CLOTH']
+      :type: enum in [``'PARTICLES'``, ``'SOFT_BODY'``, ``'CLOTH'``], default ``'PARTICLES'``
 
    .. attribute:: use_auto_velocity
 
-      Calculate point velocities automatically (default True)
+      Calculate point velocities automatically
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_default_interpolate
 
-      Interpolate new particles from the existing ones (default False)
+      Interpolate new particles from the existing ones
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_emitter_deflect
 
-      Keep paths from intersecting the emitter (default True)
+      Keep paths from intersecting the emitter
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_fade_time
 
-      Fade paths and keys further away from current frame (default False)
+      Fade paths and keys further away from current frame
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_preserve_length
 
-      Keep path lengths constant (default True)
+      Keep path lengths constant
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_preserve_root
 
-      Keep root keys unmodified (default True)
+      Keep root keys unmodified
 
-      :type: bool
+      :type: boolean, default True
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -172,7 +161,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -180,30 +169,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -211,5 +199,5 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`ToolSettings.particle_edit`
+   * :class:`ToolSettings.particle_edit`
 

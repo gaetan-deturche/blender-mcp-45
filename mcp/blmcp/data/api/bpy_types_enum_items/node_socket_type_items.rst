@@ -41,15 +41,3 @@ Node Socket Type Items
 
 :CLOSURE: Closure.
 
-:FONT: Font.
-
-:SCENE: Scene.
-
-:TEXT: Text.
-
-:MASK: Mask.
-
-:SOUND: Sound.
-
-:INT_VECTOR: Integer Vector.
-

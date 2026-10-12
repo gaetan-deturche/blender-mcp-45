@@ -1,3 +1,4 @@
+
 *****************
 Library Overrides
 *****************
@@ -14,7 +15,7 @@ unmodified properties of the overridden one will be updated accordingly.
    Automatic conversion from proxies to library overrides happens when loading a blend-file,
    but results on complex characters are not guaranteed and may need manual fixes.
 
-Library overrides support:
+Library overrides supports:
 
 - Multiple independent overrides of a same linked data
   (e.g. having the same character multiple times in the same scene).
@@ -36,7 +37,7 @@ Library overrides support:
 
    The main one is probably posed (but not animated) armature objects, when their Armature obdata
    itself is not overridden. The Pose bones of an armature object are fully linked to the bones
-   of its Armature obdata, if the latter goes missing, the pose bones are definitively lost.
+   of its Armature obdata, if the later goes missing, the pose bones are definitively lost.
 
 
 .. note:: Proper Collections Layout Matters
@@ -77,7 +78,7 @@ change greatly depending on whether animation data was already defined in the li
 data-block. Animation data is created for a datablock if it gets animated by keyframes, or
 through drivers.
 
-In general, an override can do much more with its animation data if no animation data exists
+In general, an overrides can do much more with its animation data if no animation data exists
 in its linked reference data-block.
 
 **Keyframes (a.k.a. F-Curves)**
@@ -95,7 +96,7 @@ and no new F-Curve can be added.
 
 If the linked reference data has animation data, then its overrides only have
 limited possibilities to edit the existing :doc:`drivers </animation/drivers/introduction>`.
-For example, it will be possible to change the existing target of a driver,
+For example, it will be possible to change the exisitng target of a driver,
 but it won't be possible to add new drivers, or new targets to an existing driver.
 
 If the linked reference data has no animation data, then its overrides will create a new one
@@ -160,7 +161,7 @@ Make an Override
 
 Create overrides from the selected data-blocks.
 
-Blender automatically creates overrides for all required data-blocks to ensure that
+Blender automatically create overrides for all required data-blocks to ensure that
 valid override hierarchies are created.
 
 Only overrides created from selected items will be user-editable.
@@ -186,7 +187,7 @@ Depending on where from the override is created, there are several ways to
    always apply to a whole override hierarchy.
 
 3DView
-^^^^^^
+______
 
 The selected objects will be considered as selected.
 
@@ -199,7 +200,7 @@ When a selected object is a local *Empty* instantiating a linked collection, the
   Otherwise, no created override will be defined as user-editable.
 
 Outliner
-^^^^^^^^
+________
 
 The operation can be applied on either the selected items only, their content only, or both.
 
@@ -210,7 +211,7 @@ The operation can be applied on either the selected items only, their content on
 
 
 ID Widget
-^^^^^^^^^
+_________
 
 Only the linked data-block in the ID Widget is considered as selected, and set as editable
 once overridden.
@@ -220,7 +221,7 @@ Make Editable
 -------------
 
 That same operation can also be used to make existing overrides user-editable,
-after they have been created, or :ref:`cleared <bpy.ops.ui.override_idtemplate_clear>`
+after they have been created, or :ref:`cleared <Clear Override>`
 
 
 .. _bpy.ops.object.reset_override_library:
@@ -243,6 +244,7 @@ Unlike with the *Clear* operation, the overrides remain fully editable, and are 
 
 .. _bpy.ops.object.clear_override_library:
 .. _bpy.ops.ui.override_idtemplate_clear:
+.. _Clear Override:
 
 Clear an Override
 =================
@@ -276,35 +278,36 @@ You can manually define or remove an override from the context menu of the relev
 If an override is not editable, you have to make it editable first.
 
 
-.. _bpy.ops.ui.override_add_button:
+.. _bpy.ops.ui.override_type_set_button:
 
-Add Overrides
--------------
+Define Overrides
+----------------
 
 .. reference::
 
    :Editor:    Any
    :Mode:      Object Mode
-   :Property:  :menuselection:`Context Menu --> Add Override(s)`
+   :Property:  :menuselection:`Context Menu --> Define Overrides`
+               :menuselection:`Context Menu --> Define Override`
 
 Mark a property to be overridden in the local blend file. For array properties
 all elements will be overridden.
 
 
-Add Single Override
--------------------
+Define Single Override
+----------------------
 
 .. reference::
 
    :Editor:    Any
    :Mode:      Object Mode
-   :Property:  :menuselection:`Context Menu --> Add Single Override`
+   :Property:  :menuselection:`Context Menu --> Define Single Override`
 
 Mark a property to be overridden in the local blend file. For array properties only
 the selected element will be overridden.
 
 
-.. _bpy.ops.ui.override_remove_button:
+.. _bpy.ops.ui.remove_override_button:
 
 Remove Overrides
 ----------------
@@ -313,19 +316,12 @@ Remove Overrides
 
    :Editor:    Any
    :Mode:      Object Mode
-   :Property:  :menuselection:`Context Menu --> Remove Override(s)`
+   :Property:  :menuselection:`Context Menu --> Remove Overrides`
+               :menuselection:`Context Menu --> Remove Override`
 
 Remove the property from the overrides. The value of the linked in data-block will be used.
 For array properties all elements will be removed from the override.
 
-.. reference::
-
-   :Editor:    Outliner --> Library Overrides View
-   :Mode:      Object Mode
-   :Property:  :menuselection:`Context Menu --> Remove`
-
-Remove the selected (groups of) properties from the overrides, and all of their sub-items
-if any. The values from the linked-in data-block will be used.
 
 Remove Single Override
 ----------------------
@@ -350,7 +346,7 @@ Troubleshoot an Override Hierarchy
 
    :Editor:    Outliner
    :Mode:      Object Mode
-   :Outliner:  :menuselection:`Context Menu --> Library Override --> Troubleshoot`
+   :Outliner:  :menuselection:`Context Menu --> Library override --> Troubleshoot`
 
 These operations are only available from the Outliner contextual menu. They can help fixing a broken
 override hierarchy.
@@ -362,7 +358,7 @@ Resync
 
    :Editor:    Outliner
    :Mode:      Object Mode
-   :Outliner:  :menuselection:`Context Menu --> Library Override --> Troubleshoot --> Resync`
+   :Outliner:  :menuselection:`Context Menu --> Library override --> Troubleshoot --> Resync`
 
 The hierarchy of the linked data (the relationships between linked data-blocks) can change.
 Overrides need to be resynced to match the new hierarchy. This operator will resync the override
@@ -388,7 +384,7 @@ Resync Enforce
 
    :Editor:    Outliner
    :Mode:      Object Mode
-   :Outliner:  :menuselection:`Context Menu --> Library Override --> Troubleshoot --> Resync Enforce`
+   :Outliner:  :menuselection:`Context Menu --> Library override --> Troubleshoot --> Resync Enforce`
 
 In some cases, especially with older blend-files that were saved with 'broken' (non-hierarchy-matching) overrides,
 a regular resync itself cannot rebuild properly the override as expected (e.g. some objects might go missing).
@@ -406,7 +402,7 @@ Delete
 
    :Editor:    Outliner
    :Mode:      Object Mode
-   :Outliner:  :menuselection:`Context Menu --> Library Override --> Troubleshoot --> Delete`
+   :Outliner:  :menuselection:`Context Menu --> Library override --> Troubleshoot --> Delete`
 
 Remove the whole library override hierarchy, and replace all of these override data-blocks by
 their original linked data-blocks. This fully reverts the *Make* operation.

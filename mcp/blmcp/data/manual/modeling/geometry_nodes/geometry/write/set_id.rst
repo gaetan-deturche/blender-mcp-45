@@ -33,6 +33,12 @@ ID
    when stable IDs are desired when deleting a dynamic number of instances.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

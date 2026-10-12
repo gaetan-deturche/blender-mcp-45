@@ -1,14 +1,10 @@
-.. _bpy.types.MovieClipStrip:
+.. _bpy.types.MovieClipSequence:
 
 **********
 Clip Strip
 **********
 
-A Clip Strip references a :ref:`Movie Clip <bpy.types.MovieClip>` data-block
-and allows it to be used within the Movie Clip Editor timeline.
-
-The clip can be modified within the :doc:`/editors/clip/index`,
-including tracking, stabilization, and lens distortion correction.
+Clip can be modified within the :doc:`/editors/clip/index`.
 
 
 Options
@@ -18,24 +14,19 @@ Options
 
    :Panel:     :menuselection:`Sidebar region --> Strip --> Movie Clip`
 
-.. _bpy.types.MovieClipStrip.clip:
+.. _bpy.types.MovieClipSequence.clip:
 
 Movie Clip
-   Used to select the Movie Clip data-block.
-   For data-block controls, see :ref:`ui-data-block`.
+   Used to select the movie clip. For controls see :ref:`ui-data-block`.
 
-.. _bpy.types.MovieClipStrip.stabilize2d:
+.. _bpy.types.MovieClipSequence.stabilize2d:
 
 Use: 2D Stabilized Clip
-   Displays the clip with 2D stabilization applied.
-   Stabilization settings are configured in the tracking tools.
+   Use the 2D stabilized version of the clip.
 
-.. _bpy.types.MovieClipStrip.undistort:
+.. _bpy.types.MovieClipSequence.undistort:
 
 Use: Undistorted Clip
-   Displays the clip with lens distortion removed,
-   based on the solved camera data.
+   Use the undistorted version of the clip.
 
-Frame Range
-   Displays the original start and end frames of the Movie Clip,
-   before any strip-level adjustments are applied.
+Below the properties, shows the frame range of the movie clip (before strip adjustments).

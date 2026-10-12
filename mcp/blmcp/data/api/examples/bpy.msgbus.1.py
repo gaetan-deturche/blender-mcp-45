@@ -1,6 +1,6 @@
 """
 The message bus system can be used to receive notifications when properties of
-Blender data-blocks are changed via the data API.
+Blender datablocks are changed via the data API.
 
 
 Limitations

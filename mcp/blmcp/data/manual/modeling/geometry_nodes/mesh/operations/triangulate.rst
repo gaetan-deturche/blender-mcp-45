@@ -22,6 +22,10 @@ Mesh
 Selection
    A standard Boolean selection input to determine which faces will be triangulated.
 
+
+Properties
+==========
+
 Quad Method
    :Beauty:
       Split the quads in nice triangles, slower method.

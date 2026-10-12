@@ -5,87 +5,80 @@ Struct(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: Struct(bpy_struct)
 
    RNA structure definition
 
    .. data:: base
 
-      Struct definition this is derived from (readonly)
+      Struct definition this is derived from
 
-      :type: :class:`Struct` | None
+      :type: :class:`Struct`, (readonly)
 
    .. data:: description
 
-      Description of the Struct's purpose (default "", readonly, never None)
+      Description of the Struct's purpose
 
-      :type: str
+      :type: string, default "", (readonly, never None)
 
    .. data:: functions
 
-      (default None, readonly)
-
-      :type: :class:`bpy_prop_collection`\ [:class:`Function`]
+      :type: :class:`bpy_prop_collection` of :class:`Function`, (readonly)
 
    .. data:: identifier
 
-      Unique name used in the code and scripting (default "", readonly, never None)
+      Unique name used in the code and scripting
 
-      :type: str
+      :type: string, default "", (readonly, never None)
 
    .. data:: name
 
-      Human readable name (default "", readonly, never None)
+      Human readable name
 
-      :type: str
+      :type: string, default "", (readonly, never None)
 
    .. data:: name_property
 
-      Property that gives the name of the struct (readonly)
+      Property that gives the name of the struct
 
-      :type: :class:`StringProperty` | None
+      :type: :class:`StringProperty`, (readonly)
 
    .. data:: nested
 
-      Struct in which this struct is always nested, and to which it logically belongs (readonly)
+      Struct in which this struct is always nested, and to which it logically belongs
 
-      :type: :class:`Struct` | None
+      :type: :class:`Struct`, (readonly)
 
    .. data:: properties
 
-      Properties in the struct (default None, readonly)
+      Properties in the struct
 
-      :type: :class:`bpy_prop_collection`\ [:class:`Property`]
+      :type: :class:`bpy_prop_collection` of :class:`Property`, (readonly)
 
    .. data:: property_tags
 
-      Tags that properties can use to influence behavior (default None, readonly)
+      Tags that properties can use to influence behavior
 
-      :type: :class:`bpy_prop_collection`\ [:class:`EnumPropertyItem`]
+      :type: :class:`bpy_prop_collection` of :class:`EnumPropertyItem`, (readonly)
 
    .. data:: translation_context
 
-      Translation context of the struct's name (default "", readonly, never None)
+      Translation context of the struct's name
 
-      :type: str
+      :type: string, default "", (readonly, never None)
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -96,7 +89,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -104,30 +97,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -135,10 +127,10 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`BlenderRNA.structs`
-   - :class:`CollectionProperty.fixed_type`
-   - :class:`PointerProperty.fixed_type`
-   - :class:`Property.srna`
-   - :class:`Struct.base`
-   - :class:`Struct.nested`
+   * :class:`BlenderRNA.structs`
+   * :class:`CollectionProperty.fixed_type`
+   * :class:`PointerProperty.fixed_type`
+   * :class:`Property.srna`
+   * :class:`Struct.base`
+   * :class:`Struct.nested`
 

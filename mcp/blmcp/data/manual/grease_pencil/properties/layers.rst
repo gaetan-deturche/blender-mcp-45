@@ -23,15 +23,14 @@ layers in the viewport is top to bottom.
 Layers can be grouped using Layer Groups. A layer can only be in one group at a time. Layers can be moved into groups
 using drag-and-drop. Groups can be color coded with a color tag.
 
-Every layer corresponds to a channel in the Dope Sheet editor (in Grease Pencil mode).
+Every layer correspond to a channel in the Dope Sheet editor (in Grease Pencil mode).
 See :doc:`Dope Sheet </editors/dope_sheet/modes/grease_pencil>` for more information.
 
-Layers can also be used together with Modifiers to only affect part of your drawing.
+Layers can also be used together with Modifiers to only affects part of your drawing.
 See :doc:`Modifiers </grease_pencil/modifiers/introduction>` for more information.
 
-Layers can mask other layers by clicking :bl-icon:`clipuv_hlt` (*Use Mask*)
-or using the checkbox in the Masks panel header.
-See :ref:`bpy.types.GreasePencilTreeNode.use_masks` for more information.
+Layers can mask other layers by enabling Use Mask (mask icon) or using the checkbox in the Masks panel header. See
+:ref:`bpy.types.GreasePencilLayer.use_masks` for more information.
 
 .. tip::
 
@@ -40,26 +39,26 @@ See :ref:`bpy.types.GreasePencilTreeNode.use_masks` for more information.
    overlay to control the opacity of the non-active layers.
 
 Layer Tree
-   :ref:`ui-tree-view` of all layers and groups for the Grease Pencil object.
+   Tree view of all layers and groups for the Grease Pencil object.
 
    Next to the layer name there are four icons buttons that control common properties of the layer:
 
-   :bl-icon:`clipuv_hlt` / :bl-icon:`clipuv_dehlt` Use Mask
-      Toggle the affect of :ref:`Masks <bpy.types.GreasePencilTreeNode.use_masks>` on the layer.
+   Use Mask (mask icon)
+      Toggle the affect of :ref:`Masks <bpy.types.GreasePencilLayer.use_masks>` on the layer.
 
-   .. _bpy.types.GreasePencilTreeNode.use_onion_skinning:
+   .. _bpy.types.GreasePencilLayer.use_onion_skinning:
 
-   :bl-icon:`onionskin_on` / :bl-icon:`onionskin_off` Onion Skinning
+   Onion Skinning (onion skin icon)
       Toggle using the layer for :doc:`Onion Skinning </grease_pencil/properties/onion_skinning>`.
 
-   .. _bpy.types.GreasePencilTreeNode.hide:
+   .. _bpy.types.GreasePencilLayer.hide:
 
-   :bl-icon:`hide_off` / :bl-icon:`hide_on` Hide
+   Hide (eye icon)
       Toggle layer visibility in the viewport and in render.
 
    .. _bpy.types.GreasePencilLayer.lock:
 
-   :bl-icon:`unlocked` / :bl-icon:`locked` Lock
+   Lock (padlock icon)
       Toggle layer from being editable.
 
 .. _bpy.ops.grease_pencil.layer_add:
@@ -104,16 +103,17 @@ Layer Specials
    Unlock All
       Unlocks editing of all the layers in the list.
 
-   .. _bpy.types.GreasePencil.use_autolock_layers:
+   .. _bpy.types.GreasePencilv3.use_autolock_layers:
 
    Autolock Inactive Layer
       Automatically locks the editing of every layer in the list except the active one. This way you avoid making
       unwanted changes in other layers without the need to lock them every time.
 
-   .. _bpy.types.GreasePencilLayer.ignore_locked_materials:
+   .. _bpy.types.GreasePencilLayer.use_locked_material:
 
-   Ignore Material Locking
-      Allow editing strokes even if they use locked materials.
+   Use Locked Materials Editing
+      Avoids editing locked materials in the layer. When disabled,
+      any material can be edited even if they are locked in the material list.
 
    .. _bpy.ops.grease_pencil.layer_merge:
 
@@ -158,7 +158,7 @@ Lights
    When enabled, the layer is affected by lights.
 
 
-.. _bpy.types.GreasePencilTreeNode.use_masks:
+.. _bpy.types.GreasePencilLayer.use_masks:
 
 Masks
 =====
@@ -184,10 +184,10 @@ to the Mask :ref:`list view <ui-list-view>`.
 In the Masks list next to the layers name there are two icons buttons that control
 common properties of the layer mask:
 
-:bl-icon:`select_intersect` / :bl-icon:`select_difference` Invert
+Invert (mask icon)
    Inverts the mask.
 
-:bl-icon:`hide_off` / :bl-icon:`hide_on` Hide
+Viewport/Render Visibility (eye icon)
    Toggle layer visibility in the viewport and in render.
 
 .. list-table:: Mask (green circle) samples.
@@ -208,7 +208,7 @@ common properties of the layer mask:
           Blend: Regular, Opacity: 1.
 
 
-.. _bpy.types.GreasePencilLayer.translation:
+.. _bpy.types.GreasePencilLayer.location:
 .. _bpy.types.GreasePencilLayer.rotation:
 .. _bpy.types.GreasePencilLayer.scale:
 
@@ -277,7 +277,7 @@ Use Masks in Render
 Display
 =======
 
-.. _bpy.types.GreasePencilTreeNode.channel_color:
+.. _bpy.types.GreasePencilLayer.channel_color:
 
 Channel Color
    Sets the color to use in the channel region of the :doc:`Dope Sheet </editors/dope_sheet/modes/grease_pencil>`.

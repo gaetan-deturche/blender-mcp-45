@@ -30,6 +30,12 @@ Softness
    This input sets the value for the ``softness`` attribute.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

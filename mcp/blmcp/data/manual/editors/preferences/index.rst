@@ -39,11 +39,6 @@ Sections
 .. toctree::
    :maxdepth: 1
 
-   asset_libraries.rst
-
-.. toctree::
-   :maxdepth: 1
-
    input.rst
    navigation.rst
    keymap.rst
@@ -58,5 +53,4 @@ Sections
 .. toctree::
    :maxdepth: 1
 
-   developer_tools.rst
    experimental.rst

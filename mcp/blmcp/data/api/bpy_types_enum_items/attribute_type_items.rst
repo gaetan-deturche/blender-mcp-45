@@ -9,24 +9,24 @@ Attribute Type Items
 :INT: Integer.
 
    32-bit integer.
-:BOOLEAN: Boolean.
-
-   True or false.
 :FLOAT_VECTOR: Vector.
 
    3D vector with floating-point values.
 :FLOAT_COLOR: Color.
 
    RGBA color with 32-bit floating-point values.
-:QUATERNION: Quaternion.
+:BYTE_COLOR: Byte Color.
 
-   Floating point quaternion rotation.
-:FLOAT4X4: 4x4 Matrix.
-
-   Floating point matrix.
+   RGBA color with 8-bit positive integer values.
 :STRING: String.
 
    Text string.
+:BOOLEAN: Boolean.
+
+   True or false.
+:FLOAT2: 2D Vector.
+
+   2D vector with floating-point values.
 :INT8: 8-Bit Integer.
 
    Smaller integer with a range from -128 to 127.
@@ -36,12 +36,9 @@ Attribute Type Items
 :INT32_2D: 2D Integer Vector.
 
    32-bit signed integer vector.
-:FLOAT2: 2D Vector.
+:QUATERNION: Quaternion.
 
-   2D vector with floating-point values.
-:FLOAT4: 4D Vector.
+   Floating point quaternion rotation.
+:FLOAT4X4: 4x4 Matrix.
 
-   4D vector with floating-point values.
-:BYTE_COLOR: Byte Color.
-
-   RGBA color with 8-bit positive integer values.
+   Floating point matrix.

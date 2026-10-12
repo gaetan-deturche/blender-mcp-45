@@ -1,12 +1,11 @@
-ObjectModifiers(bpy_prop_collection)
-====================================
+ObjectModifiers(bpy_struct)
+===========================
 
 .. currentmodule:: bpy.types
 
-base class --- :class:`bpy_prop_collection`
+base class --- :class:`bpy_struct`
 
-
-.. class:: ObjectModifiers(bpy_prop_collection)
+.. class:: ObjectModifiers(bpy_struct)
 
    Collection of object modifiers
 
@@ -14,16 +13,16 @@ base class --- :class:`bpy_prop_collection`
 
       The active modifier in the list
 
-      :type: :class:`Modifier` | None
+      :type: :class:`Modifier`
 
    .. method:: new(name, type)
 
       Add a new modifier
 
-      :param name: New name for the modifier (never None)
-      :type name: str
-      :param type: Modifier type to add
-      :type type: Literal[:ref:`rna_enum_object_modifier_type_items`]
+      :arg name: New name for the modifier
+      :type name: string, (never None)
+      :arg type: Modifier type to add
+      :type type: enum in :ref:`rna_enum_object_modifier_type_items`
       :return: Newly created modifier
       :rtype: :class:`Modifier`
 
@@ -31,8 +30,8 @@ base class --- :class:`bpy_prop_collection`
 
       Remove an existing modifier from the object
 
-      :param modifier: Modifier to remove (never None)
-      :type modifier: :class:`Modifier` | None
+      :arg modifier: Modifier to remove
+      :type modifier: :class:`Modifier`, (never None)
 
    .. method:: clear()
 
@@ -43,27 +42,23 @@ base class --- :class:`bpy_prop_collection`
 
       Move a modifier to a different position
 
-      :param from_index: From Index, Index to move (in [-inf, inf])
-      :type from_index: int
-      :param to_index: To Index, Target index (in [-inf, inf])
-      :type to_index: int
+      :arg from_index: From Index, Index to move
+      :type from_index: int in [-inf, inf]
+      :arg to_index: To Index, Target index
+      :type to_index: int in [-inf, inf]
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -74,7 +69,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -82,30 +77,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -113,5 +107,5 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`Object.modifiers`
+   * :class:`Object.modifiers`
 

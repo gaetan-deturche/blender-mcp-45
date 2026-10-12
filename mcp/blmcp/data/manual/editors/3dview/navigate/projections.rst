@@ -49,5 +49,5 @@ and set the Type in the Lens panel to *Orthographic*.
 .. seealso::
 
    - :ref:`Auto-Perspective Preference <bpy.types.PreferencesInput.use_auto_perspective>`
-   - :ref:`Camera Lens Type <bpy.types.Camera.type>`
+   - :ref:`Camera Lens Type <camera-lens-type>`
    - :term:`Camera Projections <Projection>`

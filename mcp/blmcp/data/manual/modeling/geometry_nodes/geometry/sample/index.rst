@@ -6,7 +6,6 @@
 .. toctree::
    :maxdepth: 1
 
-   geometry_principal_components.rst
    geometry_proximity.rst
    index_of_nearest.rst
    raycast.rst

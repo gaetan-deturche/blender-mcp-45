@@ -21,7 +21,7 @@ Volume Grid Data Type Items
 :MASK: Mask.
 
    No data, boolean mask of active voxels.
-:VECTOR_FLOAT: Vector.
+:VECTOR_FLOAT: Float Vector.
 
    3D float vector.
 :VECTOR_DOUBLE: Double Vector.

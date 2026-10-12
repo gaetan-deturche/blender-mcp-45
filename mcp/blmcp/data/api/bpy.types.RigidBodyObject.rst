@@ -5,142 +5,137 @@ RigidBodyObject(bpy_struct)
 
 base class --- :class:`bpy_struct`
 
-
 .. class:: RigidBodyObject(bpy_struct)
 
    Settings for object participating in Rigid Body Simulation
 
    .. attribute:: angular_damping
 
-      Amount of angular velocity that is lost over time (in [0, 1], default 0.1)
+      Amount of angular velocity that is lost over time
 
-      :type: float
+      :type: float in [0, 1], default 0.1
 
    .. attribute:: collision_collections
 
-      Collision collections rigid body belongs to (array of 20 items, default (False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False))
+      Collision collections rigid body belongs to
 
-      :type: :class:`bpy_prop_array`\ [bool]
+      :type: boolean array of 20 items, default (False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False, False)
 
    .. attribute:: collision_margin
 
-      Threshold of distance near surface where collisions are still considered (best results when non-zero) (in [0, 1], default 0.04)
+      Threshold of distance near surface where collisions are still considered (best results when non-zero)
 
-      :type: float
+      :type: float in [0, 1], default 0.04
 
    .. attribute:: collision_shape
 
-      Collision Shape of object in Rigid Body Simulations (default ``'BOX'``)
+      Collision Shape of object in Rigid Body Simulations
 
-      :type: Literal[:ref:`rna_enum_rigidbody_object_shape_items`]
+      :type: enum in :ref:`rna_enum_rigidbody_object_shape_items`, default ``'BOX'``
 
    .. attribute:: deactivate_angular_velocity
 
-      Angular Velocity below which simulation stops simulating object (in [0, inf], default 0.5)
+      Angular Velocity below which simulation stops simulating object
 
-      :type: float
+      :type: float in [0, inf], default 0.5
 
    .. attribute:: deactivate_linear_velocity
 
-      Linear Velocity below which simulation stops simulating object (in [0, inf], default 0.4)
+      Linear Velocity below which simulation stops simulating object
 
-      :type: float
+      :type: float in [0, inf], default 0.4
 
    .. attribute:: enabled
 
-      Rigid Body actively participates to the simulation (default True)
+      Rigid Body actively participates to the simulation
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: friction
 
-      Resistance of object to movement (in [0, inf], default 0.5)
+      Resistance of object to movement
 
-      :type: float
+      :type: float in [0, inf], default 0.5
 
    .. attribute:: kinematic
 
-      Allow rigid body to be controlled by the animation system (default False)
+      Allow rigid body to be controlled by the animation system
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: linear_damping
 
-      Amount of linear velocity that is lost over time (in [0, 1], default 0.04)
+      Amount of linear velocity that is lost over time
 
-      :type: float
+      :type: float in [0, 1], default 0.04
 
    .. attribute:: mass
 
-      How much the object 'weighs' irrespective of gravity (in [0.001, inf], default 1.0)
+      How much the object 'weighs' irrespective of gravity
 
-      :type: float
+      :type: float in [0.001, inf], default 1.0
 
    .. attribute:: mesh_source
 
-      Source of the mesh used to create collision shape (default ``'BASE'``)
+      Source of the mesh used to create collision shape
 
-      - ``BASE``
+      * ``BASE``
         Base -- Base mesh.
-      - ``DEFORM``
+      * ``DEFORM``
         Deform -- Deformations (shape keys, deform modifiers).
-      - ``FINAL``
+      * ``FINAL``
         Final -- All modifiers.
 
-      :type: Literal['BASE', 'DEFORM', 'FINAL']
+      :type: enum in [``'BASE'``, ``'DEFORM'``, ``'FINAL'``], default ``'BASE'``
 
    .. attribute:: restitution
 
-      Tendency of object to bounce after colliding with another (0 = stays still, 1 = perfectly elastic) (in [0, inf], default 0.0)
+      Tendency of object to bounce after colliding with another (0 = stays still, 1 = perfectly elastic)
 
-      :type: float
+      :type: float in [0, inf], default 0.0
 
    .. attribute:: type
 
-      Role of object in Rigid Body Simulations (default ``'ACTIVE'``)
+      Role of object in Rigid Body Simulations
 
-      :type: Literal[:ref:`rna_enum_rigidbody_object_type_items`]
+      :type: enum in :ref:`rna_enum_rigidbody_object_type_items`, default ``'ACTIVE'``
 
    .. attribute:: use_deactivation
 
-      Enable deactivation of resting rigid bodies (increases performance and stability but can cause glitches) (default True)
+      Enable deactivation of resting rigid bodies (increases performance and stability but can cause glitches)
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_deform
 
-      Rigid body deforms during simulation (default False)
+      Rigid body deforms during simulation
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_margin
 
-      Use custom collision margin (some shapes will have a visible gap around them) (default False)
+      Use custom collision margin (some shapes will have a visible gap around them)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_start_deactivated
 
-      Deactivate rigid body at the start of the simulation (default False)
+      Deactivate rigid body at the start of the simulation
 
-      :type: bool
+      :type: boolean, default False
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -151,7 +146,7 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
+   * :class:`bpy_struct.id_data`
 
 Inherited Functions
 -------------------
@@ -159,30 +154,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
 
 References
 ----------
@@ -190,5 +184,5 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`Object.rigid_body`
+   * :class:`Object.rigid_body`
 

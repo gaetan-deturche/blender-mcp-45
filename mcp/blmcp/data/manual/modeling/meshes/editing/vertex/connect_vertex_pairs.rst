@@ -9,17 +9,25 @@ Connect Vertex Pairs
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Vertex --> Connect Vertex Pairs`
 
-Creates an edge between each pair of selected vertices that share a face, splitting that face in two.
+This operator connects selected vertices by creating edges between them and splitting the face.
+It can be used on many faces at once.
 
 .. list-table::
 
    * - .. figure:: /images/modeling_meshes_editing_vertex_connect-vertex-pairs_before.png
+          :width: 180px
 
-          Before.
+          Vertices before connecting.
 
      - .. figure:: /images/modeling_meshes_editing_vertex_connect-vertex-pairs_after.png
+          :width: 180px
 
-          After.
+          After connecting vertices.
 
-Unlike :doc:`/modeling/meshes/editing/vertex/connect_vertex_path`, this operator doesn't connect
-vertices that are more than one face apart from each other. Also, selection order doesn't matter.
+     - .. figure:: /images/modeling_meshes_editing_vertex_connect-vertex-pairs_after-faces.png
+          :width: 180px
+
+          Resulting face pair.
+
+The main difference between this operator and :doc:`/modeling/meshes/editing/vertex/connect_vertex_path`
+is that this operator ignores the selection order and connects all selected vertices that share a face.

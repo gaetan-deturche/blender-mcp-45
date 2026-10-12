@@ -6,7 +6,7 @@ Curve Display
 .. reference::
 
    :Mode:      Edit Mode
-   :Panel:     :menuselection:`3D Viewport --> Header --> Curve Edit Mode Overlays`
+   :Panel:     :menuselection:`3D Viewport --> Viewport Overlays --> Curve Edit Mode`
 
 When in Edit Mode, curves have special :doc:`overlays </editors/3dview/display/overlays>`
 to control how curves are displayed in the 3D Viewport.
@@ -22,6 +22,8 @@ Handles
 
 Normals
    Toggles the display of the curve normals.
+
+   .. _bpy.types.View3DOverlay.normals_length:
 
    Normal Size
       Length of the axis that points the direction of the normal.

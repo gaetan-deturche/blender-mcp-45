@@ -30,11 +30,10 @@ To compare mesh API options see: :ref:`NGons and Tessellation Faces <info_gotcha
 
 This example script prints the vertices and UVs for each polygon, assumes the active object is a mesh with UVs.
 
-.. literalinclude:: ./examples/bpy.types.Mesh.0.py
+.. literalinclude:: ./examples/bpy.types.Mesh.py
    :lines: 29-
 
 base classes --- :class:`bpy_struct`, :class:`ID`
-
 
 .. class:: Mesh(ID)
 
@@ -42,296 +41,290 @@ base classes --- :class:`bpy_struct`, :class:`ID`
 
    .. data:: animation_data
 
-      Animation data for this data-block (readonly)
+      Animation data for this data-block
 
-      :type: :class:`AnimData` | None
+      :type: :class:`AnimData`, (readonly)
 
    .. data:: attributes
 
-      Geometry attributes (default None, readonly)
+      Geometry attributes
 
-      :type: :class:`AttributeGroupMesh`\ [:class:`Attribute`]
+      :type: :class:`AttributeGroupMesh` :class:`bpy_prop_collection` of :class:`Attribute`, (readonly)
 
    .. attribute:: auto_texspace
 
-      Adjust active object's texture space automatically when transforming object (default True)
+      Adjust active object's texture space automatically when transforming object
 
-      :type: bool
+      :type: boolean, default True
 
    .. data:: color_attributes
 
-      Geometry color attributes (default None, readonly)
+      Geometry color attributes
 
-      :type: :class:`AttributeGroupMesh`\ [:class:`Attribute`]
+      :type: :class:`AttributeGroupMesh` :class:`bpy_prop_collection` of :class:`Attribute`, (readonly)
 
    .. data:: corner_normals
 
-      The "slit" normal direction of each face corner, influenced by vertex normals, sharp faces, sharp edges, and custom normals. May be empty. (default None, readonly)
+      The "slit" normal direction of each face corner, influenced by vertex normals, sharp faces, sharp edges, and custom normals. May be empty.
 
-      :type: :class:`bpy_prop_collection`\ [:class:`MeshNormalValue`]
+      :type: :class:`bpy_prop_collection` of :class:`MeshNormalValue`, (readonly)
+
+   .. data:: cycles
+
+      Cycles mesh settings
+
+      :type: :class:`CyclesMeshSettings`, (readonly)
 
    .. data:: edges
 
-      Edges of the mesh (default None, readonly)
+      Edges of the mesh
 
-      :type: :class:`MeshEdges`\ [:class:`MeshEdge`]
+      :type: :class:`MeshEdges` :class:`bpy_prop_collection` of :class:`MeshEdge`, (readonly)
 
    .. data:: has_custom_normals
 
-      True if there is custom normal data for this mesh (default False, readonly)
+      True if there are custom split normals data in this mesh
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: is_editmode
 
-      True when used in editmode (default False, readonly)
+      True when used in editmode
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. data:: loop_triangle_polygons
 
-      The face index for each loop triangle (default None, readonly)
+      The face index for each loop triangle
 
-      :type: :class:`bpy_prop_collection`\ [:class:`ReadOnlyInteger`]
+      :type: :class:`bpy_prop_collection` of :class:`ReadOnlyInteger`, (readonly)
 
    .. data:: loop_triangles
 
-      Tessellation of mesh polygons into triangles (default None, readonly)
+      Tessellation of mesh polygons into triangles
 
-      :type: :class:`MeshLoopTriangles`\ [:class:`MeshLoopTriangle`]
+      :type: :class:`MeshLoopTriangles` :class:`bpy_prop_collection` of :class:`MeshLoopTriangle`, (readonly)
 
    .. data:: loops
 
-      Loops of the mesh (face corners) (default None, readonly)
+      Loops of the mesh (face corners)
 
-      :type: :class:`MeshLoops`\ [:class:`MeshLoop`]
+      :type: :class:`MeshLoops` :class:`bpy_prop_collection` of :class:`MeshLoop`, (readonly)
 
    .. data:: materials
 
-      (default None, readonly)
-
-      :type: :class:`IDMaterials`\ [:class:`Material`]
+      :type: :class:`IDMaterials` :class:`bpy_prop_collection` of :class:`Material`, (readonly)
 
    .. data:: normals_domain
 
-      The attribute domain that gives enough information to represent the mesh's normals (default ``'FACE'``, readonly)
+      The attribute domain that gives enough information to represent the mesh's normals
 
-      :type: Literal['POINT', 'FACE', 'CORNER']
+      :type: enum in [``'POINT'``, ``'FACE'``, ``'CORNER'``], default ``'FACE'``, (readonly)
 
    .. data:: polygon_normals
 
-      The normal direction of each face, defined by the winding order and position of its vertices (default None, readonly)
+      The normal direction of each face, defined by the winding order and position of its vertices
 
-      :type: :class:`bpy_prop_collection`\ [:class:`MeshNormalValue`]
+      :type: :class:`bpy_prop_collection` of :class:`MeshNormalValue`, (readonly)
 
    .. data:: polygons
 
-      Polygons of the mesh (default None, readonly)
+      Polygons of the mesh
 
-      :type: :class:`MeshPolygons`\ [:class:`MeshPolygon`]
-
-   .. attribute:: radial_symmetry
-
-      Number of mirrored regions around a central axis (array of 3 items, in [1, 64], default (1, 1, 1))
-
-      :type: :class:`bpy_prop_array`\ [int]
+      :type: :class:`MeshPolygons` :class:`bpy_prop_collection` of :class:`MeshPolygon`, (readonly)
 
    .. attribute:: remesh_mode
 
-      (default ``'VOXEL'``)
-
-      - ``VOXEL``
+      * ``VOXEL``
         Voxel -- Use the voxel remesher.
-      - ``QUAD``
+      * ``QUAD``
         Quad -- Use the quad remesher.
 
-      :type: Literal['VOXEL', 'QUAD']
+      :type: enum in [``'VOXEL'``, ``'QUAD'``], default ``'VOXEL'``
 
    .. attribute:: remesh_voxel_adaptivity
 
-      Reduces the final face count by simplifying geometry where detail is not needed, generating triangles. A value greater than 0 disables Fix Poles. (in [0, 1], default 0.0)
+      Reduces the final face count by simplifying geometry where detail is not needed, generating triangles. A value greater than 0 disables Fix Poles.
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: remesh_voxel_size
 
-      Size of the voxel in object space used for volume evaluation. Lower values preserve finer details. (in [0, inf], default 0.1)
+      Size of the voxel in object space used for volume evaluation. Lower values preserve finer details.
 
-      :type: float
+      :type: float in [0, inf], default 0.1
 
    .. data:: shape_keys
 
-      (readonly)
-
-      :type: :class:`Key` | None
+      :type: :class:`Key`, (readonly)
 
    .. data:: skin_vertices
 
-      All skin vertices (default None, readonly)
+      All skin vertices
 
-      :type: :class:`bpy_prop_collection`\ [:class:`MeshSkinVertexLayer`]
+      :type: :class:`bpy_prop_collection` of :class:`MeshSkinVertexLayer`, (readonly)
 
    .. attribute:: texco_mesh
 
       Derive texture coordinates from another mesh
 
-      :type: :class:`Mesh` | None
+      :type: :class:`Mesh`
 
    .. attribute:: texspace_location
 
-      Texture space location (array of 3 items, in [-inf, inf], default (0.0, 0.0, 0.0))
+      Texture space location
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (0.0, 0.0, 0.0)
 
    .. attribute:: texspace_size
 
-      Texture space size (array of 3 items, in [-inf, inf], default (1.0, 1.0, 1.0))
+      Texture space size
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-inf, inf], default (1.0, 1.0, 1.0)
 
    .. attribute:: texture_mesh
 
       Use another mesh for texture indices (vertex indices must be aligned)
 
-      :type: :class:`Mesh` | None
+      :type: :class:`Mesh`
 
    .. data:: total_edge_sel
 
-      Selected edge count in editmode (in [0, inf], default 0, readonly)
+      Selected edge count in editmode
 
-      :type: int
+      :type: int in [0, inf], default 0, (readonly)
 
    .. data:: total_face_sel
 
-      Selected face count in editmode (in [0, inf], default 0, readonly)
+      Selected face count in editmode
 
-      :type: int
+      :type: int in [0, inf], default 0, (readonly)
 
    .. data:: total_vert_sel
 
-      Selected vertex count in editmode (in [0, inf], default 0, readonly)
+      Selected vertex count in editmode
 
-      :type: int
+      :type: int in [0, inf], default 0, (readonly)
 
    .. attribute:: use_auto_texspace
 
-      Adjust active object's texture space automatically when transforming object (default True)
+      Adjust active object's texture space automatically when transforming object
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_mirror_topology
 
-      Use topology based mirroring (for when both sides of mesh have matching, unique topology) (default False)
+      Use topology based mirroring (for when both sides of mesh have matching, unique topology)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_mirror_vertex_groups
 
-      Mirror the left/right vertex groups when painting. The symmetry axis is determined by the symmetry settings. (default True)
+      Mirror the left/right vertex groups when painting. The symmetry axis is determined by the symmetry settings.
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_mirror_x
 
-      Enable symmetry in the X axis (default False)
+      Enable symmetry in the X axis
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_mirror_y
 
-      Enable symmetry in the Y axis (default False)
+      Enable symmetry in the Y axis
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_mirror_z
 
-      Enable symmetry in the Z axis (default False)
+      Enable symmetry in the Z axis
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_paint_bone_selection
 
-      Bone selection during painting (default True)
+      Bone selection during painting
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_paint_mask
 
-      Face selection masking for painting (default False)
+      Face selection masking for painting
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_paint_mask_vertex
 
-      Vertex selection masking for painting (default False)
+      Vertex selection masking for painting
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_remesh_fix_poles
 
-      Produces fewer poles and a better topology flow (default False)
+      Produces fewer poles and a better topology flow
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_remesh_preserve_attributes
 
-      Transfer all attributes to the new mesh (default False)
+      Transfer all attributes to the new mesh
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_remesh_preserve_volume
 
-      Projects the mesh to preserve the volume and details of the original mesh (default False)
+      Projects the mesh to preserve the volume and details of the original mesh
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: uv_layer_clone
 
       UV loop layer to be used as cloning source
 
-      :type: :class:`MeshUVLoopLayer` | None
+      :type: :class:`MeshUVLoopLayer`
 
    .. attribute:: uv_layer_clone_index
 
-      Clone UV loop layer index (in [0, inf], default 0)
+      Clone UV loop layer index
 
-      :type: int
+      :type: int in [0, inf], default 0
 
    .. attribute:: uv_layer_stencil
 
       UV loop layer to mask the painted area
 
-      :type: :class:`MeshUVLoopLayer` | None
+      :type: :class:`MeshUVLoopLayer`
 
    .. attribute:: uv_layer_stencil_index
 
-      Mask UV loop layer index (in [0, inf], default 0)
+      Mask UV loop layer index
 
-      :type: int
+      :type: int in [0, inf], default 0
 
    .. data:: uv_layers
 
-      All UV loop layers (default None, readonly)
+      All UV loop layers
 
-      :type: :class:`UVLoopLayers`\ [:class:`MeshUVLoopLayer`]
+      :type: :class:`UVLoopLayers` :class:`bpy_prop_collection` of :class:`MeshUVLoopLayer`, (readonly)
 
    .. data:: vertex_colors
 
-      Legacy vertex color layers. Deprecated, use color attributes instead. (default None, readonly)
+      Legacy vertex color layers. Deprecated, use color attributes instead.
 
-      :type: :class:`LoopColors`\ [:class:`MeshLoopColorLayer`]
+      :type: :class:`LoopColors` :class:`bpy_prop_collection` of :class:`MeshLoopColorLayer`, (readonly)
 
    .. data:: vertex_normals
 
-      The normal direction of each vertex, defined as the average of the surrounding face normals (default None, readonly)
+      The normal direction of each vertex, defined as the average of the surrounding face normals
 
-      :type: :class:`bpy_prop_collection`\ [:class:`MeshNormalValue`]
+      :type: :class:`bpy_prop_collection` of :class:`MeshNormalValue`, (readonly)
 
    .. data:: vertices
 
-      Vertices of the mesh (default None, readonly)
+      Vertices of the mesh
 
-      :type: :class:`MeshVertices`\ [:class:`MeshVertex`]
+      :type: :class:`MeshVertices` :class:`bpy_prop_collection` of :class:`MeshVertex`, (readonly)
 
    .. data:: edge_creases
 
@@ -360,10 +353,10 @@ base classes --- :class:`bpy_struct`, :class:`ID`
 
       Transform mesh vertices by a matrix (Warning: inverts normals if matrix is negative)
 
-      :param matrix: Matrix (multi-dimensional array of 4 * 4 items, in [-inf, inf])
-      :type matrix: :class:`mathutils.Matrix` | Sequence[Sequence[float]]
-      :param shape_keys: Transform Shape Keys (optional)
-      :type shape_keys: bool
+      :arg matrix: Matrix
+      :type matrix: :class:`mathutils.Matrix` of 4 * 4 items in [-inf, inf]
+      :arg shape_keys: Transform Shape Keys
+      :type shape_keys: boolean, (optional)
 
    .. method:: flip_normals()
 
@@ -374,8 +367,8 @@ base classes --- :class:`bpy_struct`, :class:`ID`
 
       Reset and fill the "sharp_edge" attribute based on the angle of faces neighboring manifold edges
 
-      :param angle: Angle, Angle between faces beyond which edges are marked sharp (in [0, 3.14159], optional)
-      :type angle: float
+      :arg angle: Angle, Angle between faces beyond which edges are marked sharp
+      :type angle: float in [0, 3.14159], (optional)
 
    .. method:: split_faces()
 
@@ -384,10 +377,10 @@ base classes --- :class:`bpy_struct`, :class:`ID`
 
    .. method:: calc_tangents(*, uvmap="")
 
-      Compute tangents and bitangent signs, to be used together with the custom normals to get a complete tangent space for normal mapping (custom normals are also computed if not yet present)
+      Compute tangents and bitangent signs, to be used together with the split normals to get a complete tangent space for normal mapping (split normals are also computed if not yet present)
 
-      :param uvmap: Name of the UV map to use for tangent space computation (optional, never None)
-      :type uvmap: str
+      :arg uvmap: Name of the UV map to use for tangent space computation
+      :type uvmap: string, (optional, never None)
 
    .. method:: free_tangents()
 
@@ -403,39 +396,39 @@ base classes --- :class:`bpy_struct`, :class:`ID`
 
       Calculate smooth groups from sharp edges
 
-      :param use_bitflags: Produce bitflags groups instead of simple numeric values (optional)
-      :type use_bitflags: bool
-      :param use_boundary_vertices_for_bitflags: Also consider different smoothgroups sharing only vertices (but without any common edge) as neighbors, preventing them from sharing the same bitflag value. Only effective when ``use_bitflags`` is set. WARNING: Will overflow (run out of available bits) easily with some types of topology, e.g. large fans of sharp edges (optional)
-      :type use_boundary_vertices_for_bitflags: bool
+      :arg use_bitflags: Produce bitflags groups instead of simple numeric values
+      :type use_bitflags: boolean, (optional)
+      :arg use_boundary_vertices_for_bitflags: Also consider different smoothgroups sharing only vertices (but without any common edge) as neighbors, preventing them from sharing the same bitflag value. Only effective when `use_bitflags` is set. WARNING: Will overflow (run out of available bits) easily with some types of topology, e.g. large fans of sharp edges
+      :type use_boundary_vertices_for_bitflags: boolean, (optional)
       :return:
-         ``poly_groups``, Smooth Groups, :class:`bpy_prop_array`\ [int]
+         `poly_groups`, Smooth Groups, int array of 1 items in [-inf, inf]
 
-         ``groups``, Total number of groups, int
+         `groups`, Total number of groups, int in [0, inf]
 
-      :rtype: tuple[:class:`bpy_prop_array`\ [int], int]
+      :rtype: (int array of 1 items in [-inf, inf], int in [0, inf])
 
    .. method:: normals_split_custom_set(normals)
 
-      Define custom normals of this mesh (use zero-vectors to keep auto ones)
+      Define custom split normals of this mesh (use zero-vectors to keep auto ones)
 
-      :param normals: Normals (multi-dimensional array of 1 * 3 items, in [-1, 1])
-      :type normals: Sequence[Sequence[float]]
+      :arg normals: Normals
+      :type normals: float multi-dimensional array of 1 * 3 items in [-1, 1]
 
    .. method:: normals_split_custom_set_from_vertices(normals)
 
-      Define custom normals of this mesh, from vertices' normals (use zero-vectors to keep auto ones)
+      Define custom split normals of this mesh, from vertices' normals (use zero-vectors to keep auto ones)
 
-      :param normals: Normals (multi-dimensional array of 1 * 3 items, in [-1, 1])
-      :type normals: Sequence[Sequence[float]]
+      :arg normals: Normals
+      :type normals: float multi-dimensional array of 1 * 3 items in [-1, 1]
 
    .. method:: update(*, calc_edges=False, calc_edges_loose=False)
 
       update
 
-      :param calc_edges: Calculate Edges, Force recalculation of edges (optional)
-      :type calc_edges: bool
-      :param calc_edges_loose: Calculate Loose Edges, Calculate the loose state of each edge (optional)
-      :type calc_edges_loose: bool
+      :arg calc_edges: Calculate Edges, Force recalculation of edges
+      :type calc_edges: boolean, (optional)
+      :arg calc_edges_loose: Calculate Loose Edges, Calculate the loose state of each edge
+      :type calc_edges_loose: boolean, (optional)
 
    .. method:: update_gpu_tag()
 
@@ -446,12 +439,12 @@ base classes --- :class:`bpy_struct`, :class:`ID`
 
       unit_test_compare
 
-      :param mesh: Mesh to compare to (optional)
-      :type mesh: :class:`Mesh` | None
-      :param threshold: Threshold, Comparison tolerance threshold (in [0, inf], optional)
-      :type threshold: float
-      :return: Return value, String description of result of comparison (never None)
-      :rtype: str
+      :arg mesh: Mesh to compare to
+      :type mesh: :class:`Mesh`, (optional)
+      :arg threshold: Threshold, Comparison tolerance threshold
+      :type threshold: float in [0, inf], (optional)
+      :return: Return value, String description of result of comparison
+      :rtype: string, (never None)
 
    .. method:: clear_geometry()
 
@@ -462,33 +455,28 @@ base classes --- :class:`bpy_struct`, :class:`ID`
 
       Validate geometry, return True when the mesh has had invalid geometry corrected/removed
 
-      :param verbose: Verbose, Output information about the errors found (optional)
-      :type verbose: bool
-      :param clean_customdata: Clean Custom Data, Deprecated, has no effect (optional)
-      :type clean_customdata: bool
+      :arg verbose: Verbose, Output information about the errors found
+      :type verbose: boolean, (optional)
+      :arg clean_customdata: Clean Custom Data, Remove temp/cached custom-data layers, like e.g. normals...
+      :type clean_customdata: boolean, (optional)
       :return: Result
-      :rtype: bool
+      :rtype: boolean
 
    .. method:: validate_material_indices()
 
       Validate material indices of polygons, return True when the mesh has had invalid indices corrected (to default 0)
 
       :return: Result
-      :rtype: bool
+      :rtype: boolean
 
    .. method:: count_selected_items()
 
       Return the number of selected items (vert, edge, face)
 
-      :return: Result, (array of 3 items, in [0, inf])
-      :rtype: :class:`bpy_prop_array`\ [int]
+      :return: Result
+      :rtype: int array of 3 items in [0, inf]
 
    .. method:: edge_creases_ensure()
-
-      Ensure the "crease_edge" attribute exists, creating it if needed.
-      
-      :return: The edge crease attribute.
-      :rtype: :class:`FloatAttribute`
 
    .. method:: edge_creases_remove()
 
@@ -497,13 +485,13 @@ base classes --- :class:`bpy_struct`, :class:`ID`
       Make a mesh from a list of vertices/edges/faces
       Until we have a nicer way to make geometry, use this.
       
-      :param vertices:
+      :arg vertices:
       
          float triplets each representing (X, Y, Z)
          eg: [(0.0, 1.0, 0.5), ...].
       
       :type vertices: Iterable[Sequence[float]]
-      :param edges:
+      :arg edges:
       
          int pairs, each pair contains two indices to the
          *vertices* argument. eg: [(1, 2), ...]
@@ -511,14 +499,12 @@ base classes --- :class:`bpy_struct`, :class:`ID`
          When an empty iterable is passed in, the edges are inferred from the polygons.
       
       :type edges: Iterable[Sequence[int]]
-      :param faces:
+      :arg faces:
       
          iterator of faces, each faces contains three or more indices to
          the *vertices* argument. eg: [(5, 6, 8, 9), (1, 2, 3), ...]
       
       :type faces: Iterable[Sequence[int]]
-      :param shade_flat: When true, mark new faces as flat-shaded.
-      :type shade_flat: bool
       
       .. warning::
       
@@ -540,38 +526,24 @@ base classes --- :class:`bpy_struct`, :class:`ID`
 
    .. method:: vertex_creases_ensure()
 
-      Ensure the "crease_vert" attribute exists, creating it if needed.
-      
-      :return: The vertex crease attribute.
-      :rtype: :class:`FloatAttribute`
-
    .. method:: vertex_creases_remove()
 
    .. method:: vertex_paint_mask_ensure()
-
-      Ensure the ".sculpt_mask" attribute exists, creating it if needed.
-      
-      :return: The vertex paint mask attribute.
-      :rtype: :class:`FloatAttribute`
 
    .. method:: vertex_paint_mask_remove()
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -582,28 +554,27 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
-   - :class:`ID.name`
-   - :class:`ID.name_full`
-   - :class:`ID.id_type`
-   - :class:`ID.session_uid`
-   - :class:`ID.is_evaluated`
-   - :class:`ID.original`
-   - :class:`ID.users`
-   - :class:`ID.use_fake_user`
-   - :class:`ID.use_extra_user`
-   - :class:`ID.is_embedded_data`
-   - :class:`ID.is_linked_packed`
-   - :class:`ID.is_missing`
-   - :class:`ID.is_runtime_data`
-   - :class:`ID.is_editable`
-   - :class:`ID.tag`
-   - :class:`ID.is_library_indirect`
-   - :class:`ID.library`
-   - :class:`ID.library_weak_reference`
-   - :class:`ID.asset_data`
-   - :class:`ID.override_library`
-   - :class:`ID.preview`
+   * :class:`bpy_struct.id_data`
+   * :class:`ID.name`
+   * :class:`ID.name_full`
+   * :class:`ID.id_type`
+   * :class:`ID.session_uid`
+   * :class:`ID.is_evaluated`
+   * :class:`ID.original`
+   * :class:`ID.users`
+   * :class:`ID.use_fake_user`
+   * :class:`ID.use_extra_user`
+   * :class:`ID.is_embedded_data`
+   * :class:`ID.is_missing`
+   * :class:`ID.is_runtime_data`
+   * :class:`ID.is_editable`
+   * :class:`ID.tag`
+   * :class:`ID.is_library_indirect`
+   * :class:`ID.library`
+   * :class:`ID.library_weak_reference`
+   * :class:`ID.asset_data`
+   * :class:`ID.override_library`
+   * :class:`ID.preview`
 
 Inherited Functions
 -------------------
@@ -611,49 +582,47 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
-   - :class:`ID.bl_system_properties_get`
-   - :class:`ID.rename`
-   - :class:`ID.evaluated_get`
-   - :class:`ID.copy`
-   - :class:`ID.asset_mark`
-   - :class:`ID.asset_clear`
-   - :class:`ID.asset_generate_preview`
-   - :class:`ID.override_create`
-   - :class:`ID.override_hierarchy_create`
-   - :class:`ID.user_clear`
-   - :class:`ID.user_remap`
-   - :class:`ID.make_local`
-   - :class:`ID.user_of_id`
-   - :class:`ID.animation_data_create`
-   - :class:`ID.animation_data_clear`
-   - :class:`ID.update_tag`
-   - :class:`ID.preview_ensure`
-   - :class:`ID.bl_rna_get_subclass`
-   - :class:`ID.bl_rna_get_subclass_py`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
+   * :class:`ID.rename`
+   * :class:`ID.evaluated_get`
+   * :class:`ID.copy`
+   * :class:`ID.asset_mark`
+   * :class:`ID.asset_clear`
+   * :class:`ID.asset_generate_preview`
+   * :class:`ID.override_create`
+   * :class:`ID.override_hierarchy_create`
+   * :class:`ID.user_clear`
+   * :class:`ID.user_remap`
+   * :class:`ID.make_local`
+   * :class:`ID.user_of_id`
+   * :class:`ID.animation_data_create`
+   * :class:`ID.animation_data_clear`
+   * :class:`ID.update_tag`
+   * :class:`ID.preview_ensure`
+   * :class:`ID.bl_rna_get_subclass`
+   * :class:`ID.bl_rna_get_subclass_py`
 
 References
 ----------
@@ -661,13 +630,13 @@ References
 .. hlist::
    :columns: 2
 
-   - :mod:`bpy.context.mesh`
-   - :class:`BlendData.meshes`
-   - :class:`BlendDataMeshes.new`
-   - :class:`BlendDataMeshes.new_from_object`
-   - :class:`BlendDataMeshes.remove`
-   - :class:`Mesh.texco_mesh`
-   - :class:`Mesh.texture_mesh`
-   - :class:`Mesh.unit_test_compare`
-   - :class:`Object.to_mesh`
+   * :mod:`bpy.context.mesh`
+   * :class:`BlendData.meshes`
+   * :class:`BlendDataMeshes.new`
+   * :class:`BlendDataMeshes.new_from_object`
+   * :class:`BlendDataMeshes.remove`
+   * :class:`Mesh.texco_mesh`
+   * :class:`Mesh.texture_mesh`
+   * :class:`Mesh.unit_test_compare`
+   * :class:`Object.to_mesh`
 

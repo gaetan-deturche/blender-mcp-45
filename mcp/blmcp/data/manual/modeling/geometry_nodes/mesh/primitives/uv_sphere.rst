@@ -27,6 +27,12 @@ Radius
    Distance of vertices to the origin.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

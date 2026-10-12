@@ -20,6 +20,9 @@ Color
    Scattering coefficients per color channel.
 Density
    The density of the scatter effect.
+
+.. _bpy.types.ShaderNodeVolumeScatter.density:
+
 Anisotropy :guilabel:`Henyey-Greenstein` :guilabel:`Draine`
    Controls the relative amount of backward and forward scattering.
 IOR :guilabel:`Fournier-Forand`

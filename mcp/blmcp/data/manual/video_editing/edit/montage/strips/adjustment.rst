@@ -1,4 +1,4 @@
-.. _bpy.types.AdjustmentStrip:
+.. _bpy.types.AdjustmentSequence:
 
 **********************
 Adjustment Layer Strip

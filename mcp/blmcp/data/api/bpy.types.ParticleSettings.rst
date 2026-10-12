@@ -5,1029 +5,1006 @@ ParticleSettings(ID)
 
 base classes --- :class:`bpy_struct`, :class:`ID`
 
-
 .. class:: ParticleSettings(ID)
 
    Particle settings, reusable by multiple particle systems
 
    .. data:: active_instanceweight
 
-      (readonly)
-
-      :type: :class:`ParticleDupliWeight` | None
+      :type: :class:`ParticleDupliWeight`, (readonly)
 
    .. attribute:: active_instanceweight_index
 
-      (in [0, inf], default 0)
-
-      :type: int
+      :type: int in [0, inf], default 0
 
    .. attribute:: active_texture
 
       Active texture slot being displayed
 
-      :type: :class:`Texture` | None
+      :type: :class:`Texture`
 
    .. attribute:: active_texture_index
 
-      Index of active texture slot (in [0, 17], default 0)
+      Index of active texture slot
 
-      :type: int
+      :type: int in [0, 17], default 0
 
    .. attribute:: adaptive_angle
 
-      How many degrees path has to curve to make another render segment (in [0, 45], default 5)
+      How many degrees path has to curve to make another render segment
 
-      :type: int
+      :type: int in [0, 45], default 5
 
    .. attribute:: adaptive_pixel
 
-      How many pixels path has to cover to make another render segment (in [0, 50], default 3)
+      How many pixels path has to cover to make another render segment
 
-      :type: int
+      :type: int in [0, 50], default 3
 
    .. attribute:: angular_velocity_factor
 
-      Angular velocity amount (in radians per second) (in [-200, 200], default 0.0)
+      Angular velocity amount (in radians per second)
 
-      :type: float
+      :type: float in [-200, 200], default 0.0
 
    .. attribute:: angular_velocity_mode
 
-      What axis is used to change particle rotation with time (default ``'VELOCITY'``)
+      What axis is used to change particle rotation with time
 
-      :type: Literal['NONE', 'VELOCITY', 'HORIZONTAL', 'VERTICAL', 'GLOBAL_X', 'GLOBAL_Y', 'GLOBAL_Z', 'RAND']
+      :type: enum in [``'NONE'``, ``'VELOCITY'``, ``'HORIZONTAL'``, ``'VERTICAL'``, ``'GLOBAL_X'``, ``'GLOBAL_Y'``, ``'GLOBAL_Z'``, ``'RAND'``], default ``'VELOCITY'``
 
    .. data:: animation_data
 
-      Animation data for this data-block (readonly)
+      Animation data for this data-block
 
-      :type: :class:`AnimData` | None
+      :type: :class:`AnimData`, (readonly)
 
    .. attribute:: apply_effector_to_children
 
-      Apply effectors to children (default False)
+      Apply effectors to children
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: apply_guide_to_children
 
-      (default False)
-
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: bending_random
 
-      Random stiffness of hairs (in [0, 1], default 0.0)
+      Random stiffness of hairs
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. data:: boids
 
-      (readonly)
-
-      :type: :class:`BoidSettings` | None
+      :type: :class:`BoidSettings`, (readonly)
 
    .. attribute:: branch_threshold
 
-      Threshold of branching (in [0, 1], default 0.0)
+      Threshold of branching
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: brownian_factor
 
-      Amount of random, erratic particle movement (in [0, 200], default 0.0)
+      Amount of random, erratic particle movement
 
-      :type: float
+      :type: float in [0, 200], default 0.0
 
    .. attribute:: child_length
 
-      Length of child paths (in [0, 1], default 1.0)
+      Length of child paths
 
-      :type: float
+      :type: float in [0, 1], default 1.0
 
    .. attribute:: child_length_threshold
 
-      Amount of particles left untouched by child path length (in [0, 1], default 0.0)
+      Amount of particles left untouched by child path length
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: child_parting_factor
 
-      Create parting in the children based on parent strands (in [0, 1], default 0.0)
+      Create parting in the children based on parent strands
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: child_parting_max
 
-      Maximum root to tip angle (tip distance/root distance for long hair) (in [0, 180], default 0.0)
+      Maximum root to tip angle (tip distance/root distance for long hair)
 
-      :type: float
+      :type: float in [0, 180], default 0.0
 
    .. attribute:: child_parting_min
 
-      Minimum root to tip angle (tip distance/root distance for long hair) (in [0, 180], default 0.0)
+      Minimum root to tip angle (tip distance/root distance for long hair)
 
-      :type: float
+      :type: float in [0, 180], default 0.0
 
    .. attribute:: child_percent
 
-      Number of children per parent (in [0, 100000], default 10)
+      Number of children per parent
 
-      :type: int
+      :type: int in [0, 100000], default 10
 
    .. attribute:: child_radius
 
-      Radius of children around parent (in [0, 100000], default 0.2)
+      Radius of children around parent
 
-      :type: float
+      :type: float in [0, 100000], default 0.2
 
    .. attribute:: child_roundness
 
-      Roundness of children around parent (in [0, 1], default 0.0)
+      Roundness of children around parent
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: child_size
 
-      A multiplier for the child particle size (in [0.001, 100000], default 1.0)
+      A multiplier for the child particle size
 
-      :type: float
+      :type: float in [0.001, 100000], default 1.0
 
    .. attribute:: child_size_random
 
-      Random variation to the size of the child particles (in [0, 1], default 0.0)
+      Random variation to the size of the child particles
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: child_type
 
-      Create child particles (default ``'NONE'``)
+      Create child particles
 
-      :type: Literal['NONE', 'SIMPLE', 'INTERPOLATED']
+      :type: enum in [``'NONE'``, ``'SIMPLE'``, ``'INTERPOLATED'``], default ``'NONE'``
 
    .. data:: clump_curve
 
-      Curve defining clump tapering (readonly)
+      Curve defining clump tapering
 
-      :type: :class:`CurveMapping` | None
+      :type: :class:`CurveMapping`, (readonly)
 
    .. attribute:: clump_factor
 
-      Amount of clumping (in [-1, 1], default 0.0)
+      Amount of clumping
 
-      :type: float
+      :type: float in [-1, 1], default 0.0
 
    .. attribute:: clump_noise_size
 
-      Size of clump noise (in [1e-05, 100000], default 1.0)
+      Size of clump noise
 
-      :type: float
+      :type: float in [1e-05, 100000], default 1.0
 
    .. attribute:: clump_shape
 
-      Shape of clumping (in [-0.999, 0.999], default 0.0)
+      Shape of clumping
 
-      :type: float
+      :type: float in [-0.999, 0.999], default 0.0
 
    .. attribute:: collision_collection
 
       Limit colliders to this collection
 
-      :type: :class:`Collection` | None
+      :type: :class:`Collection`
 
    .. attribute:: color_maximum
 
-      Maximum length of the particle color vector (in [0.01, 100], default 1.0)
+      Maximum length of the particle color vector
 
-      :type: float
+      :type: float in [0.01, 100], default 1.0
 
    .. attribute:: count
 
-      Total number of particles (in [0, inf], default 1000)
+      Total number of particles
 
-      :type: int
+      :type: int in [0, inf], default 1000
 
    .. attribute:: courant_target
 
-      The relative distance a particle can move before requiring more subframes (target Courant number); 0.01 to 0.3 is the recommended range (in [0.0001, 10], default 0.2)
+      The relative distance a particle can move before requiring more subframes (target Courant number); 0.01 to 0.3 is the recommended range
 
-      :type: float
+      :type: float in [0.0001, 10], default 0.2
 
    .. attribute:: create_long_hair_children
 
-      Calculate children that suit long hair well (default False)
+      Calculate children that suit long hair well
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: damping
 
-      Amount of damping (in [0, 1], default 0.0)
+      Amount of damping
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: display_color
 
-      Display additional particle data as a color (default ``'MATERIAL'``)
+      Display additional particle data as a color
 
-      :type: Literal['NONE', 'MATERIAL', 'VELOCITY', 'ACCELERATION']
+      :type: enum in [``'NONE'``, ``'MATERIAL'``, ``'VELOCITY'``, ``'ACCELERATION'``], default ``'MATERIAL'``
 
    .. attribute:: display_method
 
-      How particles are displayed in viewport (default ``'RENDER'``)
+      How particles are displayed in viewport
 
-      :type: Literal['NONE', 'RENDER', 'DOT', 'CIRC', 'CROSS', 'AXIS']
+      :type: enum in [``'NONE'``, ``'RENDER'``, ``'DOT'``, ``'CIRC'``, ``'CROSS'``, ``'AXIS'``], default ``'RENDER'``
 
    .. attribute:: display_percentage
 
-      Percentage of particles to display in 3D view (in [0, 100], default 100)
+      Percentage of particles to display in 3D view
 
-      :type: int
+      :type: int in [0, 100], default 100
 
    .. attribute:: display_size
 
-      Size of particles on viewport (in [0, 1000], default 0.1)
+      Size of particles on viewport
 
-      :type: float
+      :type: float in [0, 1000], default 0.1
 
    .. attribute:: display_step
 
-      How many steps paths are displayed with (power of 2) (in [0, 10], default 2)
+      How many steps paths are displayed with (power of 2)
 
-      :type: int
+      :type: int in [0, 10], default 2
 
    .. attribute:: distribution
 
-      How to distribute particles on selected element (default ``'JIT'``)
+      How to distribute particles on selected element
 
-      :type: Literal['JIT', 'RAND', 'GRID']
+      :type: enum in [``'JIT'``, ``'RAND'``, ``'GRID'``], default ``'JIT'``
 
    .. attribute:: drag_factor
 
-      Amount of air drag (in [0, 1], default 0.0)
+      Amount of air drag
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: effect_hair
 
-      Hair stiffness for effectors (in [0, 1], default 0.0)
+      Hair stiffness for effectors
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: effector_amount
 
-      How many particles are effectors (0 is all particles) (in [0, 10000], default 0)
+      How many particles are effectors (0 is all particles)
 
-      :type: int
+      :type: int in [0, 10000], default 0
 
    .. data:: effector_weights
 
-      (readonly)
-
-      :type: :class:`EffectorWeights` | None
+      :type: :class:`EffectorWeights`, (readonly)
 
    .. attribute:: emit_from
 
-      Where to emit particles from (default ``'FACE'``)
+      Where to emit particles from
 
-      :type: Literal['VERT', 'FACE', 'VOLUME']
+      :type: enum in [``'VERT'``, ``'FACE'``, ``'VOLUME'``], default ``'FACE'``
 
    .. attribute:: factor_random
 
-      Give the starting velocity a random variation (in [0, 200], default 0.0)
+      Give the starting velocity a random variation
 
-      :type: float
+      :type: float in [0, 200], default 0.0
 
    .. data:: fluid
 
-      (readonly)
-
-      :type: :class:`SPHFluidSettings` | None
+      :type: :class:`SPHFluidSettings`, (readonly)
 
    .. data:: force_field_1
 
-      (readonly)
-
-      :type: :class:`FieldSettings` | None
+      :type: :class:`FieldSettings`, (readonly)
 
    .. data:: force_field_2
 
-      (readonly)
-
-      :type: :class:`FieldSettings` | None
+      :type: :class:`FieldSettings`, (readonly)
 
    .. attribute:: frame_end
 
-      Frame number to stop emitting particles (in [-1.04857e+06, 1.04857e+06], default 200.0)
+      Frame number to stop emitting particles
 
-      :type: float
+      :type: float in [-1.04857e+06, 1.04857e+06], default 200.0
 
    .. attribute:: frame_start
 
-      Frame number to start emitting particles (in [-1.04857e+06, 1.04857e+06], default 1.0)
+      Frame number to start emitting particles
 
-      :type: float
+      :type: float in [-1.04857e+06, 1.04857e+06], default 1.0
 
    .. attribute:: grid_random
 
-      Add random offset to the grid locations (in [0, 1], default 0.0)
+      Add random offset to the grid locations
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: grid_resolution
 
-      The resolution of the particle grid (in [1, 250], default 10)
+      The resolution of the particle grid
 
-      :type: int
+      :type: int in [1, 250], default 10
 
    .. attribute:: hair_length
 
-      Length of the hair (in [0, 1000], default 0.0)
+      Length of the hair
 
-      :type: float
+      :type: float in [0, 1000], default 0.0
 
    .. attribute:: hair_step
 
-      Number of hair segments (in [2, 32767], default 5)
+      Number of hair segments
 
-      :type: int
+      :type: int in [2, 32767], default 5
 
    .. attribute:: hexagonal_grid
 
-      Create the grid in a hexagonal pattern (default False)
+      Create the grid in a hexagonal pattern
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: instance_collection
 
       Show objects in this collection in place of particles
 
-      :type: :class:`Collection` | None
+      :type: :class:`Collection`
 
    .. attribute:: instance_object
 
       Show this object in place of particles
 
-      :type: :class:`Object` | None
+      :type: :class:`Object`
 
    .. data:: instance_weights
 
-      Weights for all of the objects in the instance collection (default None, readonly)
+      Weights for all of the objects in the instance collection
 
-      :type: :class:`bpy_prop_collection`\ [:class:`ParticleDupliWeight`]
+      :type: :class:`bpy_prop_collection` of :class:`ParticleDupliWeight`, (readonly)
 
    .. attribute:: integrator
 
-      Algorithm used to calculate physics, from the fastest to the most stable and accurate: Midpoint, Euler, Verlet, RK4 (default ``'MIDPOINT'``)
+      Algorithm used to calculate physics, from the fastest to the most stable and accurate: Midpoint, Euler, Verlet, RK4
 
-      :type: Literal['EULER', 'VERLET', 'MIDPOINT', 'RK4']
+      :type: enum in [``'EULER'``, ``'VERLET'``, ``'MIDPOINT'``, ``'RK4'``], default ``'MIDPOINT'``
 
    .. attribute:: invert_grid
 
-      Invert what is considered object and what is not (default False)
+      Invert what is considered object and what is not
 
-      :type: bool
+      :type: boolean, default False
 
    .. data:: is_fluid
 
-      Particles were created by a fluid simulation (default False, readonly)
+      Particles were created by a fluid simulation
 
-      :type: bool
+      :type: boolean, default False, (readonly)
 
    .. attribute:: jitter_factor
 
-      Amount of jitter applied to the sampling (in [0, 2], default 1.0)
+      Amount of jitter applied to the sampling
 
-      :type: float
+      :type: float in [0, 2], default 1.0
 
    .. attribute:: keyed_loops
 
-      Number of times the keys are looped (in [1, 10000], default 1)
+      Number of times the keys are looped
 
-      :type: int
+      :type: int in [1, 10000], default 1
 
    .. attribute:: keys_step
 
-      (in [0, 32767], default 5)
-
-      :type: int
+      :type: int in [0, 32767], default 5
 
    .. attribute:: kink
 
-      Type of periodic offset on the path (default ``'NO'``)
+      Type of periodic offset on the path
 
-      :type: Literal['NO', 'CURL', 'RADIAL', 'WAVE', 'BRAID', 'SPIRAL']
+      :type: enum in [``'NO'``, ``'CURL'``, ``'RADIAL'``, ``'WAVE'``, ``'BRAID'``, ``'SPIRAL'``], default ``'NO'``
 
    .. attribute:: kink_amplitude
 
-      The amplitude of the offset (in [-100000, 100000], default 0.2)
+      The amplitude of the offset
 
-      :type: float
+      :type: float in [-100000, 100000], default 0.2
 
    .. attribute:: kink_amplitude_clump
 
-      How much clump affects kink amplitude (in [0, 1], default 1.0)
+      How much clump affects kink amplitude
 
-      :type: float
+      :type: float in [0, 1], default 1.0
 
    .. attribute:: kink_amplitude_random
 
-      Random variation of the amplitude (in [0, 1], default 0.0)
+      Random variation of the amplitude
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: kink_axis
 
-      Which axis to use for offset (default ``'Z'``)
+      Which axis to use for offset
 
-      :type: Literal[:ref:`rna_enum_axis_xyz_items`]
+      :type: enum in :ref:`rna_enum_axis_xyz_items`, default ``'Z'``
 
    .. attribute:: kink_axis_random
 
-      Random variation of the orientation (in [0, 1], default 0.0)
+      Random variation of the orientation
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: kink_extra_steps
 
-      Extra steps for resolution of special kink features (in [1, inf], default 4)
+      Extra steps for resolution of special kink features
 
-      :type: int
+      :type: int in [1, inf], default 4
 
    .. attribute:: kink_flat
 
-      How flat the hairs are (in [0, 1], default 0.0)
+      How flat the hairs are
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: kink_frequency
 
-      The frequency of the offset (1/total length) (in [-100000, 100000], default 2.0)
+      The frequency of the offset (1/total length)
 
-      :type: float
+      :type: float in [-100000, 100000], default 2.0
 
    .. attribute:: kink_shape
 
-      Adjust the offset to the beginning/end (in [-0.999, 0.999], default 0.0)
+      Adjust the offset to the beginning/end
 
-      :type: float
+      :type: float in [-0.999, 0.999], default 0.0
 
    .. attribute:: length_random
 
-      Give path length a random variation (in [0, 1], default 0.0)
+      Give path length a random variation
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: lifetime
 
-      Life span of the particles (in [1, 1.04857e+06], default 50.0)
+      Life span of the particles
 
-      :type: float
+      :type: float in [1, 1.04857e+06], default 50.0
 
    .. attribute:: lifetime_random
 
-      Give the particle life a random variation (in [0, 1], default 0.0)
+      Give the particle life a random variation
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: line_length_head
 
-      Length of the line's head (in [0, 100000], default 0.0)
+      Length of the line's head
 
-      :type: float
+      :type: float in [0, 100000], default 0.0
 
    .. attribute:: line_length_tail
 
-      Length of the line's tail (in [0, 100000], default 0.0)
+      Length of the line's tail
 
-      :type: float
+      :type: float in [0, 100000], default 0.0
 
    .. attribute:: lock_boids_to_surface
 
-      Constrain boids to a surface (default False)
+      Constrain boids to a surface
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: mass
 
-      Mass of the particles (in [1e-08, 100000], default 1.0)
+      Mass of the particles
 
-      :type: float
+      :type: float in [1e-08, 100000], default 1.0
 
    .. attribute:: material
 
-      Index of material slot used for rendering particles (in [1, 32767], default 1)
+      Index of material slot used for rendering particles
 
-      :type: int
+      :type: int in [1, 32767], default 1
 
    .. attribute:: material_slot
 
-      Material slot used for rendering particles (default ``'DEFAULT'``)
+      Material slot used for rendering particles
 
-      :type: Literal['DEFAULT']
+      :type: enum in [``'DEFAULT'``], default ``'DEFAULT'``
 
    .. attribute:: normal_factor
 
-      Let the surface normal give the particle a starting velocity (in [-1000, 1000], default 1.0)
+      Let the surface normal give the particle a starting velocity
 
-      :type: float
+      :type: float in [-1000, 1000], default 1.0
 
    .. attribute:: object_align_factor
 
-      Let the emitter object orientation give the particle a starting velocity (array of 3 items, in [-200, 200], default (0.0, 0.0, 0.0))
+      Let the emitter object orientation give the particle a starting velocity
 
-      :type: :class:`mathutils.Vector`
+      :type: :class:`mathutils.Vector` of 3 items in [-200, 200], default (0.0, 0.0, 0.0)
 
    .. attribute:: object_factor
 
-      Let the object give the particle a starting velocity (in [-200, 200], default 0.0)
+      Let the object give the particle a starting velocity
 
-      :type: float
+      :type: float in [-200, 200], default 0.0
 
    .. attribute:: particle_factor
 
-      Let the target particle give the particle a starting velocity (in [-200, 200], default 0.0)
+      Let the target particle give the particle a starting velocity
 
-      :type: float
+      :type: float in [-200, 200], default 0.0
 
    .. attribute:: particle_size
 
-      The size of the particles (in [0.001, 100000], default 0.05)
+      The size of the particles
 
-      :type: float
+      :type: float in [0.001, 100000], default 0.05
 
    .. attribute:: path_end
 
-      End time of path (in [-inf, inf], default 1.0)
+      End time of path
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: path_start
 
-      Starting time of path (in [-inf, inf], default 0.0)
+      Starting time of path
 
-      :type: float
+      :type: float in [-inf, inf], default 0.0
 
    .. attribute:: phase_factor
 
-      Rotation around the chosen orientation axis (in [-1, 1], default 0.0)
+      Rotation around the chosen orientation axis
 
-      :type: float
+      :type: float in [-1, 1], default 0.0
 
    .. attribute:: phase_factor_random
 
-      Randomize rotation around the chosen orientation axis (in [0, 2], default 0.0)
+      Randomize rotation around the chosen orientation axis
 
-      :type: float
+      :type: float in [0, 2], default 0.0
 
    .. attribute:: physics_type
 
-      Particle physics type (default ``'NEWTON'``)
+      Particle physics type
 
-      :type: Literal['NO', 'NEWTON', 'KEYED', 'BOIDS', 'FLUID']
+      :type: enum in [``'NO'``, ``'NEWTON'``, ``'KEYED'``, ``'BOIDS'``, ``'FLUID'``], default ``'NEWTON'``
 
    .. attribute:: radius_scale
 
-      Multiplier of diameter properties (in [0, inf], default 0.01)
+      Multiplier of diameter properties
 
-      :type: float
+      :type: float in [0, inf], default 0.01
 
    .. attribute:: react_event
 
-      The event of target particles to react on (default ``'DEATH'``)
+      The event of target particles to react on
 
-      :type: Literal['DEATH', 'COLLIDE', 'NEAR']
+      :type: enum in [``'DEATH'``, ``'COLLIDE'``, ``'NEAR'``], default ``'DEATH'``
 
    .. attribute:: reactor_factor
 
-      Let the vector away from the target particle's location give the particle a starting velocity (in [-10, 10], default 0.0)
+      Let the vector away from the target particle's location give the particle a starting velocity
 
-      :type: float
+      :type: float in [-10, 10], default 0.0
 
    .. attribute:: render_step
 
-      How many steps paths are rendered with (power of 2) (in [0, 20], default 3)
+      How many steps paths are rendered with (power of 2)
 
-      :type: int
+      :type: int in [0, 20], default 3
 
    .. attribute:: render_type
 
-      How particles are rendered (default ``'HALO'``)
+      How particles are rendered
 
-      :type: Literal['NONE', 'HALO', 'LINE', 'PATH', 'OBJECT', 'COLLECTION']
+      :type: enum in [``'NONE'``, ``'HALO'``, ``'LINE'``, ``'PATH'``, ``'OBJECT'``, ``'COLLECTION'``], default ``'HALO'``
 
    .. attribute:: rendered_child_count
 
-      Number of children per parent for rendering (in [0, 100000], default 100)
+      Number of children per parent for rendering
 
-      :type: int
+      :type: int in [0, 100000], default 100
 
    .. attribute:: root_radius
 
-      Strand diameter width at the root (in [0, inf], default 1.0)
+      Strand diameter width at the root
 
-      :type: float
+      :type: float in [0, inf], default 1.0
 
    .. attribute:: rotation_factor_random
 
-      Randomize particle orientation (in [0, 1], default 0.0)
+      Randomize particle orientation
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: rotation_mode
 
-      Particle orientation axis (does not affect Explode modifier's results) (default ``'VEL'``)
+      Particle orientation axis (does not affect Explode modifier's results)
 
-      :type: Literal['NONE', 'NOR', 'NOR_TAN', 'VEL', 'GLOB_X', 'GLOB_Y', 'GLOB_Z', 'OB_X', 'OB_Y', 'OB_Z']
+      :type: enum in [``'NONE'``, ``'NOR'``, ``'NOR_TAN'``, ``'VEL'``, ``'GLOB_X'``, ``'GLOB_Y'``, ``'GLOB_Z'``, ``'OB_X'``, ``'OB_Y'``, ``'OB_Z'``], default ``'VEL'``
 
    .. attribute:: roughness_1
 
-      Amount of location dependent roughness (in [0, 100000], default 0.0)
+      Amount of location dependent roughness
 
-      :type: float
+      :type: float in [0, 100000], default 0.0
 
    .. attribute:: roughness_1_size
 
-      Size of location dependent roughness (in [0.01, 100000], default 1.0)
+      Size of location dependent roughness
 
-      :type: float
+      :type: float in [0.01, 100000], default 1.0
 
    .. attribute:: roughness_2
 
-      Amount of random roughness (in [0, 100000], default 0.0)
+      Amount of random roughness
 
-      :type: float
+      :type: float in [0, 100000], default 0.0
 
    .. attribute:: roughness_2_size
 
-      Size of random roughness (in [0.01, 100000], default 1.0)
+      Size of random roughness
 
-      :type: float
+      :type: float in [0.01, 100000], default 1.0
 
    .. attribute:: roughness_2_threshold
 
-      Amount of particles left untouched by random roughness (in [0, 1], default 0.0)
+      Amount of particles left untouched by random roughness
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. data:: roughness_curve
 
-      Curve defining roughness (readonly)
+      Curve defining roughness
 
-      :type: :class:`CurveMapping` | None
+      :type: :class:`CurveMapping`, (readonly)
 
    .. attribute:: roughness_end_shape
 
-      Shape of endpoint roughness (in [0, 10], default 1.0)
+      Shape of endpoint roughness
 
-      :type: float
+      :type: float in [0, 10], default 1.0
 
    .. attribute:: roughness_endpoint
 
-      Amount of endpoint roughness (in [0, 100000], default 0.0)
+      Amount of endpoint roughness
 
-      :type: float
+      :type: float in [0, 100000], default 0.0
 
    .. attribute:: shape
 
-      Strand shape parameter (in [-1, 1], default 0.0)
+      Strand shape parameter
 
-      :type: float
+      :type: float in [-1, 1], default 0.0
 
    .. attribute:: show_guide_hairs
 
-      Show guide hairs (default False)
+      Show guide hairs
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_hair_grid
 
-      Show hair simulation grid (default False)
+      Show hair simulation grid
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_health
 
-      Display boid health (default False)
+      Display boid health
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_number
 
-      Show particle number (default False)
+      Show particle number
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_size
 
-      Show particle size (default False)
+      Show particle size
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_unborn
 
-      Show particles before they are emitted (default False)
+      Show particles before they are emitted
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: show_velocity
 
-      Show particle velocity (default False)
+      Show particle velocity
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: size_random
 
-      Give the particle size a random variation (in [0, 1], default 0.0)
+      Give the particle size a random variation
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. attribute:: subframes
 
-      Subframes to simulate for improved stability and finer granularity simulations (dt = timestep / (subframes + 1)) (in [0, 1000], default 0)
+      Subframes to simulate for improved stability and finer granularity simulations (dt = timestep / (subframes + 1))
 
-      :type: int
+      :type: int in [0, 1000], default 0
 
    .. attribute:: tangent_factor
 
-      Let the surface tangent give the particle a starting velocity (in [-1000, 1000], default 0.0)
+      Let the surface tangent give the particle a starting velocity
 
-      :type: float
+      :type: float in [-1000, 1000], default 0.0
 
    .. attribute:: tangent_phase
 
-      Rotate the surface tangent (in [-1, 1], default 0.0)
+      Rotate the surface tangent
 
-      :type: float
+      :type: float in [-1, 1], default 0.0
 
    .. data:: texture_slots
 
-      Texture slots defining the mapping and influence of textures (default None, readonly)
+      Texture slots defining the mapping and influence of textures
 
-      :type: :class:`ParticleSettingsTextureSlots`\ [:class:`ParticleSettingsTextureSlot`]
+      :type: :class:`ParticleSettingsTextureSlots` :class:`bpy_prop_collection` of :class:`ParticleSettingsTextureSlot`, (readonly)
 
    .. attribute:: time_tweak
 
-      A multiplier for physics timestep (1.0 means one frame = 1/25 seconds) (in [0, 100], default 1.0)
+      A multiplier for physics timestep (1.0 means one frame = 1/25 seconds)
 
-      :type: float
+      :type: float in [0, 100], default 1.0
 
    .. attribute:: timestep
 
-      The simulation timestep per frame (seconds per frame) (in [0.0001, 100], default 0.0)
+      The simulation timestep per frame (seconds per frame)
 
-      :type: float
+      :type: float in [0.0001, 100], default 0.0
 
    .. attribute:: tip_radius
 
-      Strand diameter width at the tip (in [0, inf], default 0.0)
+      Strand diameter width at the tip
 
-      :type: float
+      :type: float in [0, inf], default 0.0
 
    .. attribute:: trail_count
 
-      Number of trail particles (in [1, 100000], default 0)
+      Number of trail particles
 
-      :type: int
+      :type: int in [1, 100000], default 0
 
    .. attribute:: twist
 
-      Number of turns around parent along the strand (in [-100000, 100000], default 0.0)
+      Number of turns around parent along the strand
 
-      :type: float
+      :type: float in [-100000, 100000], default 0.0
 
    .. data:: twist_curve
 
-      Curve defining twist (readonly)
+      Curve defining twist
 
-      :type: :class:`CurveMapping` | None
+      :type: :class:`CurveMapping`, (readonly)
 
    .. attribute:: type
 
-      Particle type (default ``'EMITTER'``)
+      Particle type
 
-      :type: Literal['EMITTER', 'HAIR']
+      :type: enum in [``'EMITTER'``, ``'HAIR'``], default ``'EMITTER'``
 
    .. attribute:: use_absolute_path_time
 
-      Path timing is in absolute frames (default False)
+      Path timing is in absolute frames
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_adaptive_subframes
 
-      Automatically set the number of subframes (default False)
+      Automatically set the number of subframes
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_advanced_hair
 
-      Use full physics calculations for growing hair (default False)
+      Use full physics calculations for growing hair
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_close_tip
 
-      Set tip radius to zero (default True)
+      Set tip radius to zero
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_clump_curve
 
-      Use a curve to define clump tapering (default False)
+      Use a curve to define clump tapering
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_clump_noise
 
-      Create random clumps around the parent (default False)
+      Create random clumps around the parent
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_collection_count
 
-      Use object multiple times in the same collection (default False)
+      Use object multiple times in the same collection
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_collection_pick_random
 
-      Pick objects from collection randomly (default False)
+      Pick objects from collection randomly
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_dead
 
-      Show particles after they have died (default False)
+      Show particles after they have died
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_die_on_collision
 
-      Particles die when they collide with a deflector object (default False)
+      Particles die when they collide with a deflector object
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_dynamic_rotation
 
-      Particle rotations are affected by collisions and effectors (default False)
+      Particle rotations are affected by collisions and effectors
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_emit_random
 
-      Emit in random order of elements (default True)
+      Emit in random order of elements
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_even_distribution
 
-      Use even distribution from faces based on face areas or edge lengths (default True)
+      Use even distribution from faces based on face areas or edge lengths
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_global_instance
 
-      Use object's global coordinates for duplication (default False)
+      Use object's global coordinates for duplication
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_hair_bspline
 
-      Interpolate hair using B-Splines (default False)
+      Interpolate hair using B-Splines
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_modifier_stack
 
-      Emit particles from mesh with modifiers applied (must use same subdivision surface level for viewport and render for correct results) (default False)
+      Emit particles from mesh with modifiers applied (must use same subdivision surface level for viewport and render for correct results)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_multiply_size_mass
 
-      Multiply mass by particle size (default False)
+      Multiply mass by particle size
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_parent_particles
 
-      Render parent particles (default False)
+      Render parent particles
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_react_multiple
 
-      React multiple times (default False)
+      React multiple times
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_react_start_end
 
-      Give birth to unreacted particles eventually (default False)
+      Give birth to unreacted particles eventually
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_regrow_hair
 
-      Regrow hair for each frame (default False)
+      Regrow hair for each frame
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_render_adaptive
 
-      Display steps of the particle path (default False)
+      Display steps of the particle path
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_rotation_instance
 
-      Use object's rotation for duplication (global x-axis is aligned particle rotation axis) (default False)
+      Use object's rotation for duplication (global x-axis is aligned particle rotation axis)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_rotations
 
-      Calculate particle rotations (default False)
+      Calculate particle rotations
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_roughness_curve
 
-      Use a curve to define roughness (default False)
+      Use a curve to define roughness
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_scale_instance
 
-      Use object's scale for duplication (default True)
+      Use object's scale for duplication
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_self_effect
 
-      Particle effectors affect themselves (default False)
+      Particle effectors affect themselves
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_size_deflect
 
-      Use particle's size in deflection (default False)
+      Use particle's size in deflection
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_strand_primitive
 
-      Use the strand primitive for rendering (default False)
+      Use the strand primitive for rendering
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_twist_curve
 
-      Use a curve to define twist (default False)
+      Use a curve to define twist
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_velocity_length
 
-      Multiply line length by particle speed (default False)
+      Multiply line length by particle speed
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_whole_collection
 
-      Use whole collection at once (default False)
+      Use whole collection at once
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: userjit
 
-      Emission locations per face (0 = automatic) (in [0, 1000], default 0)
+      Emission locations per face (0 = automatic)
 
-      :type: int
+      :type: int in [0, 1000], default 0
 
    .. attribute:: virtual_parents
 
-      Relative amount of virtual parents (in [0, 1], default 0.0)
+      Relative amount of virtual parents
 
-      :type: float
+      :type: float in [0, 1], default 0.0
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -1038,28 +1015,27 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
-   - :class:`ID.name`
-   - :class:`ID.name_full`
-   - :class:`ID.id_type`
-   - :class:`ID.session_uid`
-   - :class:`ID.is_evaluated`
-   - :class:`ID.original`
-   - :class:`ID.users`
-   - :class:`ID.use_fake_user`
-   - :class:`ID.use_extra_user`
-   - :class:`ID.is_embedded_data`
-   - :class:`ID.is_linked_packed`
-   - :class:`ID.is_missing`
-   - :class:`ID.is_runtime_data`
-   - :class:`ID.is_editable`
-   - :class:`ID.tag`
-   - :class:`ID.is_library_indirect`
-   - :class:`ID.library`
-   - :class:`ID.library_weak_reference`
-   - :class:`ID.asset_data`
-   - :class:`ID.override_library`
-   - :class:`ID.preview`
+   * :class:`bpy_struct.id_data`
+   * :class:`ID.name`
+   * :class:`ID.name_full`
+   * :class:`ID.id_type`
+   * :class:`ID.session_uid`
+   * :class:`ID.is_evaluated`
+   * :class:`ID.original`
+   * :class:`ID.users`
+   * :class:`ID.use_fake_user`
+   * :class:`ID.use_extra_user`
+   * :class:`ID.is_embedded_data`
+   * :class:`ID.is_missing`
+   * :class:`ID.is_runtime_data`
+   * :class:`ID.is_editable`
+   * :class:`ID.tag`
+   * :class:`ID.is_library_indirect`
+   * :class:`ID.library`
+   * :class:`ID.library_weak_reference`
+   * :class:`ID.asset_data`
+   * :class:`ID.override_library`
+   * :class:`ID.preview`
 
 Inherited Functions
 -------------------
@@ -1067,49 +1043,47 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
-   - :class:`ID.bl_system_properties_get`
-   - :class:`ID.rename`
-   - :class:`ID.evaluated_get`
-   - :class:`ID.copy`
-   - :class:`ID.asset_mark`
-   - :class:`ID.asset_clear`
-   - :class:`ID.asset_generate_preview`
-   - :class:`ID.override_create`
-   - :class:`ID.override_hierarchy_create`
-   - :class:`ID.user_clear`
-   - :class:`ID.user_remap`
-   - :class:`ID.make_local`
-   - :class:`ID.user_of_id`
-   - :class:`ID.animation_data_create`
-   - :class:`ID.animation_data_clear`
-   - :class:`ID.update_tag`
-   - :class:`ID.preview_ensure`
-   - :class:`ID.bl_rna_get_subclass`
-   - :class:`ID.bl_rna_get_subclass_py`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
+   * :class:`ID.rename`
+   * :class:`ID.evaluated_get`
+   * :class:`ID.copy`
+   * :class:`ID.asset_mark`
+   * :class:`ID.asset_clear`
+   * :class:`ID.asset_generate_preview`
+   * :class:`ID.override_create`
+   * :class:`ID.override_hierarchy_create`
+   * :class:`ID.user_clear`
+   * :class:`ID.user_remap`
+   * :class:`ID.make_local`
+   * :class:`ID.user_of_id`
+   * :class:`ID.animation_data_create`
+   * :class:`ID.animation_data_clear`
+   * :class:`ID.update_tag`
+   * :class:`ID.preview_ensure`
+   * :class:`ID.bl_rna_get_subclass`
+   * :class:`ID.bl_rna_get_subclass_py`
 
 References
 ----------
@@ -1117,9 +1091,9 @@ References
 .. hlist::
    :columns: 2
 
-   - :mod:`bpy.context.particle_settings`
-   - :class:`BlendData.particles`
-   - :class:`BlendDataParticles.new`
-   - :class:`BlendDataParticles.remove`
-   - :class:`ParticleSystem.settings`
+   * :mod:`bpy.context.particle_settings`
+   * :class:`BlendData.particles`
+   * :class:`BlendDataParticles.new`
+   * :class:`BlendDataParticles.remove`
+   * :class:`ParticleSystem.settings`
 

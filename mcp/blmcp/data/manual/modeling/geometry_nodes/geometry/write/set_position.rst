@@ -36,6 +36,12 @@ Offset
    meaning that fields evaluated for it will not reflect the changed position.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

@@ -37,6 +37,12 @@ Offset
    to the other side.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

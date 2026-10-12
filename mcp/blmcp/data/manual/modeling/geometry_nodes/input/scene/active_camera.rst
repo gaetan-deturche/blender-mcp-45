@@ -1,6 +1,5 @@
 .. index:: Geometry Nodes; Active Camera
 .. _bpy.types.GeometryNodeInputActiveCamera:
-.. --- copy below this line ---
 
 ******************
 Active Camera Node
@@ -17,6 +16,12 @@ Inputs
 ======
 
 This node has no inputs.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs

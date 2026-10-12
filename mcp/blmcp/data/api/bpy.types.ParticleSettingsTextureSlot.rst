@@ -5,257 +5,244 @@ ParticleSettingsTextureSlot(TextureSlot)
 
 base classes --- :class:`bpy_struct`, :class:`TextureSlot`
 
-
 .. class:: ParticleSettingsTextureSlot(TextureSlot)
 
    Texture slot for textures in a Particle Settings data-block
 
    .. attribute:: clump_factor
 
-      Amount texture affects child clump (in [-inf, inf], default 1.0)
+      Amount texture affects child clump
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: damp_factor
 
-      Amount texture affects particle damping (in [-inf, inf], default 1.0)
+      Amount texture affects particle damping
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: density_factor
 
-      Amount texture affects particle density (in [-inf, inf], default 1.0)
+      Amount texture affects particle density
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: field_factor
 
-      Amount texture affects particle force fields (in [-inf, inf], default 1.0)
+      Amount texture affects particle force fields
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: gravity_factor
 
-      Amount texture affects particle gravity (in [-inf, inf], default 1.0)
+      Amount texture affects particle gravity
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: kink_amp_factor
 
-      Amount texture affects child kink amplitude (in [-inf, inf], default 1.0)
+      Amount texture affects child kink amplitude
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: kink_freq_factor
 
-      Amount texture affects child kink frequency (in [-inf, inf], default 1.0)
+      Amount texture affects child kink frequency
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: length_factor
 
-      Amount texture affects child hair length (in [-inf, inf], default 1.0)
+      Amount texture affects child hair length
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: life_factor
 
-      Amount texture affects particle life time (in [-inf, inf], default 1.0)
+      Amount texture affects particle life time
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: mapping
 
-      (default ``'FLAT'``)
-
-      - ``FLAT``
+      * ``FLAT``
         Flat -- Map X and Y coordinates directly.
-      - ``CUBE``
+      * ``CUBE``
         Cube -- Map using the normal vector.
-      - ``TUBE``
+      * ``TUBE``
         Tube -- Map with Z as central axis.
-      - ``SPHERE``
+      * ``SPHERE``
         Sphere -- Map with Z as central axis.
 
-      :type: Literal['FLAT', 'CUBE', 'TUBE', 'SPHERE']
+      :type: enum in [``'FLAT'``, ``'CUBE'``, ``'TUBE'``, ``'SPHERE'``], default ``'FLAT'``
 
    .. attribute:: mapping_x
 
-      (default ``'X'``)
-
-      :type: Literal['NONE', 'X', 'Y', 'Z']
+      :type: enum in [``'NONE'``, ``'X'``, ``'Y'``, ``'Z'``], default ``'X'``
 
    .. attribute:: mapping_y
 
-      (default ``'Y'``)
-
-      :type: Literal['NONE', 'X', 'Y', 'Z']
+      :type: enum in [``'NONE'``, ``'X'``, ``'Y'``, ``'Z'``], default ``'Y'``
 
    .. attribute:: mapping_z
 
-      (default ``'Z'``)
-
-      :type: Literal['NONE', 'X', 'Y', 'Z']
+      :type: enum in [``'NONE'``, ``'X'``, ``'Y'``, ``'Z'``], default ``'Z'``
 
    .. attribute:: object
 
       Object to use for mapping with Object texture coordinates
 
-      :type: :class:`Object` | None
+      :type: :class:`Object`
 
    .. attribute:: rough_factor
 
-      Amount texture affects child roughness (in [-inf, inf], default 1.0)
+      Amount texture affects child roughness
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: size_factor
 
-      Amount texture affects physical particle size (in [-inf, inf], default 1.0)
+      Amount texture affects physical particle size
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: texture_coords
 
-      Texture coordinates used to map the texture onto the background (default ``'UV'``)
+      Texture coordinates used to map the texture onto the background
 
-      - ``GLOBAL``
+      * ``GLOBAL``
         Global -- Use global coordinates for the texture coordinates.
-      - ``OBJECT``
+      * ``OBJECT``
         Object -- Use linked object's coordinates for texture coordinates.
-      - ``UV``
+      * ``UV``
         UV -- Use UV coordinates for texture coordinates.
-      - ``ORCO``
+      * ``ORCO``
         Generated -- Use the original undeformed coordinates of the object.
-      - ``STRAND``
+      * ``STRAND``
         Strand / Particle -- Use normalized strand texture coordinate (1D) or particle age (X) and trail position (Y).
 
-      :type: Literal['GLOBAL', 'OBJECT', 'UV', 'ORCO', 'STRAND']
+      :type: enum in [``'GLOBAL'``, ``'OBJECT'``, ``'UV'``, ``'ORCO'``, ``'STRAND'``], default ``'UV'``
 
    .. attribute:: time_factor
 
-      Amount texture affects particle emission time (in [-inf, inf], default 1.0)
+      Amount texture affects particle emission time
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: twist_factor
 
-      Amount texture affects child twist (in [-inf, inf], default 1.0)
+      Amount texture affects child twist
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. attribute:: use_map_clump
 
-      Affect the child clumping (default False)
+      Affect the child clumping
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_map_damp
 
-      Affect the particle velocity damping (default False)
+      Affect the particle velocity damping
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_map_density
 
-      Affect the density of the particles (default False)
+      Affect the density of the particles
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_map_field
 
-      Affect the particle force fields (default False)
+      Affect the particle force fields
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_map_gravity
 
-      Affect the particle gravity (default False)
+      Affect the particle gravity
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_map_kink_amp
 
-      Affect the child kink amplitude (default False)
+      Affect the child kink amplitude
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_map_kink_freq
 
-      Affect the child kink frequency (default False)
+      Affect the child kink frequency
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_map_length
 
-      Affect the child hair length (default False)
+      Affect the child hair length
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_map_life
 
-      Affect the life time of the particles (default False)
+      Affect the life time of the particles
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_map_rough
 
-      Affect the child rough (default False)
+      Affect the child rough
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_map_size
 
-      Affect the particle size (default False)
+      Affect the particle size
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_map_time
 
-      Affect the emission time of the particles (default True)
+      Affect the emission time of the particles
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_map_twist
 
-      Affect the child twist (default False)
+      Affect the child twist
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_map_velocity
 
-      Affect the particle initial velocity (default False)
+      Affect the particle initial velocity
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: uv_layer
 
-      UV map to use for mapping with UV texture coordinates (default "", never None)
+      UV map to use for mapping with UV texture coordinates
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: velocity_factor
 
-      Amount texture affects particle initial velocity (in [-inf, inf], default 1.0)
+      Amount texture affects particle initial velocity
 
-      :type: float
+      :type: float in [-inf, inf], default 1.0
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -266,15 +253,15 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
-   - :class:`TextureSlot.texture`
-   - :class:`TextureSlot.name`
-   - :class:`TextureSlot.offset`
-   - :class:`TextureSlot.scale`
-   - :class:`TextureSlot.color`
-   - :class:`TextureSlot.blend_type`
-   - :class:`TextureSlot.default_value`
-   - :class:`TextureSlot.output_node`
+   * :class:`bpy_struct.id_data`
+   * :class:`TextureSlot.texture`
+   * :class:`TextureSlot.name`
+   * :class:`TextureSlot.offset`
+   * :class:`TextureSlot.scale`
+   * :class:`TextureSlot.color`
+   * :class:`TextureSlot.blend_type`
+   * :class:`TextureSlot.default_value`
+   * :class:`TextureSlot.output_node`
 
 Inherited Functions
 -------------------
@@ -282,32 +269,31 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
-   - :class:`TextureSlot.bl_rna_get_subclass`
-   - :class:`TextureSlot.bl_rna_get_subclass_py`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
+   * :class:`TextureSlot.bl_rna_get_subclass`
+   * :class:`TextureSlot.bl_rna_get_subclass_py`
 
 References
 ----------
@@ -315,7 +301,7 @@ References
 .. hlist::
    :columns: 2
 
-   - :class:`ParticleSettings.texture_slots`
-   - :class:`ParticleSettingsTextureSlots.add`
-   - :class:`ParticleSettingsTextureSlots.create`
+   * :class:`ParticleSettings.texture_slots`
+   * :class:`ParticleSettingsTextureSlots.add`
+   * :class:`ParticleSettingsTextureSlots.create`
 

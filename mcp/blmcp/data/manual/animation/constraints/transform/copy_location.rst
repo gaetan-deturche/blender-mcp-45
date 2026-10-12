@@ -5,12 +5,13 @@
 Copy Location Constraint
 ************************
 
-The *Copy Location* constraint forces an object or bone to match the location of a target.
+The *Copy Location* constraint forces its owner to have the same location as its target.
 
 .. important::
 
-   This constraint has no effect on :ref:`connected bones <bpy.types.EditBone.use_connect>`
-   as their position is determined by their parent bone.
+   Note that if you use such a constraint on a *connected* bone, it will have
+   no effect, as it is the parent's tip which controls the position of your
+   owner bone's root.
 
 
 Options
@@ -18,54 +19,60 @@ Options
 
 .. figure:: /images/animation_constraints_transform_copy-location_panel.png
 
-   Copy Location constraint.
+   Copy Location panel.
 
-:ref:`Target <rigging-constraints-interface-common-target>`
-   The object or bone whose location to copy.
+Target
+   :ref:`ui-data-id` used to select the constraints target, and is not functional (red state) when it has none.
+   See :ref:`common constraint properties <rigging-constraints-interface-common-target>` for more information.
 
 Axis
-   The axes for which to copy location coordinates.
+   These buttons control which axes are constrained.
 
 Invert
-   The axes for which invert the sign (so a coordinate of 10 becomes -10 and vice versa).
+   Invert their respective corresponding axis coordinates.
 
 Offset
-   When enabled, the target's current position (from all its constraints) is not copied over,
-   but added to the owner's original position (from its preceding constraints).
+   When enabled, this control allows the owner to be moved (using its current transform properties),
+   relative to its target's position.
 
-:ref:`Target/Owner <rigging-constraints-interface-common-space>`
-   The spaces for retrieving the coordinates from the target and for applying them to the owner.
+Target/Owner
+   Standard conversion between spaces.
+   See :ref:`common constraint properties <rigging-constraints-interface-common-space>` for more information.
 
-:ref:`bpy.types.constraint.influence`
-   How strongly the constraint affects the owner.
+Influence
+   Controls the percentage of affect the constraint has on the object.
+   See :ref:`common constraint properties <bpy.types.constraint.influence>` for more information.
 
 
 Examples
 ========
 
-Bones and Vertex Groups
------------------------
-
-This video shows the effect of the *Head/Tail* setting when targeting a bone,
-as well as the *Vertex Group* setting when targeting a mesh.
-
 .. peertube:: 2f3dc43b-ef61-42ae-9d8e-7924a1758411
 
 
-Solar System
-------------
+Animation
+---------
 
-In the animation below, the camera follows the moon as it orbits the Earth,
-switches to following the Earth as it orbits the Sun, and finally moves to a fixed
-location for showing the Sun. This is done using two *Copy Location* constraints --
-one for the moon and one for the Earth -- with animated *Influence* values for
-smoothly disabling one while enabling the other.
+Let us animate a solar system with the *Copy Location* constraint and its *Offset* option.
+You can make the owner, called "moon", describe perfect circles centered on the world origin
+(using e.g. *Location X/Y* sine and cosine F-Curves, see :ref:`bpy.types.FModifierFunctionGenerator`).
+Then copy the location of a target "earth" with the *Offset* checkbox enabled
+to model a satellite in a (simplified) orbit around its planet.
+Repeat these steps for more planets circling around its center star "sun".
+
+Following video is a small animation of a solar system created using (among a few others)
+the previously described technique:
 
 .. peertube:: ff427260-9631-40d9-bd39-65f21f95e9ad
 
-..
-   You can download
-   the `blend-file <https://archive.blender.org/wiki/2015/index.php/File:ManAnimationTechsUsingConstraintsExSolarSys.blend>`__
-   used to create this animation.
+Note that, this 'solar' system is not realistic at all
+(the wrong scale, the earth is rotating in the wrong direction around the sun, ...).
 
-   ^ Commented out because the drivers no longer work in the current Blender version
+You can download
+the `blend-file <https://archive.blender.org/wiki/2015/index.php/File:ManAnimationTechsUsingConstraintsExSolarSys.blend>`__
+used to create this animation.
+
+Furthermore you can also animate a few properties of each constraint using animation curves:
+e.g. you can animate the *Influence* of a constraint.
+It is used to first let the camera follow the moon, then the earth,
+and finally using two *Copy Location* constraints with *Offset* set.

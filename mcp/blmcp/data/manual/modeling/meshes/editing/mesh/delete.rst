@@ -3,6 +3,14 @@
 Deleting & Dissolving
 *********************
 
+.. reference::
+
+   :Mode:      Edit Mode
+   :Menu:      :menuselection:`Mesh --> Delete`
+
+These tools can be used to remove components.
+
+
 .. _bpy.ops.mesh.delete:
 
 Delete
@@ -10,24 +18,20 @@ Delete
 
 .. reference::
 
-   :Mode:      Edit Mode
-   :Menu:      :menuselection:`Mesh --> Delete`
-   :Shortcut:  :kbd:`X` or :kbd:`Delete`
+   :Shortcut:  :kbd:`X`, :kbd:`Delete`
 
-Deletes the selected mesh elements. The following menu items are available:
+Deletes selected vertices, edges, or faces. This operation can also be limited to:
 
 Vertices
-   Deletes the selected vertices, as well as any edges and faces they are part of.
+   Delete all vertices in current selection, removing any faces or edges they are connected to.
 Edges
-   Deletes the selected edges, as well as any faces they are part of.
-   Orphaned vertices are deleted too.
+   Deletes any edges in the current selection. Removes any faces that the edge shares with it.
 Faces
-   Deletes the selected faces. Orphaned vertices and edges are deleted too.
+   Removes any faces in current selection.
 Only Edges & Faces
-   Deletes the selected edges and faces, as well as any unselected faces that
-   contain a selected edge. Orphaned vertices are left behind.
+   Limits the operation to only selected edges and adjacent faces.
 Only Faces
-   Deletes the selected faces. Orphaned vertices and edges are left behind.
+   Removes faces, but edges within the face selection are retained.
 
 
 .. _bpy.ops.mesh.dissolve:
@@ -35,8 +39,13 @@ Only Faces
 Dissolve
 ========
 
-*Dissolving* is different from deleting in that it keeps the surface closed
-rather than leaving a hole.
+Dissolve operations are also accessed from the delete menu.
+Dissolve will remove the geometry and fill in the surrounding geometry.
+Instead of removing the geometry, which may leave holes that you have to fill in again.
+
+Removes selected geometry, but without creating holes, effectively turning the selection into a single n-gon.
+Dissolve works slightly different based on if you have edges, faces or vertices selected.
+You can add detail where you need it, or quickly remove it where you do not.
 
 
 .. _bpy.ops.mesh.dissolve_verts:
@@ -48,47 +57,26 @@ Dissolve Vertices
 
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Mesh --> Delete --> Dissolve Vertices`
-   :Shortcut:  :kbd:`X`, :kbd:`Delete`, or :kbd:`Ctrl-X`
 
-Deletes each selected vertex and joins its surrounding faces into one. (This often results in
-:term:`n-gons <n-gon>`.)
-
-If a vertex is part of a wire -- that is, a chain of edges that are not part of any face --
-its surrounding edges are merged instead.
-
-The :ref:`bpy.ops.screen.redo_last` panel offers the following options:
+Remove the vertex, merging all surrounding faces.
+In the case of two edges, merging them into a single edge.
 
 Face Split
-   Split surrounding faces where possible so that only a triangle in their corner is merged instead of
-   the whole face. This reduces the size of the final "hole-filling" faces and can make them less uneven.
+   When dissolving vertices into surrounding faces, you can often end up with very large, uneven n-gons.
+   The face split option limits dissolve to only use the corners of the faces connected to the vertex.
 Tear Boundaries
-   Delete faces at the mesh boundary instead of merging them. These faces are always split,
-   even if *Face Split* is disabled.
+   Split off face corners instead of merging faces.
 
-.. list-table::
-   :widths: 1 1 1 1
 
-   * - .. figure:: /images/modeling_meshes_editing_mesh_delete_dissolve-example-1.png
+Examples
+^^^^^^^^
 
-          Original mesh
+.. figure:: /images/modeling_meshes_editing_mesh_delete_dissolve-examples.png
 
-     - .. figure:: /images/modeling_meshes_editing_mesh_delete_dissolve-example-2.png
-
-          Face Split: Off
-
-          Tear Boundaries: Off
-
-     - .. figure:: /images/modeling_meshes_editing_mesh_delete_dissolve-example-3.png
-
-          Face Split: On
-
-          Tear Boundaries: Off
-
-     - .. figure:: /images/modeling_meshes_editing_mesh_delete_dissolve-example-4.png
-
-          Face Split: On/Off
-
-          Tear Boundaries: On
+   \1) Original mesh.
+   \2) Face Split: Off, Tear Boundaries: Off.
+   \3) Face Split: On, Tear Boundaries: Off.
+   \4) Face Split: On/Off, Tear Boundaries: On.
 
 
 .. _bpy.ops.mesh.dissolve_edges:
@@ -100,33 +88,17 @@ Dissolve Edges
 
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Mesh --> Delete --> Dissolve Edges`
-   :Shortcut:  :kbd:`X`, :kbd:`Delete`, or :kbd:`Ctrl-X`
 
-Deletes each selected edge and joins its surrounding faces into one. This is only done for edges that
-have exactly two neighboring faces.
+Removes edges sharing two faces (joining those faces).
 
-The Adjust Last Operation panel offers the following options:
-
-Dissolve Vertices
-   Also dissolve the vertices of the selected edges, not just the edges themselves.
-Angle Threshold
-   If *Dissolve Vertices* is enabled, this option allows preserving vertices at corners,
-   only dissolving the ones in flattish areas. Faces are considered to form a corner if
-   the angle between their *normals* exceeds the Angle Threshold -- that is, coplanar faces
-   are considered to have an angle of 0°, not 180°.
 Face Split
-   Split surrounding faces where possible so that only a triangle in their corner is merged instead of
-   the whole face. This reduces the size of the final "hole-filling" faces and can make them less uneven.
-Preserve Quads
-   Prevents vertices from being removed if doing so would break the quad structure
-   when dissolving the edge between two triangles.
+   When dissolving vertices into surrounding faces, you can often end up with very large, uneven n-gons.
+   The face split option limits dissolve to only use the corners of the faces connected to the vertex.
+Angle Threshold
+   Remaining vertices which separate edge pairs are preserved if their edge angle exceeds this threshold.
+Tear Boundaries
+   Split off face corners instead of merging faces.
 
-   Even if *Dissolve Vertices* is enabled, vertices shared by the two triangles
-   are kept so the resulting geometry remains a quad rather than collapsing
-   into a triangle or n-gon.
-
-   This option helps maintain clean quad topology when simplifying meshes or
-   removing unnecessary edges.
 
 .. _bpy.ops.mesh.dissolve_faces:
 
@@ -137,24 +109,25 @@ Dissolve Faces
 
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Mesh --> Delete --> Dissolve Faces`
-   :Shortcut:  :kbd:`X`, :kbd:`Delete`, :kbd:`Ctrl-X`, or :kbd:`F`
 
-Merges each patch of connected faces into a single face.
+Merges regions of faces that share edges into a single face.
 
 .. note::
 
-   The :kbd:`F` shortcut is normally used for creating faces, but when run on a selection of existing faces,
-   it dissolves them instead. See :ref:`modeling-mesh-make-face-edge-dissolve`.
+   This can be accessed quickly using the :kbd:`F` key,
+   see: :ref:`modeling-mesh-make-face-edge-dissolve`.
 
-.. list-table::
 
-   * - .. figure:: /images/modeling_meshes_editing_mesh_delete_dissolve-faces_before.png
+Dissolve (Context-Sensitive)
+----------------------------
 
-          Before dissolving.
+.. reference::
 
-     - .. figure:: /images/modeling_meshes_editing_mesh_delete_dissolve-faces_after.png
+   :Shortcut:  :kbd:`Ctrl-X`
 
-          After dissolving.
+This is a convenient shortcut that dissolves
+based on the current selection mode (vertex, edge, face).
+
 
 .. _bpy.ops.mesh.dissolve_limited:
 
@@ -165,9 +138,8 @@ Limited Dissolve
 
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Mesh --> Delete --> Limited Dissolve`
-   :Shortcut:  :kbd:`X` or :kbd:`Delete`
 
-Simplifies the selected geometry by dissolving vertices and edges in flattish areas.
+This tool can simplify your mesh by dissolving vertices and edges separating flat regions.
 
 .. list-table::
 
@@ -182,22 +154,12 @@ Simplifies the selected geometry by dissolving vertices and edges in flattish ar
           Result of Limited Dissolve.
 
 Max Angle
-   The maximum allowed angle between faces for the surface to be considered flat (and thus eligible
-   for dissolving). Specifically, the angle is measured between face normals, meaning that coplanar
-   faces are considered to have an angle of 0°, not 180°.
+   Reduces detail on planar faces and linear edges with an adjustable angle threshold.
 All Boundaries
-   After dissolving the edges using *Max Angle*, dissolve all vertices at boundary corners --
-   specifically, vertices that only have two neighboring edges.
+   Always dissolve vertices that have two edge users at boundaries.
 Delimit
-   Prevent merging faces that are discontinuous in some way. It's possible to activate multiple of
-   these options by clicking them with :kbd:`Shift-LMB`.
+   Prevent faces from joining when they don't share certain properties (material for e.g.).
 
-   :Normal: Don't merge faces that have opposite
-            :ref:`orientations <bpy.types.View3DOverlay.show_face_orientation>`.
-   :Material: Don't merge faces that have different materials.
-   :Seam: Don't dissolve edges that are marked as :doc:`UV Seams </modeling/meshes/uv/unwrapping/seams>`.
-   :Sharp: Don't dissolve edges that are marked as :ref:`Sharp <bpy.ops.mesh.mark_sharp>`.
-   :UVs: Don't merge faces that are disconnected in any UV map.
 
 .. _bpy.ops.mesh.edge_collapse:
 
@@ -208,26 +170,33 @@ Collapse Edges & Faces
 
    :Mode:      Edit Mode
    :Menu:      :menuselection:`Mesh --> Delete --> Collapse Edges & Faces`
-   :Shortcut:  :kbd:`X` or :kbd:`Delete`
+   :Shortcut:  :kbd:`X`, :menuselection:`Collapse Edges & Faces`
 
-Collapses each patch of connected edges and faces into a single vertex.
-This is useful for collapsing edge rings, for example.
+Collapse each isolated edge and face region into single vertices,
+with support for face data such as UVs and vertex colors.
+
+This is useful for taking a ring of edges and collapsing it,
+removing the face loop it ran through.
 
 .. list-table::
-   :widths: 1 1
 
    * - .. figure:: /images/modeling_meshes_editing_mesh_delete_collapse-before.png
+          :width: 320px
 
-          Selected edge rings.
+          Selected edge ring.
 
      - .. figure:: /images/modeling_meshes_editing_mesh_delete_collapse-after.png
+          :width: 320px
 
-          Edge rings collapsed.
+          Edge ring collapsed.
 
-Unlike the *Dissolve* operators, this operator doesn't create :term:`n-gons <n-gon>`
-and can add new vertices instead of only removing existing ones. In addition,
-the new vertices automatically receive interpolated UV coordinates, color attributes, etc.
-This makes it particularly useful for manually removing detail.
+.. tip::
+
+   This can be useful as a general way to remove detail, it has some advantages over:
+
+   :Delete Vertices: Leaves holes.
+   :Collapse Vertices: Doesn't correct UVs, vertex colors, etc.
+   :Dissolve Vertices: Often creates n-gons.
 
 
 .. _bpy.ops.mesh.delete_edgeloop:
@@ -239,10 +208,27 @@ Edge Loops
 
    :Mode:      Edit Mode (Vertex or Edge select modes)
    :Menu:      :menuselection:`Mesh --> Delete --> Edge Loops`
-   :Shortcut:  :kbd:`X` or :kbd:`Delete`
+   :Shortcut:  :kbd:`X` or :kbd:`Delete`, :menuselection:`Edge Loops`
 
-Dissolves the selected edge loops. This is essentially the same as
-:ref:`bpy.ops.mesh.dissolve_edges`, except that it selects the surrounding faces afterwards.
+*Edge Loop* allows you to delete a selected edge loop if it is between two other edge loops.
+This will create one face loop where two previously existed.
+
+.. note::
+
+   The *Edge Loop* option is very different to the *Edges* option,
+   even if you use it on edges that look like an edge loop.
+   Deleting an edge loop merges the surrounding faces together to preserve the surface of the mesh.
+   By deleting a chain of edges, the edges are removed, deleting the surrounding faces as well.
+   This will leave holes in the mesh where the faces once were.
+
+
+Example
+-------
+
+The selected edge loop on the UV Sphere has been deleted and
+the faces have been merged with the surrounding edges.
+If the edges had been deleted by choosing *Edges* from the *Delete* menu
+there would be an empty band of deleted faces all the way around the sphere instead.
 
 .. list-table::
 
@@ -254,15 +240,10 @@ Dissolves the selected edge loops. This is essentially the same as
      - .. figure:: /images/modeling_meshes_editing_mesh_delete_edge-loop-after.png
           :width: 320px
 
-          Edge loop dissolved.
-
-.. note::
-
-   In Blender terminology, an *edge loop* is any chain of connected edges --
-   it doesn't have to be a closed loop. See :ref:`bpy.ops.mesh.loop_select`.
+          Edge loop deleted.
 
 .. seealso::
 
-   - :doc:`Vertex merging </modeling/meshes/editing/mesh/merge>`
-   - :doc:`/modeling/meshes/editing/face/triangles_quads`
-   - :doc:`/modeling/meshes/editing/edge/unsubdivide`
+   - :ref:`Vertex merging <vertex-merging>`.
+   - :ref:`bpy.ops.mesh.tris_convert_to_quads`.
+   - :ref:`mesh-unsubdivide`.

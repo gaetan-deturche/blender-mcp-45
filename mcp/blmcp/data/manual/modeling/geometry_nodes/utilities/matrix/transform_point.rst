@@ -1,6 +1,5 @@
 .. index:: Geometry Nodes; Transform Point
 .. _bpy.types.FunctionNodeTransformPoint:
-.. --- copy below this line ---
 
 ********************
 Transform Point Node
@@ -20,6 +19,12 @@ Vector
    The position of a point to transform.
 Transformation
    The transformation matrix.
+
+
+Properties
+==========
+
+This node has no properties.
 
 
 Outputs

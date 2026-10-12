@@ -20,6 +20,8 @@ The *Hue/Saturation/Value Node* applies a color transformation in the HSV :term:
 Inputs
 ======
 
+Factor
+   The amount of influence the node exerts on the image.
 Image/Color
    Standard color input.
 Hue
@@ -31,9 +33,6 @@ Saturation
 Value
    The value shift. 0 makes the color black, 1 keeps it the same, and higher
    values make it brighter.
-Factor
-   The amount of influence the node exerts on the image.
-
 
 Outputs
 =======

@@ -5,426 +5,421 @@ GreasePencilLineartModifier(Modifier)
 
 base classes --- :class:`bpy_struct`, :class:`Modifier`
 
-
 .. class:: GreasePencilLineartModifier(Modifier)
 
    Generate Line Art strokes from selected source
 
    .. attribute:: chaining_image_threshold
 
-      Segments with an image distance smaller than this will be chained together (in [0, 0.3], default 0.001)
+      Segments with an image distance smaller than this will be chained together
 
-      :type: float
+      :type: float in [0, 0.3], default 0.001
 
    .. attribute:: crease_threshold
 
-      Angles smaller than this will be treated as creases. Crease angle priority: object Line Art crease override > mesh auto smooth angle > Line Art default crease. (in [0, 3.14159], default 2.44346)
+      Angles smaller than this will be treated as creases. Crease angle priority: object Line Art crease override > mesh auto smooth angle > Line Art default crease.
 
-      :type: float
-
-   .. attribute:: fill_strokes
-
-      Generate filled strokes instead of only outline (default False)
-
-      :type: bool
+      :type: float in [0, 3.14159], default 2.44346
 
    .. attribute:: invert_source_vertex_group
 
-      Invert source vertex group values (default False)
+      Invert source vertex group values
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: is_baked
 
-      This modifier has baked data (default False)
+      This modifier has baked data
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: level_end
 
-      Maximum number of occlusions for the generated strokes (in [0, 128], default 0)
+      Maximum number of occlusions for the generated strokes
 
-      :type: int
+      :type: int in [0, 128], default 0
 
    .. attribute:: level_start
 
-      Minimum number of occlusions for the generated strokes (in [0, 128], default 0)
+      Minimum number of occlusions for the generated strokes
 
-      :type: int
+      :type: int in [0, 128], default 0
 
    .. attribute:: light_contour_object
 
       Use this light object to generate light contour
 
-      :type: :class:`Object` | None
+      :type: :class:`Object`
 
    .. attribute:: opacity
 
-      The strength value for the generate strokes (in [0, 1], default 1.0)
+      The strength value for the generate strokes
 
-      :type: float
+      :type: float in [0, 1], default 1.0
 
    .. attribute:: overscan
 
-      A margin to prevent strokes from ending abruptly at the edge of the image (in [0, 0.5], default 0.1)
+      A margin to prevent strokes from ending abruptly at the edge of the image
 
-      :type: float
+      :type: float in [0, 0.5], default 0.1
 
    .. attribute:: radius
 
-      The radius for the generated strokes (in [0, 1], default 0.0025)
+      The radius for the generated strokes
 
-      :type: float
+      :type: float in [0, 1], default 0.0025
 
    .. attribute:: shadow_camera_far
 
-      Far clipping distance of shadow camera (in [0, 10000], default 200.0)
+      Far clipping distance of shadow camera
 
-      :type: float
+      :type: float in [0, 10000], default 200.0
 
    .. attribute:: shadow_camera_near
 
-      Near clipping distance of shadow camera (in [0, 10000], default 0.1)
+      Near clipping distance of shadow camera
 
-      :type: float
+      :type: float in [0, 10000], default 0.1
 
    .. attribute:: shadow_camera_size
 
-      Represents the "Orthographic Scale" of an orthographic camera. If the camera is positioned at the light's location with this scale, it will represent the coverage of the shadow "camera". (in [0, 10000], default 200.0)
+      Represents the "Orthographic Scale" of an orthographic camera. If the camera is positioned at the light's location with this scale, it will represent the coverage of the shadow "camera".
 
-      :type: float
+      :type: float in [0, 10000], default 200.0
 
    .. attribute:: shadow_region_filtering
 
-      Select feature lines that comes from lit or shaded regions. Will not affect cast shadow and light contour since they are at the border. (default ``'NONE'``)
+      Select feature lines that comes from lit or shaded regions. Will not affect cast shadow and light contour since they are at the border.
 
-      - ``NONE``
+      * ``NONE``
         None -- Not filtering any lines based on illumination region.
-      - ``ILLUMINATED``
+      * ``ILLUMINATED``
         Illuminated -- Only selecting lines from illuminated regions.
-      - ``SHADED``
+      * ``SHADED``
         Shaded -- Only selecting lines from shaded regions.
-      - ``ILLUMINATED_ENCLOSED``
+      * ``ILLUMINATED_ENCLOSED``
         Illuminated (Enclosed Shapes) -- Selecting lines from lit regions, and make the combination of contour, light contour and shadow lines into enclosed shapes.
 
-      :type: Literal['NONE', 'ILLUMINATED', 'SHADED', 'ILLUMINATED_ENCLOSED']
+      :type: enum in [``'NONE'``, ``'ILLUMINATED'``, ``'SHADED'``, ``'ILLUMINATED_ENCLOSED'``], default ``'NONE'``
 
    .. attribute:: silhouette_filtering
 
-      Select contour or silhouette (default ``'NONE'``)
+      Select contour or silhouette
 
-      :type: Literal['NONE', 'GROUP', 'INDIVIDUAL']
+      :type: enum in [``'NONE'``, ``'GROUP'``, ``'INDIVIDUAL'``], default ``'NONE'``
 
    .. attribute:: smooth_tolerance
 
-      Strength of smoothing applied on jagged chains (in [0, 30], default 0.0)
+      Strength of smoothing applied on jagged chains
 
-      :type: float
+      :type: float in [0, 30], default 0.0
 
    .. attribute:: source_camera
 
       Use specified camera object for generating Line Art strokes
 
-      :type: :class:`Object` | None
+      :type: :class:`Object`
 
    .. attribute:: source_collection
 
       Generate strokes from the objects in this collection
 
-      :type: :class:`Collection` | None
+      :type: :class:`Collection`
 
    .. attribute:: source_object
 
       Generate strokes from this object
 
-      :type: :class:`Object` | None
+      :type: :class:`Object`
 
    .. attribute:: source_type
 
-      Line Art stroke source type (default ``'COLLECTION'``)
+      Line Art stroke source type
 
-      :type: Literal['COLLECTION', 'OBJECT', 'SCENE']
+      :type: enum in [``'COLLECTION'``, ``'OBJECT'``, ``'SCENE'``], default ``'COLLECTION'``
 
    .. attribute:: source_vertex_group
 
-      Match the beginning of vertex group names from mesh objects, match all when left empty (default "", never None)
+      Match the beginning of vertex group names from mesh objects, match all when left empty
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: split_angle
 
-      Angle in screen space below which a stroke is split in two (in [0, 3.14159], default 0.0)
+      Angle in screen space below which a stroke is split in two
 
-      :type: float
+      :type: float in [0, 3.14159], default 0.0
 
    .. attribute:: stroke_depth_offset
 
-      Move strokes slightly towards the camera to avoid clipping while preserve depth for the viewport (in [-0.1, inf], default 0.05)
+      Move strokes slightly towards the camera to avoid clipping while preserve depth for the viewport
 
-      :type: float
+      :type: float in [-0.1, inf], default 0.05
 
    .. attribute:: target_layer
 
-      Grease Pencil layer to which assign the generated strokes (default "", never None)
+      Grease Pencil layer to which assign the generated strokes
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. attribute:: target_material
 
       Grease Pencil material assigned to the generated strokes
 
-      :type: :class:`Material` | None
+      :type: :class:`Material`
+
+   .. attribute:: thickness
+
+      The thickness for the generated strokes
+
+      :type: int in [1, 200], default 25
 
    .. attribute:: use_back_face_culling
 
-      Remove all back faces to speed up calculation, this will create edges in different occlusion levels than when disabled (default False)
+      Remove all back faces to speed up calculation, this will create edges in different occlusion levels than when disabled
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_cache
 
-      Use cached scene data from the first Line Art modifier in the stack. Certain settings will be unavailable. (default False)
+      Use cached scene data from the first Line Art modifier in the stack. Certain settings will be unavailable.
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_clip_plane_boundaries
 
-      Allow lines generated by the near/far clipping plane to be shown (default True)
+      Allow lines generated by the near/far clipping plane to be shown
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_contour
 
-      Generate strokes from contours lines (default False)
+      Generate strokes from contours lines
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_crease
 
-      Generate strokes from creased edges (default False)
+      Generate strokes from creased edges
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_crease_on_sharp
 
-      Allow crease to show on sharp edges (default True)
+      Allow crease to show on sharp edges
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_crease_on_smooth
 
-      Allow crease edges to show inside smooth surfaces (default False)
+      Allow crease edges to show inside smooth surfaces
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_custom_camera
 
-      Use custom camera instead of the active camera (default False)
+      Use custom camera instead of the active camera
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_detail_preserve
 
-      Keep the zig-zag "noise" in initial chaining (default False)
+      Keep the zig-zag "noise" in initial chaining
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_edge_mark
 
-      Generate strokes from Freestyle marked edges (default False)
+      Generate strokes from Freestyle marked edges
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_edge_overlap
 
-      Allow edges in the same location (i.e. from edge split) to show properly. May run slower. (default False)
+      Allow edges in the same location (i.e. from edge split) to show properly. May run slower.
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_face_mark
 
-      Filter feature lines using Freestyle face marks (default False)
+      Filter feature lines using Freestyle face marks
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_face_mark_boundaries
 
-      Filter feature lines based on face mark boundaries (default False)
+      Filter feature lines based on face mark boundaries
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_face_mark_invert
 
-      Invert face mark filtering (default False)
+      Invert face mark filtering
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_face_mark_keep_contour
 
-      Preserve contour lines while filtering (default True)
+      Preserve contour lines while filtering
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_fuzzy_all
 
-      Treat all lines as the same line type so they can be chained together (default False)
+      Treat all lines as the same line type so they can be chained together
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_fuzzy_intersections
 
-      Treat intersection and contour lines as if they were the same type so they can be chained together (default False)
+      Treat intersection and contour lines as if they were the same type so they can be chained together
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_geometry_space_chain
 
-      Use geometry distance for chaining instead of image space (default False)
+      Use geometry distance for chaining instead of image space
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_image_boundary_trimming
 
-      Trim all edges right at the boundary of image (including overscan region) (default False)
+      Trim all edges right at the boundary of image (including overscan region)
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_intersection
 
-      Generate strokes from intersections (default False)
+      Generate strokes from intersections
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_intersection_mask
 
-      Mask bits to match from Collection Line Art settings (array of 8 items, default (False, False, False, False, False, False, False, False))
+      Mask bits to match from Collection Line Art settings
 
-      :type: :class:`bpy_prop_array`\ [bool]
+      :type: boolean array of 8 items, default (False, False, False, False, False, False, False, False)
 
    .. attribute:: use_intersection_match
 
-      Require matching all intersection masks instead of just one (default False)
+      Require matching all intersection masks instead of just one
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_invert_collection
 
-      Select everything except lines from specified collection (default False)
+      Select everything except lines from specified collection
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_invert_silhouette
 
-      Select anti-silhouette lines (default False)
+      Select anti-silhouette lines
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_light_contour
 
-      Generate light/shadow separation lines from a reference light object (default False)
+      Generate light/shadow separation lines from a reference light object
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_loose
 
-      Generate strokes from loose edges (default False)
+      Generate strokes from loose edges
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_loose_as_contour
 
-      Loose edges will have contour type (default False)
+      Loose edges will have contour type
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_loose_edge_chain
 
-      Allow loose edges to be chained together (default False)
+      Allow loose edges to be chained together
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_material
 
-      Generate strokes from borders between materials (default False)
+      Generate strokes from borders between materials
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_material_mask
 
-      Use material masks to filter out occluded strokes (default False)
+      Use material masks to filter out occluded strokes
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_material_mask_bits
 
-      Mask bits to match from Material Line Art settings (array of 8 items, default (False, False, False, False, False, False, False, False))
+      Mask bits to match from Material Line Art settings
 
-      :type: :class:`bpy_prop_array`\ [bool]
+      :type: boolean array of 8 items, default (False, False, False, False, False, False, False, False)
 
    .. attribute:: use_material_mask_match
 
-      Require matching all material masks instead of just one (default False)
+      Require matching all material masks instead of just one
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_multiple_levels
 
-      Generate strokes from a range of occlusion levels (default False)
+      Generate strokes from a range of occlusion levels
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_object_instances
 
-      Allow particle objects and face/vertex instances to show in Line Art (default True)
+      Allow particle objects and face/vertex instances to show in Line Art
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_offset_towards_custom_camera
 
-      Offset strokes towards selected camera instead of the active camera (default False)
+      Offset strokes towards selected camera instead of the active camera
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_output_vertex_group_match_by_name
 
-      Match output vertex group based on name (default True)
+      Match output vertex group based on name
 
-      :type: bool
+      :type: boolean, default True
 
    .. attribute:: use_overlap_edge_type_support
 
-      Allow an edge to have multiple overlapping types. This will create a separate stroke for each overlapping type. (default False)
+      Allow an edge to have multiple overlapping types. This will create a separate stroke for each overlapping type.
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: use_shadow
 
-      Project contour lines using a light source object (default False)
+      Project contour lines using a light source object
 
-      :type: bool
+      :type: boolean, default False
 
    .. attribute:: vertex_group
 
-      Vertex group name for selected strokes (default "", never None)
+      Vertex group name for selected strokes
 
-      :type: str
+      :type: string, default "", (never None)
 
    .. classmethod:: bl_rna_get_subclass(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: :class:`bpy.types.Struct` | None
       :return: The RNA type or default when not found.
-      :rtype: :class:`bpy.types.Struct`
+      :rtype: :class:`bpy.types.Struct` subclass
 
 
    .. classmethod:: bl_rna_get_subclass_py(id, default=None, /)
    
-      :param id: The RNA type identifier.
+      :arg id: The RNA type identifier.
       :type id: str
-      :param default: The value to return when not found.
-      :type default: type | None
       :return: The class or default when not found.
       :rtype: type
 
@@ -435,20 +430,20 @@ Inherited Properties
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.id_data`
-   - :class:`Modifier.name`
-   - :class:`Modifier.type`
-   - :class:`Modifier.show_viewport`
-   - :class:`Modifier.show_render`
-   - :class:`Modifier.show_in_editmode`
-   - :class:`Modifier.show_on_cage`
-   - :class:`Modifier.show_expanded`
-   - :class:`Modifier.is_active`
-   - :class:`Modifier.use_pin_to_last`
-   - :class:`Modifier.is_override_data`
-   - :class:`Modifier.use_apply_on_spline`
-   - :class:`Modifier.execution_time`
-   - :class:`Modifier.persistent_uid`
+   * :class:`bpy_struct.id_data`
+   * :class:`Modifier.name`
+   * :class:`Modifier.type`
+   * :class:`Modifier.show_viewport`
+   * :class:`Modifier.show_render`
+   * :class:`Modifier.show_in_editmode`
+   * :class:`Modifier.show_on_cage`
+   * :class:`Modifier.show_expanded`
+   * :class:`Modifier.is_active`
+   * :class:`Modifier.use_pin_to_last`
+   * :class:`Modifier.is_override_data`
+   * :class:`Modifier.use_apply_on_spline`
+   * :class:`Modifier.execution_time`
+   * :class:`Modifier.persistent_uid`
 
 Inherited Functions
 -------------------
@@ -456,30 +451,29 @@ Inherited Functions
 .. hlist::
    :columns: 2
 
-   - :class:`bpy_struct.as_pointer`
-   - :class:`bpy_struct.driver_add`
-   - :class:`bpy_struct.driver_remove`
-   - :class:`bpy_struct.get`
-   - :class:`bpy_struct.id_properties_clear`
-   - :class:`bpy_struct.id_properties_ensure`
-   - :class:`bpy_struct.id_properties_ui`
-   - :class:`bpy_struct.is_property_hidden`
-   - :class:`bpy_struct.is_property_overridable_library`
-   - :class:`bpy_struct.is_property_readonly`
-   - :class:`bpy_struct.is_property_set`
-   - :class:`bpy_struct.items`
-   - :class:`bpy_struct.keyframe_delete`
-   - :class:`bpy_struct.keyframe_insert`
-   - :class:`bpy_struct.keys`
-   - :class:`bpy_struct.path_from_id`
-   - :class:`bpy_struct.path_from_module`
-   - :class:`bpy_struct.path_resolve`
-   - :class:`bpy_struct.pop`
-   - :class:`bpy_struct.property_overridable_library_set`
-   - :class:`bpy_struct.property_unset`
-   - :class:`bpy_struct.rna_ancestors`
-   - :class:`bpy_struct.type_recast`
-   - :class:`bpy_struct.values`
-   - :class:`Modifier.bl_rna_get_subclass`
-   - :class:`Modifier.bl_rna_get_subclass_py`
+   * :class:`bpy_struct.as_pointer`
+   * :class:`bpy_struct.driver_add`
+   * :class:`bpy_struct.driver_remove`
+   * :class:`bpy_struct.get`
+   * :class:`bpy_struct.id_properties_clear`
+   * :class:`bpy_struct.id_properties_ensure`
+   * :class:`bpy_struct.id_properties_ui`
+   * :class:`bpy_struct.is_property_hidden`
+   * :class:`bpy_struct.is_property_overridable_library`
+   * :class:`bpy_struct.is_property_readonly`
+   * :class:`bpy_struct.is_property_set`
+   * :class:`bpy_struct.items`
+   * :class:`bpy_struct.keyframe_delete`
+   * :class:`bpy_struct.keyframe_insert`
+   * :class:`bpy_struct.keys`
+   * :class:`bpy_struct.path_from_id`
+   * :class:`bpy_struct.path_resolve`
+   * :class:`bpy_struct.pop`
+   * :class:`bpy_struct.property_overridable_library_set`
+   * :class:`bpy_struct.property_unset`
+   * :class:`bpy_struct.rna_ancestors`
+   * :class:`bpy_struct.type_recast`
+   * :class:`bpy_struct.values`
+   * :class:`Modifier.bl_rna_get_subclass`
+   * :class:`Modifier.bl_rna_get_subclass_py`
 

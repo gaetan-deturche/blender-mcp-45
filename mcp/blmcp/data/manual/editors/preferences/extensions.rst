@@ -3,7 +3,6 @@
 .. _bpy.types.WindowManager.addon:
 .. _bpy.ops.preferences.addon:
 .. _prefs-extensions:
-.. _bpy.ops.extensions:
 
 **************
 Get Extensions
@@ -11,7 +10,7 @@ Get Extensions
 
 The *Get Extensions* section lets you install and manage extensions preferences.
 
-.. figure:: /images/editors_preferences_section_extensions.webp
+.. figure:: /images/editors_preferences_section_extensions.png
 
    Blender Preferences Extensions section.
 
@@ -50,7 +49,6 @@ Updating Extensions
 
 You need to manually check for available updates.
 Once an update is found, Blender will let you update any of the available extensions.
-If updates are available an *Update All* button will be available to install all available updates.
 
 The current available version of an extension on the repository will always be considered the latest version.
 

@@ -27,6 +27,12 @@ Selection
    Boolean input for selecting which points will have the radius value applied.
 
 
+Properties
+==========
+
+This node has no properties.
+
+
 Outputs
 =======
 

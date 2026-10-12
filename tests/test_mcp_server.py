@@ -1004,7 +1004,7 @@ class TestGetPythonAPIDocs(unittest.TestCase):
         self.assertEqual(
             paths,
             [
-                "examples/bpy.app.handlers.0.py",
+                "examples/bpy.app.handlers.py",
                 "examples/bpy.app.handlers.1.py",
                 "examples/bpy.app.handlers.2.py",
             ],

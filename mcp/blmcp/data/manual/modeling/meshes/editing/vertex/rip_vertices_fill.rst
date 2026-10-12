@@ -9,15 +9,17 @@ Rip Vertices and Fill
    :Menu:      :menuselection:`Vertex --> Rip Vertices and Fill`
    :Shortcut:  :kbd:`Alt-V`
 
-This tool does the same as :doc:`/modeling/meshes/editing/vertex/rip_vertices`,
-but instead of leaving a hole, it fills the gap with new faces.
+Rip fill works the same as the Rip tool above, but instead of leaving a hole,
+it fills in the gap with geometry.
 
 .. list-table::
 
    * - .. figure:: /images/modeling_meshes_editing_vertex_rip-vertices_edges-before.png
+          :width: 260px
 
-          Before ripping.
+          Edges selected.
 
      - .. figure:: /images/modeling_meshes_editing_vertex_rip-vertices-fill_result.png
+          :width: 260px
 
-          After ripping.
+          Result of rip fill.
