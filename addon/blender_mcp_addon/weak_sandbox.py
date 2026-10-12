@@ -102,14 +102,17 @@ class WeakSandboxForLLM:
     # Operator blocking
 
     @staticmethod
-    def ops_blocked_store() -> tuple[Any, Any]:
-        """Replace ``bpy.ops._op_create_function`` with a filtered wrapper.
+    def ops_blocked_store() -> tuple[Any, str, Any]:
+        """Replace the ``bpy.ops`` operator factory with a filtered wrapper.
 
-        Returns ``(bpy_ops_module, original_function)`` for later restore.
+        Returns ``(bpy_ops_module, attr_name, original_function)`` for later restore.
         """
         import bpy.ops as _bpy_ops  # noqa: WPS433
 
-        original = _bpy_ops._op_create_function
+        # Blender 5.1+ has `_op_create_function`, older versions `_bpy_ops_submodule__getattr__` (same signature).
+        # Check `vars()`: the module `__getattr__` makes `hasattr` true for any name.
+        attr = "_op_create_function" if "_op_create_function" in vars(_bpy_ops) else "_bpy_ops_submodule__getattr__"
+        original = getattr(_bpy_ops, attr)
 
         def _filtered_op_create_function(module: str, func: str) -> Any:
             key = "{:s}.{:s}".format(module, func)
@@ -133,14 +136,14 @@ class WeakSandboxForLLM:
                 return _blocked
             return original(module, func)
 
-        _bpy_ops._op_create_function = _filtered_op_create_function
-        return (_bpy_ops, original)
+        setattr(_bpy_ops, attr, _filtered_op_create_function)
+        return (_bpy_ops, attr, original)
 
     @staticmethod
-    def ops_blocked_restore(saved: tuple[Any, Any]) -> None:
-        """Restore the original ``_op_create_function``."""
-        bpy_ops_module, original = saved
-        bpy_ops_module._op_create_function = original
+    def ops_blocked_restore(saved: tuple[Any, str, Any]) -> None:
+        """Restore the original operator factory."""
+        bpy_ops_module, attr, original = saved
+        setattr(bpy_ops_module, attr, original)
 
     # -------------------------------------------------------------------------
     # Context manager
