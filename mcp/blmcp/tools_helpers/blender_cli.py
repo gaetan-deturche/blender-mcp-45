@@ -68,6 +68,8 @@ def run_blender_cli(
     try:
         proc = subprocess.run(
             [blender, "--background", blend_file, "--python-expr", wrapper],
+            # Never inherit the MCP stdio pipe: on Windows Blender blocks on it while the server reads it.
+            stdin=subprocess.DEVNULL,
             capture_output=True,
             text=True,
             timeout=timeout,
