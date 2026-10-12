@@ -1,5 +1,20 @@
 # Blender MCP
 
+> **Fork for Blender 4.5 LTS** of [lab/blender_mcp](https://projects.blender.org/lab/blender_mcp)
+> (upstream requires Blender 5.1+). Changes:
+>
+> - Add-on: `blender_version_min = "4.5.0"`; the weak sandbox hooks `bpy.ops` through
+>   `_bpy_ops_submodule__getattr__` when `_op_create_function` (5.1+) is absent.
+> - `data/api` and `data/manual` regenerated for Blender 4.5 (`sphinx_doc_gen.py` from tag `v4.5.13`,
+>   manual branch `blender-v4.5-release`).
+> - `get_blendfile_summary_missing_files` falls back to `bpy.utils.blend_paths` (no `file_path_foreach` in 4.5).
+> - Windows fixes: CLI tools no longer inherit the MCP stdio pipe (hung Blender), API docs generated on
+>   Windows get their `literalinclude` paths normalized, and the tests run on Windows.
+>
+> Install: `blender --command extension build --source-dir=addon/blender_mcp_addon`, then install the
+> zip from *Preferences > Get Extensions > Install from Disk* and enable *Allow Online Access*.
+> Server: `pip install -e mcp`, then run `blender-mcp` (stdio) with `BLENDER_PATH` set to the 4.5 binary.
+
 ## Overview
 
 A lightweight MCP (Model Context Protocol) server for Blender.
