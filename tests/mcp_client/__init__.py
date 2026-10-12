@@ -14,8 +14,9 @@ __all__ = (
 
 import json
 import os
-import select
+import queue
 import subprocess
+import threading
 import time
 from typing import Any, Self
 
@@ -46,6 +47,15 @@ class MCPClient:
             env=env,
         )
         self._next_id = 1
+        # Read on a thread: `select` on pipes is POSIX only.
+        self._lines: queue.Queue[bytes] = queue.Queue()
+        threading.Thread(target=self._read_stdout, daemon=True).start()
+
+    def _read_stdout(self) -> None:
+        assert self._proc.stdout is not None
+        for line in iter(self._proc.stdout.readline, b""):
+            self._lines.put(line)
+        self._lines.put(b"")
 
     def _send_request(self, method: str, params: dict[str, object] | None = None) -> dict[str, Any]:
         """
@@ -77,12 +87,12 @@ class MCPClient:
                 raise RuntimeError(
                     "Timeout ({:d}s) waiting for response to {:s}".format(_REQUEST_TIMEOUT, method)
                 )
-            ready, _, _ = select.select([self._proc.stdout], [], [], remaining)
-            if not ready:
+            try:
+                line = self._lines.get(timeout=remaining)
+            except queue.Empty:
                 raise RuntimeError(
                     "Timeout ({:d}s) waiting for response to {:s}".format(_REQUEST_TIMEOUT, method)
-                )
-            line = self._proc.stdout.readline()
+                ) from None
             if not line:
                 raise RuntimeError("MCP server closed stdout unexpectedly")
             line = line.strip()
@@ -157,14 +167,15 @@ class MCPClient:
         """
         if self._proc.stdin is not None:
             self._proc.stdin.close()
-        if self._proc.stdout is not None:
-            self._proc.stdout.close()
         self._proc.terminate()
         try:
             self._proc.wait(timeout=_TIMEOUT_LOCAL_PROC)
         except subprocess.TimeoutExpired:
             self._proc.kill()
             self._proc.wait(timeout=_TIMEOUT_LOCAL_PROC)
+        # After exit: the reader thread holds the stdout lock until EOF.
+        if self._proc.stdout is not None:
+            self._proc.stdout.close()
 
     def __enter__(self) -> Self:
         return self

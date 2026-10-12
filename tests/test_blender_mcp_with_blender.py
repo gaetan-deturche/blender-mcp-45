@@ -109,6 +109,8 @@ def _blender_env(tmpdir: str) -> dict[str, str]:
     """
     env = os.environ.copy()
     env["HOME"] = tmpdir
+    # `HOME` is ignored on Windows, which uses `%APPDATA%`.
+    env["BLENDER_USER_RESOURCES"] = tmpdir
     env["ASAN_OPTIONS"] = ":".join(filter(None, [
         env.get("ASAN_OPTIONS", ""),
         "alloc_dealloc_mismatch=0",
@@ -1118,7 +1120,7 @@ class TestInteractiveServer(_TestServerMixin, unittest.TestCase):
     _port = _PORT_INTERACTIVE
 
 
-BLENDER_VERSION_MIN = (5, 1)
+BLENDER_VERSION_MIN = (4, 5)
 
 
 def test_binaries_available() -> bool:
